@@ -1,2 +1,10 @@
 [     0.0s] run T0.4 -> /home/user/nofx/research/hp-adapt1-set2/runs/T0.4/20261106T201130Z
 [     1.2s] states: 100 short, 30 long (2 long states replaced: depth-3 body over guard)
+[    36.7s] short depth 1: 100/100 pass; max |dvalue| 0
+[    74.1s] short depth 2: 100/100 pass; max |dvalue| 0
+[   135.3s] short depth 3: 100/100 pass; max |dvalue| 0
+[   146.2s] long depth 1: 30/30 pass; max |dvalue| 0
+[   166.8s] long depth 2: 30/30 pass; max |dvalue| 0
+[   233.0s] long depth 3: 30/30 pass; max |dvalue| 0
+[   233.0s] T0.4 PASS | predict stats {'leaves': 12214, 'unique_sent': 11352, 'cache_hits': 862, 'predict_batches': 6}
+[   233.3s] deleted T0.3 domain hpx2-t03-cal-0-20261106t200220z-95f0c2

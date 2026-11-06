@@ -76,7 +76,8 @@ def redact_text(text):
 def redact(obj):
     """Drop the account's effective session identity from anything written to disk."""
     if isinstance(obj, dict):
-        return {k: ('<redacted>' if k in REDACT_KEYS or k.endswith('session_id') else redact(v)) for k, v in obj.items()}
+        return {str(k): ('<redacted>' if isinstance(k, str) and (k in REDACT_KEYS or k.endswith('session_id')) else redact(v))
+                for k, v in obj.items()}
     if isinstance(obj, list):
         return [redact(v) for v in obj]
     return obj

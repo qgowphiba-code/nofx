@@ -7,12 +7,28 @@
   "bytes": 2288,
   "sha256": "37e7e0d7455d0ce3d7cf4803b31ef3173c205bff02420be8a45a41fb4c2075dc"
  },
+ "eval_l_2d": {
+  "bytes": 2288,
+  "sha256": "2955f6ceb5e3f61b47e0ac3e2318b78e68476c759ea26cf1598bc1c33ed48aa7"
+ },
  "eval_liu": {
   "bytes": 366,
   "sha256": "8a32e22476205619ac1886adebced85aef186e23b40fd679f70ff012583e4548"
  },
+ "eval_liu_2d": {
+  "bytes": 408,
+  "sha256": "07f614528bd37ac2206e15db6abc14c884584229531cf09bc5486452118f0ed6"
+ },
  "eval_s": {
   "bytes": 308481,
   "sha256": "420d96809a24444574aae546d15f7f464c417f86fdb77bd209c28f23222a8285"
+ },
+ "eval_s_2d": {
+  "bytes": 175036,
+  "sha256": "c3b42b5e22d391b9cfc1f5b4a7ce0fffd0eb852ac02382700fd6f46c42c83dca"
+ },
+ "game_e1": {
+  "bytes": 88624,
+  "sha256": "308ed83f87461f4e7f9d45c5a67fc11fc421b9eb117d4b37dd75434d113ba16e"
  }
 }

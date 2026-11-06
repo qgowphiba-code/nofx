@@ -90,6 +90,21 @@ def build_eval_s():
     return build_short_suite([('set1', 61108, eval1), ('new', 80002, new)], dim=3)
 
 
+# ------------------------------------------------------------------------------------- Track D (2D)
+BEST_2D = {'seq1': 9, 'seq2': 9, 'seq3': 8, 'seq4': 14, 'seq5': 23, 'seq6': 21, 'seq7': 36}
+
+
+def twod_short_chains():
+    """sequences(81001, [14,15,16]*8): first 12 training, last 12 evaluation (plan Appendix A)."""
+    allc = lattice_env.sequences(81001, [14, 15, 16] * 8)
+    return allc[:12], allc[12:]
+
+
+def build_eval_s_2d():
+    _, ev = twod_short_chains()
+    return build_short_suite([('2d', 81002, ev)], dim=2)
+
+
 def freeze(name, obj):
     SUITES.mkdir(parents=True, exist_ok=True)
     text = json.dumps(obj, sort_keys=True, separators=(',', ':'))

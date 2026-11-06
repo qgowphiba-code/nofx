@@ -1,0 +1,6 @@
+[     0.0s] run A1 -> /home/user/nofx/research/hp-adapt1-set2/runs/A1/20261106T201620Z
+[     8.1s] 180 episodes, 6706 states per arm; held-out 1000 states; heuristic Liu depth 3 134.27 [p5 125, p95 142]
+[   316.0s] R0 fitted 3ef36f3f3fcc in 246.8s, selected_epoch 98, validation_skill 0.9589528379798984
+[   331.3s] R0 sibling agreement 0.995 (informative 0.980, n=256); MAE 0.27 contacts
+[   432.9s] R0 Liu depth 3 total 124 (heuristic band 125-142) [7, 8, 7, 14, 20, 22, 46]
+[   824.6s] R0 Eval-L(20) depth 3 total 417
