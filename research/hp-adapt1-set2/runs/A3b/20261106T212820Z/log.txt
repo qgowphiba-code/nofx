@@ -1,0 +1,7 @@
+[     0.0s] run A3b -> /home/user/nofx/research/hp-adapt1-set2/runs/A3b/20261106T212820Z
+[    60.9s] A0   d1 0.777 d2 0.879 d3 0.942 corr V* 0.390
+[   125.5s] BL   d1 0.813 d2 0.825 d3 0.942 corr V* 0.469
+[   134.4s] collection {'A0_mean_contacts': 1.71875, 'BL_mean_contacts': 1.4166666666666667, 'episodes_sha256': '25f8b43b0400e7aa1ef8827838897dc906a5e1587f36d32690998ad1d1cc2de0'}
+[   203.0s] A0g1 d1 0.825 d2 0.869 d3 0.954 corr V* 0.596
+[   259.9s] BLg1 d1 0.813 d2 0.828 d3 0.951 corr V* 0.602
+[   259.9s] A3b {'rates_depth1': {'A0': 0.7766990291262136, 'BL': 0.8131067961165048, 'A0g1': 0.8252427184466019, 'BLg1': 0.8131067961165048}, 'lead_before': 0.036407766990291246, 'lead_after': -0.012135922330097082, 'prediction_holds': False}
