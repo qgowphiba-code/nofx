@@ -206,7 +206,8 @@ class MockTransport:
                 dom.model = model
             else:
                 dom.candidate = model
-            dom.training = {'status': 'trained', 'request_id': rid, 'install': install, 'installed': bool(install),
+            dom.training = {'status': 'trained' if install else 'candidate', 'request_id': rid, 'install': install,
+                            'installed': bool(install),
                             'options': opts, 'sample_count': len(ids), 'initial_model_sha256': init.sha if init else None,
                             'report': {'selected_epoch': 1, 'regularization_target': 'incumbent' if init else 'zero',
                                        'warm_start': {'applied': init is not None,

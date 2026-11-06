@@ -1,0 +1,18 @@
+{
+ "baselines_eval_liu": {
+  "bytes": 15689,
+  "sha256": "7dcf7b26e1224222d481b4fa9c417e99202f999704d1e9fb5c3124ef57207450"
+ },
+ "eval_l": {
+  "bytes": 2288,
+  "sha256": "37e7e0d7455d0ce3d7cf4803b31ef3173c205bff02420be8a45a41fb4c2075dc"
+ },
+ "eval_liu": {
+  "bytes": 366,
+  "sha256": "8a32e22476205619ac1886adebced85aef186e23b40fd679f70ff012583e4548"
+ },
+ "eval_s": {
+  "bytes": 308481,
+  "sha256": "420d96809a24444574aae546d15f7f464c417f86fdb77bd209c28f23222a8285"
+ }
+}

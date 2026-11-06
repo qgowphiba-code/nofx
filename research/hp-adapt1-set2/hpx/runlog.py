@@ -27,10 +27,23 @@ def git_head():
         return None
 
 
+MOCK = bool(__import__('os').environ.get('HPX2_MOCK'))
+
+
+def connect(run, host=None):
+    """The experiment's client: Fast-UAT normally; the local mock when HPX2_MOCK=1 (plan 2.4 dry runs)."""
+    from . import settings as S
+    from .client import Client
+    if MOCK:
+        from .mock import mock_client
+        return mock_client(run.dir, run.dir / 'mock-state')[0]
+    return Client(run.dir, host=host or S.HOST)
+
+
 class Run:
     def __init__(self, exp, name=None):
         self.exp = exp
-        self.dir = RUNS / exp / (name or stamp())
+        self.dir = RUNS / ('_mock' if MOCK else '') / exp / (name or stamp())
         self.dir.mkdir(parents=True, exist_ok=True)
         self.t0 = time.time()
         self.manifest = {'experiment': exp, 'started_utc': stamp(), 'git_head': git_head(),

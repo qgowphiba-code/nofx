@@ -48,7 +48,8 @@ USER_AGENT = 'hpx2-client/0.1 (research; HP x Adapt-1 set 2)'
 PKG_ROOT = Path(__file__).resolve().parent.parent
 FIT_LOCK = Path(os.environ.get('HPX2_FIT_LOCK', Path.home() / '.hpx2-fit.lock'))
 LIVE_REGISTRY = PKG_ROOT / 'runs' / 'live_domains.json'
-FINISHED_OK = {'trained'}            # observed on af6670b (T0.2); anything else that is not running is a failure
+# observed on af6670b: install=true ends 'trained', install=false ends 'candidate'; anything else is a failure
+FINISHED_OK = {True: 'trained', False: 'candidate'}
 RUNNING = {'running', 'queued', 'pending', 'started', 'accepted', 'training', ''}
 
 
@@ -467,7 +468,7 @@ class Client:
         self.save(f'train-{name or request_id}', {'request': {k: v for k, v in body.items() if k != 'observation_ids'},
                                                   'n_observation_ids': len(observation_ids or []),
                                                   'ack': ack, 'final_state': st, 'before': before, 'elapsed': elapsed})
-        if status not in FINISHED_OK:
+        if status != FINISHED_OK[bool(install)]:
             raise GuardError(f'fit {request_id} ended with status {status}: {str(tr)[:800]}')
         if bool(tr.get('installed')) != bool(install):
             raise GuardError(f'fit {request_id}: install={install} requested but training.installed={tr.get("installed")}')

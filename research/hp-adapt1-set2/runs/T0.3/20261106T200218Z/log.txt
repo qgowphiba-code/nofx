@@ -1,0 +1,22 @@
+[     0.0s] run T0.3 -> /home/user/nofx/research/hp-adapt1-set2/runs/T0.3/20261106T200218Z
+[     1.2s] rows: A0 816, ROB siblings 1406 (1406 continuation, 0 exact)
+[     2.3s] heuristic depth1 0.7198675496688742 0.6947411003236246
+[    13.9s] observed A0 rows {'submitted': 816, 'accepted': 816, 'duplicates': 0, 'target_sources': {}}
+[    25.6s] A0 fitted 7462983df6567cb32b7f3c97bf4afc391c0d66c8ed2ff653aeb41e4dce126312 11.4s selected_epoch 120
+[   127.6s] A0 depth1 best-move: set1 0.735 (pred 0.662) all 0.777 corr V* 0.390; predict stats {'leaves': 101300, 'unique_sent': 55480, 'cache_hits': 45820, 'predict_batches': 21}
+[     0.0s] run T0.3 -> /home/user/nofx/research/hp-adapt1-set2/runs/T0.3/20261106T200218Z
+[     1.2s] rows: A0 816, ROB siblings 1406 (1406 continuation, 0 exact)
+[     2.4s] heuristic depth1 0.7198675496688742 0.6947411003236246
+[     0.0s] run T0.3 -> /home/user/nofx/research/hp-adapt1-set2/runs/T0.3/20261106T200218Z
+[     1.1s] rows: A0 816, ROB siblings 1406 (1406 continuation, 0 exact)
+[     2.3s] heuristic depth1 0.7198675496688742 0.6947411003236246
+[     2.3s] resuming on live domain hpx2-t03-cal-0-20261106t200220z-95f0c2
+[    10.7s] observed A0 rows {'submitted': 816, 'accepted': 0, 'duplicates': 816, 'target_sources': {}}
+[    10.9s] A0 fitted 7462983df6567cb32b7f3c97bf4afc391c0d66c8ed2ff653aeb41e4dce126312 11.4s selected_epoch 120 (resumed)
+[    96.2s] A0 depth1 best-move: set1 0.735 (pred 0.662) all 0.777 corr V* 0.390; predict stats {'leaves': 101300, 'unique_sent': 55480, 'cache_hits': 45820, 'predict_batches': 21}
+[   101.6s] A0 replicate depth1 rate 0.777
+[   101.6s] A0 replicate: identical sha False | prediction gap {'n': 512, 'max_abs_diff': 0.0, 'mean_abs_diff': 0.0}
+[   114.6s] observed ROB rows {'submitted': 1406, 'accepted': 1406, 'duplicates': 0, 'target_sources': {'model_continuation': 21706, 'provided_or_observed': 23664}}
+[   136.8s] ROB fitted e9d78d96d5f2a0dfaf94feb00e7e898d9df25f42206388b8700390c3a316b174 22.0s selected_epoch 119 target_refresh {"continuation_records": 1406, "declared_terminal_successors": 1083, "materialized_targets_sha256": "46f32ca60070b5858925e27a356e958c8a75b72c7d9cd2aaabccb70199230d2c", "modeled_successors": 5735, "reference_model_sha256": "7462983df6567cb32b7f3c97bf4afc391c0d66c8ed2ff653aeb41e4dce126312", "target_se
+[   210.4s] ROB depth1 best-move: set1 0.808 (pred 0.821) all 0.818 corr V* 0.449
+[   210.5s] done; requests 530 domain kept for T0.4: hpx2-t03-cal-0-20261106t200220z-95f0c2

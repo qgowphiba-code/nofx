@@ -1,0 +1,2 @@
+[     0.0s] run T0.4 -> /home/user/nofx/research/hp-adapt1-set2/runs/T0.4/20261106T201130Z
+[     1.2s] states: 100 short, 30 long (2 long states replaced: depth-3 body over guard)

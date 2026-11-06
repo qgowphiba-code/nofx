@@ -51,6 +51,7 @@ class Fold:
         self.chain, self.occ = [o, e], {o: 0, e: 1}
         self.contacts, self.gains, self.hh = 0, [], []
         if chain is not None:
+            chain = [tuple(p) for p in chain]
             assert tuple(chain[:2]) == (o, e), 'chains must start with the fixed first bond'
             for p in chain[2:]:
                 self.push(_sub(p, self.chain[-1]))

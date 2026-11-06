@@ -1,0 +1,56 @@
+{
+ "a0_sha": "7462983df6567cb32b7f3c97bf4afc391c0d66c8ed2ff653aeb41e4dce126312",
+ "build": {
+  "build_time": "unknown",
+  "commit_sha": "af6670b8a9c5ce4251caa02940118110adb839ea",
+  "schema_version": "5",
+  "source_fingerprint": "sha256:9a1c816497f67beed41cf3870566c1f0f70385bbb75f7a0dbd9e8e9726a3dcc4",
+  "version": "v0.1.0"
+ },
+ "domain": "hpx2-t03-cal-0-20261106t200220z-95f0c2",
+ "eval_s_sha256": {
+  "bytes": 308481,
+  "sha256": "420d96809a24444574aae546d15f7f464c417f86fdb77bd209c28f23222a8285"
+ },
+ "experiment": "T0.3",
+ "finished_utc": "20261106T201010Z",
+ "git_head": "06aadcb78fa86792e024d21171c15d7d9424d537",
+ "host": "fast-uat",
+ "n_a0_rows": 816,
+ "n_rob_rows": 1406,
+ "platform": "Linux-6.18.44-fc-v242-x86_64-with-glibc2.39",
+ "python": "3.13.18",
+ "requests": 530,
+ "rob_sha": "e9d78d96d5f2a0dfaf94feb00e7e898d9df25f42206388b8700390c3a316b174",
+ "rows_sha256": {
+  "a0": "f63c7d1cc10ebc97add5cf6765fef37708143c0337e2bdf70c7789110b1f0ee0",
+  "rob": "56f921e9800a8b2e35e90521b0920b646c2e209fcb83c8a5431d311e6ab92804"
+ },
+ "seconds": 210.5,
+ "seeds": {
+  "folds": 61107,
+  "validation": 80700
+ },
+ "started_utc": "20261106T200640Z",
+ "validation_episode_ids": [
+  "a3d1-c0-f5",
+  "a3d1-c1-f0",
+  "a3d1-c1-f1",
+  "a3d1-c1-f7",
+  "a3d1-c10-f7",
+  "a3d1-c11-f1",
+  "a3d1-c2-f1",
+  "a3d1-c2-f3",
+  "a3d1-c3-f7",
+  "a3d1-c4-f0",
+  "a3d1-c5-f2",
+  "a3d1-c6-f2",
+  "a3d1-c6-f4",
+  "a3d1-c6-f7",
+  "a3d1-c7-f1",
+  "a3d1-c8-f0",
+  "a3d1-c8-f6",
+  "a3d1-c9-f2",
+  "a3d1-c9-f3"
+ ]
+}
