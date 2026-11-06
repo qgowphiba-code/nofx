@@ -23,6 +23,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from hpx import settings as S, suites as SU, targets as T  # noqa: E402
+from hpx.client import ApiError  # noqa: E402
 from hpx.evaluate import grade_short, model_evaluator  # noqa: E402
 from hpx.planner import run_folds  # noqa: E402
 from hpx.runlog import Run, connect, sha256_json  # noqa: E402
@@ -94,7 +95,15 @@ def main():
                     rob_sha = fit_rob(name)
                 first_warm = False
                 extra = {'warm_start_source': 'candidate', 'expected_initial_model_sha256': rob_sha}
-            fit = c.train(d, f'a2-{name}', opts, install=False, observation_ids=all_ids, name=name, **extra)
+            try:
+                fit = c.train(d, f'a2-{name}', opts, install=False, observation_ids=all_ids, name=name, **extra)
+            except ApiError as e:
+                if e.status != 422:
+                    raise
+                results['arms'][name] = {'refused': True, 'status': e.status, 'detail': e.body, 'options': opts}
+                run.log(f'{name:12s} REFUSED (422): {str(e.body)[:200]}')
+                run.write_results(results)
+                continue
             rep = fit['state']['training']['report']
             ev = model_evaluator(c, d, 'candidate', fit['sha256'], name=name)
             g = grade_short(ev, suite, depths=(1, 2, 3), greedy_depths=(1,))
@@ -107,7 +116,8 @@ def main():
                     f'd3 {g["depth3"]["all"]["best_move_rate"]:.3f} corr V* {g["depth1"]["all"]["corr_vstar"]:.3f} | selected_epoch '
                     f'{rep.get("selected_epoch")} optimization_applied {cont.get("optimization_applied")} reg {rep.get("regularization_target")} | {fit["elapsed"]}s')
             run.write_results(results)
-        rates = {n: results['arms'][n]['grade']['depth1']['all']['best_move_rate'] for n, _ in ARMS}
+        rates = {n: results['arms'][n]['grade']['depth1']['all']['best_move_rate'] for n, _ in ARMS
+                 if not results['arms'][n].get('refused')}
         best = max(rates, key=rates.get)
         spread = max(rates.values()) - min(rates.values())
         results['decision'] = {'rates_depth1': rates, 'best': best, 'spread': spread,

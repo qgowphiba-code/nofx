@@ -1,0 +1,4 @@
+[     0.0s] run A2 -> /home/user/nofx/research/hp-adapt1-set2/runs/A2/20261106T211634Z
+[    53.2s] A0 ff6b83350faf installed; ROB candidate bb60ffd91c03: Eval-S d1 0.818 (T0.3: 0.818)
+[    55.7s] own-policy folds: mean contacts 1.34
+[   162.4s] warm_pred    d1 0.816 d2 0.900 d3 0.961 corr V* 0.552 | selected_epoch 117 optimization_applied True reg incumbent | 36.7s
