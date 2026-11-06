@@ -1,0 +1,28 @@
+{
+ "application_validation": null,
+ "candidate": null,
+ "config": {
+  "max_samples": 25000,
+  "policy": "hp_state_value",
+  "promotion": {
+   "maximum_prediction_regression": 0.05,
+   "minimum_cases": 16,
+   "mode": "prediction",
+   "required_improvement": 0
+  },
+  "relation": "hp_terminal_utility",
+  "representation": "object_graph"
+ },
+ "dataset_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+ "dataset_version": 0,
+ "domain_id": "hpx2-b1-a0-1-20261106t215049z-728903",
+ "frozen": false,
+ "generation": "5ad416782828428da9c05c0f56a57515",
+ "model": null,
+ "sample_count": 0,
+ "session_id": "<redacted>",
+ "status": "configured",
+ "training": {
+  "status": "idle"
+ }
+}

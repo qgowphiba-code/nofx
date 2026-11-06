@@ -33,6 +33,10 @@ from hpx.vendor import lattice_env  # noqa: E402
 _ENV = __import__('os').environ
 TRACK_B = Path(_ENV.get('HPX2_TRACK_B', ROOT / 'manifests' / 'track_b.json'))
 LEAF_LAMBDAS = (0.25, 0.5, 0.75)
+# af6670b stops a training job after ~300 s of server time ("training_failed": B1 l1 g1, 11,904 rows x 120
+# epochs, failed at 307 s and 302 s; g0, 5,952 x 120, finished in ~216 s). Keep every row (plan: "all rows
+# so far") and hold work per fit at g0's level: epochs = min(120, ROW_EPOCH_BUDGET // rows), floor 20.
+ROW_EPOCH_BUDGET = 5952 * 120
 # HPX2_DIM=2 runs D2 (plan section 8: B1's design on 2D chains of length 24-64); 3 (default) is B1.
 DIM = int(_ENV.get('HPX2_DIM', '3'))
 PROFILE = {
@@ -99,6 +103,7 @@ class Arm:
     def fit(self, g):
         val = T.validation_episodes(self.episodes, fit_index=300 + 10 * self.lineage + g)
         opts = S.fit_options(self.cfg['base'], validation_episode_ids=val, **self.cfg['fit_overrides'])
+        opts['epochs'] = max(20, min(opts['epochs'], ROW_EPOCH_BUDGET // len(self.row_ids)))
         fit = self.c.train(self.domain, f'{PROFILE["tag"]}-l{self.lineage}-{self.name}-g{g}', opts, install=False,
                            observation_ids=self.row_ids, name=f'l{self.lineage}-{self.name}-g{g}')
         sha = fit['sha256']
@@ -108,7 +113,9 @@ class Arm:
         self.last_probe = pv
         self.models.append(sha)
         rep = fit['state']['training']['report']
-        self.log(f'g{g} fitted {sha[:12]} on {len(self.row_ids)} rows in {fit["elapsed"]}s, selected_epoch {rep.get("selected_epoch")}')
+        self.log(f'g{g} fitted {sha[:12]} on {len(self.row_ids)} rows x {opts["epochs"]} epochs in {fit["elapsed"]}s, '
+                 f'selected_epoch {rep.get("selected_epoch")}')
+        rep = {**rep, 'requested_epochs': opts['epochs']}
         return sha, rep, val
 
     def collect(self, g, sha):
@@ -165,6 +172,7 @@ def run_arm_generations(arm, g0_eps, g0_u, a0_g0_sha, results, lock, gate):
                 arm.add(eps)
             sha, rep, val = arm.fit(g)
             gen = {'g': g, 'sha256': sha, 'n_rows': len(arm.row_ids), 'selected_epoch': rep.get('selected_epoch'),
+               'epochs': rep.get('requested_epochs'),
                    'collector_mean_contacts': sum(e.contacts for e in eps) / len(eps), 'collector': cev.name}
             if g == 1:
                 lv, _ = eval_liu(arm, sha)

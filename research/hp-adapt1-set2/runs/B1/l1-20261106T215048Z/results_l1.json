@@ -1,0 +1,137 @@
+{
+ "arms": {
+  "A0": {
+   "arm": "A0",
+   "d": 0,
+   "domain": "hpx2-b1-a0-1-20261106t215049z-728903",
+   "error": "GuardError(\"fit b1-l1-A0-g1 ended with status failed: {'application_cases': None, 'dataset_sha256': '80497cf81ad6685726bce4e3d20edff22df7756cd7f71f8a8fc34aadb0bbd564', 'effective_options': {'comparison_loss': 'squared', 'comparison_weight': 0, 'dense_hidden_dimensions': None, 'dense_inputs': False, 'dimensions': 32, 'epochs': 120, 'function_retention_weight': 0, 'interaction_selection': None, 'learning_rate': 0.003, 'loss_function': 'squared', 'model_type': 'object_value', 'object_hidden_dimensions': 32, 'pair_geometry': True, 'peak_pooling': True, 'preserve_binary_inputs': True, 'primary_validation_episode_ids': None, 'quadratic_pairs': True, 'selection_objective': 'prediction', 'supervision_scope': 'all', 'trainable_layers': 'all', 'validation_episode_ids': ['b1l1-g0-c0-f0', 'b1l1-g0-c11-f2', 'b1l1-g0-c12-f0', 'b1l1-g0-c15-f1', 'b1l1-g0-c15\")",
+   "generations": [
+    {
+     "g": 0,
+     "liu_depth3": {
+      "complete": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "leaf_evaluations": [
+       1482,
+       1765,
+       1925,
+       2686,
+       3950,
+       3746,
+       4659
+      ],
+      "per_chain": [
+       9,
+       10,
+       7,
+       14,
+       24,
+       24,
+       45
+      ],
+      "tie_decisions": [
+       3,
+       2,
+       2,
+       3,
+       1,
+       2,
+       2
+      ],
+      "total": 133
+     },
+     "n_rows": 5952,
+     "selected_epoch": 108,
+     "sha256": "9a5d7bad747f3aef8abfbc333bbde9cf732eae362df71ca4db165b1a598732c4"
+    }
+   ],
+   "lam": 0.0
+  },
+  "BL": {
+   "arm": "BL",
+   "d": 2,
+   "domain": "hpx2-b1-bl-1-20261106t215055z-4f6da2",
+   "error": "GuardError(\"fit b1-l1-BL-g1 ended with status failed: {'application_cases': None, 'dataset_sha256': '5a31a4fb3a054c2c477212398111c1c3192f5bfea294f72dc8526c1eb4705526', 'effective_options': {'comparison_loss': 'squared', 'comparison_weight': 0, 'dense_hidden_dimensions': None, 'dense_inputs': False, 'dimensions': 32, 'epochs': 120, 'function_retention_weight': 0, 'interaction_selection': None, 'learning_rate': 0.003, 'loss_function': 'squared', 'model_type': 'object_value', 'object_hidden_dimensions': 32, 'pair_geometry': True, 'peak_pooling': True, 'preserve_binary_inputs': True, 'primary_validation_episode_ids': None, 'quadratic_pairs': True, 'selection_objective': 'prediction', 'supervision_scope': 'all', 'trainable_layers': 'all', 'validation_episode_ids': ['b1l1-g0-c0-f0', 'b1l1-g0-c11-f2', 'b1l1-g0-c12-f0', 'b1l1-g0-c15-f1', 'b1l1-g0-c15\")",
+   "generations": [
+    {
+     "assessor": "9a5d7bad747f3aef8abfbc333bbde9cf732eae362df71ca4db165b1a598732c4",
+     "g": 0,
+     "liu_depth3": {
+      "complete": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "leaf_evaluations": [
+       1432,
+       1769,
+       1912,
+       2828,
+       3918,
+       3993,
+       4531
+      ],
+      "per_chain": [
+       10,
+       11,
+       5,
+       13,
+       24,
+       20,
+       43
+      ],
+      "tie_decisions": [
+       2,
+       1,
+       2,
+       3,
+       4,
+       2,
+       3
+      ],
+      "total": 126
+     },
+     "n_rows": 5952,
+     "selected_epoch": 111,
+     "sha256": "b75bb1aab580b301c1a9ec29d01a64c0cc913d97a3e685f1c878d88651cbe7b3"
+    }
+   ],
+   "lam": 1.0
+  }
+ },
+ "dim": 3,
+ "heuristic_card_liu": 134.27,
+ "lineage": 1,
+ "requests": {
+  "by_route": {
+   "api/v1/domains": 2,
+   "domains/{id}": 4,
+   "domains/{id}/value/configure": 2,
+   "domains/{id}/value/observe": 480,
+   "domains/{id}/value/predict": 2110,
+   "domains/{id}/value/state": 196,
+   "domains/{id}/value/train": 4,
+   "version": 2
+  },
+  "requests": 2800,
+  "retries": 0
+ },
+ "version_end": {
+  "build_time": "unknown",
+  "commit_sha": "af6670b8a9c5ce4251caa02940118110adb839ea",
+  "schema_version": "5",
+  "source_fingerprint": "sha256:9a1c816497f67beed41cf3870566c1f0f70385bbb75f7a0dbd9e8e9726a3dcc4",
+  "version": "v0.1.0"
+ }
+}

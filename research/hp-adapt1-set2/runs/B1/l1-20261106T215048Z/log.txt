@@ -1,0 +1,7 @@
+[     0.0s] run B1 -> /home/user/nofx/research/hp-adapt1-set2/runs/B1/l1-20261106T215048Z
+[   282.5s] [l1 A0] g0 fitted 9a5d7bad747f on 5952 rows in 222.3s, selected_epoch 108
+[   364.0s] [l1 A0] g0 Eval-Liu depth 3: 133 [9, 10, 7, 14, 24, 24, 45]
+[  1157.4s] [l1 BL] g0 fitted b75bb1aab580 on 5952 rows in 220.6s, selected_epoch 111
+[  1302.8s] [l1 A0] g1 collected 144 folds: mean contacts 14.57; predict {'leaves': 111769, 'unique_sent': 99294, 'cache_hits': 12475, 'predict_batches': 56}
+[  1305.8s] [l1 BL] g0 Eval-Liu depth 3: 126 [10, 11, 5, 13, 24, 20, 43]
+[  1726.0s] [l1 BL] g1 collected 144 folds: mean contacts 15.06; predict {'leaves': 107890, 'unique_sent': 94722, 'cache_hits': 13168, 'predict_batches': 56}
