@@ -102,6 +102,24 @@ class TestClientWithMock(unittest.TestCase):
         self.assertEqual(len(c.predict(d, [{'objects': []}], 'installed', sha)), 1)
         c.delete_domain(d)
 
+    def test_owner_busy_and_failed_fits_are_retried(self):
+        c, t = self.c, self.t
+        d = c.create_domain('t', 'a', 0)
+        c.configure(d, S.value_config())
+        c.observe(d, self.rows)
+        busy = (409, 'before', {'detail': 'one value fit may run per owner'})
+        t.faults['POST domains/{id}/value/train'] = [busy, busy]
+        t.fail_fits = 2
+        fit = c.train(d, 'retry-me', S.fit_options(), install=True)
+        self.assertEqual(len(fit['sha256']), 64)
+        log = [__import__('json').loads(x) for x in (self.run / 'journal.jsonl').read_text().splitlines()]
+        self.assertEqual(sum(r.get('kind') == 'owner_fit_busy' for r in log), 2)
+        self.assertEqual([r['attempt'] for r in log if r.get('kind') == 'fit_retry'], [1, 2])
+        t.fail_fits = 5
+        with self.assertRaises(GuardError):
+            c.train(d, 'always-fails', S.fit_options(), install=True)
+        c.delete_domain(d)
+
     def test_unchanged_sha_is_refused(self):
         c = self.c
         d = c.create_domain('t', 'a', 0)

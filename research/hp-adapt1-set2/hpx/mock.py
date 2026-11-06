@@ -74,8 +74,9 @@ class MockTransport:
     def __init__(self, commit='0' * 40, fit_polls=1, amplitude=0.02, value_fn=obs_heuristic, faults=None):
         self.commit, self.fit_polls, self.amplitude, self.value_fn = commit, fit_polls, amplitude, value_fn
         self.domains = {}
-        self.faults = faults or {}     # route -> list of (status, 'before'|'after')
+        self.faults = faults or {}     # route -> list of (status, 'before'|'after'[, body])
         self.calls = []
+        self.fail_fits = 0             # the next n fits end 'failed' / 'training_failed'
 
     # ------------------------------------------------------------------ plumbing
     def request(self, method, path, body_bytes=None):
@@ -86,12 +87,12 @@ class MockTransport:
             return 413, {'detail': 'trajectory payload exceeds 1 MiB'}, {}
         fault = self.faults.get(route, [])
         if fault and fault[0][1] == 'before':
-            status, _ = fault.pop(0)
-            return status, {'detail': 'injected'}, {}
+            f = fault.pop(0)
+            return f[0], (f[2] if len(f) > 2 else {'detail': 'injected'}), {}
         status, data = self._handle(method, path, body)
         if fault and fault[0][1] == 'after':
-            status, _ = fault.pop(0)
-            return status, {'detail': 'injected after apply'}, {}
+            f = fault.pop(0)
+            return f[0], (f[2] if len(f) > 2 else {'detail': 'injected after apply'}), {}
         return status, data, {}
 
     @staticmethod
@@ -204,6 +205,11 @@ class MockTransport:
         dom.training = {'status': 'running', 'request_id': rid, 'install': install}
 
         def finalize():
+            if self.fail_fits > 0:      # af6670b: a job past the ~300 s cap ends failed, no model recorded
+                self.fail_fits -= 1
+                dom.training = {'status': 'failed', 'reason': 'training_failed', 'request_id': rid, 'install': install,
+                                'started_at': 0, 'finished_at': 300}
+                return
             if install:
                 dom.model = model
             else:

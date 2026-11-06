@@ -36,7 +36,7 @@ LEAF_LAMBDAS = (0.25, 0.5, 0.75)
 # af6670b stops a training job after ~300 s of server time ("training_failed": B1 l1 g1, 11,904 rows x 120
 # epochs, failed at 307 s and 302 s; g0, 5,952 x 120, finished in ~216 s). Keep every row (plan: "all rows
 # so far") and hold work per fit at g0's level: epochs = min(120, ROW_EPOCH_BUDGET // rows), floor 20.
-ROW_EPOCH_BUDGET = 5952 * 120
+ROW_EPOCH_BUDGET = int(5952 * 120 * 0.75)   # 0.75x headroom for owner-shared capacity: 90 epochs at g0, 45 at g1-g2
 # Work is not linear in row-epochs: 17,856 rows x 40 epochs was cut off after ~320 s ("interrupted",
 # "result_not_recorded") while 11,904 x 60 finished in 224-239 s. So at most FIT_ROW_CAP rows per fit: the
 # oldest generations are dropped first (plan section 12's mitigation: "drop g0 rows at g2 if needed").

@@ -51,6 +51,8 @@ LIVE_REGISTRY = PKG_ROOT / 'runs' / 'live_domains.json'
 # observed on af6670b: install=true ends 'trained', install=false ends 'candidate'; anything else is a failure
 FINISHED_OK = {True: 'trained', False: 'candidate'}
 RUNNING = {'running', 'queued', 'pending', 'started', 'accepted', 'training', ''}
+TRANSIENT_FIT_REASONS = {'training_failed', 'result_not_recorded'}
+OWNER_BUSY = 'one value fit may run per owner'
 
 
 def compact(obj):
@@ -145,6 +147,9 @@ class Client:
         self.fit_lock_path = Path(fit_lock)
         self.build = None
         self.counts = {'requests': 0, 'retries': 0, 'by_route': {}}
+        self.max_fit_retries = 3
+        self.fit_retry_wait = 180.0
+        self.owner_busy_max_wait = 3600.0
 
     # ---------------------------------------------------------------- journal and guards
     def _journal(self, rec):
@@ -446,31 +451,45 @@ class Client:
             if not 4 <= len(observation_ids) <= 20000:
                 raise GuardError(f'observation_ids has {len(observation_ids)} ids (allowed 4..20000)')
             body['observation_ids'] = list(observation_ids)
-        with self.fit_lock():
-            before = self.state(domain_id)
-            prev = {'installed': self.model_sha(before, 'installed'), 'candidate': self.model_sha(before, 'candidate')}
-
-            def reconcile():
-                st = self.state(domain_id)
-                return ((st.get('training') or {}).get('request_id') == request_id, st)
-            t0 = time.monotonic()
-            ack = self.write('POST', self._v(domain_id, 'train'), body, reconcile=reconcile, ok=(200, 202))
-            self._journal({'kind': 'train_submitted', 'domain_id': domain_id, 'request_id': request_id})
-            while True:
-                self.sleep(poll_seconds)
-                st = self.state(domain_id)
-                tr = st.get('training') or {}
-                status = str(tr.get('status', '')).lower()
-                if tr.get('request_id') == request_id and status not in RUNNING:
-                    break
-                if time.monotonic() - t0 > max_wait:
-                    raise GuardError(f'fit {request_id} not finished after {max_wait}s (status {status})')
-        elapsed = round(time.monotonic() - t0, 1)
-        self.save(f'train-{name or request_id}', {'request': {k: v for k, v in body.items() if k != 'observation_ids'},
-                                                  'n_observation_ids': len(observation_ids or []),
-                                                  'ack': ack, 'final_state': st, 'before': before, 'elapsed': elapsed})
-        if status != FINISHED_OK[bool(install)]:
-            raise GuardError(f'fit {request_id} ended with status {status}: {str(tr)[:800]}')
+        first_before = None
+        attempt = 0
+        while True:
+            rid = request_id if attempt == 0 else f'{request_id}-r{attempt}'
+            body['request_id'] = rid
+            with self.fit_lock():
+                before = self.state(domain_id)
+                if first_before is None:
+                    first_before = before
+                t0 = time.monotonic()
+                ack = self._submit_fit(domain_id, body, rid)
+                self._journal({'kind': 'train_submitted', 'domain_id': domain_id, 'request_id': rid, 'attempt': attempt})
+                while True:
+                    self.sleep(poll_seconds)
+                    st = self.state(domain_id)
+                    tr = st.get('training') or {}
+                    status = str(tr.get('status', '')).lower()
+                    if tr.get('request_id') == rid and status not in RUNNING:
+                        break
+                    if time.monotonic() - t0 > max_wait:
+                        raise GuardError(f'fit {rid} not finished after {max_wait}s (status {status})')
+            elapsed = round(time.monotonic() - t0, 1)
+            tag = f'train-{name or request_id}' + (f'-r{attempt}' if attempt else '')
+            self.save(tag, {'request': {k: v for k, v in body.items() if k != 'observation_ids'},
+                            'n_observation_ids': len(observation_ids or []), 'attempt': attempt,
+                            'ack': ack, 'final_state': st, 'before': before, 'elapsed': elapsed})
+            if status == FINISHED_OK[bool(install)]:
+                break
+            # A failed or interrupted job leaves no model (af6670b: ~300 s server cap, owner-shared capacity).
+            transient = status in ('failed', 'interrupted') and str(tr.get('reason')) in TRANSIENT_FIT_REASONS
+            if transient and attempt < self.max_fit_retries:
+                attempt += 1
+                self._journal({'kind': 'fit_retry', 'request_id': request_id, 'attempt': attempt, 'status': status,
+                               'reason': tr.get('reason'), 'server_seconds': round((tr.get('finished_at') or 0) - (tr.get('started_at') or 0), 1)})
+                self.sleep(self.fit_retry_wait * (0.75 + 0.5 * random.random()))
+                continue
+            raise GuardError(f'fit {rid} ended with status {status}: {str(tr)[:800]}')
+        before = first_before
+        prev = {'installed': self.model_sha(before, 'installed'), 'candidate': self.model_sha(before, 'candidate')}
         if bool(tr.get('installed')) != bool(install):
             raise GuardError(f'fit {request_id}: install={install} requested but training.installed={tr.get("installed")}')
         after = {'installed': self.model_sha(st, 'installed'), 'candidate': self.model_sha(st, 'candidate')}
@@ -482,6 +501,25 @@ class Client:
             raise GuardError(f'fit {request_id}: {slot} sha {new[:12]} unchanged from the previous {slot}')
         self._journal({'kind': 'fit_done', 'request_id': request_id, 'elapsed': elapsed, 'sha': new, 'prev': prev})
         return {'state': st, 'sha256': new, 'previous': prev, 'elapsed': elapsed}
+
+    def _submit_fit(self, domain_id, body, rid):
+        """POST value/train; on 409 'one value fit may run per owner' (the fit did not start) wait and resubmit."""
+        def reconcile():
+            st = self.state(domain_id)
+            return ((st.get('training') or {}).get('request_id') == rid, st)
+        waited = 0.0
+        while True:
+            try:
+                return self.write('POST', self._v(domain_id, 'train'), body, reconcile=reconcile, ok=(200, 202))
+            except ApiError as e:
+                if e.status != 409 or OWNER_BUSY not in str(e.body):
+                    raise
+                if waited > self.owner_busy_max_wait:
+                    raise GuardError(f'owner fit slot busy for {waited:.0f}s: {e.body}')
+                wait = 30 + 60 * random.random()
+                self._journal({'kind': 'owner_fit_busy', 'request_id': rid, 'waited': round(waited)})
+                self.sleep(wait)
+                waited += wait
 
     def predict(self, domain_id, inputs, model_source, expected_model_sha256, workers=None):
         """Predict for any number of inputs: chunks of <= 256 inputs and <= 900 KiB, <= 2 in flight."""

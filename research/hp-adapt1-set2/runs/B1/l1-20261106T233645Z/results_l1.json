@@ -1,0 +1,26 @@
+{
+ "arms": {},
+ "dim": 3,
+ "heuristic_card_liu": 134.27,
+ "lineage": 1,
+ "requests": {
+  "by_route": {
+   "api/v1/domains": 2,
+   "domains/{id}": 4,
+   "domains/{id}/value/configure": 2,
+   "domains/{id}/value/observe": 120,
+   "domains/{id}/value/state": 58,
+   "domains/{id}/value/train": 1,
+   "version": 2
+  },
+  "requests": 189,
+  "retries": 0
+ },
+ "version_end": {
+  "build_time": "unknown",
+  "commit_sha": "af6670b8a9c5ce4251caa02940118110adb839ea",
+  "schema_version": "5",
+  "source_fingerprint": "sha256:9a1c816497f67beed41cf3870566c1f0f70385bbb75f7a0dbd9e8e9726a3dcc4",
+  "version": "v0.1.0"
+ }
+}
