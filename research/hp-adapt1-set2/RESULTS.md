@@ -50,6 +50,6 @@ The plan is in [`plan/EXPERIMENT_PLAN.md`](plan/EXPERIMENT_PLAN.md). Each run ha
 | Suite | Heuristic depth 1 / 2 / 3 / 4 / 5 (total, 100 seeds) | Depth 3 p5–p95 | H-core compactness, depth 3 | Neutral leaves, depth 3 | Best of k=1/8/32/128 |
 |---|---|---|---|---|---|
 | Eval-Liu (7) | 80.2 / 118.4 / **134.3 ± 5.1** / 140.2 / 141.4 | 125–142 | 137.4 | 30.8 | 131.8 / 142.7 / 150.9 / 155.0 |
-| Eval-L (40) | computing | | | | |
+| Eval-L (40) | 578.3 / 878.7 / **975.2 ± 12.8** / 1029.2 / 1048.5 | 956–994 | 1010.8 | 189.0 | 971.7 / 1039.4 / 1083.7 / 1125.4 |
 
 These agree with the plan's Appendix C (133.6 ± 4.6; 126–141) to within tie-break seed noise.
