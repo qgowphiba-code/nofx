@@ -4,3 +4,5 @@
 [   331.3s] R0 sibling agreement 0.995 (informative 0.980, n=256); MAE 0.27 contacts
 [   432.9s] R0 Liu depth 3 total 124 (heuristic band 125-142) [7, 8, 7, 14, 20, 22, 46]
 [   824.6s] R0 Eval-L(20) depth 3 total 417
+[  1137.5s] R1 fitted 1e4b58e82ff2 in 252.1s, selected_epoch 67, validation_skill 0.9606527565663687
+[  1158.0s] R1 sibling agreement 0.999 (informative 0.996, n=256); MAE 0.26 contacts
