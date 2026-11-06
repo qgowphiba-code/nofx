@@ -13,7 +13,7 @@ The plan is in [`plan/EXPERIMENT_PLAN.md`](plan/EXPERIMENT_PLAN.md). Each run ha
 | T0.3 | done (directional) | Eval-S depth-1 best-move rate, set-1 6-chain subset / all 24: **A0 0.735 / 0.777** (set 1: 0.662), **ROB 0.808 / 0.818** (set 1: 0.821); heuristic 0.720 / 0.695. A replicate A0 fit had a different sha but identical predictions (max \|Δ\| = 0 on 512 inputs) | 530 | `runs/T0.3/20261106T200218Z` |
 | T0.4 | **PASS** | 390/390 cases (100 short + 30 long states × depths 1–3): same action, \|Δvalue\| = 0.0 exactly. Client-side planning is used for evaluation | 447 | `runs/T0.4/` |
 | A1 | done, **r\* = R1** | R0 (object graph, 4 conditions): its predicted best child is among the heuristic's best on 0.995 of 1,000 held-out states (0.980 of informative ones), with MAE 0.27 contacts, but depth-3 planning falls **below the heuristic band**: Liu 124 (p5 125); Eval-L(20) 417 against a heuristic 444.1 [429–458]. R1 (+ the 14 `features()` as conditions): agreement 0.999, **in band**: Liu 125, Eval-L(20) 440. R2 (projected) was **refused** at its first upload: `422 dataset feature vocabulary exceeds the configured surface limits`. Fits took about 250 s each for 6.7k long-chain rows | ≈1.6k | `runs/A1/20261106T201620Z` |
-| A3 | queued | | | |
+| A3 | done: **λ\* = 1, d\* = 2, no siblings** | Mean Eval-S best-move rate over 3 draws, depths 1 / 2 / 3: heuristic 0.695 / 0.854 / 0.938; A0 0.772 / 0.888 / 0.935; ROB 0.786 / 0.891 / 0.933; BL(0.5,2) 0.782; **BL(1,2) 0.798** / 0.864 / 0.943; BL-iter 0.809 / 0.856 / 0.929; **BLG 0.811 / 0.901 / 0.952**. Draw 1 also ran BL(0.5,1) 0.765, BL(0.75,1) 0.769, BL(1,1) 0.774 (plan predicted 0.762) and BL(0.75,2) 0.767. Lookahead targets raise corr(V\*) (A0 0.38 → BL(1,2) 0.44 → BL-iter 0.57, means over draws) and lower corr(V_rand) | 5.1k | `runs/A3/20261106T204511Z` (draw 1), `runs/A3/20261106T205829Z` (draws 2–3) |
 | A2 | queued | | | |
 
 ## Gate decisions
@@ -23,6 +23,14 @@ The plan is in [`plan/EXPERIMENT_PLAN.md`](plan/EXPERIMENT_PLAN.md). Each run ha
 - **Fit latency:** 3.4 s for 50 rows; 11 s for 816 rows (A0); 22 s for 2.2k rows with continuation targets (ROB). The plan's fit-time budget is generous.
 - **Calibration (T0.3):** ROB reproduces set 1 within noise (0.808 vs 0.821; SE about 0.03 on 151 decisions). A0 is 0.07 higher than set 1's 0.662, about 2.3 SE. Following the plan, set-1 numbers are treated as **directional only**, and T0.3's numbers are the baseline.
 - **Planning (T0.4):** client-side MAX search over `value/predict` leaves is bit-identical to native planning, so evaluations use the batched client-side planner (C-plan).
+
+### A3 decision (input to G1)
+- **λ\*, d\* = 1, 2.** BL(1,2) is the best arm in the BL(λ, d) grid, both on the mean and in every draw. In each draw its depth-1 lead over A0 was +0.041, +0.031 and +0.005, a mean of +0.026.
+- **The fallback (A0 against ROB-style targets) is not triggered.** The plan's rule is "no BL arm beats A0 by at least 0.03". BLG (+0.039) and BL-iter (+0.037) clear it, while the grid arm alone (+0.026) does not. The first summary code checked only the grid. It now follows the plan's wording, and both readings are recorded here.
+- **No sibling rows in Track B.** BLG − BL(1,2) = +0.013 at depth 1, below the pre-registered 0.03.
+- **Exploratory:** BLG is the best arm at every depth, and the only one clearly above the heuristic at depth 3 (0.952 against 0.938). The rule excludes it, and that decision stands. Its depth-3 edge is reported as an exploratory lead.
+- **Exploratory:** BL-iter, the second round of lookahead targets, improves the depth-1 rate and corr(V\*) in every draw but is worse than BL(1,2) at depths 2 and 3 in every draw. A better one-step value does not by itself make a better leaf evaluator under deeper search. Track B's later generations iterate in the same way, so this is the pattern to watch there.
+- **Noise:** refitting A0 with only a different validation split moved its rate by 0.03 (T0.3: 0.777; A3 draw 1: 0.748, on the same rows). Single-draw differences under about 0.03 are within noise.
 
 ## Deviations from the plan, and why
 
