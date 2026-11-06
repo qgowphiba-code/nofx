@@ -1,0 +1,238 @@
+{
+ "G2": {
+  "a0_liu_g1": 120,
+  "bl_liu_g1": 105,
+  "drop_bl_from_lineages_2_3": true
+ },
+ "arms": {
+  "A0": {
+   "arm": "A0",
+   "d": 0,
+   "domain": "hpx2-b1-a0-1-20261106t223208z-31a3bc",
+   "error": "GuardError(\"fit b1-l1-A0-g2 ended with status interrupted: {'application_cases': None, 'dataset_sha256': '6e0dca09d675444c8fc1e62483c36e3e1d62687d3a3c4a9151b2d3a95929abc0', 'effective_options': {'comparison_loss': 'squared', 'comparison_weight': 0, 'dense_hidden_dimensions': None, 'dense_inputs': False, 'dimensions': 32, 'epochs': 40, 'function_retention_weight': 0, 'interaction_selection': None, 'learning_rate': 0.003, 'loss_function': 'squared', 'model_type': 'object_value', 'object_hidden_dimensions': 32, 'pair_geometry': True, 'peak_pooling': True, 'preserve_binary_inputs': True, 'primary_validation_episode_ids': None, 'quadratic_pairs': True, 'selection_objective': 'prediction', 'supervision_scope': 'all', 'trainable_layers': 'all', 'validation_episode_ids': ['b1l1-g0-c0-f1', 'b1l1-g0-c1-f0', 'b1l1-g0-c10-f2', 'b1l1-g0-c12-f2', 'b1l1-g0-c15-f\")",
+   "generations": [
+    {
+     "g": 0,
+     "liu_depth3": {
+      "complete": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "leaf_evaluations": [
+       1482,
+       1765,
+       1925,
+       2686,
+       3950,
+       3746,
+       4659
+      ],
+      "per_chain": [
+       9,
+       10,
+       7,
+       14,
+       24,
+       24,
+       45
+      ],
+      "tie_decisions": [
+       3,
+       2,
+       2,
+       3,
+       1,
+       2,
+       2
+      ],
+      "total": 133
+     },
+     "n_rows": 5952,
+     "selected_epoch": 108,
+     "sha256": "347017c2ce45ee1342f4b3299af6f8afba779f08696c8491753c88f2764bbdfc"
+    },
+    {
+     "collector": "A0:347017c2",
+     "collector_mean_contacts": 14.569444444444445,
+     "epochs": 60,
+     "g": 1,
+     "liu_depth3": {
+      "complete": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "leaf_evaluations": [
+       1475,
+       1802,
+       1892,
+       2791,
+       3793,
+       3914,
+       4630
+      ],
+      "per_chain": [
+       9,
+       11,
+       6,
+       12,
+       20,
+       22,
+       40
+      ],
+      "tie_decisions": [
+       2,
+       3,
+       1,
+       3,
+       2,
+       2,
+       2
+      ],
+      "total": 120
+     },
+     "n_rows": 11904,
+     "selected_epoch": 5,
+     "sha256": "d34553b25aa8b024865f72dcf579cfdbfb57496ec9cea4d47d5813257841e779"
+    }
+   ],
+   "lam": 0.0
+  },
+  "BL": {
+   "arm": "BL",
+   "d": 2,
+   "domain": "hpx2-b1-bl-1-20261106t223209z-afceed",
+   "error": "ApiError(\"HTTP 404 on /api/v1/domains/hpx2-b1-bl-1-20261106t223209z-afceed/value/state: {'detail': 'owned Domain not found'}\")",
+   "generations": [
+    {
+     "assessor": "347017c2ce45ee1342f4b3299af6f8afba779f08696c8491753c88f2764bbdfc",
+     "g": 0,
+     "liu_depth3": {
+      "complete": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "leaf_evaluations": [
+       1432,
+       1769,
+       1912,
+       2828,
+       3918,
+       3993,
+       4531
+      ],
+      "per_chain": [
+       10,
+       11,
+       5,
+       13,
+       24,
+       20,
+       43
+      ],
+      "tie_decisions": [
+       2,
+       1,
+       2,
+       3,
+       4,
+       2,
+       3
+      ],
+      "total": 126
+     },
+     "n_rows": 5952,
+     "selected_epoch": 111,
+     "sha256": "39c6f8658b384c9b43eac73acb7598d8aff4b81f9ed4a4c455d45573cf7b3aa1"
+    },
+    {
+     "collector": "BL:39c6f865",
+     "collector_mean_contacts": 15.055555555555555,
+     "epochs": 60,
+     "g": 1,
+     "liu_depth3": {
+      "complete": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "leaf_evaluations": [
+       1444,
+       1778,
+       1931,
+       2894,
+       4371,
+       3843,
+       5253
+      ],
+      "per_chain": [
+       10,
+       11,
+       4,
+       14,
+       15,
+       22,
+       29
+      ],
+      "tie_decisions": [
+       2,
+       2,
+       3,
+       3,
+       1,
+       1,
+       3
+      ],
+      "total": 105
+     },
+     "n_rows": 11904,
+     "selected_epoch": 24,
+     "sha256": "1e28b7a0c8435ca2793cb954334a64c48ef1e8761196c9776e2368bc136bb7f6"
+    }
+   ],
+   "lam": 1.0
+  }
+ },
+ "dim": 3,
+ "heuristic_card_liu": 134.27,
+ "lineage": 1,
+ "requests": {
+  "by_route": {
+   "api/v1/domains": 2,
+   "domains/{id}": 4,
+   "domains/{id}/value/configure": 2,
+   "domains/{id}/value/observe": 727,
+   "domains/{id}/value/predict": 3574,
+   "domains/{id}/value/state": 224,
+   "domains/{id}/value/train": 6,
+   "version": 2
+  },
+  "requests": 4541,
+  "retries": 21
+ },
+ "version_end": {
+  "build_time": "unknown",
+  "commit_sha": "af6670b8a9c5ce4251caa02940118110adb839ea",
+  "schema_version": "5",
+  "source_fingerprint": "sha256:9a1c816497f67beed41cf3870566c1f0f70385bbb75f7a0dbd9e8e9726a3dcc4",
+  "version": "v0.1.0"
+ }
+}

@@ -1,0 +1,14 @@
+[     0.0s] run B1 -> /home/user/nofx/research/hp-adapt1-set2/runs/B1/l1-20261106T223208Z
+[   262.6s] [l1 A0] g0 fitted 347017c2ce45 on 5952 rows x 120 epochs in 208.5s, selected_epoch 108
+[   348.5s] [l1 A0] g0 Eval-Liu depth 3: 133 [9, 10, 7, 14, 24, 24, 45]
+[  1156.8s] [l1 BL] g0 fitted 39c6f8658b38 on 5952 rows x 120 epochs in 214.0s, selected_epoch 111
+[  1296.3s] [l1 BL] g0 Eval-Liu depth 3: 126 [10, 11, 5, 13, 24, 20, 43]
+[  1315.9s] [l1 A0] g1 collected 144 folds: mean contacts 14.57; predict {'leaves': 111769, 'unique_sent': 99294, 'cache_hits': 12475, 'predict_batches': 56}
+[  1685.3s] [l1 A0] g1 fitted d34553b25aa8 on 11904 rows x 60 epochs in 224.1s, selected_epoch 5
+[  1799.2s] [l1 BL] g1 collected 144 folds: mean contacts 15.06; predict {'leaves': 107890, 'unique_sent': 94722, 'cache_hits': 13168, 'predict_batches': 56}
+[  1851.0s] [l1 A0] g1 Eval-Liu depth 3: 120 [9, 11, 6, 12, 20, 22, 40]
+[  2146.6s] [l1 BL] g1 fitted 1e28b7a0c843 on 11904 rows x 60 epochs in 239.2s, selected_epoch 24
+[  2230.6s] [l1 BL] g1 Eval-Liu depth 3: 105 [10, 11, 4, 14, 15, 22, 29]
+[  2230.6s] G2 futility gate: {'a0_liu_g1': 120, 'bl_liu_g1': 105, 'drop_bl_from_lineages_2_3': True}
+[  3074.0s] [l1 A0] g2 collected 144 folds: mean contacts 15.70; predict {'leaves': 108250, 'unique_sent': 93336, 'cache_hits': 14914, 'predict_batches': 56}
+[  3132.8s] [l1 BL] g2 collected 144 folds: mean contacts 13.62; predict {'leaves': 113891, 'unique_sent': 99480, 'cache_hits': 14411, 'predict_batches': 56}

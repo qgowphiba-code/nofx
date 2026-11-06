@@ -37,6 +37,10 @@ LEAF_LAMBDAS = (0.25, 0.5, 0.75)
 # epochs, failed at 307 s and 302 s; g0, 5,952 x 120, finished in ~216 s). Keep every row (plan: "all rows
 # so far") and hold work per fit at g0's level: epochs = min(120, ROW_EPOCH_BUDGET // rows), floor 20.
 ROW_EPOCH_BUDGET = 5952 * 120
+# Work is not linear in row-epochs: 17,856 rows x 40 epochs was cut off after ~320 s ("interrupted",
+# "result_not_recorded") while 11,904 x 60 finished in 224-239 s. So at most FIT_ROW_CAP rows per fit: the
+# oldest generations are dropped first (plan section 12's mitigation: "drop g0 rows at g2 if needed").
+FIT_ROW_CAP = int(_ENV.get('HPX2_FIT_ROW_CAP', '12000'))
 # HPX2_DIM=2 runs D2 (plan section 8: B1's design on 2D chains of length 24-64); 3 (default) is B1.
 DIM = int(_ENV.get('HPX2_DIM', '3'))
 PROFILE = {
@@ -80,6 +84,7 @@ class Arm:
         self.conditions = FEATURES if cfg['conditions'] == 'features' else BASIC
         self.domain = None
         self.episodes, self.row_ids, self.models = [], [], []
+        self.ids_by_gen = {}
         self.out = {'arm': name, 'lam': lam, 'd': depth, 'generations': []}
         self.probe = probe_inputs(self.conditions)
         self.last_probe = None
@@ -101,11 +106,15 @@ class Arm:
         return T.blended_rows(eps, self.lam, self.depth, u, assessor, arm=f'B1{self.name}', conditions=self.conditions)
 
     def fit(self, g):
-        val = T.validation_episodes(self.episodes, fit_index=300 + 10 * self.lineage + g)
+        gens = sorted(self.ids_by_gen)
+        while len(gens) > 1 and sum(len(self.ids_by_gen[x]) for x in gens) > FIT_ROW_CAP:
+            gens.pop(0)
+        ids = [i for x in gens for i in self.ids_by_gen[x]]
+        val = T.validation_episodes([e for e in self.episodes if e.generation in gens], fit_index=300 + 10 * self.lineage + g)
         opts = S.fit_options(self.cfg['base'], validation_episode_ids=val, **self.cfg['fit_overrides'])
-        opts['epochs'] = max(20, min(opts['epochs'], ROW_EPOCH_BUDGET // len(self.row_ids)))
+        opts['epochs'] = max(20, min(opts['epochs'], ROW_EPOCH_BUDGET // len(ids)))
         fit = self.c.train(self.domain, f'{PROFILE["tag"]}-l{self.lineage}-{self.name}-g{g}', opts, install=False,
-                           observation_ids=self.row_ids, name=f'l{self.lineage}-{self.name}-g{g}')
+                           observation_ids=ids, name=f'l{self.lineage}-{self.name}-g{g}')
         sha = fit['sha256']
         pv = self.c.predict(self.domain, self.probe, 'candidate', sha)
         if self.last_probe is not None and max(abs(a - b) for a, b in zip(pv, self.last_probe)) == 0:
@@ -113,9 +122,9 @@ class Arm:
         self.last_probe = pv
         self.models.append(sha)
         rep = fit['state']['training']['report']
-        self.log(f'g{g} fitted {sha[:12]} on {len(self.row_ids)} rows x {opts["epochs"]} epochs in {fit["elapsed"]}s, '
-                 f'selected_epoch {rep.get("selected_epoch")}')
-        rep = {**rep, 'requested_epochs': opts['epochs']}
+        self.log(f'g{g} fitted {sha[:12]} on {len(ids)} rows (generations {gens}) x {opts["epochs"]} epochs in '
+                 f'{fit["elapsed"]}s, selected_epoch {rep.get("selected_epoch")}')
+        rep = {**rep, 'requested_epochs': opts['epochs'], 'fit_generations': gens, 'fit_rows': len(ids)}
         return sha, rep, val
 
     def collect(self, g, sha):
@@ -143,6 +152,11 @@ class Arm:
         self.c.observe(self.domain, rows)
         self.episodes.extend(eps)
         self.row_ids.extend(r['record_id'] for r in rows)
+        for e in eps:
+            self.ids_by_gen.setdefault(e.generation, [])
+        by_ep = {e.id: e.generation for e in eps}
+        for r in rows:
+            self.ids_by_gen[by_ep[r['episode_id']]].append(r['record_id'])
         return rows
 
 
@@ -172,7 +186,8 @@ def run_arm_generations(arm, g0_eps, g0_u, a0_g0_sha, results, lock, gate):
                 arm.add(eps)
             sha, rep, val = arm.fit(g)
             gen = {'g': g, 'sha256': sha, 'n_rows': len(arm.row_ids), 'selected_epoch': rep.get('selected_epoch'),
-               'epochs': rep.get('requested_epochs'),
+               'epochs': rep.get('requested_epochs'), 'fit_generations': rep.get('fit_generations'),
+               'fit_rows': rep.get('fit_rows'),
                    'collector_mean_contacts': sum(e.contacts for e in eps) / len(eps), 'collector': cev.name}
             if g == 1:
                 lv, _ = eval_liu(arm, sha)
