@@ -4,3 +4,5 @@ __pycache__/
 STOP
 cache/
 runs/_mock/
+# run outputs are force-added (git add -f) once each run completes; in-progress runs stay out of git
+runs/
