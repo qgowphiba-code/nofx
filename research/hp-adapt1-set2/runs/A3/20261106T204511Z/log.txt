@@ -1,0 +1,13 @@
+[     0.0s] run A3 -> /home/user/nofx/research/hp-adapt1-set2/runs/A3/20261106T204511Z
+[    89.4s] [draw 1] A0           rate d1 0.748 (set1 0.742) d2 0.867 d3 0.930 | corr V* 0.313 V_rand 0.882 | greedy 28/57 | epoch 114 | 10.8s
+[   193.2s] [draw 1] ROB          rate d1 0.784 (set1 0.742) d2 0.867 d3 0.927 | corr V* 0.416 V_rand 0.900 | greedy 36/57 | epoch 119 | 21.6s
+[   289.2s] [draw 1] BL(0.5,1)    rate d1 0.765 (set1 0.735) d2 0.883 d3 0.949 | corr V* 0.363 V_rand 0.904 | greedy 34/57 | epoch 120 | 12.7s
+[   362.6s] [draw 1] BL(0.75,1)   rate d1 0.769 (set1 0.722) d2 0.864 d3 0.944 | corr V* 0.370 V_rand 0.892 | greedy 29/57 | epoch 53 | 10.5s
+[   426.3s] [draw 1] BL(1,1)      rate d1 0.774 (set1 0.748) d2 0.837 d3 0.939 | corr V* 0.368 V_rand 0.882 | greedy 36/57 | epoch 103 | 6.3s
+[   490.1s] [draw 1] BL(0.5,2)    rate d1 0.784 (set1 0.742) d2 0.837 d3 0.937 | corr V* 0.424 V_rand 0.905 | greedy 38/57 | epoch 109 | 6.2s
+[   557.2s] [draw 1] BL(0.75,2)   rate d1 0.767 (set1 0.775) d2 0.845 d3 0.934 | corr V* 0.445 V_rand 0.883 | greedy 39/57 | epoch 120 | 5.5s
+[   618.5s] [draw 1] BL(1,2)      rate d1 0.789 (set1 0.801) d2 0.833 d3 0.939 | corr V* 0.468 V_rand 0.837 | greedy 41/57 | epoch 120 | 5.3s
+[   618.5s] [draw 1] best BL this draw: BL(1,2)
+[   689.9s] [draw 1] BL-iter      rate d1 0.813 (set1 0.795) d2 0.867 d3 0.925 | corr V* 0.602 V_rand 0.669 | greedy 43/57 | epoch 114 | 5.5s
+[   792.0s] [draw 1] BLG          rate d1 0.818 (set1 0.801) d2 0.900 d3 0.954 | corr V* 0.451 V_rand 0.841 | greedy 40/57 | epoch 118 | 29.0s
+[   798.1s] [draw 1] deleted hpx2-a3-all-1-20261106t204511z-7bceab
