@@ -1,0 +1,14 @@
+{"t":1793994466.14,"kind":"intent","id":1,"op":"READ","method":"GET","path":"/version","bytes":0,"body_sha256":null}
+{"t":1793994466.586,"kind":"receipt","id":1,"status":200,"elapsed":0.446}
+{"t":1793994466.587,"kind":"build","stage":"start","version":{"build_time":"unknown","commit_sha":"af6670b8a9c5ce4251caa02940118110adb839ea","schema_version":"5","source_fingerprint":"sha256:9a1c816497f67beed41cf3870566c1f0f70385bbb75f7a0dbd9e8e9726a3dcc4","version":"v0.1.0"}}
+{"t":1793994466.588,"kind":"intent","id":2,"op":"WRITE","method":"POST","path":"/api/v1/domains","bytes":153,"body_sha256":"b97d043ea6b7b5b1b6834202454d46149a2df01d271641a8293c5e7e11b2e781"}
+{"t":1793994466.782,"kind":"receipt","id":2,"status":201,"elapsed":0.195}
+{"t":1793994520.027,"kind":"intent","id":1,"op":"READ","method":"GET","path":"/api/v1/domains/hpx2-t02-probe-0-20261106t194746z-2d6e62","bytes":0,"body_sha256":null}
+{"t":1793994520.487,"kind":"receipt","id":1,"status":200,"elapsed":0.459}
+{"t":1793994520.487,"kind":"intent","id":2,"op":"WRITE","method":"DELETE","path":"/api/v1/domains/hpx2-t02-probe-0-20261106t194746z-2d6e62","bytes":0,"body_sha256":null}
+{"t":1793994520.635,"kind":"receipt","id":2,"status":200,"elapsed":0.148}
+{"t":1793994520.635,"kind":"intent","id":3,"op":"READ","method":"GET","path":"/api/v1/domains/hpx2-t02-probe-0-20261106t194746z-2d6e62","bytes":0,"body_sha256":null}
+{"t":1793994520.759,"kind":"receipt","id":3,"status":404,"elapsed":0.124,"error_body":"{'detail': \"'domain not found: hpx2-t02-probe-0-20261106t194746z-2d6e62'\"}"}
+{"t":1793994520.76,"kind":"domain_deleted","domain_id":"hpx2-t02-probe-0-20261106t194746z-2d6e62","verified_404":true}
+{"t":1793994520.76,"kind":"intent","id":4,"op":"READ","method":"GET","path":"/api/v1/domains/hpx2-t02-probe-0-20261106t194746z-2d6e62","bytes":0,"body_sha256":null}
+{"t":1793994520.888,"kind":"receipt","id":4,"status":404,"elapsed":0.127,"error_body":"{'detail': \"'domain not found: hpx2-t02-probe-0-20261106t194746z-2d6e62'\"}"}

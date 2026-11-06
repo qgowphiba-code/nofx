@@ -1,0 +1,33 @@
+{
+ "request_options": {
+  "cache_values": false,
+  "exploration_probability": 0,
+  "max_depth": 1,
+  "reuse_tree": false
+ },
+ "response": {
+  "evaluator": {
+   "dataset_sha256": "c8af94853192b7d2b6ea7168a1d26613a6642d98d442f412fcb449bd8fc457e6",
+   "frozen": false,
+   "learning_updates": false,
+   "model_sha256": "5d93c52078c2e7098a69fcee8211029efa8295a5c70d30a08810ad4a8c00684a",
+   "model_type": "object_value",
+   "model_version": 50,
+   "source": "value_model"
+  },
+  "plan": {
+   "action": "1,0,0",
+   "branch_width": null,
+   "budget_exhausted": false,
+   "cache_hits": 0,
+   "completed_depth": 1,
+   "completed_extensions": 0,
+   "deadline_reached": false,
+   "evaluations": 5,
+   "extensions": 0,
+   "transitions": 5,
+   "value": 0.5447242177575168
+  },
+  "status": "completed"
+ }
+}
