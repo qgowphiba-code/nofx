@@ -1,0 +1,27 @@
+{
+ "build": {
+  "build_time": "unknown",
+  "commit_sha": "af6670b8a9c5ce4251caa02940118110adb839ea",
+  "schema_version": "5",
+  "source_fingerprint": "sha256:9a1c816497f67beed41cf3870566c1f0f70385bbb75f7a0dbd9e8e9726a3dcc4",
+  "version": "v0.1.0"
+ },
+ "domain": "hpx2-a2-all-0-20261106t211343z-4df7e4",
+ "experiment": "A2",
+ "finished_utc": "20261106T211422Z",
+ "git_head": "a90df5f234389e22756d1d7e783e5668cd11f240",
+ "host": "fast-uat",
+ "platform": "Linux-6.18.44-fc-v242-x86_64-with-glibc2.39",
+ "python": "3.13.18",
+ "requests": 56,
+ "seconds": 39.2,
+ "seeds": {
+  "own_folds": "80800*1000+i",
+  "stage_a": 61107,
+  "validation": [
+   80700,
+   80800
+  ]
+ },
+ "started_utc": "20261106T211343Z"
+}

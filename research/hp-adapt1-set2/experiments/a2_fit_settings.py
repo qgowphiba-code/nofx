@@ -3,17 +3,20 @@
 Data: T0.3's Stage A rows (816 terminal + s3 continuation siblings) plus 96 own-policy folds (8 per set-1
 training chain) collected by the robust model at depth 1, eps 0.2 (fold rngs Random(80800*1000 + i): the
 plan names no seed). Own-policy rows use the same set-1 recipe (terminal rows + s3 continuation siblings).
-Sequence on one fresh domain: A0 (cold, install) -> ROB (warm from A0, comparison, install: the robust
-model becomes the installed reference) -> collect -> five candidate arms on all rows:
-  warm_pred     warm from installed ROB, selection prediction           (set 1's setting)
-  cold          cold init (installed ROB kept as the continuation reference)
-  warm_adapt    warm, selection_objective adaptation_prediction
-  warm_retain   warm, function_retention_weight 1
+
+Arrangement (as T0.3): A0 is installed and stays the continuation reference; the robust model ROB is the
+candidate (fits that select continuation rows must be install=false: af6670b answers 422 "selected
+observation continuation requires install=false or application-outcome promotion"). Warm arms start from
+the candidate ROB (warm_start_source candidate, bound by sha); ROB is refit into the candidate slot before
+each later warm arm (refits are functionally identical, T0.3). Five candidate arms on all rows:
+  warm_pred     warm from ROB, selection prediction                (set 1's setting)
+  cold          cold init (installed A0 kept as the continuation reference)
+  warm_adapt    warm from ROB, selection_objective adaptation_prediction
+  warm_retain   warm from ROB, function_retention_weight 1
   cold_240      cold, 240 epochs
 Measures: Eval-S best-move rate (depths 1-3), selected_epoch, optimization_applied. Decision: f* = best;
 if the spread is under 0.03, prefer the simplest (cold).
 """
-import json
 import random
 import sys
 from pathlib import Path
@@ -25,11 +28,11 @@ from hpx.planner import run_folds  # noqa: E402
 from hpx.runlog import Run, connect, sha256_json  # noqa: E402
 
 ARMS = [
-    ('warm_pred', dict(warm_start=True), {}),
-    ('cold', dict(warm_start=False), {}),
-    ('warm_adapt', dict(warm_start=True, selection_objective='adaptation_prediction'), {}),
-    ('warm_retain', dict(warm_start=True, function_retention_weight=1), {}),
-    ('cold_240', dict(warm_start=False, epochs=240), {}),
+    ('warm_pred', dict(warm_start=True)),
+    ('warm_adapt', dict(warm_start=True, selection_objective='adaptation_prediction')),
+    ('warm_retain', dict(warm_start=True, function_retention_weight=1)),
+    ('cold', dict(warm_start=False)),
+    ('cold_240', dict(warm_start=False, epochs=240)),
 ]
 
 
@@ -42,42 +45,55 @@ def main():
     eps = T.random_episodes(train, 8, random.Random(61107), 'a3d1')
     a0_rows = T.terminal_rows(eps)
     rob_rows = T.continuation_sibling_rows(eps, stride=3)
+    stage_a_ids = [r['record_id'] for r in a0_rows + rob_rows]
     val0 = T.validation_episodes(eps, fit_index=0)
-    results = {'arms': {}}
+    rob_opts = S.fit_options(warm_start=True, validation_episode_ids=val0, **S.COMPARISON)
+    results = {'arms': {}, 'rob_refits': []}
     d = c.create_domain('a2', 'all', 0)
-    run.note(host=S.HOST, build=v, domain=d, seeds={'stage_a': 61107, 'own_folds': '80800*1000+i', 'validation': [80700, 80800]})
+    run.note(host=S.HOST, build=v, domain=d, seeds={'stage_a': 61107, 'own_folds': '80800*1000+i', 'validation': [80700, 80701]})
     try:
         c.configure(d, S.value_config('object_graph'))
         c.observe(d, a0_rows + rob_rows)
         a0 = c.train(d, 'a2-a0', S.fit_options(validation_episode_ids=val0), install=True,
                      observation_ids=[r['record_id'] for r in a0_rows], name='a0')
-        rob = c.train(d, 'a2-rob', S.fit_options(warm_start=True, validation_episode_ids=val0, **S.COMPARISON), install=True,
-                      warm_start_source='installed', expected_initial_model_sha256=a0['sha256'],
-                      observation_ids=[r['record_id'] for r in a0_rows + rob_rows], name='rob')
-        ev_rob = model_evaluator(c, d, 'installed', rob['sha256'], name='ROB')
+
+        def fit_rob(tag):
+            f = c.train(d, f'a2-rob-{tag}', rob_opts, install=False, warm_start_source='installed',
+                        expected_initial_model_sha256=a0['sha256'], observation_ids=stage_a_ids, name=f'rob-{tag}')
+            results['rob_refits'].append({'tag': tag, 'sha256': f['sha256']})
+            return f['sha256']
+        rob_sha = fit_rob('0')
+        ev_rob = model_evaluator(c, d, 'candidate', rob_sha, name='ROB')
         g = grade_short(ev_rob, suite, depths=(1,), greedy=False)
-        results['ROB_installed'] = {'sha256': rob['sha256'], 'rate_depth1': g['depth1']['all']['best_move_rate'],
-                                    'matches_T03': round(g['depth1']['all']['best_move_rate'], 6)}
-        run.log(f'A0 {a0["sha256"][:12]}, ROB installed {rob["sha256"][:12]}: Eval-S d1 {g["depth1"]["all"]["best_move_rate"]:.3f} (T0.3: 0.818)')
+        results['ROB'] = {'sha256': rob_sha, 'rate_depth1': g['depth1']['all']['best_move_rate']}
+        run.log(f'A0 {a0["sha256"][:12]} installed; ROB candidate {rob_sha[:12]}: Eval-S d1 '
+                f'{g["depth1"]["all"]["best_move_rate"]:.3f} (T0.3: 0.818)')
 
         seqs = [train[i // 8] for i in range(96)]
         folds = run_folds(seqs, 1, ev_rob, rngs=[random.Random(80800 * 1000 + i) for i in range(96)], eps=0.2, record=True)
         own = []
         for i, f in enumerate(folds):
             chs = [tuple(map(tuple, s['chain'])) for s in f['trajectory']] + [tuple(map(tuple, f['chain']))]
-            own.append(T.Episode(f'a2own-c{i // 8}-f{i % 8}', seqs[i], chs, generation=1, collector=rob['sha256']))
+            own.append(T.Episode(f'a2own-c{i // 8}-f{i % 8}', seqs[i], chs, generation=1, collector=rob_sha))
         results['own_collection'] = {'mean_contacts': sum(e.contacts for e in own) / len(own),
-                                     'complete': sum(f['complete'] for f in folds), 'episodes_sha256': sha256_json([e.to_json() for e in own])}
+                                     'complete': sum(f['complete'] for f in folds),
+                                     'episodes_sha256': sha256_json([e.to_json() for e in own])}
         run.log('own-policy folds: mean contacts', round(results['own_collection']['mean_contacts'], 2))
         own_rows = T.terminal_rows(own) + T.continuation_sibling_rows(own, stride=3)
         c.observe(d, own_rows)
-        all_ids = [r['record_id'] for r in a0_rows + rob_rows + own_rows]
+        all_ids = stage_a_ids + [r['record_id'] for r in own_rows]
         val = T.validation_episodes(eps + own, fit_index=1)
         results['n_rows'] = len(all_ids)
         results['validation_episode_ids'] = val
-        for name, over, kw in ARMS:
+        first_warm = True
+        for name, over in ARMS:
             opts = S.fit_options(validation_episode_ids=val, **{**S.COMPARISON, **over})
-            extra = {'warm_start_source': 'installed', 'expected_initial_model_sha256': rob['sha256']} if over.get('warm_start') else {}
+            extra = {}
+            if over.get('warm_start'):
+                if not first_warm:
+                    rob_sha = fit_rob(name)
+                first_warm = False
+                extra = {'warm_start_source': 'candidate', 'expected_initial_model_sha256': rob_sha}
             fit = c.train(d, f'a2-{name}', opts, install=False, observation_ids=all_ids, name=name, **extra)
             rep = fit['state']['training']['report']
             ev = model_evaluator(c, d, 'candidate', fit['sha256'], name=name)
@@ -85,12 +101,13 @@ def main():
             cont = rep.get('continuation') or {}
             results['arms'][name] = {'sha256': fit['sha256'], 'fit_seconds': fit['elapsed'], 'options': opts, 'report': rep,
                                      'selected_epoch': rep.get('selected_epoch'), 'optimization_applied': cont.get('optimization_applied'),
+                                     'initial_model_sha256': cont.get('initial_model_sha256'),
                                      'regularization_target': rep.get('regularization_target'), 'grade': g}
             run.log(f'{name:12s} d1 {g["depth1"]["all"]["best_move_rate"]:.3f} d2 {g["depth2"]["all"]["best_move_rate"]:.3f} '
                     f'd3 {g["depth3"]["all"]["best_move_rate"]:.3f} corr V* {g["depth1"]["all"]["corr_vstar"]:.3f} | selected_epoch '
                     f'{rep.get("selected_epoch")} optimization_applied {cont.get("optimization_applied")} reg {rep.get("regularization_target")} | {fit["elapsed"]}s')
             run.write_results(results)
-        rates = {n: results['arms'][n]['grade']['depth1']['all']['best_move_rate'] for n, *_ in ARMS}
+        rates = {n: results['arms'][n]['grade']['depth1']['all']['best_move_rate'] for n, _ in ARMS}
         best = max(rates, key=rates.get)
         spread = max(rates.values()) - min(rates.values())
         results['decision'] = {'rates_depth1': rates, 'best': best, 'spread': spread,

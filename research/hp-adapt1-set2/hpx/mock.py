@@ -187,6 +187,8 @@ class MockTransport:
         opts = body.get('options') or {}
         if any(r.get('continuation') for r in rows) and dom.model is None:
             return 422, {'detail': 'nonterminal continuation targets require a fitted reference model'}
+        if any(r.get('continuation') for r in rows) and body.get('install', True):
+            return 422, {'detail': 'selected observation continuation requires install=false or application-outcome promotion'}
         warm = opts.get('warm_start', True)
         src = body.get('warm_start_source', 'installed')
         init = (dom.model if src == 'installed' else dom.candidate) if warm else None
