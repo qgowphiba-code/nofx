@@ -310,6 +310,27 @@ def episodes(n_games, rng):
     return [[p.cols for p in random_game(rng)] for _ in range(n_games)]
 
 
+def eps_greedy_game(rng, eps=0.3, w=W, h=H):
+    """Depth-1 line-heuristic play with probability 1 - eps (random ties), a uniform random move otherwise."""
+    p = Pos(w=w, h=h)
+    out = [p]
+    while not p.terminal:
+        lg = p.legal()
+        if rng.random() < eps:
+            c = rng.choice(lg)
+        else:
+            hv = [p.play(c).heuristic() for c in lg]
+            t = max(hv) if p.to_move == 'X' else min(hv)
+            c = rng.choice([c for c, v in zip(lg, hv) if v == t])
+        p = p.play(c)
+        out.append(p)
+    return out
+
+
+def guided_episodes(n_games, seed_prefix, eps=0.3):
+    return [[p.cols for p in eps_greedy_game(random.Random(f'{seed_prefix}-{i}'), eps)] for i in range(n_games)]
+
+
 if __name__ == '__main__':
     import time
     t0 = time.time()

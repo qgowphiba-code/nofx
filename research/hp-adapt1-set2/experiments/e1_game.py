@@ -89,7 +89,11 @@ def validation(draw, n_games):
 def main():
     cfg = json.loads(Path(__import__('os').environ.get('HPX2_TRACK_B', ROOT / 'manifests' / 'track_b.json')).read_text())
     lam = cfg['lam_star'] or 0.75
-    run = Run('E1')
+    # HPX2_E1_DATA=guided: eps-greedy (0.3) depth-1 line-heuristic games instead of uniform random games.
+    # Random-game outcomes are near the noise floor on 5x4 (exact Bayes ceiling: skill 0.111) and af6670b
+    # rejects the A0 fit (validation_skill -0.036); guided games raise the ceiling to 0.209 (RESULTS.md).
+    data = __import__('os').environ.get('HPX2_E1_DATA', 'random')
+    run = Run('E1' if data == 'random' else 'E1g')
     c = connect(run)
     v = c.check_build('start')
     if not (SU.SUITES / 'game_e1.json').exists():
@@ -101,9 +105,10 @@ def main():
     for name, ev in (('heuristic', G.GameHeuristic()), ('neutral', G.GameNeutral())):
         results['baselines'][name] = {f'depth{d}': G.score(suite, ev, d) for d in (1, 2)}
     run.log('baselines', json.dumps(results['baselines']))
-    run.note(host=S.HOST, build=v, lam=lam, gamma=GAMMA, suite_sha256=json.loads((SU.SUITES / 'MANIFEST.json').read_text())['game_e1'])
+    run.note(host=S.HOST, build=v, lam=lam, gamma=GAMMA, data=data, suite_sha256=json.loads((SU.SUITES / 'MANIFEST.json').read_text())['game_e1'])
     for draw in (1, 2, 3):
-        games = G.episodes(600, random.Random(82001 + draw))
+        games = (G.episodes(600, random.Random(82001 + draw)) if data == 'random'
+                 else G.guided_episodes(600, f'e1g-{82001 + draw}'))
         val = validation(draw, len(games))
         out = {'n_games': len(games), 'games_sha256': sha256_json(games), 'arms': {}}
         d = c.create_domain('e1', 'all', draw)

@@ -46,6 +46,14 @@ Substrate rules found on af6670b during Track A:
 - **Exploratory:** BL-iter, the second round of lookahead targets, improves the depth-1 rate and corr(V\*) in every draw but is worse than BL(1,2) at depths 2 and 3 in every draw. A better one-step value does not by itself make a better leaf evaluator under deeper search. Track B's later generations iterate in the same way, so this is the pattern to watch there.
 - **Noise:** refitting A0 with only a different validation split moved its rate by 0.03 (T0.3: 0.777; A3 draw 1: 0.748, on the same rows). Single-draw differences under about 0.03 are within noise.
 
+### S1 tail: A3b, D1, E1
+- **A3b: the prediction fails.** On Eval-S at depth 1, BL(1,2) led A0 by **+0.036** (0.813 against 0.777) before own-policy data and trailed by **−0.012** after one own-policy generation (0.813 against 0.825). A0 gains about 0.05 from its own data and BL gains nothing. BL also collected weaker folds (1.42 against 1.72 contacts), which fits its lower depth-2 rate (0.825 against 0.879). This is set 1's failure mode, replicated with the documented blended targets.
+- **D1: GD → run D2.** Eval-S-2D, mean of 2 draws, depths 1 / 2 / 3: heuristic 0.639 / 0.796 / 0.847; A0 0.653 / 0.767 / 0.827; ROB 0.755 / 0.793 / **0.855**; BL 0.768 / **0.836** / 0.843; BLG **0.796** / 0.807 / 0.828. The depth-1 edge over the heuristic is larger in 2D (+0.157) than in 3D (+0.116). At depth 3 it is near zero in both. A0's greedy depth-1 folds trap often (6–7 of 49 contacts, against the heuristic's 22).
+- **E1 is not viable as specified.** Two fits were rejected (`candidate_failed_validation`):
+  - The first rejection exposed a bug in `hpx/game.py`: positions rebuilt from column strings lost their winner, so every target was 0.5. It is fixed and tested. The frozen game suite is unaffected.
+  - The second rejection is genuine: `validation_skill −0.036`. On this board, random-game outcomes are close to noise. The exact Bayes predictor V_rand reaches only **0.111** skill on the same validation games (0.005 in the first 6 moves, 0.315 after 12 pieces); the line heuristic reaches 0.045, and the solver value −0.43.
+  - **Remedy (deviation 11):** ε-greedy (ε 0.3) depth-1 line-heuristic games, with γ 0.99 kept. Their Bayes ceiling is **0.209**. They run as `E1g` after B1 lineage 1.
+
 ## Deviations from the plan, and why
 
 1. **Host.** The plan's default is production. This environment's key is rejected there (`401 Invalid bearer token`) and accepted on Fast-UAT, which the plan names as the alternative. Fast-UAT runs `af6670b`, the build set 1 and the docs' behavior checks used. Production runs `f5e1ab8`.
@@ -66,6 +74,7 @@ Substrate rules found on af6670b during Track A:
 7. **A3 grading.** Every arm is graded at depths 1–3 while it holds the candidate slot, rather than only the top three arms at depth 3. This avoids refits and costs about 2.5× the plan's A3 request estimate. A3 uses one domain per draw, with A0 installed as the assessor.
 8. **A2 reference model.** The robust model is installed, making it the warm-start source and the continuation reference. This follows the plan's wording that the cold arm keeps "the installed reference for the continuation targets".
 9. **A1 data.** Chain lengths cycle through 24..60. Held-out states come from 20 further chains, because the plan names no held-out set.
+11. **E1 data.** The plan specifies 600 *random* games per draw. Their outcomes are close to unlearnable on 5×4: the exact Bayes ceiling is a skill of 0.111, and af6670b rejects the A0 fit. E1g instead uses 600 ε-greedy line-heuristic games per draw (ε 0.3, depth 1, string seeds `e1g-<82001+draw>-<i>`), with the same arms, γ, suite and gate.
 10. **A1 R2 not fitted.** The projected representation rejects these object graphs (`dataset feature vocabulary exceeds the configured surface limits`). The decision rule picks the cheapest representation that qualifies. R1 qualifies and shares the object-graph domain, so it is cheaper than R2, and r\* is unaffected. Track B uses the object graph with the 14 features as conditions.
 
 ## Baseline cards (frozen, `suites/`)
