@@ -12,7 +12,7 @@ The plan is in [`plan/EXPERIMENT_PLAN.md`](plan/EXPERIMENT_PLAN.md). Each run ha
 | T0.2 | done | 2.19 predict calls/s (125 L50 inputs, 581 KiB, 2 in flight, p50 0.84 s, 0 errors); tiny fit 3.4 s; 413 between 976 and 1029 KiB ("exceeds 1 MiB"); depth-1 native plan value equals the predicted leaf max | 221 | `runs/T0.2/20261106T194844Z` |
 | T0.3 | done (directional) | Eval-S depth-1 best-move rate, set-1 6-chain subset / all 24: **A0 0.735 / 0.777** (set 1: 0.662), **ROB 0.808 / 0.818** (set 1: 0.821); heuristic 0.720 / 0.695. A replicate A0 fit had a different sha but identical predictions (max \|Δ\| = 0 on 512 inputs) | 530 | `runs/T0.3/20261106T200218Z` |
 | T0.4 | **PASS** | 390/390 cases (100 short + 30 long states × depths 1–3): same action, \|Δvalue\| = 0.0 exactly. Client-side planning is used for evaluation | 447 | `runs/T0.4/` |
-| A1 | running | | | |
+| A1 | done, **r\* = R1** | R0 (object graph, 4 conditions): its predicted best child is among the heuristic's best on 0.995 of 1,000 held-out states (0.980 of informative ones), with MAE 0.27 contacts, but depth-3 planning falls **below the heuristic band**: Liu 124 (p5 125); Eval-L(20) 417 against a heuristic 444.1 [429–458]. R1 (+ the 14 `features()` as conditions): agreement 0.999, **in band**: Liu 125, Eval-L(20) 440. R2 (projected) was **refused** at its first upload: `422 dataset feature vocabulary exceeds the configured surface limits`. Fits took about 250 s each for 6.7k long-chain rows | ≈1.6k | `runs/A1/20261106T201620Z` |
 | A3 | queued | | | |
 | A2 | queued | | | |
 
@@ -44,6 +44,7 @@ The plan is in [`plan/EXPERIMENT_PLAN.md`](plan/EXPERIMENT_PLAN.md). Each run ha
 7. **A3 grading.** Every arm is graded at depths 1–3 while it holds the candidate slot, rather than only the top three arms at depth 3. This avoids refits and costs about 2.5× the plan's A3 request estimate. A3 uses one domain per draw, with A0 installed as the assessor.
 8. **A2 reference model.** The robust model is installed, making it the warm-start source and the continuation reference. This follows the plan's wording that the cold arm keeps "the installed reference for the continuation targets".
 9. **A1 data.** Chain lengths cycle through 24..60. Held-out states come from 20 further chains, because the plan names no held-out set.
+10. **A1 R2 not fitted.** The projected representation rejects these object graphs (`dataset feature vocabulary exceeds the configured surface limits`). The decision rule picks the cheapest representation that qualifies. R1 qualifies and shares the object-graph domain, so it is cheaper than R2, and r\* is unaffected. Track B uses the object graph with the 14 features as conditions.
 
 ## Baseline cards (frozen, `suites/`)
 
@@ -52,4 +53,11 @@ The plan is in [`plan/EXPERIMENT_PLAN.md`](plan/EXPERIMENT_PLAN.md). Each run ha
 | Eval-Liu (7) | 80.2 / 118.4 / **134.3 ± 5.1** / 140.2 / 141.4 | 125–142 | 137.4 | 30.8 | 131.8 / 142.7 / 150.9 / 155.0 |
 | Eval-L (40) | 578.3 / 878.7 / **975.2 ± 12.8** / 1029.2 / 1048.5 | 956–994 | 1010.8 | 189.0 | 971.7 / 1039.4 / 1083.7 / 1125.4 |
 
-These agree with the plan's Appendix C (133.6 ± 4.6; 126–141) to within tie-break seed noise.
+| 2D panel (7) | 47.0 / 70.1 / **81.2 ± 4.4** / 89.3 / 91.0 (trapped 7.3% / 2.1% / 0.4% at depths 1–3) | 75–88 | 81.1 | 27.6 | 83.1 / 91.2 / 97.9 / 102.7 |
+| Eval-L-2D (40) | 287.4 / 475.1 / **538.9 ± 16.2** / 579.4 / 605.3 (trapped 15.8% / 4.5% / 1.9%) | 508–562 | 530.2 | 167.9 | 531.9 / 601.1 / 639.4 / 669.5 |
+
+These agree with the plan's Appendix C to within tie-break seed noise: Liu 133.6 ± 4.6 (126–141), and 80.8 ± 4.3 on the 2D panel. The 2D panel's best-known total is 120.
+
+Other frozen suites:
+- **Eval-S-2D** (12 chains, 678 states, 341 informative): the heuristic's best-move rate is 0.639 / 0.796 / 0.847 at depths 1–3.
+- **game_e1** (800 informative positions on the 5×4 board): the line heuristic's best-move rate is 0.795 at depth 1 and 0.808 at depth 2, with W/D/L accuracy 0.47. Neutral-leaf search scores 0.494 and 0.616.
