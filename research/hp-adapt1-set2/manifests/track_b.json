@@ -1,0 +1,27 @@
+{
+ "a1_run": "runs/A1/20261106T201620Z/results.json",
+ "a2_run": "runs/A2/20261106T212002Z/results.json",
+ "a3_draw_files": [
+  "runs/A3/20261106T204511Z/results_draw1.json",
+  "runs/A3/20261106T205829Z/results_draw2.json",
+  "runs/A3/20261106T205829Z/results_draw3.json"
+ ],
+ "a3_mean_rates_depth1": {
+  "A0": 0.7718446601941747,
+  "BL(0.5,2)": 0.7815533980582524,
+  "BL(1,2)": 0.7977346278317152,
+  "BL-iter": 0.8090614886731391,
+  "BLG": 0.8106796116504854,
+  "ROB": 0.7855987055016181
+ },
+ "bl_beats_a0": true,
+ "conditions": "features",
+ "d_star": 2,
+ "f_star": "cold",
+ "fit_overrides": {},
+ "lam_star": 1.0,
+ "needs_attention": [],
+ "r_star": "R1",
+ "representation": "object_graph",
+ "use_siblings": false
+}

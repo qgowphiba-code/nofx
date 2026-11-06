@@ -14,7 +14,7 @@ The plan is in [`plan/EXPERIMENT_PLAN.md`](plan/EXPERIMENT_PLAN.md). Each run ha
 | T0.4 | **PASS** | 390/390 cases (100 short + 30 long states × depths 1–3): same action, \|Δvalue\| = 0.0 exactly. Client-side planning is used for evaluation | 447 | `runs/T0.4/` |
 | A1 | done, **r\* = R1** | R0 (object graph, 4 conditions): its predicted best child is among the heuristic's best on 0.995 of 1,000 held-out states (0.980 of informative ones), with MAE 0.27 contacts, but depth-3 planning falls **below the heuristic band**: Liu 124 (p5 125); Eval-L(20) 417 against a heuristic 444.1 [429–458]. R1 (+ the 14 `features()` as conditions): agreement 0.999, **in band**: Liu 125, Eval-L(20) 440. R2 (projected) was **refused** at its first upload: `422 dataset feature vocabulary exceeds the configured surface limits`. Fits took about 250 s each for 6.7k long-chain rows | ≈1.6k | `runs/A1/20261106T201620Z` |
 | A3 | done: **λ\* = 1, d\* = 2, no siblings** | Mean Eval-S best-move rate over 3 draws, depths 1 / 2 / 3: heuristic 0.695 / 0.854 / 0.938; A0 0.772 / 0.888 / 0.935; ROB 0.786 / 0.891 / 0.933; BL(0.5,2) 0.782; **BL(1,2) 0.798** / 0.864 / 0.943; BL-iter 0.809 / 0.856 / 0.929; **BLG 0.811 / 0.901 / 0.952**. Draw 1 also ran BL(0.5,1) 0.765, BL(0.75,1) 0.769, BL(1,1) 0.774 (plan predicted 0.762) and BL(0.75,2) 0.767. Lookahead targets raise corr(V\*) (A0 0.38 → BL(1,2) 0.44 → BL-iter 0.57, means over draws) and lower corr(V_rand) | 5.1k | `runs/A3/20261106T204511Z` (draw 1), `runs/A3/20261106T205829Z` (draws 2–3) |
-| A2 | queued | | | |
+| A2 | done: **f\* = cold** | ROB rebuilt on a fresh domain scored 0.818 exactly, as in T0.3: fits are reproducible across domains. On Stage A rows plus 96 own-policy folds (ROB collector, mean 1.34 contacts), depth-1 / 2 / 3 rates were: warm_pred (set 1's setting) 0.816 / 0.900 / 0.961, selected epoch 117 with `optimization_applied: true`, so **set 1's epoch-0 behaviour did not reproduce**; warm_retain 0.830 / 0.891 / 0.947 (epoch 89); cold 0.825 / 0.898 / 0.944 (epoch 106); cold_240 0.825 / 0.913 / 0.951 (epoch 211). warm_adapt was **refused**: `adaptation_prediction requires a dense linear/mlp_v2 warm start`. The spread is 0.015, under 0.03, so the simplest setting (cold) is chosen | ≈1.4k | `runs/A2/20261106T212002Z` |
 
 ## Gate decisions
 
@@ -23,6 +23,20 @@ The plan is in [`plan/EXPERIMENT_PLAN.md`](plan/EXPERIMENT_PLAN.md). Each run ha
 - **Fit latency:** 3.4 s for 50 rows; 11 s for 816 rows (A0); 22 s for 2.2k rows with continuation targets (ROB). The plan's fit-time budget is generous.
 - **Calibration (T0.3):** ROB reproduces set 1 within noise (0.808 vs 0.821; SE about 0.03 on 151 decisions). A0 is 0.07 higher than set 1's 0.662, about 2.3 SE. Following the plan, set-1 numbers are treated as **directional only**, and T0.3's numbers are the baseline.
 - **Planning (T0.4):** client-side MAX search over `value/predict` leaves is bit-identical to native planning, so evaluations use the batched client-side planner (C-plan).
+
+### G1 (Track B manifest, `manifests/track_b.json`)
+| Setting | Value | From |
+|---|---|---|
+| r\* | R1: object graph + the 14 `features()` as conditions | A1 |
+| f\* | cold (`warm_start false`), set-1 options, 120 epochs | A2 |
+| λ\*, d\* | 1.0, 2 | A3 |
+| Sibling rows | no | A3 |
+| Fallback (A0 against ROB) | not triggered | A3 |
+
+Substrate rules found on af6670b during Track A:
+- **A fit that selects `continuation` rows cannot be installed.** It returns 422 `selected observation continuation requires install=false or application-outcome promotion`. Continuation fits therefore stay candidates, with the installed model as their reference.
+- **`selection_objective: adaptation_prediction` needs a dense `linear` or `mlp_v2` warm start.** It is refused for `object_value`.
+- **The `projected` representation refuses these object graphs:** `dataset feature vocabulary exceeds the configured surface limits`.
 
 ### A3 decision (input to G1)
 - **λ\*, d\* = 1, 2.** BL(1,2) is the best arm in the BL(λ, d) grid, both on the mean and in every draw. In each draw its depth-1 lead over A0 was +0.041, +0.031 and +0.005, a mean of +0.026.
