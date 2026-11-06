@@ -74,6 +74,17 @@ Substrate rules found on af6670b during Track A:
 7. **A3 grading.** Every arm is graded at depths 1–3 while it holds the candidate slot, rather than only the top three arms at depth 3. This avoids refits and costs about 2.5× the plan's A3 request estimate. A3 uses one domain per draw, with A0 installed as the assessor.
 8. **A2 reference model.** The robust model is installed, making it the warm-start source and the continuation reference. This follows the plan's wording that the cold arm keeps "the installed reference for the continuation targets".
 9. **A1 data.** Chain lengths cycle through 24..60. Held-out states come from 20 further chains, because the plan names no held-out set.
+12. **B1 fit size.** af6670b stops training jobs after about 300 s of server time. Two failure labels appeared: `training_failed` and `interrupted`/`result_not_recorded`. Server time is not linear in row-epochs:
+
+    | Rows × epochs | Server time |
+    |---|---|
+    | 5,952 × 120 | 208–217 s |
+    | 11,904 × 60 | 224–239 s |
+    | 11,904 × 120 | failed at 302–307 s |
+    | 17,856 × 40 | cut off at about 320 s |
+
+    B1 therefore (a) scales epochs to `min(120, 714,240 // rows)` and (b) caps rows per fit at 12,000 by dropping the oldest generation first: at g2 the g0 random-fold rows, the plan's own §12 mitigation. g2 therefore fits on the g1 and g2 own-policy rows at 60 epochs. Earlier lineage-1 attempts that hit the cap are kept under `runs/B1/` as records.
+13. **G2 fired in lineage 1.** On Eval-Liu at depth 3, BL went from 126 at g0 to **105 at g1**, and A0 from 133 to 120. BL trails by 15, more than the futility threshold of 8, so lineages 2–3 run **A0 only**, and R1 is reported as stopped for futility, with lineage 1's g2 numbers as exploratory evidence.
 11. **E1 data.** The plan specifies 600 *random* games per draw. Their outcomes are close to unlearnable on 5×4: the exact Bayes ceiling is a skill of 0.111, and af6670b rejects the A0 fit. E1g instead uses 600 ε-greedy line-heuristic games per draw (ε 0.3, depth 1, string seeds `e1g-<82001+draw>-<i>`), with the same arms, γ, suite and gate.
 10. **A1 R2 not fitted.** The projected representation rejects these object graphs (`dataset feature vocabulary exceeds the configured surface limits`). The decision rule picks the cheapest representation that qualifies. R1 qualifies and shares the object-graph domain, so it is cheaper than R2, and r\* is unaffected. Track B uses the object graph with the 14 features as conditions.
 
