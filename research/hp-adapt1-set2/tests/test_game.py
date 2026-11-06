@@ -22,6 +22,22 @@ class TestGame(unittest.TestCase):
         self.assertTrue(p.terminal)
         self.assertEqual(p.value(), 1.0)
 
+    def test_rebuilt_positions_keep_their_result(self):
+        """E1 stores games as column strings; a rebuilt finished game must keep its winner and value."""
+        rng = random.Random(9)
+        results = set()
+        for _ in range(200):
+            game = G.random_game(rng)
+            end = game[-1]
+            rebuilt = G.Pos(end.cols)
+            self.assertEqual(rebuilt.winner(), end.winner())
+            self.assertEqual(rebuilt.value(), end.value())
+            self.assertTrue(rebuilt.terminal)
+            results.add(end.value())
+            for p in game[:-1]:
+                self.assertFalse(G.Pos(p.cols).terminal)
+        self.assertEqual(results, {0.0, 0.5, 1.0})
+
     def test_winner_matches_bruteforce(self):
         rng = random.Random(3)
         for _ in range(300):

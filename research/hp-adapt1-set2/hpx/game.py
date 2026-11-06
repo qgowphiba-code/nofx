@@ -51,17 +51,21 @@ class Pos:
         return col[r] if r < len(col) else None
 
     def winner(self):
-        """'X', 'O' or None. Only the last move can complete a line."""
+        """'X', 'O' or None. With a known last move only its lines can be complete; a position rebuilt from
+        column strings (last unknown) scans every line."""
         if self._winner is None:
             self._winner = ''
             if self.last is not None:
                 c = self.last
                 r = len(self.cols[c]) - 1
-                p = self.cols[c][r]
-                for ln in LINES_THROUGH[(c, r)]:
-                    if all(self.cell(x, y) == p for x, y in ln):
-                        self._winner = p
-                        break
+                cand = LINES_THROUGH[(c, r)]
+            else:
+                cand = LINES
+            for ln in cand:
+                first = self.cell(*ln[0])
+                if first and all(self.cell(x, y) == first for x, y in ln[1:]):
+                    self._winner = first
+                    break
         return self._winner or None
 
     @property

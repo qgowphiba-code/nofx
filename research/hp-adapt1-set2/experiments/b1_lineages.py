@@ -28,25 +28,45 @@ from hpx.evaluate import long_eval, model_evaluator  # noqa: E402
 from hpx.hpenv import BASIC, FEATURES, Fold  # noqa: E402
 from hpx.planner import Blend, run_folds  # noqa: E402
 from hpx.runlog import ROOT, Run, connect, sha256_json  # noqa: E402
-from hpx.vendor import lattice_env, liu_panel  # noqa: E402
+from hpx.vendor import lattice_env  # noqa: E402
 
-TRACK_B = Path(__import__('os').environ.get('HPX2_TRACK_B', ROOT / 'manifests' / 'track_b.json'))
-LENGTHS = [24, 32, 40, 48, 56, 60] * 8
+_ENV = __import__('os').environ
+TRACK_B = Path(_ENV.get('HPX2_TRACK_B', ROOT / 'manifests' / 'track_b.json'))
 LEAF_LAMBDAS = (0.25, 0.5, 0.75)
+# HPX2_DIM=2 runs D2 (plan section 8: B1's design on 2D chains of length 24-64); 3 (default) is B1.
+DIM = int(_ENV.get('HPX2_DIM', '3'))
+PROFILE = {
+    3: {'exp': 'B1', 'tag': 'b1', 'lengths': [24, 32, 40, 48, 56, 60] * 8, 'seed_chains': 80200, 'seed_g0': 80300,
+        'seed_collect': 80400, 'suite_l': 'eval_l', 'suite_panel': 'eval_liu', 'suite_s': 'eval_s'},
+    2: {'exp': 'D2', 'tag': 'd2', 'lengths': [24, 32, 40, 48, 56, 64] * 8, 'seed_chains': 81200, 'seed_g0': 81300,
+        'seed_collect': 81400, 'suite_l': 'eval_l_2d', 'suite_panel': 'eval_liu_2d', 'suite_s': 'eval_s_2d'},
+}[DIM]
+LENGTHS = PROFILE['lengths']
+SMALL = bool(_ENV.get('HPX2_B1_SMALL'))   # mock smoke test only: 6 chains, 4 Eval-L chains
+
+
+def panel_seqs():
+    return SU.load(PROFILE['suite_panel'])['sequences']
+
+
+def long_seqs():
+    seqs = SU.load(PROFILE['suite_l'])['sequences']
+    return seqs[:4] if SMALL else seqs
 
 
 def lineage_chains(lineage):
-    excl = {lattice_env.sequence_key(s) for s in SU.load('eval_l')['sequences'] + [s for _, s in liu_panel()]}
+    excl = {lattice_env.sequence_key(s) for s in SU.load(PROFILE['suite_l'])['sequences'] + panel_seqs()}
     for other in (1, 2, 3):
         if other < lineage:
             excl |= {lattice_env.sequence_key(s) for s in lineage_chains(other)}
-    return lattice_env.sequences(80200 + lineage, LENGTHS, excluded=excl)
+    out = lattice_env.sequences(PROFILE['seed_chains'] + lineage, LENGTHS, excluded=excl)
+    return out[:6] if SMALL else out
 
 
 def probe_inputs(conditions):
-    suite = SU.load('eval_s')
+    suite = SU.load(PROFILE['suite_s'])
     seqs = {c['ci']: c['sequence'] for c in suite['chains']}
-    return [Fold(seqs[d['ci']], 3, d['chain']).observation(conditions) for d in suite['decisions'][::14][:64]]
+    return [Fold(seqs[d['ci']], DIM, d['chain']).observation(conditions) for d in suite['decisions'][::14][:64]]
 
 
 class Arm:
@@ -64,7 +84,7 @@ class Arm:
         self.run.log(f'[l{self.lineage} {self.name}]', *m)
 
     def setup(self):
-        self.domain = self.c.create_domain('b1', self.name.lower(), self.lineage)
+        self.domain = self.c.create_domain(PROFILE['tag'], self.name.lower(), self.lineage)
         self.c.configure(self.domain, S.value_config(self.cfg['representation']))
         self.out['domain'] = self.domain
 
@@ -79,7 +99,7 @@ class Arm:
     def fit(self, g):
         val = T.validation_episodes(self.episodes, fit_index=300 + 10 * self.lineage + g)
         opts = S.fit_options(self.cfg['base'], validation_episode_ids=val, **self.cfg['fit_overrides'])
-        fit = self.c.train(self.domain, f'b1-l{self.lineage}-{self.name}-g{g}', opts, install=False,
+        fit = self.c.train(self.domain, f'{PROFILE["tag"]}-l{self.lineage}-{self.name}-g{g}', opts, install=False,
                            observation_ids=self.row_ids, name=f'l{self.lineage}-{self.name}-g{g}')
         sha = fit['sha256']
         pv = self.c.predict(self.domain, self.probe, 'candidate', sha)
@@ -94,15 +114,16 @@ class Arm:
     def collect(self, g, sha):
         """144 own-policy folds at depth 2, eps 0.15, by the previous candidate; u recorded at every step."""
         chains = self.cfg['chains']
-        master = random.Random(80400 + 10 * self.lineage + g)
+        master = random.Random(PROFILE['seed_collect'] + 10 * self.lineage + g)
         rngs = [random.Random(master.random()) for _ in range(len(chains) * 3)]
         seqs = [chains[i // 3] for i in range(len(chains) * 3)]
         ev = self.evaluator(sha)
-        res = run_folds(seqs, 2, ev, rngs=rngs, eps=0.15, record=True)
+        res = run_folds(seqs, 2, ev, rngs=rngs, eps=0.15, record=True, dim=DIM)
         eps, u2 = [], {}
         for i, r in enumerate(res):
             chs = [tuple(map(tuple, s['chain'])) for s in r['trajectory']] + [tuple(map(tuple, r['chain']))]
-            e = T.Episode(f'b1l{self.lineage}{self.name}-g{g}-c{i // 3}-f{i % 3}', seqs[i], chs, generation=g, collector=sha)
+            e = T.Episode(f'{PROFILE["tag"]}l{self.lineage}{self.name}-g{g}-c{i // 3}-f{i % 3}', seqs[i], chs, dim=DIM,
+                          generation=g, collector=sha)
             eps.append(e)
             for k, s in enumerate(r['trajectory']):
                 u2[(e.id, k)] = s['u']
@@ -120,7 +141,7 @@ class Arm:
 
 def eval_liu(arm, sha, run_seed=0):
     ev = arm.evaluator(sha)
-    r = long_eval(ev, [s for _, s in liu_panel()], 3, seed=run_seed)
+    r = long_eval(ev, panel_seqs(), 3, seed=run_seed, dim=DIM)
     return r, ev
 
 
@@ -166,22 +187,22 @@ def run_arm_generations(arm, g0_eps, g0_u, a0_g0_sha, results, lock, gate):
 
 def final_eval(arm, sha):
     """g2: Eval-L and Eval-Liu at depth 3; B2 leaf blend (dev Liu -> test Eval-L); depths 1, 2 on Eval-L (C1)."""
-    evl = SU.load('eval_l')['sequences']
-    liu = [s for _, s in liu_panel()]
+    evl = long_seqs()
+    liu = panel_seqs()
     ev = arm.evaluator(sha)
-    fin = {'sha256': sha, 'eval_l_depth3': long_eval(ev, evl, 3), 'liu_depth3': long_eval(ev, liu, 3)}
+    fin = {'sha256': sha, 'eval_l_depth3': long_eval(ev, evl, 3, dim=DIM), 'liu_depth3': long_eval(ev, liu, 3, dim=DIM)}
     arm.log(f'g2 Eval-L depth 3 total {fin["eval_l_depth3"]["total"]}, Eval-Liu {fin["liu_depth3"]["total"]}')
     blend_dev = {}
     for lam in LEAF_LAMBDAS:
-        blend_dev[str(lam)] = long_eval(Blend(ev, lam), liu, 3)
+        blend_dev[str(lam)] = long_eval(Blend(ev, lam), liu, 3, dim=DIM)
         arm.log(f'B2 leaf blend {lam} on Eval-Liu: {blend_dev[str(lam)]["total"]}')
     best = max(LEAF_LAMBDAS, key=lambda x: blend_dev[str(x)]['total'])
     fin['blend_dev_liu'] = blend_dev
     fin['lam_leaf'] = best
-    fin['blend_test_eval_l'] = long_eval(Blend(ev, best), evl, 3)
+    fin['blend_test_eval_l'] = long_eval(Blend(ev, best), evl, 3, dim=DIM)
     arm.log(f'B2 chosen lam_leaf {best}: Eval-L {fin["blend_test_eval_l"]["total"]}')
     for d in (1, 2):
-        fin[f'eval_l_depth{d}'] = long_eval(ev, evl, d)
+        fin[f'eval_l_depth{d}'] = long_eval(ev, evl, d, dim=DIM)
     fin['predict_stats'] = dict(ev.stats)
     arm.out['final'] = fin
 
@@ -192,7 +213,7 @@ def main():
     ap.add_argument('--arms', default='A0,BL')
     a = ap.parse_args()
     cfg = json.loads(TRACK_B.read_text())
-    run = Run('B1', name=f'l{a.lineage}-' + __import__('hpx.runlog', fromlist=['stamp']).stamp())
+    run = Run(PROFILE['exp'], name=f'l{a.lineage}-' + __import__('hpx.runlog', fromlist=['stamp']).stamp())
     c = connect(run)
     v = c.check_build('start')
     chains = lineage_chains(a.lineage)
@@ -204,13 +225,16 @@ def main():
     if 'BL' in names:
         arms.append(Arm('BL', cfg['lam_star'], cfg['d_star'], arm_cfg, a.lineage, c, run))
     run.note(host=S.HOST, build=v, track_b=cfg, chains_sha256=sha256_json(chains), lineage=a.lineage,
-             seeds={'chains': 80200 + a.lineage, 'g0_folds': 80300 + a.lineage, 'collectors': [80400 + 10 * a.lineage + g for g in (1, 2)]})
-    results = {'lineage': a.lineage, 'arms': {}, 'heuristic_card_liu': SU.load('baselines_eval_liu')['heuristic']['3']['mean_total']}
+             dim=DIM, profile=PROFILE, small=SMALL,
+             seeds={'chains': PROFILE['seed_chains'] + a.lineage, 'g0_folds': PROFILE['seed_g0'] + a.lineage,
+                    'collectors': [PROFILE['seed_collect'] + 10 * a.lineage + g for g in (1, 2)]})
+    results = {'lineage': a.lineage, 'dim': DIM, 'arms': {},
+               'heuristic_card_liu': SU.load('baselines_' + PROFILE['suite_panel'])['heuristic']['3']['mean_total']}
     lock = threading.Lock()
     try:
         for arm in arms:
             arm.setup()
-        g0_eps = T.random_episodes(chains, 3, random.Random(80300 + a.lineage), f'b1l{a.lineage}-g0')
+        g0_eps = T.random_episodes(chains, 3, random.Random(PROFILE['seed_g0'] + a.lineage), f'{PROFILE["tag"]}l{a.lineage}-g0', dim=DIM)
         a0 = arms[0]
         a0.add(g0_eps)
         sha0, rep0, _ = a0.fit(0)
