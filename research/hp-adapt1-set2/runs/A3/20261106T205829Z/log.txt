@@ -1,0 +1,21 @@
+[     0.0s] run A3 -> /home/user/nofx/research/hp-adapt1-set2/runs/A3/20261106T205829Z
+[     0.2s] draw 2: BL arms from draw 1 ranking ['BL(1,2)', 'BL(0.5,2)']
+[    64.0s] [draw 2] A0           rate d1 0.777 (set1 0.735) d2 0.893 d3 0.930 | corr V* 0.363 V_rand 0.887 | greedy 38/57 | epoch 114 | 5.4s
+[   147.1s] [draw 2] ROB          rate d1 0.760 (set1 0.702) d2 0.888 d3 0.917 | corr V* 0.399 V_rand 0.861 | greedy 32/57 | epoch 105 | 21.7s
+[   216.1s] [draw 2] BL(1,2)      rate d1 0.808 (set1 0.768) d2 0.879 d3 0.942 | corr V* 0.389 V_rand 0.740 | greedy 45/57 | epoch 118 | 5.5s
+[   273.8s] [draw 2] BL(0.5,2)    rate d1 0.779 (set1 0.722) d2 0.845 d3 0.951 | corr V* 0.362 V_rand 0.822 | greedy 40/57 | epoch 77 | 5.3s
+[   273.8s] [draw 2] best BL this draw: BL(1,2)
+[   279.6s] [draw 2] refit of best BL identical: False
+[   347.9s] [draw 2] BL-iter      rate d1 0.808 (set1 0.788) d2 0.828 d3 0.917 | corr V* 0.521 V_rand 0.535 | greedy 46/57 | epoch 120 | 5.4s
+[   450.1s] [draw 2] BLG          rate d1 0.796 (set1 0.795) d2 0.900 d3 0.951 | corr V* 0.338 V_rand 0.808 | greedy 38/57 | epoch 118 | 26.4s
+[   456.0s] [draw 2] deleted hpx2-a3-all-2-20261106t205829z-2743be
+[   456.1s] draw 3: BL arms from draw 1 ranking ['BL(1,2)', 'BL(0.5,2)']
+[   512.4s] [draw 3] A0           rate d1 0.791 (set1 0.735) d2 0.903 d3 0.944 | corr V* 0.465 V_rand 0.911 | greedy 34/57 | epoch 100 | 5.5s
+[   590.8s] [draw 3] ROB          rate d1 0.813 (set1 0.762) d2 0.917 d3 0.956 | corr V* 0.482 V_rand 0.885 | greedy 42/57 | epoch 120 | 20.9s
+[   660.3s] [draw 3] BL(1,2)      rate d1 0.796 (set1 0.762) d2 0.879 d3 0.949 | corr V* 0.462 V_rand 0.751 | greedy 41/57 | epoch 120 | 6.1s
+[   724.3s] [draw 3] BL(0.5,2)    rate d1 0.782 (set1 0.775) d2 0.896 d3 0.951 | corr V* 0.475 V_rand 0.877 | greedy 45/57 | epoch 91 | 5.4s
+[   724.3s] [draw 3] best BL this draw: BL(1,2)
+[   731.4s] [draw 3] refit of best BL identical: False
+[   801.5s] [draw 3] BL-iter      rate d1 0.806 (set1 0.801) d2 0.874 d3 0.944 | corr V* 0.575 V_rand 0.617 | greedy 37/57 | epoch 116 | 5.4s
+[   905.3s] [draw 3] BLG          rate d1 0.818 (set1 0.854) d2 0.903 d3 0.951 | corr V* 0.449 V_rand 0.851 | greedy 43/57 | epoch 113 | 27.7s
+[   913.2s] [draw 3] deleted hpx2-a3-all-3-20261106t210605z-013787

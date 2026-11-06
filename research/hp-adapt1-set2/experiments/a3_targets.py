@@ -145,8 +145,15 @@ def summarize(paths):
     mean = {n: st.mean(rate(d['arms'][n]['grade']) for d in draws) for n in names}
     bls = [n for n in names if n.startswith('BL(')]
     best = max(bls, key=mean.get)
+    # plan 5 A3: "If no BL arm beats A0 by at least 0.03 averaged over draws, Track B runs A0 against
+    # ROB-style targets instead." The plan's BL arms are the BL(lam, d) grid, BLG ("the best BL plus
+    # sibling rows") and BL-iter; both the grid-only and the full readings are reported.
+    family = [n for n in names if n.startswith('BL')]
+    deltas = {n: mean[n] - mean['A0'] for n in family}
     return {'mean_rate_depth1': mean, 'lam_d_star': best,
-            'bl_beats_a0_by_0.03': mean[best] - mean['A0'] >= 0.03,
+            'bl_grid_beats_a0_by_0.03': mean[best] - mean['A0'] >= 0.03,
+            'bl_arm_deltas_vs_a0': deltas,
+            'bl_beats_a0_by_0.03': any(d >= 0.03 for d in deltas.values()),
             'use_siblings': mean.get('BLG', 0) - mean[best] >= 0.03}
 
 
