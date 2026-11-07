@@ -1,0 +1,36 @@
+held-out after 0 updates: mean J 27.694 (base alone 27.694)
+update 1: selected 0 gain [-0.00012484712833438216] calls 294
+update 2: selected 2 gain [0.0022997628693529615] calls 552
+update 3: selected 2 gain [6.364022671845326e-06] calls 810
+update 4: selected 1 gain [0.0011239852966840047] calls 1068
+update 5: selected 7 gain [0.008524353564110854] calls 1326
+held-out after 5 updates: mean J 29.008 (base alone 27.694)
+update 6: selected 2 gain [0.012075020146161575] calls 1617
+update 7: selected 0 gain [-0.0013552129742799846] calls 1875
+update 8: selected 2 gain [8.627366680680204e-05] calls 2133
+update 9: selected 3 gain [0.006263550520536176] calls 2391
+update 10: selected 2 gain [0.0022205601035215627] calls 2649
+held-out after 10 updates: mean J 28.758 (base alone 27.694)
+update 11: selected 5 gain [0.0006228395029311828] calls 2940
+update 12: selected 0 gain [-0.005862597964285898] calls 3198
+update 13: selected 1 gain [0.0005497835529070239] calls 3456
+update 14: selected 1 gain [0.004260178702891304] calls 3714
+update 15: selected 4 gain [0.004449242734609671] calls 3972
+update 16: selected 7 gain [0.01993359606857592] calls 4230
+update 17: selected 0 gain [-0.008613178372980368] calls 4488
+update 18: selected 0 gain [-0.002592712598129099] calls 4746
+update 19: selected 2 gain [0.0021634166100457097] calls 5004
+update 20: selected 2 gain [0.010302962323808118] calls 5262
+held-out after 20 updates: mean J 29.348 (base alone 27.694)
+update 21: selected 0 gain [-0.005970341413377489] calls 5553
+update 22: selected 7 gain [0.0008845571696537435] calls 5811
+update 23: selected 1 gain [0.005254792546781073] calls 6069
+update 24: selected 0 gain [-0.021032139038398512] calls 6327
+update 25: selected 6 gain [0.0016931624322413796] calls 6585
+update 26: selected 5 gain [0.003750805881168273] calls 6843
+update 27: selected 0 gain [-3.354784001952105e-05] calls 7101
+update 28: selected 0 gain [-0.0003291144152883785] calls 7359
+update 29: selected 3 gain [0.004224781359649099] calls 7617
+update 30: selected 3 gain [0.001801130789720884] calls 7875
+held-out after 30 updates: mean J 30.122 (base alone 27.694)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-ref-pr-quadratic-20261107034646-a29214", "status": "success"}, "readback": 404}

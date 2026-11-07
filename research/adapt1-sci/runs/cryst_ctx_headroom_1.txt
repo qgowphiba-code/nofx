@@ -1,0 +1,13 @@
+{"ctx": {"seed_frac": 0.012, "seed_size": 76.106, "T0": 50.612}, "nominal_opt_here": 0.848, "linear": 0.671, "ctx_opt": 0.844}
+{"ctx": {"seed_frac": 0.037, "seed_size": 75.34, "T0": 49.118}, "nominal_opt_here": 0.965, "linear": 0.937, "ctx_opt": 0.969}
+{"ctx": {"seed_frac": 0.024, "seed_size": 135.274, "T0": 50.998}, "nominal_opt_here": 0.669, "linear": 0.465, "ctx_opt": 0.669}
+{"ctx": {"seed_frac": 0.006, "seed_size": 72.654, "T0": 45.347}, "nominal_opt_here": 0.704, "linear": 0.425, "ctx_opt": 0.688}
+{"ctx": {"seed_frac": 0.022, "seed_size": 64.208, "T0": 51.767}, "nominal_opt_here": 0.962, "linear": 0.925, "ctx_opt": 0.962}
+{"ctx": {"seed_frac": 0.009, "seed_size": 92.612, "T0": 50.957}, "nominal_opt_here": 0.675, "linear": 0.402, "ctx_opt": 0.638}
+{"ctx": {"seed_frac": 0.035, "seed_size": 101.414, "T0": 47.573}, "nominal_opt_here": 0.896, "linear": 0.823, "ctx_opt": 0.895}
+{"ctx": {"seed_frac": 0.016, "seed_size": 140.474, "T0": 51.343}, "nominal_opt_here": 0.531, "linear": 0.3, "ctx_opt": 0.541}
+{"ctx": {"seed_frac": 0.031, "seed_size": 128.975, "T0": 45.62}, "nominal_opt_here": 0.76, "linear": 0.614, "ctx_opt": 0.76}
+{"ctx": {"seed_frac": 0.028, "seed_size": 82.377, "T0": 47.88}, "nominal_opt_here": 0.93, "linear": 0.873, "ctx_opt": 0.928}
+{"ctx": {"seed_frac": 0.016, "seed_size": 132.441, "T0": 46.428}, "nominal_opt_here": 0.564, "linear": 0.339, "ctx_opt": 0.563}
+{"ctx": {"seed_frac": 0.03, "seed_size": 151.878, "T0": 48.044}, "nominal_opt_here": 0.646, "linear": 0.46, "ctx_opt": 0.637}
+{"compound": 1, "nominal_opt": 0.81, "mean_gap_nominal_vs_ctx_opt": -0.0047, "mean_nominal_here": 0.763, "mean_ctx_opt": 0.758}

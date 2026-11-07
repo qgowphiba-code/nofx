@@ -1,0 +1,11 @@
+{
+ "domain_id": "sci-rxn-ctx-thompson-20261107030438-601e5d",
+ "arm": "ctx",
+ "exploration": "thompson",
+ "episodes": 40,
+ "budget": 20,
+ "overrides": 381,
+ "feedback_gaps": 0,
+ "api_calls": 1602,
+ "api_seconds": 1018.5
+}

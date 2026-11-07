@@ -1,0 +1,11 @@
+{"impurity": 0.86, "nominal_opt_here": 0.397, "ctx_opt": 0.377}
+{"impurity": 0.42, "nominal_opt_here": 0.624, "ctx_opt": 0.622}
+{"impurity": 0.03, "nominal_opt_here": 0.794, "ctx_opt": 0.799}
+{"impurity": 0.39, "nominal_opt_here": 0.635, "ctx_opt": 0.631}
+{"impurity": 0.32, "nominal_opt_here": 0.666, "ctx_opt": 0.666}
+{"impurity": 0.18, "nominal_opt_here": 0.725, "ctx_opt": 0.729}
+{"impurity": 0.49, "nominal_opt_here": 0.588, "ctx_opt": 0.568}
+{"impurity": 0.81, "nominal_opt_here": 0.426, "ctx_opt": 0.435}
+{"impurity": 0.16, "nominal_opt_here": 0.737, "ctx_opt": 0.74}
+{"impurity": 0.57, "nominal_opt_here": 0.551, "ctx_opt": 0.553}
+{"compound": 1, "mean_gap": -0.0024, "max_gap": 0.0088}

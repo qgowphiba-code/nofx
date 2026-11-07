@@ -1,0 +1,10 @@
+{
+ "domain_id": "sci-hte-suzuk-o0-20261107031558-c9c12e",
+ "dataset": "suzuki",
+ "order": 0,
+ "budget": 30,
+ "overrides": 19,
+ "feedback_gaps": 0,
+ "api_calls": 721,
+ "api_seconds": 776.8
+}

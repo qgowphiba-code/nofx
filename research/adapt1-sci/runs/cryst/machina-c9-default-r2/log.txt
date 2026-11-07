@@ -1,0 +1,11 @@
+domain sci-cryst-c9-default-r2-20261107031735-5fa6f7 resolved {"action_dimensions": 1, "allow_cold_transfer": false, "balanced_retention": false, "capacity": 512, "coherent_edits": false, "context_first_recall": false, "cross_context_exploration": 0, "evidence_scaled_mutation": false, "executed_prefix_mutation": true, "global_recall": false, "goal_indices": [3], "horizon": 16, "max_pending": 1, "mechanism": "episode_credit", "outcome_mode": "reward", "outcome_tier_exploration": false, "progress_guided_mutation": false, "retain_context_support": true, "retain_prefix_failures": true, "seed": 1, "segment_exploration": false, "sequence_compaction": false, "state_dimensions": 4}
+k=0 q=0.4510 best=0.4510 calls=5 0s
+k=50 q=0.4561 best=0.5552 calls=105 23s
+k=100 q=0.6534 best=0.6719 calls=205 47s
+k=150 q=0.7088 best=0.7088 calls=305 76s
+k=200 q=0.7399 best=0.7399 calls=405 103s
+k=250 q=0.7497 best=0.7497 calls=505 130s
+k=300 q=0.7600 best=0.7619 calls=605 158s
+k=350 q=0.7630 best=0.7630 calls=705 186s
+k=399 q=0.7702 best=0.7715 calls=803 214s
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-cryst-c9-default-r2-20261107031735-5fa6f7", "status": "success"}, "readback": 404}

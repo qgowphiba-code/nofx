@@ -1,0 +1,6 @@
+{
+ "domain_id": "sci-fold-seq-20261107030847-f555c7",
+ "train_episodes": 80,
+ "feedback_gaps": 0,
+ "api_calls": 2041
+}

@@ -1,0 +1,8 @@
+{
+ "domain_id": "sci-ref-pr-quadratic-20261107034646-a29214",
+ "arm": "quadratic",
+ "radius": 0.2,
+ "updates": 30,
+ "executions": 7680,
+ "api_calls": 7908
+}

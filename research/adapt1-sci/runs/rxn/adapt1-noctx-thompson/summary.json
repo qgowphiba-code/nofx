@@ -1,0 +1,11 @@
+{
+ "domain_id": "sci-rxn-noctx-thompson-20261107030438-03c669",
+ "arm": "noctx",
+ "exploration": "thompson",
+ "episodes": 40,
+ "budget": 20,
+ "overrides": 377,
+ "feedback_gaps": 0,
+ "api_calls": 941,
+ "api_seconds": 785.2
+}

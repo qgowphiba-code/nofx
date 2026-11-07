@@ -1,0 +1,59 @@
+{
+ "domain_id": "sci-cryst-c9-default-r1-20261107030806-3e7ebf",
+ "compound": 9,
+ "arm": "default",
+ "stream": 1,
+ "config_sent": {
+  "mechanism": "episode_credit",
+  "state_dimensions": 4,
+  "action_dimensions": 1,
+  "goal_indices": [
+   3
+  ],
+  "horizon": 16,
+  "capacity": 512,
+  "max_pending": 1,
+  "seed": 1,
+  "outcome_mode": "reward"
+ },
+ "configure_response": {
+  "completed_retry_window": 0,
+  "config": {
+   "action_dimensions": 1,
+   "allow_cold_transfer": false,
+   "balanced_retention": false,
+   "capacity": 512,
+   "coherent_edits": false,
+   "context_first_recall": false,
+   "cross_context_exploration": 0,
+   "evidence_scaled_mutation": false,
+   "executed_prefix_mutation": true,
+   "global_recall": false,
+   "goal_indices": [
+    3
+   ],
+   "horizon": 16,
+   "max_pending": 1,
+   "mechanism": "episode_credit",
+   "outcome_mode": "reward",
+   "outcome_tier_exploration": false,
+   "progress_guided_mutation": false,
+   "retain_context_support": true,
+   "retain_prefix_failures": true,
+   "seed": 1,
+   "segment_exploration": false,
+   "sequence_compaction": false,
+   "state_dimensions": 4
+  },
+  "domain_id": "sci-cryst-c9-default-r1-20261107030806-3e7ebf",
+  "experimental": true,
+  "fingerprint": "4169315cff939136e28a1c7888c199dc58c9dcb6c3a4553eccf3fd080fc5a407",
+  "generation": "d432240f9dd75bf39998d9b21736cd48",
+  "mechanism": "episode_credit",
+  "pending_decisions": 0,
+  "retained_trajectories": 0,
+  "session_id": "68b3f2be63632b2ee95a20b0:7e649fc4026f037f36775d954fcae998",
+  "status": "ready",
+  "version": 0
+ }
+}

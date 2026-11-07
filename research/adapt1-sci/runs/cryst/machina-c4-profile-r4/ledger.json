@@ -1,0 +1,66 @@
+{
+ "domain_id": "sci-cryst-c4-profile-r4-20261107031416-e0e65d",
+ "compound": 4,
+ "arm": "profile",
+ "stream": 4,
+ "config_sent": {
+  "mechanism": "episode_credit",
+  "state_dimensions": 4,
+  "action_dimensions": 1,
+  "goal_indices": [
+   3
+  ],
+  "horizon": 16,
+  "capacity": 512,
+  "max_pending": 1,
+  "seed": 1,
+  "outcome_mode": "reward",
+  "coherent_edits": true,
+  "global_recall": true,
+  "executed_prefix_mutation": true,
+  "progress_guided_mutation": true,
+  "sequence_compaction": true,
+  "outcome_tier_exploration": true,
+  "retain_prefix_failures": false
+ },
+ "configure_response": {
+  "completed_retry_window": 0,
+  "config": {
+   "action_dimensions": 1,
+   "allow_cold_transfer": false,
+   "balanced_retention": false,
+   "capacity": 512,
+   "coherent_edits": true,
+   "context_first_recall": false,
+   "cross_context_exploration": 0,
+   "evidence_scaled_mutation": false,
+   "executed_prefix_mutation": true,
+   "global_recall": true,
+   "goal_indices": [
+    3
+   ],
+   "horizon": 16,
+   "max_pending": 1,
+   "mechanism": "episode_credit",
+   "outcome_mode": "reward",
+   "outcome_tier_exploration": true,
+   "progress_guided_mutation": true,
+   "retain_context_support": true,
+   "retain_prefix_failures": false,
+   "seed": 1,
+   "segment_exploration": false,
+   "sequence_compaction": true,
+   "state_dimensions": 4
+  },
+  "domain_id": "sci-cryst-c4-profile-r4-20261107031416-e0e65d",
+  "experimental": true,
+  "fingerprint": "f7b75ee917dc75058d97f399d2cf1a8a6d980a3ec59bcc12254f214facc7c811",
+  "generation": "20ace32c611d2dc89851c6923767e619",
+  "mechanism": "episode_credit",
+  "pending_decisions": 0,
+  "retained_trajectories": 0,
+  "session_id": "68b3f2be63632b2ee95a20b0:7e649fc4026f037f36775d954fcae998",
+  "status": "ready",
+  "version": 0
+ }
+}

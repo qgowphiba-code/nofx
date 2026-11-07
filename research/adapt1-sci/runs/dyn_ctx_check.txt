@@ -1,0 +1,3 @@
+{"feed_conc": 12.0, "nominal_profile_here": 22.28, "own_optimum": 31.967, "loss_pct": 30.3}
+{"feed_conc": 15.0, "nominal_profile_here": 26.158, "own_optimum": 32.177, "loss_pct": 18.71}
+{"feed_conc": 18.0, "nominal_profile_here": 30.483, "own_optimum": 32.326, "loss_pct": 5.7}

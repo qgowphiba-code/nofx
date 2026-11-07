@@ -1,0 +1,36 @@
+held-out after 0 updates: mean J 27.694 (base alone 27.694)
+update 1: selected 4 gain [0.00969119882911118] calls 294
+update 2: selected 7 gain [0.006533173552384142] calls 552
+update 3: selected 5 gain [0.00038694779347880903] calls 810
+update 4: selected 1 gain [0.0004692268372413766] calls 1068
+update 5: selected 6 gain [0.0002194206083171446] calls 1326
+held-out after 5 updates: mean J 29.437 (base alone 27.694)
+update 6: selected 4 gain [0.014544916001067887] calls 1617
+update 7: selected 0 gain [-0.0034588647948313733] calls 1875
+update 8: selected 6 gain [0.0007370960032769824] calls 2133
+update 9: selected 0 gain [0] calls 2391
+update 10: selected 3 gain [0.0015176250996035145] calls 2649
+held-out after 10 updates: mean J 30.768 (base alone 27.694)
+update 11: selected 2 gain [0.0012782904804597983] calls 2940
+update 12: selected 7 gain [0.0024519569797430973] calls 3198
+update 13: selected 1 gain [0.009111675453543966] calls 3456
+update 14: selected 7 gain [0.0002972311158744301] calls 3714
+update 15: selected 1 gain [0.0003490476759717698] calls 3972
+update 16: selected 7 gain [0.007869202987098922] calls 4230
+update 17: selected 0 gain [0] calls 4488
+update 18: selected 0 gain [-0.004313290943392056] calls 4746
+update 19: selected 2 gain [0.0011771877608889314] calls 5004
+update 20: selected 6 gain [2.1303305990372223e-05] calls 5262
+held-out after 20 updates: mean J 31.185 (base alone 27.694)
+update 21: selected 0 gain [0] calls 5553
+update 22: selected 0 gain [-0.00029647567548807263] calls 5811
+update 23: selected 0 gain [0] calls 6069
+update 24: selected 3 gain [0.0014343260865871121] calls 6327
+update 25: selected 3 gain [6.0692461179456814e-05] calls 6585
+update 26: selected 0 gain [0] calls 6843
+update 27: selected 0 gain [-0.0006244235441301704] calls 7101
+update 28: selected 5 gain [0.0015823620459629595] calls 7359
+update 29: selected 3 gain [0.0026890971450550527] calls 7617
+update 30: selected 6 gain [0.0007872976824254696] calls 7875
+held-out after 30 updates: mean J 31.420 (base alone 27.694)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-ref-pr-linear-20261107034646-b7526d", "status": "success"}, "readback": 404}

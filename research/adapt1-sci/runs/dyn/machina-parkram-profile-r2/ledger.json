@@ -1,0 +1,62 @@
+{
+ "domain_id": "sci-dyn-parkram-profile-r2-20261107033323-acb015",
+ "config_sent": {
+  "mechanism": "episode_credit",
+  "state_dimensions": 5,
+  "action_dimensions": 1,
+  "goal_indices": [
+   0
+  ],
+  "horizon": 20,
+  "capacity": 512,
+  "max_pending": 1,
+  "seed": 1,
+  "outcome_mode": "reward",
+  "coherent_edits": true,
+  "global_recall": true,
+  "executed_prefix_mutation": true,
+  "sequence_compaction": true,
+  "outcome_tier_exploration": true,
+  "retain_prefix_failures": false
+ },
+ "configure_response": {
+  "completed_retry_window": 0,
+  "config": {
+   "action_dimensions": 1,
+   "allow_cold_transfer": false,
+   "balanced_retention": false,
+   "capacity": 512,
+   "coherent_edits": true,
+   "context_first_recall": false,
+   "cross_context_exploration": 0,
+   "evidence_scaled_mutation": false,
+   "executed_prefix_mutation": true,
+   "global_recall": true,
+   "goal_indices": [
+    0
+   ],
+   "horizon": 20,
+   "max_pending": 1,
+   "mechanism": "episode_credit",
+   "outcome_mode": "reward",
+   "outcome_tier_exploration": true,
+   "progress_guided_mutation": false,
+   "retain_context_support": true,
+   "retain_prefix_failures": false,
+   "seed": 1,
+   "segment_exploration": false,
+   "sequence_compaction": true,
+   "state_dimensions": 5
+  },
+  "domain_id": "sci-dyn-parkram-profile-r2-20261107033323-acb015",
+  "experimental": true,
+  "fingerprint": "47f90ccb805483ca2cf42e3f6008c6e3750c6005a3957f99b5ec592c6e84a67d",
+  "generation": "fc77d276f86f64df94f6f356806b50e2",
+  "mechanism": "episode_credit",
+  "pending_decisions": 0,
+  "retained_trajectories": 0,
+  "session_id": "68b3f2be63632b2ee95a20b0:7e649fc4026f037f36775d954fcae998",
+  "status": "ready",
+  "version": 0
+ }
+}

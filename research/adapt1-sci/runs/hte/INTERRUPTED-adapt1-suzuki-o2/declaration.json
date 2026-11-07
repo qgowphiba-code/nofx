@@ -1,0 +1,5026 @@
+{
+ "domain_id": "sci-hte-suzuk-o2-20261107033827-e082f1",
+ "session_id": "ignored",
+ "description": "suzuki HTE reaction optimization: one query = one experiment; reward = yield.",
+ "schema": {
+  "entities": [
+   "reactor",
+   "substrate"
+  ],
+  "relations": [
+   "run_condition"
+  ],
+  "signals": [
+   "lg_Br",
+   "lg_Cl",
+   "lg_I",
+   "lg_OTf",
+   "nuc_0",
+   "nuc_1",
+   "nuc_2",
+   "yield"
+  ],
+  "event_types": [
+   "state",
+   "feedback"
+  ]
+ },
+ "hypotheses": [
+  {
+   "name": "run l0_b0_s0",
+   "relation": "run_condition",
+   "policy": "l0_b0_s0",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b0",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b0_s1",
+   "relation": "run_condition",
+   "policy": "l0_b0_s1",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b0",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b0_s2",
+   "relation": "run_condition",
+   "policy": "l0_b0_s2",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b0",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b0_s3",
+   "relation": "run_condition",
+   "policy": "l0_b0_s3",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b0",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b1_s0",
+   "relation": "run_condition",
+   "policy": "l0_b1_s0",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b1",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b1_s1",
+   "relation": "run_condition",
+   "policy": "l0_b1_s1",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b1",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b1_s2",
+   "relation": "run_condition",
+   "policy": "l0_b1_s2",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b1",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b1_s3",
+   "relation": "run_condition",
+   "policy": "l0_b1_s3",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b1",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b2_s0",
+   "relation": "run_condition",
+   "policy": "l0_b2_s0",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b2",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b2_s1",
+   "relation": "run_condition",
+   "policy": "l0_b2_s1",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b2",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b2_s2",
+   "relation": "run_condition",
+   "policy": "l0_b2_s2",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b2",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b2_s3",
+   "relation": "run_condition",
+   "policy": "l0_b2_s3",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b2",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b3_s0",
+   "relation": "run_condition",
+   "policy": "l0_b3_s0",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b3",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b3_s1",
+   "relation": "run_condition",
+   "policy": "l0_b3_s1",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b3",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b3_s2",
+   "relation": "run_condition",
+   "policy": "l0_b3_s2",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b3",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b3_s3",
+   "relation": "run_condition",
+   "policy": "l0_b3_s3",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b3",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b4_s0",
+   "relation": "run_condition",
+   "policy": "l0_b4_s0",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b4",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b4_s1",
+   "relation": "run_condition",
+   "policy": "l0_b4_s1",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b4",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b4_s2",
+   "relation": "run_condition",
+   "policy": "l0_b4_s2",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b4",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b4_s3",
+   "relation": "run_condition",
+   "policy": "l0_b4_s3",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b4",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b5_s0",
+   "relation": "run_condition",
+   "policy": "l0_b5_s0",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b5",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b5_s1",
+   "relation": "run_condition",
+   "policy": "l0_b5_s1",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b5",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b5_s2",
+   "relation": "run_condition",
+   "policy": "l0_b5_s2",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b5",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b5_s3",
+   "relation": "run_condition",
+   "policy": "l0_b5_s3",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b5",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b6_s0",
+   "relation": "run_condition",
+   "policy": "l0_b6_s0",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b6",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b6_s1",
+   "relation": "run_condition",
+   "policy": "l0_b6_s1",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b6",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b6_s2",
+   "relation": "run_condition",
+   "policy": "l0_b6_s2",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b6",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l0_b6_s3",
+   "relation": "run_condition",
+   "policy": "l0_b6_s3",
+   "policy_features": {
+    "ligand": "l0",
+    "base": "b6",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b0_s0",
+   "relation": "run_condition",
+   "policy": "l1_b0_s0",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b0",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b0_s1",
+   "relation": "run_condition",
+   "policy": "l1_b0_s1",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b0",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b0_s2",
+   "relation": "run_condition",
+   "policy": "l1_b0_s2",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b0",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b0_s3",
+   "relation": "run_condition",
+   "policy": "l1_b0_s3",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b0",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b1_s0",
+   "relation": "run_condition",
+   "policy": "l1_b1_s0",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b1",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b1_s1",
+   "relation": "run_condition",
+   "policy": "l1_b1_s1",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b1",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b1_s2",
+   "relation": "run_condition",
+   "policy": "l1_b1_s2",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b1",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b1_s3",
+   "relation": "run_condition",
+   "policy": "l1_b1_s3",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b1",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b2_s0",
+   "relation": "run_condition",
+   "policy": "l1_b2_s0",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b2",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b2_s1",
+   "relation": "run_condition",
+   "policy": "l1_b2_s1",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b2",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b2_s2",
+   "relation": "run_condition",
+   "policy": "l1_b2_s2",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b2",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b2_s3",
+   "relation": "run_condition",
+   "policy": "l1_b2_s3",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b2",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b3_s0",
+   "relation": "run_condition",
+   "policy": "l1_b3_s0",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b3",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b3_s1",
+   "relation": "run_condition",
+   "policy": "l1_b3_s1",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b3",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b3_s2",
+   "relation": "run_condition",
+   "policy": "l1_b3_s2",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b3",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b3_s3",
+   "relation": "run_condition",
+   "policy": "l1_b3_s3",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b3",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b4_s0",
+   "relation": "run_condition",
+   "policy": "l1_b4_s0",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b4",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b4_s1",
+   "relation": "run_condition",
+   "policy": "l1_b4_s1",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b4",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b4_s2",
+   "relation": "run_condition",
+   "policy": "l1_b4_s2",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b4",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b4_s3",
+   "relation": "run_condition",
+   "policy": "l1_b4_s3",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b4",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b5_s0",
+   "relation": "run_condition",
+   "policy": "l1_b5_s0",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b5",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b5_s1",
+   "relation": "run_condition",
+   "policy": "l1_b5_s1",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b5",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b5_s2",
+   "relation": "run_condition",
+   "policy": "l1_b5_s2",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b5",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b5_s3",
+   "relation": "run_condition",
+   "policy": "l1_b5_s3",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b5",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b6_s0",
+   "relation": "run_condition",
+   "policy": "l1_b6_s0",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b6",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b6_s1",
+   "relation": "run_condition",
+   "policy": "l1_b6_s1",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b6",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b6_s2",
+   "relation": "run_condition",
+   "policy": "l1_b6_s2",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b6",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l1_b6_s3",
+   "relation": "run_condition",
+   "policy": "l1_b6_s3",
+   "policy_features": {
+    "ligand": "l1",
+    "base": "b6",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b0_s0",
+   "relation": "run_condition",
+   "policy": "l10_b0_s0",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b0",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b0_s1",
+   "relation": "run_condition",
+   "policy": "l10_b0_s1",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b0",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b0_s2",
+   "relation": "run_condition",
+   "policy": "l10_b0_s2",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b0",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b0_s3",
+   "relation": "run_condition",
+   "policy": "l10_b0_s3",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b0",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b1_s0",
+   "relation": "run_condition",
+   "policy": "l10_b1_s0",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b1",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b1_s1",
+   "relation": "run_condition",
+   "policy": "l10_b1_s1",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b1",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b1_s2",
+   "relation": "run_condition",
+   "policy": "l10_b1_s2",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b1",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b1_s3",
+   "relation": "run_condition",
+   "policy": "l10_b1_s3",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b1",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b2_s0",
+   "relation": "run_condition",
+   "policy": "l10_b2_s0",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b2",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b2_s1",
+   "relation": "run_condition",
+   "policy": "l10_b2_s1",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b2",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b2_s2",
+   "relation": "run_condition",
+   "policy": "l10_b2_s2",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b2",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b2_s3",
+   "relation": "run_condition",
+   "policy": "l10_b2_s3",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b2",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b3_s0",
+   "relation": "run_condition",
+   "policy": "l10_b3_s0",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b3",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b3_s1",
+   "relation": "run_condition",
+   "policy": "l10_b3_s1",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b3",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b3_s2",
+   "relation": "run_condition",
+   "policy": "l10_b3_s2",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b3",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b3_s3",
+   "relation": "run_condition",
+   "policy": "l10_b3_s3",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b3",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b4_s0",
+   "relation": "run_condition",
+   "policy": "l10_b4_s0",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b4",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b4_s1",
+   "relation": "run_condition",
+   "policy": "l10_b4_s1",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b4",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b4_s2",
+   "relation": "run_condition",
+   "policy": "l10_b4_s2",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b4",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b4_s3",
+   "relation": "run_condition",
+   "policy": "l10_b4_s3",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b4",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b5_s0",
+   "relation": "run_condition",
+   "policy": "l10_b5_s0",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b5",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b5_s1",
+   "relation": "run_condition",
+   "policy": "l10_b5_s1",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b5",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b5_s2",
+   "relation": "run_condition",
+   "policy": "l10_b5_s2",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b5",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b5_s3",
+   "relation": "run_condition",
+   "policy": "l10_b5_s3",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b5",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b6_s0",
+   "relation": "run_condition",
+   "policy": "l10_b6_s0",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b6",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b6_s1",
+   "relation": "run_condition",
+   "policy": "l10_b6_s1",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b6",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b6_s2",
+   "relation": "run_condition",
+   "policy": "l10_b6_s2",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b6",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l10_b6_s3",
+   "relation": "run_condition",
+   "policy": "l10_b6_s3",
+   "policy_features": {
+    "ligand": "l10",
+    "base": "b6",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b0_s0",
+   "relation": "run_condition",
+   "policy": "l2_b0_s0",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b0",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b0_s1",
+   "relation": "run_condition",
+   "policy": "l2_b0_s1",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b0",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b0_s2",
+   "relation": "run_condition",
+   "policy": "l2_b0_s2",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b0",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b0_s3",
+   "relation": "run_condition",
+   "policy": "l2_b0_s3",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b0",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b1_s0",
+   "relation": "run_condition",
+   "policy": "l2_b1_s0",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b1",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b1_s1",
+   "relation": "run_condition",
+   "policy": "l2_b1_s1",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b1",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b1_s2",
+   "relation": "run_condition",
+   "policy": "l2_b1_s2",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b1",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b1_s3",
+   "relation": "run_condition",
+   "policy": "l2_b1_s3",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b1",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b2_s0",
+   "relation": "run_condition",
+   "policy": "l2_b2_s0",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b2",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b2_s1",
+   "relation": "run_condition",
+   "policy": "l2_b2_s1",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b2",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b2_s2",
+   "relation": "run_condition",
+   "policy": "l2_b2_s2",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b2",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b2_s3",
+   "relation": "run_condition",
+   "policy": "l2_b2_s3",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b2",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b3_s0",
+   "relation": "run_condition",
+   "policy": "l2_b3_s0",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b3",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b3_s1",
+   "relation": "run_condition",
+   "policy": "l2_b3_s1",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b3",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b3_s2",
+   "relation": "run_condition",
+   "policy": "l2_b3_s2",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b3",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b3_s3",
+   "relation": "run_condition",
+   "policy": "l2_b3_s3",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b3",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b4_s0",
+   "relation": "run_condition",
+   "policy": "l2_b4_s0",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b4",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b4_s1",
+   "relation": "run_condition",
+   "policy": "l2_b4_s1",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b4",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b4_s2",
+   "relation": "run_condition",
+   "policy": "l2_b4_s2",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b4",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b4_s3",
+   "relation": "run_condition",
+   "policy": "l2_b4_s3",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b4",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b5_s0",
+   "relation": "run_condition",
+   "policy": "l2_b5_s0",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b5",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b5_s1",
+   "relation": "run_condition",
+   "policy": "l2_b5_s1",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b5",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b5_s2",
+   "relation": "run_condition",
+   "policy": "l2_b5_s2",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b5",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b5_s3",
+   "relation": "run_condition",
+   "policy": "l2_b5_s3",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b5",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b6_s0",
+   "relation": "run_condition",
+   "policy": "l2_b6_s0",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b6",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b6_s1",
+   "relation": "run_condition",
+   "policy": "l2_b6_s1",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b6",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b6_s2",
+   "relation": "run_condition",
+   "policy": "l2_b6_s2",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b6",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l2_b6_s3",
+   "relation": "run_condition",
+   "policy": "l2_b6_s3",
+   "policy_features": {
+    "ligand": "l2",
+    "base": "b6",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b0_s0",
+   "relation": "run_condition",
+   "policy": "l3_b0_s0",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b0",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b0_s1",
+   "relation": "run_condition",
+   "policy": "l3_b0_s1",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b0",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b0_s2",
+   "relation": "run_condition",
+   "policy": "l3_b0_s2",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b0",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b0_s3",
+   "relation": "run_condition",
+   "policy": "l3_b0_s3",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b0",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b1_s0",
+   "relation": "run_condition",
+   "policy": "l3_b1_s0",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b1",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b1_s1",
+   "relation": "run_condition",
+   "policy": "l3_b1_s1",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b1",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b1_s2",
+   "relation": "run_condition",
+   "policy": "l3_b1_s2",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b1",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b1_s3",
+   "relation": "run_condition",
+   "policy": "l3_b1_s3",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b1",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b2_s0",
+   "relation": "run_condition",
+   "policy": "l3_b2_s0",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b2",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b2_s1",
+   "relation": "run_condition",
+   "policy": "l3_b2_s1",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b2",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b2_s2",
+   "relation": "run_condition",
+   "policy": "l3_b2_s2",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b2",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b2_s3",
+   "relation": "run_condition",
+   "policy": "l3_b2_s3",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b2",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b3_s0",
+   "relation": "run_condition",
+   "policy": "l3_b3_s0",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b3",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b3_s1",
+   "relation": "run_condition",
+   "policy": "l3_b3_s1",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b3",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b3_s2",
+   "relation": "run_condition",
+   "policy": "l3_b3_s2",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b3",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b3_s3",
+   "relation": "run_condition",
+   "policy": "l3_b3_s3",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b3",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b4_s0",
+   "relation": "run_condition",
+   "policy": "l3_b4_s0",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b4",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b4_s1",
+   "relation": "run_condition",
+   "policy": "l3_b4_s1",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b4",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b4_s2",
+   "relation": "run_condition",
+   "policy": "l3_b4_s2",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b4",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b4_s3",
+   "relation": "run_condition",
+   "policy": "l3_b4_s3",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b4",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b5_s0",
+   "relation": "run_condition",
+   "policy": "l3_b5_s0",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b5",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b5_s1",
+   "relation": "run_condition",
+   "policy": "l3_b5_s1",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b5",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b5_s2",
+   "relation": "run_condition",
+   "policy": "l3_b5_s2",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b5",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b5_s3",
+   "relation": "run_condition",
+   "policy": "l3_b5_s3",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b5",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b6_s0",
+   "relation": "run_condition",
+   "policy": "l3_b6_s0",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b6",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b6_s1",
+   "relation": "run_condition",
+   "policy": "l3_b6_s1",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b6",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b6_s2",
+   "relation": "run_condition",
+   "policy": "l3_b6_s2",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b6",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l3_b6_s3",
+   "relation": "run_condition",
+   "policy": "l3_b6_s3",
+   "policy_features": {
+    "ligand": "l3",
+    "base": "b6",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b0_s0",
+   "relation": "run_condition",
+   "policy": "l4_b0_s0",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b0",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b0_s1",
+   "relation": "run_condition",
+   "policy": "l4_b0_s1",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b0",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b0_s2",
+   "relation": "run_condition",
+   "policy": "l4_b0_s2",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b0",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b0_s3",
+   "relation": "run_condition",
+   "policy": "l4_b0_s3",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b0",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b1_s0",
+   "relation": "run_condition",
+   "policy": "l4_b1_s0",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b1",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b1_s1",
+   "relation": "run_condition",
+   "policy": "l4_b1_s1",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b1",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b1_s2",
+   "relation": "run_condition",
+   "policy": "l4_b1_s2",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b1",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b1_s3",
+   "relation": "run_condition",
+   "policy": "l4_b1_s3",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b1",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b2_s0",
+   "relation": "run_condition",
+   "policy": "l4_b2_s0",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b2",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b2_s1",
+   "relation": "run_condition",
+   "policy": "l4_b2_s1",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b2",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b2_s2",
+   "relation": "run_condition",
+   "policy": "l4_b2_s2",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b2",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b2_s3",
+   "relation": "run_condition",
+   "policy": "l4_b2_s3",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b2",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b3_s0",
+   "relation": "run_condition",
+   "policy": "l4_b3_s0",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b3",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b3_s1",
+   "relation": "run_condition",
+   "policy": "l4_b3_s1",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b3",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b3_s2",
+   "relation": "run_condition",
+   "policy": "l4_b3_s2",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b3",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b3_s3",
+   "relation": "run_condition",
+   "policy": "l4_b3_s3",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b3",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b4_s0",
+   "relation": "run_condition",
+   "policy": "l4_b4_s0",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b4",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b4_s1",
+   "relation": "run_condition",
+   "policy": "l4_b4_s1",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b4",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b4_s2",
+   "relation": "run_condition",
+   "policy": "l4_b4_s2",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b4",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b4_s3",
+   "relation": "run_condition",
+   "policy": "l4_b4_s3",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b4",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b5_s0",
+   "relation": "run_condition",
+   "policy": "l4_b5_s0",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b5",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b5_s1",
+   "relation": "run_condition",
+   "policy": "l4_b5_s1",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b5",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b5_s2",
+   "relation": "run_condition",
+   "policy": "l4_b5_s2",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b5",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b5_s3",
+   "relation": "run_condition",
+   "policy": "l4_b5_s3",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b5",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b6_s0",
+   "relation": "run_condition",
+   "policy": "l4_b6_s0",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b6",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b6_s1",
+   "relation": "run_condition",
+   "policy": "l4_b6_s1",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b6",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b6_s2",
+   "relation": "run_condition",
+   "policy": "l4_b6_s2",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b6",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l4_b6_s3",
+   "relation": "run_condition",
+   "policy": "l4_b6_s3",
+   "policy_features": {
+    "ligand": "l4",
+    "base": "b6",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b0_s0",
+   "relation": "run_condition",
+   "policy": "l5_b0_s0",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b0",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b0_s1",
+   "relation": "run_condition",
+   "policy": "l5_b0_s1",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b0",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b0_s2",
+   "relation": "run_condition",
+   "policy": "l5_b0_s2",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b0",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b0_s3",
+   "relation": "run_condition",
+   "policy": "l5_b0_s3",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b0",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b1_s0",
+   "relation": "run_condition",
+   "policy": "l5_b1_s0",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b1",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b1_s1",
+   "relation": "run_condition",
+   "policy": "l5_b1_s1",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b1",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b1_s2",
+   "relation": "run_condition",
+   "policy": "l5_b1_s2",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b1",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b1_s3",
+   "relation": "run_condition",
+   "policy": "l5_b1_s3",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b1",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b2_s0",
+   "relation": "run_condition",
+   "policy": "l5_b2_s0",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b2",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b2_s1",
+   "relation": "run_condition",
+   "policy": "l5_b2_s1",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b2",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b2_s2",
+   "relation": "run_condition",
+   "policy": "l5_b2_s2",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b2",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b2_s3",
+   "relation": "run_condition",
+   "policy": "l5_b2_s3",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b2",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b3_s0",
+   "relation": "run_condition",
+   "policy": "l5_b3_s0",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b3",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b3_s1",
+   "relation": "run_condition",
+   "policy": "l5_b3_s1",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b3",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b3_s2",
+   "relation": "run_condition",
+   "policy": "l5_b3_s2",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b3",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b3_s3",
+   "relation": "run_condition",
+   "policy": "l5_b3_s3",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b3",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b4_s0",
+   "relation": "run_condition",
+   "policy": "l5_b4_s0",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b4",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b4_s1",
+   "relation": "run_condition",
+   "policy": "l5_b4_s1",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b4",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b4_s2",
+   "relation": "run_condition",
+   "policy": "l5_b4_s2",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b4",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b4_s3",
+   "relation": "run_condition",
+   "policy": "l5_b4_s3",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b4",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b5_s0",
+   "relation": "run_condition",
+   "policy": "l5_b5_s0",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b5",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b5_s1",
+   "relation": "run_condition",
+   "policy": "l5_b5_s1",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b5",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b5_s2",
+   "relation": "run_condition",
+   "policy": "l5_b5_s2",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b5",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b5_s3",
+   "relation": "run_condition",
+   "policy": "l5_b5_s3",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b5",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b6_s0",
+   "relation": "run_condition",
+   "policy": "l5_b6_s0",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b6",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b6_s1",
+   "relation": "run_condition",
+   "policy": "l5_b6_s1",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b6",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b6_s2",
+   "relation": "run_condition",
+   "policy": "l5_b6_s2",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b6",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l5_b6_s3",
+   "relation": "run_condition",
+   "policy": "l5_b6_s3",
+   "policy_features": {
+    "ligand": "l5",
+    "base": "b6",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b0_s0",
+   "relation": "run_condition",
+   "policy": "l6_b0_s0",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b0",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b0_s1",
+   "relation": "run_condition",
+   "policy": "l6_b0_s1",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b0",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b0_s2",
+   "relation": "run_condition",
+   "policy": "l6_b0_s2",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b0",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b0_s3",
+   "relation": "run_condition",
+   "policy": "l6_b0_s3",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b0",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b1_s0",
+   "relation": "run_condition",
+   "policy": "l6_b1_s0",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b1",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b1_s1",
+   "relation": "run_condition",
+   "policy": "l6_b1_s1",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b1",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b1_s2",
+   "relation": "run_condition",
+   "policy": "l6_b1_s2",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b1",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b1_s3",
+   "relation": "run_condition",
+   "policy": "l6_b1_s3",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b1",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b2_s0",
+   "relation": "run_condition",
+   "policy": "l6_b2_s0",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b2",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b2_s1",
+   "relation": "run_condition",
+   "policy": "l6_b2_s1",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b2",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b2_s2",
+   "relation": "run_condition",
+   "policy": "l6_b2_s2",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b2",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b2_s3",
+   "relation": "run_condition",
+   "policy": "l6_b2_s3",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b2",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b3_s0",
+   "relation": "run_condition",
+   "policy": "l6_b3_s0",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b3",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b3_s1",
+   "relation": "run_condition",
+   "policy": "l6_b3_s1",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b3",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b3_s2",
+   "relation": "run_condition",
+   "policy": "l6_b3_s2",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b3",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b3_s3",
+   "relation": "run_condition",
+   "policy": "l6_b3_s3",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b3",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b4_s0",
+   "relation": "run_condition",
+   "policy": "l6_b4_s0",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b4",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b4_s1",
+   "relation": "run_condition",
+   "policy": "l6_b4_s1",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b4",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b4_s2",
+   "relation": "run_condition",
+   "policy": "l6_b4_s2",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b4",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b4_s3",
+   "relation": "run_condition",
+   "policy": "l6_b4_s3",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b4",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b5_s0",
+   "relation": "run_condition",
+   "policy": "l6_b5_s0",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b5",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b5_s1",
+   "relation": "run_condition",
+   "policy": "l6_b5_s1",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b5",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b5_s2",
+   "relation": "run_condition",
+   "policy": "l6_b5_s2",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b5",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b5_s3",
+   "relation": "run_condition",
+   "policy": "l6_b5_s3",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b5",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b6_s0",
+   "relation": "run_condition",
+   "policy": "l6_b6_s0",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b6",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b6_s1",
+   "relation": "run_condition",
+   "policy": "l6_b6_s1",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b6",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b6_s2",
+   "relation": "run_condition",
+   "policy": "l6_b6_s2",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b6",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l6_b6_s3",
+   "relation": "run_condition",
+   "policy": "l6_b6_s3",
+   "policy_features": {
+    "ligand": "l6",
+    "base": "b6",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b0_s0",
+   "relation": "run_condition",
+   "policy": "l7_b0_s0",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b0",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b0_s1",
+   "relation": "run_condition",
+   "policy": "l7_b0_s1",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b0",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b0_s2",
+   "relation": "run_condition",
+   "policy": "l7_b0_s2",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b0",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b0_s3",
+   "relation": "run_condition",
+   "policy": "l7_b0_s3",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b0",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b1_s0",
+   "relation": "run_condition",
+   "policy": "l7_b1_s0",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b1",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b1_s1",
+   "relation": "run_condition",
+   "policy": "l7_b1_s1",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b1",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b1_s2",
+   "relation": "run_condition",
+   "policy": "l7_b1_s2",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b1",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b1_s3",
+   "relation": "run_condition",
+   "policy": "l7_b1_s3",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b1",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b2_s0",
+   "relation": "run_condition",
+   "policy": "l7_b2_s0",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b2",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b2_s1",
+   "relation": "run_condition",
+   "policy": "l7_b2_s1",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b2",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b2_s2",
+   "relation": "run_condition",
+   "policy": "l7_b2_s2",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b2",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b2_s3",
+   "relation": "run_condition",
+   "policy": "l7_b2_s3",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b2",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b3_s0",
+   "relation": "run_condition",
+   "policy": "l7_b3_s0",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b3",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b3_s1",
+   "relation": "run_condition",
+   "policy": "l7_b3_s1",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b3",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b3_s2",
+   "relation": "run_condition",
+   "policy": "l7_b3_s2",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b3",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b3_s3",
+   "relation": "run_condition",
+   "policy": "l7_b3_s3",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b3",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b4_s0",
+   "relation": "run_condition",
+   "policy": "l7_b4_s0",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b4",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b4_s1",
+   "relation": "run_condition",
+   "policy": "l7_b4_s1",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b4",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b4_s2",
+   "relation": "run_condition",
+   "policy": "l7_b4_s2",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b4",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b4_s3",
+   "relation": "run_condition",
+   "policy": "l7_b4_s3",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b4",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b5_s0",
+   "relation": "run_condition",
+   "policy": "l7_b5_s0",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b5",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b5_s1",
+   "relation": "run_condition",
+   "policy": "l7_b5_s1",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b5",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b5_s2",
+   "relation": "run_condition",
+   "policy": "l7_b5_s2",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b5",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b5_s3",
+   "relation": "run_condition",
+   "policy": "l7_b5_s3",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b5",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b6_s0",
+   "relation": "run_condition",
+   "policy": "l7_b6_s0",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b6",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b6_s1",
+   "relation": "run_condition",
+   "policy": "l7_b6_s1",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b6",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b6_s2",
+   "relation": "run_condition",
+   "policy": "l7_b6_s2",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b6",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l7_b6_s3",
+   "relation": "run_condition",
+   "policy": "l7_b6_s3",
+   "policy_features": {
+    "ligand": "l7",
+    "base": "b6",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b0_s0",
+   "relation": "run_condition",
+   "policy": "l8_b0_s0",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b0",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b0_s1",
+   "relation": "run_condition",
+   "policy": "l8_b0_s1",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b0",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b0_s2",
+   "relation": "run_condition",
+   "policy": "l8_b0_s2",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b0",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b0_s3",
+   "relation": "run_condition",
+   "policy": "l8_b0_s3",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b0",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b1_s0",
+   "relation": "run_condition",
+   "policy": "l8_b1_s0",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b1",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b1_s1",
+   "relation": "run_condition",
+   "policy": "l8_b1_s1",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b1",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b1_s2",
+   "relation": "run_condition",
+   "policy": "l8_b1_s2",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b1",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b1_s3",
+   "relation": "run_condition",
+   "policy": "l8_b1_s3",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b1",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b2_s0",
+   "relation": "run_condition",
+   "policy": "l8_b2_s0",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b2",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b2_s1",
+   "relation": "run_condition",
+   "policy": "l8_b2_s1",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b2",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b2_s2",
+   "relation": "run_condition",
+   "policy": "l8_b2_s2",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b2",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b2_s3",
+   "relation": "run_condition",
+   "policy": "l8_b2_s3",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b2",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b3_s0",
+   "relation": "run_condition",
+   "policy": "l8_b3_s0",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b3",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b3_s1",
+   "relation": "run_condition",
+   "policy": "l8_b3_s1",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b3",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b3_s2",
+   "relation": "run_condition",
+   "policy": "l8_b3_s2",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b3",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b3_s3",
+   "relation": "run_condition",
+   "policy": "l8_b3_s3",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b3",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b4_s0",
+   "relation": "run_condition",
+   "policy": "l8_b4_s0",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b4",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b4_s1",
+   "relation": "run_condition",
+   "policy": "l8_b4_s1",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b4",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b4_s2",
+   "relation": "run_condition",
+   "policy": "l8_b4_s2",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b4",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b4_s3",
+   "relation": "run_condition",
+   "policy": "l8_b4_s3",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b4",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b5_s0",
+   "relation": "run_condition",
+   "policy": "l8_b5_s0",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b5",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b5_s1",
+   "relation": "run_condition",
+   "policy": "l8_b5_s1",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b5",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b5_s2",
+   "relation": "run_condition",
+   "policy": "l8_b5_s2",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b5",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b5_s3",
+   "relation": "run_condition",
+   "policy": "l8_b5_s3",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b5",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b6_s0",
+   "relation": "run_condition",
+   "policy": "l8_b6_s0",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b6",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b6_s1",
+   "relation": "run_condition",
+   "policy": "l8_b6_s1",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b6",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b6_s2",
+   "relation": "run_condition",
+   "policy": "l8_b6_s2",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b6",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l8_b6_s3",
+   "relation": "run_condition",
+   "policy": "l8_b6_s3",
+   "policy_features": {
+    "ligand": "l8",
+    "base": "b6",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b0_s0",
+   "relation": "run_condition",
+   "policy": "l9_b0_s0",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b0",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b0_s1",
+   "relation": "run_condition",
+   "policy": "l9_b0_s1",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b0",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b0_s2",
+   "relation": "run_condition",
+   "policy": "l9_b0_s2",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b0",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b0_s3",
+   "relation": "run_condition",
+   "policy": "l9_b0_s3",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b0",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b1_s0",
+   "relation": "run_condition",
+   "policy": "l9_b1_s0",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b1",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b1_s1",
+   "relation": "run_condition",
+   "policy": "l9_b1_s1",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b1",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b1_s2",
+   "relation": "run_condition",
+   "policy": "l9_b1_s2",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b1",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b1_s3",
+   "relation": "run_condition",
+   "policy": "l9_b1_s3",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b1",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b2_s0",
+   "relation": "run_condition",
+   "policy": "l9_b2_s0",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b2",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b2_s1",
+   "relation": "run_condition",
+   "policy": "l9_b2_s1",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b2",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b2_s2",
+   "relation": "run_condition",
+   "policy": "l9_b2_s2",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b2",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b2_s3",
+   "relation": "run_condition",
+   "policy": "l9_b2_s3",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b2",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b3_s0",
+   "relation": "run_condition",
+   "policy": "l9_b3_s0",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b3",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b3_s1",
+   "relation": "run_condition",
+   "policy": "l9_b3_s1",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b3",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b3_s2",
+   "relation": "run_condition",
+   "policy": "l9_b3_s2",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b3",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b3_s3",
+   "relation": "run_condition",
+   "policy": "l9_b3_s3",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b3",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b4_s0",
+   "relation": "run_condition",
+   "policy": "l9_b4_s0",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b4",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b4_s1",
+   "relation": "run_condition",
+   "policy": "l9_b4_s1",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b4",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b4_s2",
+   "relation": "run_condition",
+   "policy": "l9_b4_s2",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b4",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b4_s3",
+   "relation": "run_condition",
+   "policy": "l9_b4_s3",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b4",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b5_s0",
+   "relation": "run_condition",
+   "policy": "l9_b5_s0",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b5",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b5_s1",
+   "relation": "run_condition",
+   "policy": "l9_b5_s1",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b5",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b5_s2",
+   "relation": "run_condition",
+   "policy": "l9_b5_s2",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b5",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b5_s3",
+   "relation": "run_condition",
+   "policy": "l9_b5_s3",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b5",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b6_s0",
+   "relation": "run_condition",
+   "policy": "l9_b6_s0",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b6",
+    "solvent": "s0"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b6_s1",
+   "relation": "run_condition",
+   "policy": "l9_b6_s1",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b6",
+    "solvent": "s1"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b6_s2",
+   "relation": "run_condition",
+   "policy": "l9_b6_s2",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b6",
+    "solvent": "s2"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run l9_b6_s3",
+   "relation": "run_condition",
+   "policy": "l9_b6_s3",
+   "policy_features": {
+    "ligand": "l9",
+    "base": "b6",
+    "solvent": "s3"
+   },
+   "when": [],
+   "predicts": [
+    "measured yield"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  }
+ ],
+ "learning": {
+  "enabled": true,
+  "context": {
+   "feature_paths": [
+    "values.lg_Br",
+    "values.lg_Cl",
+    "values.lg_I",
+    "values.lg_OTf",
+    "values.nuc_0",
+    "values.nuc_1",
+    "values.nuc_2"
+   ],
+   "event_types": [
+    "state"
+   ],
+   "max_samples": 4096
+  },
+  "reward": {
+   "aggregation": "weighted_mean",
+   "components": [
+    {
+     "field": "values.yield",
+     "goal": "maximize",
+     "min": 0.0,
+     "max": 1.0,
+     "weight": 1.0,
+     "required": true
+    }
+   ]
+  },
+  "policy": {
+   "decay_half_life_seconds": 0.0,
+   "transfer_strength": 0.0,
+   "action_transfer_strength": 0.3,
+   "min_context_observations": 4,
+   "model_max_weight": 0.45,
+   "model_ood_threshold": 0.75,
+   "ood_confidence_penalty": 0.5,
+   "exploration_mode": "thompson",
+   "exploration_strength": 1.0,
+   "minimum_expected_reward": 0.0,
+   "minimum_confidence": 0.0,
+   "require_credible_dominance": false,
+   "dominance_margin": 0.0,
+   "abstain_on_ood": false
+  },
+  "credit_assignment": {
+   "mode": "none",
+   "neutral_reward": 0.5
+  },
+  "latent_belief": {
+   "enabled": true,
+   "max_regimes": 8,
+   "novelty_threshold": 0.55,
+   "temperature": 0.25,
+   "change_point_threshold": 0.55,
+   "change_point_patience": 3,
+   "historical_regime_weight": 0.05
+  },
+  "training": {
+   "enabled": true,
+   "min_samples": 64,
+   "retrain_interval": 60,
+   "dimensions": 96,
+   "epochs": 100,
+   "learning_rate": 0.04
+  }
+ }
+}

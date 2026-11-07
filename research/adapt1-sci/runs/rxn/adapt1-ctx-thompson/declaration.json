@@ -1,0 +1,858 @@
+{
+ "domain_id": "sci-rxn-ctx-thompson-20261107030438-601e5d",
+ "session_id": "ignored",
+ "description": "Reaction-condition optimization: choose one experiment condition per query; reward = measured yield.",
+ "schema": {
+  "entities": [
+   "reactor",
+   "substrate"
+  ],
+  "relations": [
+   "run_condition"
+  ],
+  "signals": [
+   "d1",
+   "d2",
+   "d3",
+   "yield"
+  ],
+  "event_types": [
+   "state",
+   "feedback"
+  ]
+ },
+ "hypotheses": [
+  {
+   "name": "run cat0_t30_tau2",
+   "relation": "run_condition",
+   "policy": "cat0_t30_tau2",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": -1.0,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat0_t30_tau8",
+   "relation": "run_condition",
+   "policy": "cat0_t30_tau8",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": -1.0,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat0_t30_tau30",
+   "relation": "run_condition",
+   "policy": "cat0_t30_tau30",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": -1.0,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat0_t50_tau2",
+   "relation": "run_condition",
+   "policy": "cat0_t50_tau2",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": -0.3333333333333333,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat0_t50_tau8",
+   "relation": "run_condition",
+   "policy": "cat0_t50_tau8",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": -0.3333333333333333,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat0_t50_tau30",
+   "relation": "run_condition",
+   "policy": "cat0_t50_tau30",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": -0.3333333333333333,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat0_t70_tau2",
+   "relation": "run_condition",
+   "policy": "cat0_t70_tau2",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": 0.3333333333333333,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat0_t70_tau8",
+   "relation": "run_condition",
+   "policy": "cat0_t70_tau8",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": 0.3333333333333333,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat0_t70_tau30",
+   "relation": "run_condition",
+   "policy": "cat0_t70_tau30",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": 0.3333333333333333,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat0_t90_tau2",
+   "relation": "run_condition",
+   "policy": "cat0_t90_tau2",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": 1.0,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat0_t90_tau8",
+   "relation": "run_condition",
+   "policy": "cat0_t90_tau8",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": 1.0,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat0_t90_tau30",
+   "relation": "run_condition",
+   "policy": "cat0_t90_tau30",
+   "policy_features": {
+    "catalyst": "cat0",
+    "temperature": 1.0,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t30_tau2",
+   "relation": "run_condition",
+   "policy": "cat1_t30_tau2",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": -1.0,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t30_tau8",
+   "relation": "run_condition",
+   "policy": "cat1_t30_tau8",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": -1.0,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t30_tau30",
+   "relation": "run_condition",
+   "policy": "cat1_t30_tau30",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": -1.0,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t50_tau2",
+   "relation": "run_condition",
+   "policy": "cat1_t50_tau2",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": -0.3333333333333333,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t50_tau8",
+   "relation": "run_condition",
+   "policy": "cat1_t50_tau8",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": -0.3333333333333333,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t50_tau30",
+   "relation": "run_condition",
+   "policy": "cat1_t50_tau30",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": -0.3333333333333333,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t70_tau2",
+   "relation": "run_condition",
+   "policy": "cat1_t70_tau2",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": 0.3333333333333333,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t70_tau8",
+   "relation": "run_condition",
+   "policy": "cat1_t70_tau8",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": 0.3333333333333333,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t70_tau30",
+   "relation": "run_condition",
+   "policy": "cat1_t70_tau30",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": 0.3333333333333333,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t90_tau2",
+   "relation": "run_condition",
+   "policy": "cat1_t90_tau2",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": 1.0,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t90_tau8",
+   "relation": "run_condition",
+   "policy": "cat1_t90_tau8",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": 1.0,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat1_t90_tau30",
+   "relation": "run_condition",
+   "policy": "cat1_t90_tau30",
+   "policy_features": {
+    "catalyst": "cat1",
+    "temperature": 1.0,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t30_tau2",
+   "relation": "run_condition",
+   "policy": "cat2_t30_tau2",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": -1.0,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t30_tau8",
+   "relation": "run_condition",
+   "policy": "cat2_t30_tau8",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": -1.0,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t30_tau30",
+   "relation": "run_condition",
+   "policy": "cat2_t30_tau30",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": -1.0,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t50_tau2",
+   "relation": "run_condition",
+   "policy": "cat2_t50_tau2",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": -0.3333333333333333,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t50_tau8",
+   "relation": "run_condition",
+   "policy": "cat2_t50_tau8",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": -0.3333333333333333,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t50_tau30",
+   "relation": "run_condition",
+   "policy": "cat2_t50_tau30",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": -0.3333333333333333,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t70_tau2",
+   "relation": "run_condition",
+   "policy": "cat2_t70_tau2",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": 0.3333333333333333,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t70_tau8",
+   "relation": "run_condition",
+   "policy": "cat2_t70_tau8",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": 0.3333333333333333,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t70_tau30",
+   "relation": "run_condition",
+   "policy": "cat2_t70_tau30",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": 0.3333333333333333,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t90_tau2",
+   "relation": "run_condition",
+   "policy": "cat2_t90_tau2",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": 1.0,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t90_tau8",
+   "relation": "run_condition",
+   "policy": "cat2_t90_tau8",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": 1.0,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat2_t90_tau30",
+   "relation": "run_condition",
+   "policy": "cat2_t90_tau30",
+   "policy_features": {
+    "catalyst": "cat2",
+    "temperature": 1.0,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t30_tau2",
+   "relation": "run_condition",
+   "policy": "cat3_t30_tau2",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": -1.0,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t30_tau8",
+   "relation": "run_condition",
+   "policy": "cat3_t30_tau8",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": -1.0,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t30_tau30",
+   "relation": "run_condition",
+   "policy": "cat3_t30_tau30",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": -1.0,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t50_tau2",
+   "relation": "run_condition",
+   "policy": "cat3_t50_tau2",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": -0.3333333333333333,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t50_tau8",
+   "relation": "run_condition",
+   "policy": "cat3_t50_tau8",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": -0.3333333333333333,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t50_tau30",
+   "relation": "run_condition",
+   "policy": "cat3_t50_tau30",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": -0.3333333333333333,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t70_tau2",
+   "relation": "run_condition",
+   "policy": "cat3_t70_tau2",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": 0.3333333333333333,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t70_tau8",
+   "relation": "run_condition",
+   "policy": "cat3_t70_tau8",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": 0.3333333333333333,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t70_tau30",
+   "relation": "run_condition",
+   "policy": "cat3_t70_tau30",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": 0.3333333333333333,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t90_tau2",
+   "relation": "run_condition",
+   "policy": "cat3_t90_tau2",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": 1.0,
+    "log_residence": -0.9999999999999999
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t90_tau8",
+   "relation": "run_condition",
+   "policy": "cat3_t90_tau8",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": 1.0,
+    "log_residence": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "run cat3_t90_tau30",
+   "relation": "run_condition",
+   "policy": "cat3_t90_tau30",
+   "policy_features": {
+    "catalyst": "cat3",
+    "temperature": 1.0,
+    "log_residence": 0.9534452978042595
+   },
+   "when": [],
+   "predicts": [
+    "measured yield of the target product"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  }
+ ],
+ "learning": {
+  "enabled": true,
+  "context": {
+   "feature_paths": [
+    "values.d1",
+    "values.d2",
+    "values.d3"
+   ],
+   "event_types": [
+    "state"
+   ],
+   "max_samples": 4096
+  },
+  "reward": {
+   "aggregation": "weighted_mean",
+   "components": [
+    {
+     "field": "values.yield",
+     "goal": "maximize",
+     "min": 0.0,
+     "max": 1.0,
+     "weight": 1.0,
+     "required": true
+    }
+   ]
+  },
+  "policy": {
+   "decay_half_life_seconds": 0.0,
+   "transfer_strength": 0.0,
+   "action_transfer_strength": 0.3,
+   "min_context_observations": 4,
+   "model_max_weight": 0.45,
+   "model_ood_threshold": 0.75,
+   "ood_confidence_penalty": 0.5,
+   "exploration_mode": "thompson",
+   "exploration_strength": 1.0,
+   "minimum_expected_reward": 0.0,
+   "minimum_confidence": 0.0,
+   "require_credible_dominance": false,
+   "dominance_margin": 0.0,
+   "abstain_on_ood": false
+  },
+  "credit_assignment": {
+   "mode": "none",
+   "neutral_reward": 0.5
+  },
+  "latent_belief": {
+   "enabled": true,
+   "max_regimes": 8,
+   "novelty_threshold": 0.55,
+   "temperature": 0.25,
+   "change_point_threshold": 0.55,
+   "change_point_patience": 3,
+   "historical_regime_weight": 0.05
+  },
+  "training": {
+   "enabled": true,
+   "min_samples": 64,
+   "retrain_interval": 40,
+   "dimensions": 96,
+   "epochs": 100,
+   "learning_rate": 0.04
+  }
+ }
+}

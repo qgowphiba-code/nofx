@@ -1,0 +1,10 @@
+{
+ "domain_id": "sci-hte-aryl_-o1-20261107034402-e19d0b",
+ "dataset": "aryl_amination",
+ "order": 1,
+ "budget": 30,
+ "overrides": 37,
+ "feedback_gaps": 0,
+ "api_calls": 901,
+ "api_seconds": 737.4
+}
