@@ -2369,3 +2369,6 @@
 {"episode": 2368, "return": 106.0, "len": 95, "steps": 265964, "elapsed_s": 10775.7}
 {"episode": 2369, "return": 109.0, "len": 92, "steps": 266056, "elapsed_s": 10781.9}
 {"episode": 2370, "return": 105.0, "len": 96, "steps": 266152, "elapsed_s": 10788.7}
+{"episode": 2371, "return": 106.0, "len": 95, "steps": 266247, "elapsed_s": 10795.2}
+{"episode": 2372, "return": 107.0, "len": 94, "steps": 266341, "elapsed_s": 10801.1}
+{"episode": 2373, "return": 110.0, "len": 91, "steps": 266432, "elapsed_s": 10807.3}

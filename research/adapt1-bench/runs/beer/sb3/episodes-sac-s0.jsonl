@@ -2814,3 +2814,5 @@
 {"episode": 2813, "return": 104.0, "len": 97, "steps": 298092, "elapsed_s": 12215.3}
 {"episode": 2814, "return": 105.0, "len": 96, "steps": 298188, "elapsed_s": 12222.0}
 {"episode": 2815, "return": 104.0, "len": 97, "steps": 298285, "elapsed_s": 12229.2}
+{"episode": 2816, "return": 102.0, "len": 99, "steps": 298384, "elapsed_s": 12236.5}
+{"episode": 2817, "return": 103.0, "len": 98, "steps": 298482, "elapsed_s": 12243.0}
