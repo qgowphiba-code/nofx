@@ -257,8 +257,9 @@ the second environment (`nofx-uat2`) maps to the original Fast-UAT engine sessio
 separate queue does not hold: Fast-UAT work again shares one queue. At the user's instruction everything on Fast-UAT starts
 over in that second session, from scratch, on new Domains: Industrial Benchmark (A, all six runs, 150 episodes each),
 PenSim refinement (C, both arms), then MiniHack (F) and Craftax (G). The crashed first attempts are kept in
-`runs/ib/adapt1/crashed-1/` and `runs/pensim/crashed-1/` and reported. Their eight Domains, which exist under the same
-engine session, are deleted from the second session by exact id. The Industrial Benchmark runner now also uses the
+`runs/ib/adapt1/crashed-1/` and `runs/pensim/crashed-1/` and reported. Their eight Domains could not be deleted: from the second
+session each DELETE and readback returned 404 (not visible to that key), and this environment's key is rejected, so they remain
+under the old key and are listed here for cleanup by the service owner. The restart launched at 19:26 UTC (A and C, 8 clients). The Industrial Benchmark runner now also uses the
 reconciled feedback path. The PenSim import shims are vendored in `vendor_shims/` so the second container can run PenSim.
 Local comparators stay in this session.
 

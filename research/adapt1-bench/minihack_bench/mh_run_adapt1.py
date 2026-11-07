@@ -51,7 +51,7 @@ did = new_id(f'mh-{TASK[:10]}-s{SEED}')
 decl = {'domain_id': did, 'session_id': 'ignored', 'description': f'MiniHack {env.env_id} seed {SEED}: online agent, one decision per step.',
         'schema': {'entities': ['agent', 'dungeon'], 'relations': [REL], 'signals': FIELDS + ['step_reward'], 'event_types': ['state', 'feedback']},
         'hypotheses': hyps, 'learning': learning}
-echo = api.post('/domains', decl)
+echo = api.create_domain(decl)
 (OUT / f'declaration-{tag}.json').write_text(json.dumps(decl, indent=1)); (OUT / f'echo-{tag}.json').write_text(json.dumps(echo.get('learning'), indent=1))
 ep_log = open(OUT / f'episodes-{tag}.jsonl', 'w', buffering=1); diag_log = open(OUT / f'diagnostics-{tag}.jsonl', 'w', buffering=1)
 stats = {'steps': 0, 'fallbacks': 0, 'not_applied': 0, 'query_retries': 0}

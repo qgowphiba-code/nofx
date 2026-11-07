@@ -44,7 +44,7 @@ if __name__ == '__main__':
     if ARM != 'shared':
         cfg['context_basis'] = ARM
     did = new_id(f'bench-pensim-ref-{ARM}')
-    api.post('/domains', {'domain_id': did, 'description': f'SMPL PenSim contextual refinement {tag}'})
+    api.create_domain({'domain_id': did, 'description': f'SMPL PenSim contextual refinement {tag}'})
     assert api.traj(did, 'state').get('status') == 'not_configured'
     conf = api.traj(did, 'configure', {'config': cfg})
     (run / 'ledger.json').write_text(json.dumps({'domain_id': did, 'config_sent': cfg, 'configure_response': conf, 'base': base_rec}, indent=1))
