@@ -25,3 +25,4 @@ held-out after 20 updates: mean return 63.3 quality 0.772 finished 0.84 (base al
 update 21: selected 0 gain [0] calls 5553 1331s
 update 22: selected 0 gain [0] calls 5811 1391s
 update 23: selected 0 gain [0] calls 6069 1450s
+update 24: selected 0 gain [0] calls 6327 1512s
