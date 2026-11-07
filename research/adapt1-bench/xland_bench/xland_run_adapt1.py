@@ -117,10 +117,13 @@ def run_ruleset(did, idx, decl_written):
         diag = (step == 0 and idx % 25 == 0)
         q = query(did, values, ep_id, step, diag)
         sel = (q.get('selection') or {}).get('selected_policy')
-        if sel in POLICIES:
+        legal = applicable(env)
+        if sel in legal:
             executed = sel; fb = False
         else:
-            executed = rng.choice(applicable(env)); fb = True; stats['fallbacks'] += 1
+            # abstention or an inapplicable macro (class absent / nothing held): the integration enforces eligibility
+            # (docs: validate the returned policy against the current permitted set) and executes a random applicable macro
+            executed = rng.choice(legal); fb = True; stats['fallbacks'] += 1; stats['inapplicable'] = stats.get('inapplicable', 0) + int(sel in POLICIES)
         trial_before = env.trial
         r, ok, nprim = env.macro(executed)
         done = env.episode_done()
@@ -159,6 +162,7 @@ try:
     for idx in range(FIRST, FIRST + NRS):
         if ARM == 'tasklocal':
             did = new_id(f'xl-{TIER[:3]}-tl-s{SEED}-r{idx}'); decl = declaration(did); echo = api.post('/domains', decl); stats['domains'] += 1
+            (OUT / f'live-{tag}.json').write_text(json.dumps({'domain_id': did, 'ruleset': idx}))   # for cleanup if the process is lost
             if idx == FIRST:
                 (OUT / f'declaration-{tag}.json').write_text(json.dumps(decl, indent=1)); (OUT / f'echo-{tag}.json').write_text(json.dumps(echo.get('learning'), indent=1))
         row = run_ruleset(did, idx, True)

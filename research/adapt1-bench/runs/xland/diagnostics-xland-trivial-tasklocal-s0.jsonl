@@ -1,2 +1,0 @@
-{"ruleset": 0, "selected": "pick_7", "selected_by": "core_exploration_tie_break", "latent": {"most_likely_regime": null, "novelty": 1, "regimes": []}, "feedback_policy": 0, "sequential": null, "subsystems": ["feedback_policy", "structured_transition"]}
-{"ruleset": 0, "selected": "pick_7", "selected_by": "core_exploration_tie_break", "latent": {"most_likely_regime": null, "novelty": 1, "regimes": []}, "feedback_policy": 0, "sequential": null, "subsystems": ["feedback_policy", "structured_transition"]}

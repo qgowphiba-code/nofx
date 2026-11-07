@@ -1,1 +1,0 @@
-{"ruleset": 0, "selected": "goto_9", "selected_by": "core_exploration_tie_break", "latent": {"most_likely_regime": null, "novelty": 1, "regimes": []}, "feedback_policy": 0, "sequential": null, "subsystems": ["feedback_policy", "structured_transition"]}

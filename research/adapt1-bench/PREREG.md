@@ -215,6 +215,14 @@ as context only.
 the running 100-episode win rate first exceeds random's; for PPO the win rate at matched environment steps (its training
 curve at the step count Adapt-1 used) and after its full budget. Differences are called when seed ranges do not overlap.
 
+*Amendment E1 (18:25 UTC; the first launch had completed 0-4 rulesets per run, all discarded): the integration now enforces
+macro eligibility. A selected macro whose class is absent (or put/drop with nothing held) is treated like an abstention: a
+random applicable macro is executed and the step is counted as a fallback, with the count of inapplicable selections kept
+separately. In the first launch Adapt-1 spent entire episodes on inapplicable no-op macros that consume no environment
+steps, so trials never ended and every episode scored 0 at the macro cap, which measures a harness property, not learning.
+Production latency for query/feedback calls was about 4 s under load, so the runs are relaunched four at a time (small and
+medium, both arms); trivial follows.*
+
 ## Operational note (2026-11-07 ~18:00 UTC)
 Launching 22 ChemGym Machina runs on top of 6 XLand runs drove the production service into 503 bursts (a Domain list
 took 9.5 s). The ChemGym runs were stopped after 0-1 attempts each, their 22 Domains deleted (404 readbacks), and the
