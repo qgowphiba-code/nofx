@@ -25,7 +25,7 @@ if ARM == 'profile':
     cfg.update({'coherent_edits': True, 'global_recall': True, 'executed_prefix_mutation': True, 'sequence_compaction': True,
                 'outcome_tier_exploration': True, 'retain_prefix_failures': False})
 did = new_id(f'bench-chem-{BENCH}-{ARM}-{tslug[:10]}')
-api.post('/domains', {'domain_id': did, 'description': f'ChemGymRL {P.BENCHES[BENCH]["env_id"]} target {TARGET}, Machina {ARM} (CHEM-1)'})
+api.create_domain({'domain_id': did, 'description': f'ChemGymRL {P.BENCHES[BENCH]["env_id"]} target {TARGET}, Machina {ARM} (CHEM-1)'})
 assert api.traj(did, 'state').get('status') == 'not_configured'
 conf = api.traj(did, 'configure', {'config': cfg})
 (run / 'ledger.json').write_text(json.dumps({'domain_id': did, 'config_sent': cfg, 'configure_response': conf, 'bench': BENCH, 'target': TARGET, 'base_url': BASE}, indent=1))

@@ -249,6 +249,17 @@ and G therefore run on Fast-UAT (`af6670b`, the round-2 server, about 3 s per ca
 not on production, and start with the budgets the latency allows: F = three tasks first (Potion-Inv, LavaCross,
 WoD-Medium), seed 0, 150 episodes each; Ring-Inv and WoD-Hard follow if time permits. G unchanged (20 capped episodes).*
 
+## Amendment D2 (2026-11-07 ~19:40 UTC): one simple bench, run alone (ChemGym replication)
+The user asked to stop running several runs at once and to run a simpler bench that never crashed, alone. A container
+restart at about 19:27 UTC had already ended every process here. The two XLand Domains it left on production were deleted
+(404 readbacks), production holds no Domains, and the second session was asked to stop all its Fast-UAT runs. ChemGym is
+the bench chosen: all 22 Machina runs in section D completed with no crash. Plan, before any run: the `profile` arm is
+repeated once per target, 300 attempts, the same runner and declaration, on production, **one run at a time with nothing
+else running against the service or on this machine's CPU**. Order: the three targets the first pass did not solve
+(FictReact I, FictReact F, Wurtz dodecane), then the other eight. Outputs go to `runs/chem/rep2/`. Metrics as in D,
+reported per target next to the first pass, so each target has two runs of the `profile` arm. The XLand, Industrial
+Benchmark, PenSim, MiniHack and Craftax runs stay stopped until the user asks for them.
+
 ## Operational note 5 (2026-11-07 ~19:15 UTC): Fast-UAT credential change; all Fast-UAT work restarts in the second session
 At 19:04 UTC the Fast-UAT key saved in this session's environment started returning 401 ("Invalid bearer token") during a
 credential change. All six Industrial Benchmark runs crashed at episodes 14-15 of 150, and their final Domain deletions also
