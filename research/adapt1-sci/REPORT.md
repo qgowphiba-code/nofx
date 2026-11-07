@@ -132,3 +132,56 @@ heuristic equals the ceiling on held-out targets, as predicted: a near-solver co
   `pending_decisions`) before any resend; one such event occurred and was resolved as not applied.
 - The best-known crystallization references were recomputed after Machina exceeded the first reference on compound 9.
 - Local baselines are textbook defaults (no tuning); the GP uses one-hot encodings, not EDBO's DFT descriptors.
+
+
+---
+
+# Rounds 3-5 (same day): where general learners need more data, and more fields
+
+Ground rules unchanged: pre-registration before counted runs (`runs/PREREG_round3.md`), a local headroom gate before any
+refinement test (a task runs only if the nominal profile loses >= 3 % against each batch's own optimum), held-out
+evaluation on unseen batches/patients, and same-data comparators with a data multiplier (1x-8x).
+
+## Summary
+
+| Test (field) | Machina / Adapt-1 | Best same-data comparator | Verdict |
+|---|---|---|---|
+| Park-Ramirez refinement, 2 measured vars (fed-batch) | 86 % of gap at 7,680 runs | CMA-ES policy 49 % at 1x, 85 % at 4x; NES 80 % at 4x | needs 4-6x less data |
+| Park-Ramirez refinement, 5 measured vars incl. a distractor | 31.0 (41 % of a 14-unit gap) at 1x | CMA-ES 26.4 at 8x; NES 27.9 at 4x | > 8x less data |
+| Penicillin fed-batch refinement (Cuthrell & Biegler) | 80.2 at 1x | CMA-ES 78.3 at 4x; NES 80.1 at 2x | 2x (NES) to > 4x (CMA-ES) |
+| Pump drift (unmeasured 30 % shortfall), recovery | 30.55 after 5,120 runs | CMA-ES continued 29.9, restarted 27.7 | recovers best, slower in the first 5 updates |
+| Insulin dosing across 10 unseen virtual patients (UVA/Padova) | 0.518 at 1x | CMA-ES policy 0.544 at 1x; NES 0.509; bolus calculator 0.510 | loses to CMA-ES |
+| RL bioprocess plant (Petsagkourakis et al.; published REINFORCE budget 35k episodes) | 1.15 in 256-600 runs | NES needs ~2,500; CMA-ES/ES 1.07/1.06 at 600 | 4-10x less than NES |
+| Protein design, GB1 four-site landscape (real data) | 6.0 at 384-500 (no global max) | GP-guided design 8.5, global max in 4/5 | loses; level with MLDE |
+| Sachs signalling network (real data), Discovery's chosen predictors | precision 0.39 | Lasso on the same 50 cells 0.52 | loses; above random (0.32) |
+| Materials / photovoltaics experiment planning (Olympus) | crossed barrel 0.90 @50; PCE10 0.66 @50 | GP-EI 0.96 / 0.97 | between random and GP / at random |
+| Rejected by the gate (not run): batch reactor and catalyst mixing with batch variation | | | profile barely moves with conditions (1-2 %) |
+
+Pattern: Machina's contextual refinement is the one component with a consistent data-efficiency edge on condition-sensitive
+batch processes (three fed-batch tasks, up to 5 measured variables, with drift). It did not carry over to patient-to-patient
+insulin dosing. The query/feedback and Discovery routes trailed standard baselines on every real dataset tried.
+
+## Details and caveats
+
+- Data multiplier (Park-Ramirez, 2 vars): held-out % of gap at 7,680 / 15,360 / 30,720 / 61,440 runs: CMA-ES 49 / 78 / 85 / 93,
+  NES 48 / 68 / 80 / 99 (2 seeds each). General learners do catch up with enough data.
+- 5 vars: CMA-ES seed 0 at 1x-8x: 25.2, 24.5, 26.8, 26.4; NES 26.3, 26.5, 27.9 (more seeds were launched; see raw files).
+  Shared (context-free) correction stayed below the base (24.9 vs 25.3): context is required.
+- Penicillin: my per-batch ceiling (1,200 runs per batch on a stiff model) came out below Machina's result, so it is
+  underestimated; values are reported in absolute terms. Our implementation reaches 86.3 vs published 87.7-88.0 (20 stages).
+- Drift: right after the change the refined policy scored below the uncorrected base (24.2 vs 25.9); 5 updates later 25.4,
+  10 updates later 29.0 (ahead of every comparator at that point), 20 updates later 30.6. No search-radius collapse.
+- Insulin: model re-implemented from simglucose and verified (all 30 patients hold basal glucose exactly; meal responses
+  physiological). Base = Machina's profile acquired on one adult; held out: 10 patients x 3 meals. Quadratic 0.473,
+  shared 0.466. Longer (60 updates) and larger-radius (0.4) arms were launched to test whether step size is the limit.
+- RL plant: the authors' code-default parameters allow an integration blow-up in the complex model; a coarse integrator let
+  CMA-ES and random search report a spurious optimum of 36. With 80 sub-steps and non-negative states the best known value
+  is ~1.155 (reached by Machina's profile arm and NES). Machina never touched the artefact region (identical values on the
+  corrected simulator). Baselines were rerun on the corrected simulator; the invalid ones are kept under runs/INVALID-rl-artifact.
+- GB1: a no-repeat rule bug let the first UCB arm re-measure LAAA 79 times (Adapt-1 had locked onto the prefix L-A-A); that
+  run is marked invalid and was rerun with branch-exhaustion checks. Published reference (MLDE study): focused-training MLDE
+  reaches the global max up to 92 % of runs at 470 variants; single-step greedy 1.2 %.
+- Sachs: pooled data without intervention labels (cdt copy), so this tests predictor selection, not causal direction;
+  causal variables stayed empty. Discovery committed its input paths after the first 50 cells and never revised them through
+  1,000 cells; baselines therefore get the same 50 cells (full-data baselines shown for reference).
+- Not run: TrpB landscape (Zenodo blocked by this environment's network policy); robotics (dropped at the user's request).

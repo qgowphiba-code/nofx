@@ -34,6 +34,7 @@ def ctx(k, prefix):
         if j < len(prefix): h, vo, ch = nrm(prefix[j]); v.update({f'p{j}_set': 1.0, f'p{j}_hyd': h, f'p{j}_vol': vo, f'p{j}_chg': ch})
         else: v.update({f'p{j}_set': 0.0, f'p{j}_hyd': 0.0, f'p{j}_vol': 0.0, f'p{j}_chg': 0.0})
     return v
+pc = {}
 seen, best, out, t0, overrides = set(), 0.0, open(f'{run_dir}/designs.jsonl', 'w', buffering=1), time.time(), 0
 for n in range(B):
     prefix, decs = '', []
@@ -41,11 +42,14 @@ for n in range(B):
         q = c.post(f'/domains/{did}/query', {'session_id': 'ignored', 'question': 'Choose the residue at this position.', 'relation': REL,
                    'context': {'event_type': 'state', 'values': ctx(k, prefix)}, 'allow_exploration': True, 'top_k': 20}, mutation=True)
         sel = (q.get('selection') or {}).get('selected_policy') or 'a'; aa = sel.upper()
-        if k == 3 and prefix + aa in seen:
-            alt = [h['policy'].upper() for h in (q.get('ranked_hypotheses') or []) if prefix + h['policy'].upper() not in seen]
-            if alt: aa = alt[0]; overrides += 1
+        full = lambda a: pc.get(prefix + a, 0) >= 20 ** (3 - k)      # every completion of this branch already measured
+        if full(aa):
+            ranked = [h['policy'].upper() for h in (q.get('ranked_hypotheses') or [])] + list(L.AA)
+            aa = next(a for a in ranked if not full(a)); overrides += 1
         decs.append((q.get('decision_id'), ctx(k, prefix), aa.lower())); prefix += aa
-    v = prefix; seen.add(v); f = L.fit(v); best = max(best, f); r = f / L.FMAX
+    v = prefix; seen.add(v); f = L.fit(v)
+    for j in range(1, 5): pc[v[:j]] = pc.get(v[:j], 0) + 1
+    best = max(best, f); r = f / L.FMAX
     for dec, cx, pol in decs:
         fb = {'session_id': 'ignored', 'outcome': 'success', 'feedback_kind': 'execution', 'relation': REL, 'policy': pol, 'values': {'reward': r, 'fitness': f},
               'metadata': {'episode_id': f'v{n}', 'step': 0}}

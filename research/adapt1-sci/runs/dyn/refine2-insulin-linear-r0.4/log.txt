@@ -1,0 +1,5 @@
+[insulin-linear-r0.4] held-out after 0 updates: mean J 0.4221 (base alone 0.4221)
+[insulin-linear-r0.4] held-out after 5 updates: mean J 0.4445 (base alone 0.4221)
+[insulin-linear-r0.4] held-out after 10 updates: mean J 0.4924 (base alone 0.4221)
+[insulin-linear-r0.4] held-out after 20 updates: mean J 0.5325 (base alone 0.4221)
+[insulin-linear-r0.4] held-out after 30 updates: mean J 0.5327 (base alone 0.4221)

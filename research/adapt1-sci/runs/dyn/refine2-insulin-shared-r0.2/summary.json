@@ -1,0 +1,10 @@
+{
+ "domain_id": "sci-r2-insulin-shared-20261107051857-f16be7",
+ "task": "insulin",
+ "arm": "shared",
+ "radius": 0.2,
+ "updates": 30,
+ "drift_at": null,
+ "executions": 7680,
+ "api_calls": 7895
+}

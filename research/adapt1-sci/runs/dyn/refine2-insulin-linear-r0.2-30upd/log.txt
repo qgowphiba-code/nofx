@@ -1,0 +1,6 @@
+[insulin-linear-r0.2] held-out after 0 updates: mean J 0.4221 (base alone 0.4221)
+[insulin-linear-r0.2] held-out after 5 updates: mean J 0.4381 (base alone 0.4221)
+[insulin-linear-r0.2] held-out after 10 updates: mean J 0.4744 (base alone 0.4221)
+[insulin-linear-r0.2] held-out after 20 updates: mean J 0.5092 (base alone 0.4221)
+[insulin-linear-r0.2] held-out after 30 updates: mean J 0.5183 (base alone 0.4221)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-r2-insulin-linear-20261107051857-0da708", "status": "success"}, "readback": 404}

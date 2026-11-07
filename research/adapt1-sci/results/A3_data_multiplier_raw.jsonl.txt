@@ -1,0 +1,69 @@
+== runs/scale2_drift_cmaes_0.jsonl
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "before_change", "executions": 5120, "heldout_mean_J": 29.571882889008027}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "right_after_change", "executions": 0, "heldout_mean_J": 24.900553621413454}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "continued_after_change", "executions": 1280, "heldout_mean_J": 27.22669146408304}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "continued_after_change", "executions": 2560, "heldout_mean_J": 27.622003446115425}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "continued_after_change", "executions": 5120, "heldout_mean_J": 29.875878545114315}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "restart_after_change", "executions": 1280, "heldout_mean_J": 26.85625886531929}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "restart_after_change", "executions": 2560, "heldout_mean_J": 26.905656257503704}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "restart_after_change", "executions": 5120, "heldout_mean_J": 27.728526643157824}
+== runs/scale2_drift_nes_0.jsonl
+{"task": "pr2drift", "method": "nes", "seed": 0, "phase": "right_after_change", "executions": 0, "heldout_mean_J": 26.8780349465043}
+{"task": "pr2drift", "method": "nes", "seed": 0, "phase": "continued_after_change", "executions": 1280, "heldout_mean_J": 27.48709685074057}
+{"task": "pr2drift", "method": "nes", "seed": 0, "phase": "continued_after_change", "executions": 2560, "heldout_mean_J": 28.342627568441095}
+{"task": "pr2drift", "method": "nes", "seed": 0, "phase": "restart_after_change", "executions": 1280, "heldout_mean_J": 27.14941683252747}
+{"task": "pr2drift", "method": "nes", "seed": 0, "phase": "restart_after_change", "executions": 2560, "heldout_mean_J": 27.11815144940709}
+== runs/scale2_insulin_cmaes_0.jsonl
+{"task": "insulin", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 7680, "heldout_mean_J": 0.5436027370942115}
+{"task": "insulin", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 15360, "heldout_mean_J": 0.5436027370942115}
+{"task": "insulin", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 30720, "heldout_mean_J": 0.5516912094569587}
+{"task": "insulin", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 61440, "heldout_mean_J": 0.5626429015459335}
+== runs/scale2_insulin_nes_0.jsonl
+{"task": "insulin", "method": "nes", "seed": 0, "phase": "plain", "executions": 7680, "heldout_mean_J": 0.5087826118205642}
+{"task": "insulin", "method": "nes", "seed": 0, "phase": "plain", "executions": 15360, "heldout_mean_J": 0.5610969587530044}
+{"task": "insulin", "method": "nes", "seed": 0, "phase": "plain", "executions": 30720, "heldout_mean_J": 0.5610969587530044}
+== runs/scale2_pen2_cmaes_0.jsonl
+{"task": "pen2", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 7680, "heldout_mean_J": 77.38400238272725}
+{"task": "pen2", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 15360, "heldout_mean_J": 77.41856727727026}
+{"task": "pen2", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 30720, "heldout_mean_J": 78.29962513404361}
+== runs/scale2_pen2_nes_0.jsonl
+{"task": "pen2", "method": "nes", "seed": 0, "phase": "plain", "executions": 7680, "heldout_mean_J": 71.93181506315359}
+{"task": "pen2", "method": "nes", "seed": 0, "phase": "plain", "executions": 15360, "heldout_mean_J": 80.14302857798307}
+== runs/scale2_pr5_cmaes_0.jsonl
+{"task": "pr5", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 7680, "heldout_mean_J": 25.209511258699237}
+{"task": "pr5", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 15360, "heldout_mean_J": 24.469516595631568}
+{"task": "pr5", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 30720, "heldout_mean_J": 26.76344258867956}
+{"task": "pr5", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 61440, "heldout_mean_J": 26.384133974388398}
+== runs/scale2_pr5_cmaes_1.jsonl
+{"task": "pr5", "method": "cmaes", "seed": 1, "phase": "plain", "executions": 7680, "heldout_mean_J": 25.161672652606118}
+{"task": "pr5", "method": "cmaes", "seed": 1, "phase": "plain", "executions": 15360, "heldout_mean_J": 25.970080814253414}
+{"task": "pr5", "method": "cmaes", "seed": 1, "phase": "plain", "executions": 30720, "heldout_mean_J": 25.970080814253414}
+{"task": "pr5", "method": "cmaes", "seed": 1, "phase": "plain", "executions": 61440, "heldout_mean_J": 27.3906328958755}
+== runs/scale2_pr5_nes_0.jsonl
+{"task": "pr5", "method": "nes", "seed": 0, "phase": "plain", "executions": 7680, "heldout_mean_J": 26.334203366881685}
+{"task": "pr5", "method": "nes", "seed": 0, "phase": "plain", "executions": 15360, "heldout_mean_J": 26.52177462270784}
+{"task": "pr5", "method": "nes", "seed": 0, "phase": "plain", "executions": 30720, "heldout_mean_J": 27.935695153882406}
+== runs/scale2_pr5_nes_1.jsonl
+{"task": "pr5", "method": "nes", "seed": 1, "phase": "plain", "executions": 7680, "heldout_mean_J": 25.46952198609741}
+{"task": "pr5", "method": "nes", "seed": 1, "phase": "plain", "executions": 15360, "heldout_mean_J": 26.369482218603167}
+{"task": "pr5", "method": "nes", "seed": 1, "phase": "plain", "executions": 30720, "heldout_mean_J": 26.369482218603167}
+== runs/refine_scale_cmaes_0.jsonl
+{"method": "cmaes", "seed": 0, "executions": 7680, "heldout_mean_J": 29.57188288900802}
+{"method": "cmaes", "seed": 0, "executions": 15360, "heldout_mean_J": 31.352693445391797}
+{"method": "cmaes", "seed": 0, "executions": 30720, "heldout_mean_J": 31.479269538048438}
+{"method": "cmaes", "seed": 0, "executions": 61440, "heldout_mean_J": 31.719368666501385}
+== runs/refine_scale_cmaes_1.jsonl
+{"method": "cmaes", "seed": 1, "executions": 7680, "heldout_mean_J": 30.072929773139446}
+{"method": "cmaes", "seed": 1, "executions": 15360, "heldout_mean_J": 30.843785649516775}
+{"method": "cmaes", "seed": 1, "executions": 30720, "heldout_mean_J": 31.3256153398604}
+{"method": "cmaes", "seed": 1, "executions": 61440, "heldout_mean_J": 31.77077698990724}
+== runs/refine_scale_nes_0.jsonl
+{"method": "nes", "seed": 0, "executions": 7680, "heldout_mean_J": 29.74285647677821}
+{"method": "nes", "seed": 0, "executions": 15360, "heldout_mean_J": 30.71702909886551}
+{"method": "nes", "seed": 0, "executions": 30720, "heldout_mean_J": 31.352957120812402}
+{"method": "nes", "seed": 0, "executions": 61440, "heldout_mean_J": 32.01400514907698}
+== runs/refine_scale_nes_1.jsonl
+{"method": "nes", "seed": 1, "executions": 7680, "heldout_mean_J": 29.815482716806937}
+{"method": "nes", "seed": 1, "executions": 15360, "heldout_mean_J": 30.619142776518114}
+{"method": "nes", "seed": 1, "executions": 30720, "heldout_mean_J": 30.965369450836864}
+{"method": "nes", "seed": 1, "executions": 61440, "heldout_mean_J": 31.997673606798607}

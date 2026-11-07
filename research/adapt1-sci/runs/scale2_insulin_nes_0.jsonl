@@ -1,0 +1,3 @@
+{"task": "insulin", "method": "nes", "seed": 0, "phase": "plain", "executions": 7680, "heldout_mean_J": 0.5087826118205642}
+{"task": "insulin", "method": "nes", "seed": 0, "phase": "plain", "executions": 15360, "heldout_mean_J": 0.5610969587530044}
+{"task": "insulin", "method": "nes", "seed": 0, "phase": "plain", "executions": 30720, "heldout_mean_J": 0.5610969587530044}

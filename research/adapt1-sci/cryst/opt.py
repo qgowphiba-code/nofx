@@ -73,3 +73,18 @@ def cmaes_best(f, n, budget, seed, restarts=4, sigma0=0.5):
         cmaes(g, n, budget // restarts, seed * 100 + r, sigma0=sigma0)
         if holder['v'] > best[0]: best = (holder['v'], holder['x'])
     return best
+
+
+def nes(f, n, budget, seed, sigma=0.1, lr=0.05, pop=16, x0=None):
+    """OpenAI-ES / NES with antithetic sampling and rank-normalized returns (policy-gradient-style learner)."""
+    rng = np.random.default_rng(seed); th = np.array(x0 if x0 is not None else np.zeros(n), dtype=float); best, hist = -1e18, []
+    while len(hist) < budget:
+        eps = rng.standard_normal((pop, n)); rets = []
+        for e in eps:
+            for s in (1, -1):
+                if len(hist) >= budget: break
+                v = f(clip(th + s * sigma * e)); rets.append(v); best = max(best, v); hist.append(best)
+        if len(rets) < 2 * pop: break
+        rk = np.argsort(np.argsort(rets)).astype(float); rk = rk / (len(rk) - 1) - 0.5
+        th = np.clip(th + lr * sum((rk[2 * i] - rk[2 * i + 1]) * eps[i] for i in range(pop)) / (2 * pop * sigma), -1.5, 1.5)
+    return hist

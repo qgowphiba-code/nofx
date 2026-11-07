@@ -1,0 +1,6 @@
+[insulin-shared-r0.2] held-out after 0 updates: mean J 0.4221 (base alone 0.4221)
+[insulin-shared-r0.2] held-out after 5 updates: mean J 0.4737 (base alone 0.4221)
+[insulin-shared-r0.2] held-out after 10 updates: mean J 0.4708 (base alone 0.4221)
+[insulin-shared-r0.2] held-out after 20 updates: mean J 0.4754 (base alone 0.4221)
+[insulin-shared-r0.2] held-out after 30 updates: mean J 0.4655 (base alone 0.4221)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-r2-insulin-shared-20261107051857-f16be7", "status": "success"}, "readback": 404}

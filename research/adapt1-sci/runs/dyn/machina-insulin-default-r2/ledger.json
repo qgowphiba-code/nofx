@@ -1,0 +1,56 @@
+{
+ "domain_id": "sci-dyn-insulin-default-r2-20261107050843-b8f898",
+ "config_sent": {
+  "mechanism": "episode_credit",
+  "state_dimensions": 4,
+  "action_dimensions": 1,
+  "goal_indices": [
+   0
+  ],
+  "horizon": 20,
+  "capacity": 512,
+  "max_pending": 1,
+  "seed": 1,
+  "outcome_mode": "reward"
+ },
+ "configure_response": {
+  "completed_retry_window": 0,
+  "config": {
+   "action_dimensions": 1,
+   "allow_cold_transfer": false,
+   "balanced_retention": false,
+   "capacity": 512,
+   "coherent_edits": false,
+   "context_first_recall": false,
+   "cross_context_exploration": 0,
+   "evidence_scaled_mutation": false,
+   "executed_prefix_mutation": true,
+   "global_recall": false,
+   "goal_indices": [
+    0
+   ],
+   "horizon": 20,
+   "max_pending": 1,
+   "mechanism": "episode_credit",
+   "outcome_mode": "reward",
+   "outcome_tier_exploration": false,
+   "progress_guided_mutation": false,
+   "retain_context_support": true,
+   "retain_prefix_failures": true,
+   "seed": 1,
+   "segment_exploration": false,
+   "sequence_compaction": false,
+   "state_dimensions": 4
+  },
+  "domain_id": "sci-dyn-insulin-default-r2-20261107050843-b8f898",
+  "experimental": true,
+  "fingerprint": "c36a396c77d9a881e46a9adcca0f67ae7093b2f2b1ec1252d860f9fa38a1286a",
+  "generation": "c10a7ec5e559f0618c560af2492f0171",
+  "mechanism": "episode_credit",
+  "pending_decisions": 0,
+  "retained_trajectories": 0,
+  "session_id": "68b3f2be63632b2ee95a20b0:7e649fc4026f037f36775d954fcae998",
+  "status": "ready",
+  "version": 0
+ }
+}

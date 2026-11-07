@@ -11,8 +11,8 @@ def score_sets(sel):           # sel: target -> selected predictor names
     pred = {frozenset((t, p)) for t in sel for p in sel[t]}
     tp = len(pred & edges); P = tp / max(1, len(pred)); R = tp / len(edges)
     return st.mean(prec), P, R, (2 * P * R / (P + R) if P + R else 0.0)
-def baselines(seed, N, K):
-    cells = random.Random(seed).sample(rows, N)
+def baselines(seed, N, K, first=None):
+    cells = random.Random(seed).sample(rows, N)[:first] if first else (rows if N == 0 else random.Random(seed).sample(rows, N))
     X = np.array([[math.log(float(r[n]) + 1.0) for n in names] for r in cells]); X = (X - X.mean(0)) / X.std(0)
     C = np.corrcoef(X.T); Pm = np.linalg.inv(C); pc = -Pm / np.sqrt(np.outer(np.diag(Pm), np.diag(Pm)))
     out = {}
@@ -38,13 +38,16 @@ print(f'consensus network: {len(edges)} edges; mean neighbours per protein {st.m
 print('| method | K | seeds | precision of selected predictors | skeleton precision | recall | F1 |'); print('|---|---:|---:|---:|---:|---:|---:|')
 for K in (3, 5):
     files = sorted(glob.glob(f'runs/sachs/discovery_k{K}_s*.jsonl'))
-    res = {'Adapt-1 Discovery': [], 'correlation': [], 'partial_correlation': [], 'lasso_neighbourhood': [], 'random': []}
+    from collections import defaultdict
+    res = defaultdict(list)
     for f in files:
         d = [json.loads(l) for l in open(f)]
         if len(d) < 11: continue
         seed = d[0]['seed']
         sel = {r['target']: [p.replace('values.', '') for p in (r['input_paths'] or [])] for r in d}
         res['Adapt-1 Discovery'].append(score_sets(sel))
-        for m, s2 in baselines(seed, 1000, K).items(): res[m].append(score_sets(s2))
+        for m, s2 in baselines(seed, 100, K, first=50).items(): res[m + ' (same 50 cells)'].append(score_sets(s2))
+        for m, s2 in baselines(seed, 0, K).items():
+            if m != 'random': res[m + ' (all 7466 cells)'].append(score_sets(s2))
     for m, v in res.items():
-        if v: print(f'| {m} | {K} | {len(v)} | ' + ' | '.join(f'{st.mean(x[i]):.2f}' for i in range(4)) + ' |')
+        if v: print(f'| {m} | {K} | {len(v)} | ' + ' | '.join(f'{st.mean(r[i] for r in v):.2f}' for i in range(4)) + ' |')

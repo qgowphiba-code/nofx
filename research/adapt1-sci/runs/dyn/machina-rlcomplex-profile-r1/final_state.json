@@ -1,0 +1,40 @@
+{
+ "completed_retry_window": 1,
+ "config": {
+  "action_dimensions": 2,
+  "allow_cold_transfer": false,
+  "balanced_retention": false,
+  "capacity": 512,
+  "coherent_edits": true,
+  "context_first_recall": false,
+  "cross_context_exploration": 0,
+  "evidence_scaled_mutation": false,
+  "executed_prefix_mutation": true,
+  "global_recall": true,
+  "goal_indices": [
+   1
+  ],
+  "horizon": 20,
+  "max_pending": 1,
+  "mechanism": "episode_credit",
+  "outcome_mode": "reward",
+  "outcome_tier_exploration": true,
+  "progress_guided_mutation": false,
+  "retain_context_support": true,
+  "retain_prefix_failures": false,
+  "seed": 1,
+  "segment_exploration": false,
+  "sequence_compaction": true,
+  "state_dimensions": 3
+ },
+ "domain_id": "sci-dyn-rlcomplex-profile-r1-20261107053233-10f87b",
+ "experimental": true,
+ "fingerprint": "6f91c6b8188cd3bb5dce1a10759c919a571f3a4681ff1c85cef1fd23fffeaaf8",
+ "generation": "eccc47b8ac712d944c8463d043a457ed",
+ "mechanism": "episode_credit",
+ "pending_decisions": 0,
+ "retained_trajectories": 8,
+ "session_id": "68b3f2be63632b2ee95a20b0:7e649fc4026f037f36775d954fcae998",
+ "status": "ready",
+ "version": 600
+}

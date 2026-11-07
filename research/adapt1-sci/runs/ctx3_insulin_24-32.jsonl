@@ -1,0 +1,6 @@
+{"task": "insulin", "j": 24, "ctx": {"patient": "child#009", "meal": 40.0}, "ceiling": 0.8071959673930599, "base": 0.07741118154441691}
+{"task": "insulin", "j": 25, "ctx": {"patient": "child#009", "meal": 60.0}, "ceiling": 0.7377202190044664, "base": 0.15673759982404903}
+{"task": "insulin", "j": 26, "ctx": {"patient": "child#009", "meal": 80.0}, "ceiling": 0.6569541590033183, "base": 0.2441042516451099}
+{"task": "insulin", "j": 27, "ctx": {"patient": "child#010", "meal": 40.0}, "ceiling": 0.6090705403207685, "base": 0.45660649066062176}
+{"task": "insulin", "j": 28, "ctx": {"patient": "child#010", "meal": 60.0}, "ceiling": 0.4470118421769753, "base": 0.406576134844875}
+{"task": "insulin", "j": 29, "ctx": {"patient": "child#010", "meal": 80.0}, "ceiling": 0.3173664192570689, "base": 0.2854218521397301}

@@ -1,0 +1,5 @@
+{"dataset": "crossed_barrel", "method": "gp_ei", "seed": 0, "curve": {"10": 0.6886662772414763, "25": 0.7437921890243967, "50": 0.9621817476007036, "100": 0.9621817476007036}, "found_max_at": null}
+{"dataset": "crossed_barrel", "method": "gp_ei", "seed": 1, "curve": {"10": 0.8899998490896744, "25": 0.8899998490896744, "50": 0.9275528392900243, "100": 0.9621817476007036}, "found_max_at": null}
+{"dataset": "crossed_barrel", "method": "gp_ei", "seed": 2, "curve": {"10": 0.49571364562680115, "25": 0.8401004748826475, "50": 1.0, "100": 1.0}, "found_max_at": 40}
+{"dataset": "crossed_barrel", "method": "gp_ei", "seed": 3, "curve": {"10": 1.0, "25": 1.0, "50": 1.0, "100": 1.0}, "found_max_at": 2}
+{"dataset": "crossed_barrel", "method": "gp_ei", "seed": 4, "curve": {"10": 0.6360844503572943, "25": 0.9275528392900243, "50": 0.9275528392900243, "100": 0.9621817476007036}, "found_max_at": null}

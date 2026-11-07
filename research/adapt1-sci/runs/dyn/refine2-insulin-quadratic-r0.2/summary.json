@@ -1,0 +1,10 @@
+{
+ "domain_id": "sci-r2-insulin-quadratic-20261107051857-9e2ed3",
+ "task": "insulin",
+ "arm": "quadratic",
+ "radius": 0.2,
+ "updates": 30,
+ "drift_at": null,
+ "executions": 7680,
+ "api_calls": 7895
+}

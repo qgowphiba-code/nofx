@@ -1,0 +1,2 @@
+{"task": "pen2", "method": "nes", "seed": 0, "phase": "plain", "executions": 7680, "heldout_mean_J": 71.93181506315359}
+{"task": "pen2", "method": "nes", "seed": 0, "phase": "plain", "executions": 15360, "heldout_mean_J": 80.14302857798307}

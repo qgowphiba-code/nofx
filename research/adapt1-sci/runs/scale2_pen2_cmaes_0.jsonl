@@ -1,0 +1,3 @@
+{"task": "pen2", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 7680, "heldout_mean_J": 77.38400238272725}
+{"task": "pen2", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 15360, "heldout_mean_J": 77.41856727727026}
+{"task": "pen2", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 30720, "heldout_mean_J": 78.29962513404361}

@@ -1,0 +1,6 @@
+[insulin-quadratic-r0.2] held-out after 0 updates: mean J 0.4221 (base alone 0.4221)
+[insulin-quadratic-r0.2] held-out after 5 updates: mean J 0.4234 (base alone 0.4221)
+[insulin-quadratic-r0.2] held-out after 10 updates: mean J 0.4637 (base alone 0.4221)
+[insulin-quadratic-r0.2] held-out after 20 updates: mean J 0.4715 (base alone 0.4221)
+[insulin-quadratic-r0.2] held-out after 30 updates: mean J 0.4733 (base alone 0.4221)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-r2-insulin-quadratic-20261107051857-9e2ed3", "status": "success"}, "readback": 404}

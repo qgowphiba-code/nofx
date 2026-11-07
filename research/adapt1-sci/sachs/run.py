@@ -5,7 +5,7 @@ Its discovered input paths are compared with the target's neighbours in the cons
 usage: run.py K SEED N"""
 import sys, csv, json, math, random
 sys.path.insert(0, 'common')
-from client import Client, new_id
+from client import Client, new_id, Ambiguous
 K, SEED, N = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3])
 rows = list(csv.DictReader(open('data/raw/sachs/cyto_full_data.csv')))
 names = list(rows[0].keys()); safe = {n: n.replace('/', '_').lower() for n in names}
@@ -26,7 +26,10 @@ for orig in names:
             v = {safe[n]: round(math.log(float(row[n]) + 1.0), 4) for n in names if n != orig}
             v['state'] = {tgt: round(math.log(float(row[orig]) + 1.0), 4)}
             ops.append({'operation': 'event', 'ref': f'e{i + j}', 'event_type': 'observation', 'values': v, 'metadata': {'cell': i + j}})
-        r = c.post(f'/domains/{did}/batch', {'session_id': 'ignored', 'operations': ops})
+        try:
+            r = c.post(f'/domains/{did}/batch', {'session_id': 'ignored', 'operations': ops})
+        except Ambiguous:
+            continue          # the projection is formed from the first batch and never revised; a lost later batch changes nothing
         p = (((r.get('results') or [{}])[-1].get('result') or {}).get('learner_eligibility') or {}).get('autonomous_projection') or {}
         if p: proj = p; revs.append((i + 50, p.get('revision'), p.get('status'), p.get('input_paths')))
     out.write(json.dumps({'target': tgt, 'K': K, 'seed': SEED, 'N': N, 'input_paths': (proj or {}).get('input_paths'),

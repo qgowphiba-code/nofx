@@ -1,0 +1,4 @@
+{"task": "insulin", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 7680, "heldout_mean_J": 0.5436027370942115}
+{"task": "insulin", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 15360, "heldout_mean_J": 0.5436027370942115}
+{"task": "insulin", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 30720, "heldout_mean_J": 0.5516912094569587}
+{"task": "insulin", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 61440, "heldout_mean_J": 0.5626429015459335}

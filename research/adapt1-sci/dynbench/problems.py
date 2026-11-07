@@ -74,6 +74,18 @@ def _arm_nominal(u):
 CUSTOM['arm'] = _arm_nominal
 PROBLEMS['arm'] = {'x0': None, 'scale': None, 'J_lit': 1.0, 'adim': 2, 'state_dims': 6, 'goal_indices': [4, 5], 'goal': [1.0, 0.5]}
 
+def _rl(model):
+    def g(u):
+        import sys; from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'varied'))
+        import rlpse
+        J, st = rlpse.run(model, u)
+        return {'J': J, 'score': max(0.0, min(1.0, J / (1.2 if model == 'complex' else 0.6))), 'states': st}
+    return g
+for _m in ('simple', 'complex'):
+    CUSTOM['rl' + _m] = _rl(_m)
+    PROBLEMS['rl' + _m] = {'x0': None, 'scale': None, 'J_lit': 1.0, 'adim': 2, 'state_dims': 3, 'goal_indices': [1], 'goal': [1.0]}
+
 def simulate(name, u, H=20):
     if name in CUSTOM:
         return CUSTOM[name](u)

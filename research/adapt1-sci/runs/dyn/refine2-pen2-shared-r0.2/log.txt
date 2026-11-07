@@ -1,0 +1,6 @@
+[pen2-shared-r0.2] held-out after 0 updates: mean J 70.27 (base alone 70.27)
+[pen2-shared-r0.2] held-out after 5 updates: mean J 70.73 (base alone 70.27)
+[pen2-shared-r0.2] held-out after 10 updates: mean J 70.89 (base alone 70.27)
+[pen2-shared-r0.2] held-out after 20 updates: mean J 71.04 (base alone 70.27)
+[pen2-shared-r0.2] held-out after 30 updates: mean J 70.94 (base alone 70.27)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-r2-pen2-shared-20261107050343-91b701", "status": "success"}, "readback": 404}
