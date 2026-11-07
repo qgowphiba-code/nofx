@@ -54,6 +54,14 @@ Substrate rules found on af6670b during Track A:
   - The second rejection is genuine: `validation_skill −0.036`. On this board, random-game outcomes are close to noise. The exact Bayes predictor V_rand reaches only **0.111** skill on the same validation games (0.005 in the first 6 moves, 0.315 after 12 pieces); the line heuristic reaches 0.045, and the solver value −0.43.
   - **Remedy (deviation 11):** ε-greedy (ε 0.3) depth-1 line-heuristic games, with γ 0.99 kept. Their Bayes ceiling is **0.209**. They run as `E1g` after B1 lineage 1.
 
+### Stopped by request (2026-11-07, about 02:30 UTC)
+All work was stopped on the user's request, in this order:
+- B1 lineage 2 was interrupted during its BL g0 reconsideration pass. A0 g0 had scored 107 on Eval-Liu.
+- The queued B1 lineage 3, D2 and X1-2D were cancelled before starting.
+- Both lineage-2 domains were deleted and verified 404. No `hpx2-` domains remain on the account.
+
+A `STOP` file in this directory blocks every client request until it is removed. The confirmatory tests R1–R3 therefore rest on **lineage 1 only** and are exploratory: the plan requires 3 lineages. C1 can still be computed locally from lineage 1.
+
 ### X1: native search extensions (exploratory, not in the plan)
 Setup: 100 informative Eval-S decisions, exact grading. The evaluator is one learned model (A0 on A3 draw-1 data). Native planning runs on supplied depth-4 graphs.
 

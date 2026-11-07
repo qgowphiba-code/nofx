@@ -1,0 +1,90 @@
+{
+ "arms": {
+  "A0": {
+   "arm": "A0",
+   "d": 0,
+   "domain": "hpx2-b1-a0-2-20261107t021627z-f168ab",
+   "error": "ApiError(\"HTTP 404 on /api/v1/domains/hpx2-b1-a0-2-20261107t021627z-f168ab/value/predict: {'detail': 'owned Domain not found'}\")",
+   "generations": [
+    {
+     "g": 0,
+     "liu_depth3": {
+      "complete": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "leaf_evaluations": [
+       1515,
+       1765,
+       1886,
+       2865,
+       4321,
+       3819,
+       5112
+      ],
+      "per_chain": [
+       9,
+       10,
+       5,
+       12,
+       16,
+       23,
+       32
+      ],
+      "tie_decisions": [
+       3,
+       2,
+       2,
+       3,
+       1,
+       1,
+       3
+      ],
+      "total": 107
+     },
+     "n_rows": 5952,
+     "selected_epoch": 43,
+     "sha256": "e6d45db798df20152436be61a9d09f3238840410b288118f465b9b99714947bf"
+    }
+   ],
+   "lam": 0.0
+  },
+  "BL": {
+   "arm": "BL",
+   "d": 2,
+   "domain": "hpx2-b1-bl-2-20261107t021627z-fce568",
+   "error": "ApiError(\"HTTP 404 on /api/v1/domains/hpx2-b1-bl-2-20261107t021627z-fce568/value/state: {'detail': 'owned Domain not found'}\")",
+   "generations": [],
+   "lam": 1.0
+  }
+ },
+ "dim": 3,
+ "heuristic_card_liu": 134.27,
+ "lineage": 2,
+ "requests": {
+  "by_route": {
+   "api/v1/domains": 2,
+   "domains/{id}": 4,
+   "domains/{id}/value/configure": 2,
+   "domains/{id}/value/observe": 240,
+   "domains/{id}/value/predict": 930,
+   "domains/{id}/value/state": 35,
+   "domains/{id}/value/train": 2,
+   "version": 2
+  },
+  "requests": 1217,
+  "retries": 0
+ },
+ "version_end": {
+  "build_time": "unknown",
+  "commit_sha": "af6670b8a9c5ce4251caa02940118110adb839ea",
+  "schema_version": "5",
+  "source_fingerprint": "sha256:9a1c816497f67beed41cf3870566c1f0f70385bbb75f7a0dbd9e8e9726a3dcc4",
+  "version": "v0.1.0"
+ }
+}
