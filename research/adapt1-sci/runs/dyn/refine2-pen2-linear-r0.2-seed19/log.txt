@@ -1,0 +1,6 @@
+[pen2-linear-r0.2-seed19] held-out after 0 updates: mean J 70.27 (base alone 70.27)
+[pen2-linear-r0.2-seed19] held-out after 5 updates: mean J 77.64 (base alone 70.27)
+[pen2-linear-r0.2-seed19] held-out after 10 updates: mean J 81.29 (base alone 70.27)
+[pen2-linear-r0.2-seed19] held-out after 20 updates: mean J 81.36 (base alone 70.27)
+[pen2-linear-r0.2-seed19] held-out after 30 updates: mean J 81.44 (base alone 70.27)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-r2-pen2-linear-20261107070737-c65928", "status": "success"}, "readback": 404}

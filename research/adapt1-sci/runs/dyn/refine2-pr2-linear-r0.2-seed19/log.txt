@@ -1,0 +1,6 @@
+[pr2-linear-r0.2-seed19] held-out after 0 updates: mean J 27.69 (base alone 27.69)
+[pr2-linear-r0.2-seed19] held-out after 5 updates: mean J 30.23 (base alone 27.69)
+[pr2-linear-r0.2-seed19] held-out after 10 updates: mean J 31.01 (base alone 27.69)
+[pr2-linear-r0.2-seed19] held-out after 20 updates: mean J 31.32 (base alone 27.69)
+[pr2-linear-r0.2-seed19] held-out after 30 updates: mean J 31.55 (base alone 27.69)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-r2-pr2-linear-20261107070737-c35eec", "status": "success"}, "readback": 404}

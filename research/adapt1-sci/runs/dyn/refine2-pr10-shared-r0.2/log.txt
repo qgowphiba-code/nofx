@@ -1,0 +1,6 @@
+[pr10-shared-r0.2] held-out after 0 updates: mean J 26.1 (base alone 26.1)
+[pr10-shared-r0.2] held-out after 5 updates: mean J 25.98 (base alone 26.1)
+[pr10-shared-r0.2] held-out after 10 updates: mean J 25.26 (base alone 26.1)
+[pr10-shared-r0.2] held-out after 20 updates: mean J 25.57 (base alone 26.1)
+[pr10-shared-r0.2] held-out after 30 updates: mean J 25.84 (base alone 26.1)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-r2-pr10-shared-20261107063758-b6dea5", "status": "success"}, "readback": 404}

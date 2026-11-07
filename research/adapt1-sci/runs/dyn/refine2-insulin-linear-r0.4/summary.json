@@ -1,0 +1,10 @@
+{
+ "domain_id": "sci-r2-insulin-linear-20261107055636-63f289",
+ "task": "insulin",
+ "arm": "linear",
+ "radius": 0.4,
+ "updates": 60,
+ "drift_at": null,
+ "executions": 15360,
+ "api_calls": 15693
+}

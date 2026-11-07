@@ -7,4 +7,4 @@ GB1: global max 8.76 (FWAA); top-0.1 % threshold 4.62; wild type 1.00
 | mlde | 10 | 1.07 | 1.76 | 2.98 | 3.48 | 3.80 | 5.89 | 1/10 |
 | random | 20 | 1.21 | 1.60 | 2.34 | 3.09 | 3.92 | 4.53 | 1/20 |
 | Adapt-1 thompson | 1 | 1.06 | 1.06 | 1.82 | 1.82 | 6.01 | 6.01 | no |  (500 designs, 491 unique, 19 unmeasured)
-| Adapt-1 ucb | 1 | 1.95 | 3.40 | 5.04 | 5.44 | 5.89 | - | no |  (416 designs, 416 unique, 16 unmeasured)
+| Adapt-1 ucb | 1 | 1.95 | 3.40 | 5.04 | 5.44 | 5.89 | 5.89 | no |  (500 designs, 500 unique, 20 unmeasured)

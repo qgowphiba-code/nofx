@@ -10,12 +10,16 @@
 [insulin-linear-r0.2] held-out after 10 updates: mean J 0.4744 (base alone 0.4221)
 [insulin-linear-r0.2] held-out after 20 updates: mean J 0.5092 (base alone 0.4221)
 [insulin-linear-r0.2] held-out after 30 updates: mean J 0.5183 (base alone 0.4221)
+[insulin-linear-r0.2] held-out after 40 updates: mean J 0.529 (base alone 0.4221)
+[insulin-linear-r0.2] held-out after 60 updates: mean J 0.5913 (base alone 0.4221)
 == runs/r2_insulin_linear_r0.4_60.out
 [insulin-linear-r0.4] held-out after 0 updates: mean J 0.4221 (base alone 0.4221)
 [insulin-linear-r0.4] held-out after 5 updates: mean J 0.4445 (base alone 0.4221)
 [insulin-linear-r0.4] held-out after 10 updates: mean J 0.4924 (base alone 0.4221)
 [insulin-linear-r0.4] held-out after 20 updates: mean J 0.5325 (base alone 0.4221)
 [insulin-linear-r0.4] held-out after 30 updates: mean J 0.5327 (base alone 0.4221)
+[insulin-linear-r0.4] held-out after 40 updates: mean J 0.5334 (base alone 0.4221)
+[insulin-linear-r0.4] held-out after 60 updates: mean J 0.5786 (base alone 0.4221)
 == runs/r2_insulin_quadratic.out
 [insulin-quadratic-r0.2] held-out after 0 updates: mean J 0.4221 (base alone 0.4221)
 [insulin-quadratic-r0.2] held-out after 5 updates: mean J 0.4234 (base alone 0.4221)
@@ -34,12 +38,42 @@
 [pen2-linear-r0.2] held-out after 10 updates: mean J 79.52 (base alone 70.27)
 [pen2-linear-r0.2] held-out after 20 updates: mean J 79.82 (base alone 70.27)
 [pen2-linear-r0.2] held-out after 30 updates: mean J 80.23 (base alone 70.27)
+== runs/r2_pen2_linear_seed19.out
+[pen2-linear-r0.2-seed19] held-out after 0 updates: mean J 70.27 (base alone 70.27)
+[pen2-linear-r0.2-seed19] held-out after 5 updates: mean J 77.64 (base alone 70.27)
+[pen2-linear-r0.2-seed19] held-out after 10 updates: mean J 81.29 (base alone 70.27)
+[pen2-linear-r0.2-seed19] held-out after 20 updates: mean J 81.36 (base alone 70.27)
+[pen2-linear-r0.2-seed19] held-out after 30 updates: mean J 81.44 (base alone 70.27)
 == runs/r2_pen2_shared.out
 [pen2-shared-r0.2] held-out after 0 updates: mean J 70.27 (base alone 70.27)
 [pen2-shared-r0.2] held-out after 5 updates: mean J 70.73 (base alone 70.27)
 [pen2-shared-r0.2] held-out after 10 updates: mean J 70.89 (base alone 70.27)
 [pen2-shared-r0.2] held-out after 20 updates: mean J 71.04 (base alone 70.27)
 [pen2-shared-r0.2] held-out after 30 updates: mean J 70.94 (base alone 70.27)
+== runs/r2_pr10_linear.out
+[pr10-linear-r0.2] held-out after 0 updates: mean J 26.1 (base alone 26.1)
+[pr10-linear-r0.2] held-out after 5 updates: mean J 27.25 (base alone 26.1)
+[pr10-linear-r0.2] held-out after 10 updates: mean J 27.14 (base alone 26.1)
+[pr10-linear-r0.2] held-out after 20 updates: mean J 26.99 (base alone 26.1)
+[pr10-linear-r0.2] held-out after 30 updates: mean J 28.31 (base alone 26.1)
+== runs/r2_pr10_shared.out
+[pr10-shared-r0.2] held-out after 0 updates: mean J 26.1 (base alone 26.1)
+[pr10-shared-r0.2] held-out after 5 updates: mean J 25.98 (base alone 26.1)
+[pr10-shared-r0.2] held-out after 10 updates: mean J 25.26 (base alone 26.1)
+[pr10-shared-r0.2] held-out after 20 updates: mean J 25.57 (base alone 26.1)
+[pr10-shared-r0.2] held-out after 30 updates: mean J 25.84 (base alone 26.1)
+== runs/r2_pr2_linear_seed19.out
+[pr2-linear-r0.2-seed19] held-out after 0 updates: mean J 27.69 (base alone 27.69)
+[pr2-linear-r0.2-seed19] held-out after 5 updates: mean J 30.23 (base alone 27.69)
+[pr2-linear-r0.2-seed19] held-out after 10 updates: mean J 31.01 (base alone 27.69)
+[pr2-linear-r0.2-seed19] held-out after 20 updates: mean J 31.32 (base alone 27.69)
+[pr2-linear-r0.2-seed19] held-out after 30 updates: mean J 31.55 (base alone 27.69)
+== runs/r2_pr2_linear_seed20.out
+[pr2-linear-r0.2-seed20] held-out after 0 updates: mean J 27.69 (base alone 27.69)
+[pr2-linear-r0.2-seed20] held-out after 5 updates: mean J 29.85 (base alone 27.69)
+[pr2-linear-r0.2-seed20] held-out after 10 updates: mean J 30.25 (base alone 27.69)
+[pr2-linear-r0.2-seed20] held-out after 20 updates: mean J 31.27 (base alone 27.69)
+[pr2-linear-r0.2-seed20] held-out after 30 updates: mean J 31.41 (base alone 27.69)
 == runs/r2_pr2drift_linear.out
 [pr2drift-linear-r0.2-drift20] held-out after 0 updates: mean J 27.69 (base alone 27.69)
 [pr2drift-linear-r0.2-drift20] held-out after 5 updates: mean J 29.44 (base alone 27.69)
@@ -55,6 +89,18 @@
 [pr5-linear-r0.2] held-out after 10 updates: mean J 28.54 (base alone 25.28)
 [pr5-linear-r0.2] held-out after 20 updates: mean J 29.43 (base alone 25.28)
 [pr5-linear-r0.2] held-out after 30 updates: mean J 31 (base alone 25.28)
+== runs/r2_pr5_linear_seed19.out
+[pr5-linear-r0.2-seed19] held-out after 0 updates: mean J 25.28 (base alone 25.28)
+[pr5-linear-r0.2-seed19] held-out after 5 updates: mean J 27.06 (base alone 25.28)
+[pr5-linear-r0.2-seed19] held-out after 10 updates: mean J 28.99 (base alone 25.28)
+[pr5-linear-r0.2-seed19] held-out after 20 updates: mean J 29.79 (base alone 25.28)
+[pr5-linear-r0.2-seed19] held-out after 30 updates: mean J 32.07 (base alone 25.28)
+== runs/r2_pr5_linear_seed20.out
+[pr5-linear-r0.2-seed20] held-out after 0 updates: mean J 25.28 (base alone 25.28)
+[pr5-linear-r0.2-seed20] held-out after 5 updates: mean J 27.64 (base alone 25.28)
+[pr5-linear-r0.2-seed20] held-out after 10 updates: mean J 28.27 (base alone 25.28)
+[pr5-linear-r0.2-seed20] held-out after 20 updates: mean J 29.6 (base alone 25.28)
+[pr5-linear-r0.2-seed20] held-out after 30 updates: mean J 31.47 (base alone 25.28)
 == runs/r2_pr5_quadratic.out
 [pr5-quadratic-r0.2] held-out after 0 updates: mean J 25.28 (base alone 25.28)
 [pr5-quadratic-r0.2] held-out after 5 updates: mean J 26.01 (base alone 25.28)

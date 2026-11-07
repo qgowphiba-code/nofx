@@ -14,15 +14,16 @@ from client import Client, Ambiguous, new_id
 TASK, ARM, UPD, RADIUS = sys.argv[1], sys.argv[2], int(sys.argv[3]), float(sys.argv[4])
 DRIFT_AT = int(sys.argv[5]) if len(sys.argv) > 5 else None
 T = ctxtasks.Task(TASK); CANDS, BATCH = 8, 32
+import os; SVC_SEED = int(os.environ.get('REFINE_SEED', '18'))
 EVAL_AT = {0, 5, 10, 20, 30, 40, UPD} | ({DRIFT_AT + 5, DRIFT_AT + 10, DRIFT_AT + 20} if DRIFT_AT else set())
-tag = f'{TASK}-{ARM}-r{RADIUS:g}' + (f'-drift{DRIFT_AT}' if DRIFT_AT else '')
+tag = f'{TASK}-{ARM}-r{RADIUS:g}' + (f'-drift{DRIFT_AT}' if DRIFT_AT else '') + (f'-seed{SVC_SEED}' if SVC_SEED != 18 else '')
 run = HERE.parent / 'runs' / 'dyn' / f'refine2-{tag}'; run.mkdir(parents=True, exist_ok=True)
 api = Client(run / 'requests.jsonl')
 log = open(run / 'log.txt', 'a', buffering=1)
 def say(*a):
     m = ' '.join(str(x) for x in a); print(m, flush=True); log.write(m + '\n')
 cfg = {'mechanism': 'contextual_execution', 'horizon': ctxtasks.H, 'action_dimensions': T.adim, 'contexts': [T.vec(c) for c in T.SUPPORT],
-       'objective_names': ['quality'], 'candidate_count': CANDS, 'max_contexts': BATCH, 'seed': 18, 'radius': RADIUS,
+       'objective_names': ['quality'], 'candidate_count': CANDS, 'max_contexts': BATCH, 'seed': SVC_SEED, 'radius': RADIUS,
        'retained_variance': 0.99, 'contextual': ARM != 'shared', 'action_trust_region': True, 'normalize_context': True}
 if ARM != 'shared': cfg['context_basis'] = ARM
 did = new_id(f'sci-r2-{TASK}-{ARM}')
@@ -42,7 +43,7 @@ def heldout(k, label=''):
     rec = {'update': k, 'drift': drift, 'label': label, 'heldout_mean_J': sum(vals) / len(vals), 'base_mean_J': sum(basev) / len(basev), 'per_context': vals}
     with open(run / 'heldout.jsonl', 'a') as fh: fh.write(json.dumps(rec) + '\n')
     say(f'[{tag}] held-out after {k} updates{" (drift)" if drift else ""}{label}: mean J {rec["heldout_mean_J"]:.4g} (base alone {rec["base_mean_J"]:.4g})')
-rng = random.Random(7); ids = {f'tr{j}': c for j, c in enumerate(T.TRAIN)}
+rng = random.Random(7 + SVC_SEED - 18); ids = {f'tr{j}': c for j, c in enumerate(T.TRAIN)}
 heldout(0); version = conf.get('version', 0)
 for k in range(1, UPD + 1):
     batch = rng.sample(sorted(ids), BATCH); disc = batch[::2]

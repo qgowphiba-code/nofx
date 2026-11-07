@@ -150,16 +150,18 @@ evaluation on unseen batches/patients, and same-data comparators with a data mul
 | Park-Ramirez refinement, 5 measured vars incl. a distractor | 31.0 (41 % of a 14-unit gap) at 1x | CMA-ES 26.4 at 8x; NES 27.9 at 4x | > 8x less data |
 | Penicillin fed-batch refinement (Cuthrell & Biegler) | 80.2 at 1x | CMA-ES 78.3 at 4x; NES 80.1 at 2x | 2x (NES) to > 4x (CMA-ES) |
 | Pump drift (unmeasured 30 % shortfall), recovery | 30.55 after 5,120 runs | CMA-ES continued 29.9, restarted 27.7 | recovers best, slower in the first 5 updates |
-| Insulin dosing across 10 unseen virtual patients (UVA/Padova) | 0.518 at 1x | CMA-ES policy 0.544 at 1x; NES 0.509; bolus calculator 0.510 | loses to CMA-ES |
+| Insulin dosing across 10 unseen virtual patients (UVA/Padova) | 0.518 at 1x; **0.591 at 2x** | CMA-ES 0.544 at 1x, 0.563 at 8x; NES 0.561 at 2x; bolus calculator 0.510 | slower start, then ahead of all comparators up to 8x |
 | RL bioprocess plant (Petsagkourakis et al.; published REINFORCE budget 35k episodes) | 1.15 in 256-600 runs | NES needs ~2,500; CMA-ES/ES 1.07/1.06 at 600 | 4-10x less than NES |
 | Protein design, GB1 four-site landscape (real data) | 6.0 at 384-500 (no global max) | GP-guided design 8.5, global max in 4/5 | loses; level with MLDE |
 | Sachs signalling network (real data), Discovery's chosen predictors | precision 0.39 | Lasso on the same 50 cells 0.52 | loses; above random (0.32) |
 | Materials / photovoltaics experiment planning (Olympus) | crossed barrel 0.90 @50; PCE10 0.66 @50 | GP-EI 0.96 / 0.97 | between random and GP / at random |
+| Park-Ramirez refinement, 10 measured vars (7 relevant + 3 distractors) | 28.3 at 1x (16 % of a 14-unit gap) | CMA-ES 25.7 at 8x; NES 26.6 at 4x (no progress) | only learner that moves; small absolute gain |
 | Rejected by the gate (not run): batch reactor and catalyst mixing with batch variation | | | profile barely moves with conditions (1-2 %) |
 
 Pattern: Machina's contextual refinement is the one component with a consistent data-efficiency edge on condition-sensitive
-batch processes (three fed-batch tasks, up to 5 measured variables, with drift). It did not carry over to patient-to-patient
-insulin dosing. The query/feedback and Discovery routes trailed standard baselines on every real dataset tried.
+batch processes (three fed-batch tasks, up to 5 measured variables, with drift). On patient-to-patient
+insulin dosing it started slower than a CMA-ES policy but led every comparator once given 2x the data. At 10 measured variables
+all learners stall; Machina is the only one that improves at all. The query/feedback and Discovery routes trailed standard baselines on every real dataset tried.
 
 ## Details and caveats
 
@@ -185,3 +187,19 @@ insulin dosing. The query/feedback and Discovery routes trailed standard baselin
   causal variables stayed empty. Discovery committed its input paths after the first 50 cells and never revised them through
   1,000 cells; baselines therefore get the same 50 cells (full-data baselines shown for reference).
 - Not run: TrpB landscape (Zenodo blocked by this environment's network policy); robotics (dropped at the user's request).
+
+- Insulin, longer runs: radius 0.2 reached 0.529 at 40 updates and 0.591 at 60 (15,360 runs); radius 0.4 reached 0.533 at
+  20 and 0.579 at 60. Per-patient ceiling 0.665, so 0.591 is 69 % of the gap.
+- 5 vars, second comparator seeds: CMA-ES 25.2 / 26.0 / 26.0 / 27.4 at 1x / 2x / 4x / 8x; NES 25.5 / 26.4 / 26.4. Machina 31.0 at 1x.
+- 10 vars: Machina 27.25, 27.14, 26.99, 28.31 at 5/10/20/30 updates (not monotone); shared 25.8; base 26.1, ceiling 40.1.
+
+## Addendum: replicates of the refinement result (different service seeds and training-batch draws)
+
+| Task | Machina linear, 30 updates (7,680 runs), per seed | Mean | Same-data comparators |
+|---|---|---:|---|
+| Park-Ramirez, 2 measured vars (base 27.69, ceiling 32.04) | 31.42 / 31.55 / 31.41 | 31.46 (87 % of gap) | CMA-ES 29.8 at 1x, 31.4 at 4x; NES 31.2 at 4x |
+| Park-Ramirez, 5 measured vars (base 25.28, ceiling 39.27) | 31.00 / 32.07 / 31.47 | 31.51 (45 %) | CMA-ES <= 27.4 at 8x; NES <= 27.9 at 4x |
+| Penicillin (base 70.27) | 80.23 / 81.44 | 80.8 | CMA-ES 78.3 at 4x; NES 80.1 at 2x |
+
+The spread between seeds is small next to the gaps to the comparators. GB1 UCB rerun finished at 5.89 (500 unique variants,
+no global maximum). At the end of the session no Domains were left on the account.
