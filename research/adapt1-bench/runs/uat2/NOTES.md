@@ -31,3 +31,11 @@ All times UTC, 2026-11-07.
   requires both PenSim summary.json files before starting F.
 - 19:28 RESTART, C attempt 2 (rerun from scratch, new Domains): both arms relaunched.
 - 19:31 Merged `origin/claude/zen-carson-n5bvi0` 0170978 (`Client.create_domain` reconciles an ambiguous Domain creation). The running A and C processes keep the code they started with; F, G and any rerun launch with the merged code.
+- 19:33 STOPPED all runs at the user's instruction ("stop running multiple runs"; "try a simpler bench that never crashed,
+  run it alone", relayed by the first session). SIGINT to the six Industrial Benchmark runs (1 episode each completed;
+  outcome `interrupted`; each runner deleted its own Domain) and both PenSim arms (attempt 2; no update completed; no
+  delete on interrupt, so I deleted both Domains by exact id). Readbacks 19:34, all 404:
+  `ib-p50{,d}-s{0,1,2}-20261107192610-*` (388efb, b4bb85, 0149ee, d79398, 21468e, 6e0bbd),
+  `bench-pensim-ref-linear-20261107192812-f96911`, `bench-pensim-ref-shared-20261107192812-217301`.
+  Partial outputs in `runs/ib/adapt1/stopped-uat2-2/` and `runs/pensim/stopped-uat2-2/`. Not counted. F, G not started.
+  This session now has no live Fast-UAT runs and no Domains.

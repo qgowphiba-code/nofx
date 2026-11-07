@@ -1,0 +1,29 @@
+{
+ "setpoint": 50,
+ "drift": false,
+ "seed": 1,
+ "episodes_requested": 150,
+ "ep_len": 200,
+ "outcome": "interrupted",
+ "domain_id": "ib-p50-s1-20261107192610-b4bb85",
+ "stats": {
+  "steps": 339,
+  "fallbacks": 0,
+  "not_applied": 0,
+  "query_retries": 0,
+  "feedback_reconciled": 0
+ },
+ "api_calls": 684,
+ "api_seconds": 447.8,
+ "wall_s": 449.1,
+ "delete": {
+  "deleted": {
+   "cleared_memories": 340,
+   "deleted": true,
+   "domain_id": "ib-p50-s1-20261107192610-b4bb85",
+   "status": "success"
+  },
+  "readback": 404
+ },
+ "resumed_from": null
+}
