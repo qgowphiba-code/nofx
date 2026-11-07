@@ -1,0 +1,65 @@
+{
+ "domain_id": "bench-chem-wurtz-profile-4-ethyldec-20261107173758-1bd607",
+ "config_sent": {
+  "mechanism": "episode_credit",
+  "state_dimensions": 7,
+  "action_dimensions": 6,
+  "goal_indices": [
+   0
+  ],
+  "horizon": 20,
+  "capacity": 512,
+  "max_pending": 1,
+  "seed": 1,
+  "outcome_mode": "reward",
+  "coherent_edits": true,
+  "global_recall": true,
+  "executed_prefix_mutation": true,
+  "sequence_compaction": true,
+  "outcome_tier_exploration": true,
+  "retain_prefix_failures": false
+ },
+ "configure_response": {
+  "completed_retry_window": 0,
+  "config": {
+   "action_dimensions": 6,
+   "allow_cold_transfer": false,
+   "balanced_retention": false,
+   "capacity": 512,
+   "coherent_edits": true,
+   "context_first_recall": false,
+   "cross_context_exploration": 0,
+   "evidence_scaled_mutation": false,
+   "executed_prefix_mutation": true,
+   "global_recall": true,
+   "goal_indices": [
+    0
+   ],
+   "horizon": 20,
+   "max_pending": 1,
+   "mechanism": "episode_credit",
+   "outcome_mode": "reward",
+   "outcome_tier_exploration": true,
+   "progress_guided_mutation": false,
+   "retain_context_support": true,
+   "retain_prefix_failures": false,
+   "seed": 1,
+   "segment_exploration": false,
+   "sequence_compaction": true,
+   "state_dimensions": 7
+  },
+  "domain_id": "bench-chem-wurtz-profile-4-ethyldec-20261107173758-1bd607",
+  "experimental": true,
+  "fingerprint": "0ef69cfdb652b2fe8c87a7a5719804bf8fa542749b0bfc2b1935b9873d41a8b4",
+  "generation": "863193a78d6c8fd288d714dbbb305eb1",
+  "mechanism": "episode_credit",
+  "pending_decisions": 0,
+  "retained_trajectories": 0,
+  "session_id": "681e100e6ce7c030fb562aad:55d45f7eeeebc2bd9726599edaff4f23",
+  "status": "ready",
+  "version": 0
+ },
+ "bench": "wurtz",
+ "target": "4-ethyldecane",
+ "base_url": "https://rei-neuroadapt-api.reilabs.org/api/v1"
+}

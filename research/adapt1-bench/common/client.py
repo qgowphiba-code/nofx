@@ -45,7 +45,7 @@ class Client:
         if data is not None and len(data) > 1024 * 1024:
             raise ValueError('body exceeds 1 MiB')
         last = None
-        for attempt in range(6):
+        for attempt in range(12):       # 429/503 are "not applied": retry with backoff up to ~6 min (production returned 503 bursts under load)
             req = urllib.request.Request(self.base + path, data=data, method=method,
                                          headers={'Content-Type': 'application/json', 'User-Agent': UA})
             t0 = time.time()
@@ -63,7 +63,7 @@ class Client:
                 dt = time.time() - t0
                 self._log({'t': t0, 'm': method, 'p': path, 'b': body, 's': e.code, 'dt': round(dt, 3), 'r': txt[:4000]})
                 if e.code in (429, 503) or (e.code in (502, 504) and not mutation):
-                    time.sleep(min(30, 2 ** attempt)); last = e; continue
+                    time.sleep(min(60, 2 ** attempt)); last = e; continue
                 if e.code in (502, 504) and mutation:
                     raise Ambiguous(f'{method} {path}: HTTP {e.code} (outcome unknown)')
                 raise ApiError(e.code, txt, path)

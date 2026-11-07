@@ -189,6 +189,38 @@ the published PPO-RNN results on the raw environment as context only (1e9 steps,
 rulesets solved at least once; macros per solved trial; fallback rate. The within-episode learning signal is the difference
 between trial 6 and trial 1. Differences are called when a paired sign test over rulesets gives p < 0.05.
 
+## F. MiniHack skill tasks (NeurIPS 2021 Datasets & Benchmarks), sequential route, production API (`minihack_bench/`)
+
+Added 2026-11-07 ~18:10 UTC, before any counted run. MiniHack 1.0.2 / NLE 1.3.0 built here from source.
+
+**Question.** On NetHack skill tasks whose solution depends on an item with a randomised appearance and a multi-key use
+sequence (use verb, confirm with the fire key, answer a follow-up prompt, then act), does Adapt-1's sequential route learn
+the sequence and the item's effect from reward alone, and how does its data efficiency compare with PPO on the same features?
+
+**Tasks** (Restricted action sets, the benchmark's own): LavaCross-Levitate-Potion-Inv (11 actions), LavaCross-Levitate-
+Ring-Inv (12), LavaCross (16; a random item type lies on the floor), WoD-Medium (11), WoD-Hard (11). Reward: +1 at the
+goal, 0 on death, the benchmark's -0.01 per step; cap 250 steps. Local measurements before the runs (30 random episodes):
+random wins 13/30 on Potion-Inv and 11/30 on Ring-Inv (random key presses do stumble on quaff-then-confirm), 0/30 on
+WoD-Medium. Scripted use-then-walk sequences win rarely because the exit position varies.
+**Adapt-1** (`mh_run_adapt1.py`): context = `mh_env` features (position, offsets to exit / nearest item / nearest monster,
+8-neighbour lava mask, inventory class flags, inventory growth, levitation, message class, HP, step fraction, last action);
+policies = the task's actions with action index and move flag as features; reward bounds [-0.1, 1]; sequential learning
+discount 0.95, `n_step` 8, eligibility traces; TCP (lag 6) over position, levitation, inventory growth, HP and message flags;
+latent belief on. 500 episodes per run, seeds 0 and 1, five tasks (10 runs); abstention -> random action, counted.
+**Comparators** (`mh_local.py`, same seeds): random (500 episodes); the knowledgeable script (use item, confirm, walk to
+the exit; WoD: pick up, zap at the minotaur) as a reference, not a baseline; SB3 PPO (MLP) on the same features at 1,000,000
+environment steps, 2 seeds per task, evaluated on 200 episodes; the published IMPALA results (CNN on glyphs, 1e7-1e9 steps)
+as context only.
+**Metrics.** Win rate over the last 100 of 500 episodes and over all 500 (online); mean episode length; the episode at which
+the running 100-episode win rate first exceeds random's; for PPO the win rate at matched environment steps (its training
+curve at the step count Adapt-1 used) and after its full budget. Differences are called when seed ranges do not overlap.
+
+## Operational note (2026-11-07 ~18:00 UTC)
+Launching 22 ChemGym Machina runs on top of 6 XLand runs drove the production service into 503 bursts (a Domain list
+took 9.5 s). The ChemGym runs were stopped after 0-1 attempts each, their 22 Domains deleted (404 readbacks), and the
+same runs re-queued three at a time; one XLand run (trivial, task-local) crashed on exhausted retries and was relaunched
+from its first ruleset; the client now retries 429/503 for about six minutes. No counted result was affected.
+
 ## Validity rules (all parts)
 - A run counts only if it completes; an aborted or crashed run is reported, not dropped, and rerun once from scratch with
   the same seed and a new Domain; both are reported. Adapt-1 runs abort if more than 1 % of feedbacks are not applied.

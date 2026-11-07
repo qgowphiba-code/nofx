@@ -1,0 +1,23 @@
+{
+ "tier": "trivial",
+ "arm": "tasklocal",
+ "seed": 0,
+ "first_ruleset": 0,
+ "n_rulesets": 50,
+ "domains": [
+  {
+   "domain_id": "xl-tri-tl-s0-r0-20261107172851-95ef24",
+   "readback": 404
+  }
+ ],
+ "outcome": "crashed",
+ "stats": {
+  "macros": 17,
+  "fallbacks": 0,
+  "not_applied": 0,
+  "query_retries": 0,
+  "domains": 1
+ },
+ "api_calls": 50,
+ "wall_s": 272
+}
