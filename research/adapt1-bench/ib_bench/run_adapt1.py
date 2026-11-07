@@ -115,13 +115,8 @@ def query(values, ep_id, step, diag):
 
 
 def feedback(fb):
-    try:
-        return api.post(f'/domains/{did}/feedback', fb)
-    except (Ambiguous, ApiError) as e:
-        if isinstance(e, ApiError) and e.code < 500:
-            raise
-        stats['feedback_reconciled'] += 1; time.sleep(2)
-        return api.post(f'/domains/{did}/feedback', fb)
+    # reconciled by the Domain's event_count before any resend (PREREG operational note 3)
+    return api.feedback(did, fb, stats)
 
 
 def compact_diag(q, ep, step):
@@ -166,7 +161,7 @@ try:
             if q.get('decision_id'):
                 fb['decision_id'] = q['decision_id']
             res = feedback(fb)
-            if (res.get('credit_assignment') or {}).get('contextual_learning_applied') is not True:
+            if res.get('reconciled') != 'applied' and (res.get('credit_assignment') or {}).get('contextual_learning_applied') is not True:
                 stats['not_applied'] += 1
             if diag:
                 d = compact_diag(q, ep, step); d['feedback_credit'] = res.get('credit_assignment'); diag_log.write(json.dumps(d) + '\n')

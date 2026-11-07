@@ -249,6 +249,19 @@ and G therefore run on Fast-UAT (`af6670b`, the round-2 server, about 3 s per ca
 not on production, and start with the budgets the latency allows: F = three tasks first (Potion-Inv, LavaCross,
 WoD-Medium), seed 0, 150 episodes each; Ring-Inv and WoD-Hard follow if time permits. G unchanged (20 capped episodes).*
 
+## Operational note 5 (2026-11-07 ~19:15 UTC): Fast-UAT credential change; all Fast-UAT work restarts in the second session
+At 19:04 UTC the Fast-UAT key saved in this session's environment started returning 401 ("Invalid bearer token") during a
+credential change. All six Industrial Benchmark runs crashed at episodes 14-15 of 150, and their final Domain deletions also
+failed with 401. The two PenSim refinement arms were frozen at their first update and then stopped. The key now saved in
+the second environment (`nofx-uat2`) maps to the original Fast-UAT engine session (`68b3f2be...`), so note 4's premise of a
+separate queue does not hold: Fast-UAT work again shares one queue. At the user's instruction everything on Fast-UAT starts
+over in that second session, from scratch, on new Domains: Industrial Benchmark (A, all six runs, 150 episodes each),
+PenSim refinement (C, both arms), then MiniHack (F) and Craftax (G). The crashed first attempts are kept in
+`runs/ib/adapt1/crashed-1/` and `runs/pensim/crashed-1/` and reported. Their eight Domains, which exist under the same
+engine session, are deleted from the second session by exact id. The Industrial Benchmark runner now also uses the
+reconciled feedback path. The PenSim import shims are vendored in `vendor_shims/` so the second container can run PenSim.
+Local comparators stay in this session.
+
 ## Operational note 4 (2026-11-07 ~19:00 UTC): F and G move to a second Fast-UAT key in a second session
 All requests from this session's container carry this environment's saved key, because the proxy overwrites any
 Authorization header; an invalid key sent by hand was accepted as the saved identity. One key is one engine session and
