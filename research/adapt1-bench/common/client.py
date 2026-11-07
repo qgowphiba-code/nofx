@@ -82,13 +82,26 @@ class Client:
         return self.post(f'/domains/{domain}/trajectory/{op}', body,
                          mutation=op not in ('state', 'records', 'evaluate'))
 
-    def delete_domain(self, domain):
-        r = self.call('DELETE', f'/domains/{domain}', None, mutation=True)
-        try:
-            self.call('GET', f'/domains/{domain}', None, mutation=False)
-            return {'deleted': r, 'readback': 'still_present'}
-        except ApiError as e:
-            return {'deleted': r, 'readback': e.code}
+    def delete_domain(self, domain, attempts=5):
+        """Delete and confirm by readback. A 5xx on the DELETE is ambiguous: re-read, and if the Domain is still there retry
+        (production returned a 502 on a delete during the XLand smoke test)."""
+        r = None
+        for attempt in range(attempts):
+            try:
+                r = self.call('DELETE', f'/domains/{domain}', None, mutation=True)
+            except (Ambiguous, ApiError) as e:
+                r = {'error': repr(e)[:200]}
+                if isinstance(e, ApiError) and e.code == 404:
+                    return {'deleted': r, 'readback': 404}
+            try:
+                self.call('GET', f'/domains/{domain}', None, mutation=False)
+            except ApiError as e:
+                if e.code == 404:
+                    return {'deleted': r, 'readback': 404}
+            except Exception:
+                pass
+            time.sleep(min(30, 2 ** attempt))
+        return {'deleted': r, 'readback': 'still_present'}
 
 
 def new_id(prefix):

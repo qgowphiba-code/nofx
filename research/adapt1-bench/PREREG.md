@@ -123,6 +123,43 @@ training contexts. If it passes: 20 updates x 8 candidates x 12 contexts (1,920 
 0, 5, 10, 20; comparators at the same executions: CMA-ES linear policy (1 seed), context-free robust recipe (1 seed), base
 alone, default recipe. CPU limits may trim seeds, never below what is written here without a note in the report.
 
+## E. XLand-MiniGrid (NeurIPS 2024 Datasets & Benchmarks) through macro-actions, sequential route, production API (`xland_bench/`)
+
+Added 2026-11-07 ~17:30 UTC, before any counted run (smoke test: 2 trivial rulesets, seed 99, excluded; its Domain deletion hit
+a production 502 and was completed afterwards by hand). Service: production `https://rei-neuroadapt-api.reilabs.org/api/v1`,
+build `f5e1ab8`, schema 5.
+
+**Question.** On the Alchemy-shaped task, hidden production rules and a hidden goal resampled every episode with several trials
+per episode, does Adapt-1's sequential route discover and exploit the structure within an episode (improvement from trial 1
+to trial K) and does retained state across episodes help, compared with no-knowledge scripts and a PPO policy trained on the
+same macro decisions?
+
+**Environment.** `xminigrid` 0.9.3, `XLand-MiniGrid-R1-9x9` (one room, 243 primitive steps per trial), rulesets generated with
+the benchmark's own generator restricted to the three position-free families (AgentHold, AgentNear, TileNear; the released
+benchmarks also sample directional variants), tiers trivial (chain depth 0, 3 distractor objects), small (depth 1, up to 2
+distractor rules, 2 distractor objects, prune 0.3) and medium (depth 2, up to 3 distractor rules, 2 distractor objects, prune
+0.1), 3,000 rulesets each (`gen_rulesets.py`, seed 2026). Episode = one ruleset for K = 6 trials on fresh layouts; trial reward
+is the environment's (1 - 0.9 steps/243 at the goal, else 0). Goal and rules are never shown. Rulesets with more than 8
+initial object classes are skipped and recorded.
+**Macro-actions** (`xland_macro.py`): pick / goto / put for each of 10 class slots (initial classes, then products in order of
+first appearance) plus drop; executed with the environment's primitive actions by breadth-first search. Inapplicable macros
+are no-ops with reward 0.
+**Adapt-1** (`xland_run_adapt1.py`): docs' recommended sequential declaration; context = slot present/held/known/class
+codes + holding, trial and step fractions, macros in trial, last macro success and reward; policies = the 31 macros with
+operation one-hot and slot index as features (`action_transfer_strength` 0.05); reward bounds [0, 1]; sequential learning
+discount 0.9, `n_step` 6, eligibility traces; TCP (lag 6) over the scalar summaries; latent belief on. Abstention -> a random
+applicable macro, counted. Arms: `retained` (one Domain per run, each ruleset one episode) and `tasklocal` (a fresh Domain per
+ruleset, deleted after its trials). Rulesets 0-149 of each tier for small and medium, 0-49 for trivial; seed 0 (one seed per
+arm and tier: 4 + 2 runs).
+**Comparators** on the same rulesets and layout seeds (`xland_local.py`, `xland_sb3.py`): random applicable macro; the
+systematic explorer (tries every untried goto/pick/put in a fixed order, replays the first rewarded sequence); the oracle
+(knows goal and rules, shortest plan: the ceiling); SB3 PPO on the same features and macros, meta-trained on rulesets
+1000-2999 of the tier for 100,000 macro decisions (about 1,500 episodes), evaluated deterministically on rulesets 0-149;
+the published PPO-RNN results on the raw environment as context only (1e9 steps, not reproducible here).
+**Metrics.** Mean trial reward by trial index 1..6 and overall, averaged over rulesets, per tier and arm; fraction of
+rulesets solved at least once; macros per solved trial; fallback rate. The within-episode learning signal is the difference
+between trial 6 and trial 1. Differences are called when a paired sign test over rulesets gives p < 0.05.
+
 ## Validity rules (all parts)
 - A run counts only if it completes; an aborted or crashed run is reported, not dropped, and rerun once from scratch with
   the same seed and a new Domain; both are reported. Adapt-1 runs abort if more than 1 % of feedbacks are not applied.
