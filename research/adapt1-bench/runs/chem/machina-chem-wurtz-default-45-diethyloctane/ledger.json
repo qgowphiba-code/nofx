@@ -1,0 +1,59 @@
+{
+ "domain_id": "bench-chem-wurtz-default-45-diethyl-20261107180950-1653a3",
+ "config_sent": {
+  "mechanism": "episode_credit",
+  "state_dimensions": 7,
+  "action_dimensions": 6,
+  "goal_indices": [
+   0
+  ],
+  "horizon": 20,
+  "capacity": 512,
+  "max_pending": 1,
+  "seed": 1,
+  "outcome_mode": "reward"
+ },
+ "configure_response": {
+  "completed_retry_window": 0,
+  "config": {
+   "action_dimensions": 6,
+   "allow_cold_transfer": false,
+   "balanced_retention": false,
+   "capacity": 512,
+   "coherent_edits": false,
+   "context_first_recall": false,
+   "cross_context_exploration": 0,
+   "evidence_scaled_mutation": false,
+   "executed_prefix_mutation": true,
+   "global_recall": false,
+   "goal_indices": [
+    0
+   ],
+   "horizon": 20,
+   "max_pending": 1,
+   "mechanism": "episode_credit",
+   "outcome_mode": "reward",
+   "outcome_tier_exploration": false,
+   "progress_guided_mutation": false,
+   "retain_context_support": true,
+   "retain_prefix_failures": true,
+   "seed": 1,
+   "segment_exploration": false,
+   "sequence_compaction": false,
+   "state_dimensions": 7
+  },
+  "domain_id": "bench-chem-wurtz-default-45-diethyl-20261107180950-1653a3",
+  "experimental": true,
+  "fingerprint": "9f615371df5fac5db1cb35b5c677ead4ad0f7c0eeb805a5e2f12bccd45f987dd",
+  "generation": "982ad5f92904aedb655e0bbe4ece4f2a",
+  "mechanism": "episode_credit",
+  "pending_decisions": 0,
+  "retained_trajectories": 0,
+  "session_id": "681e100e6ce7c030fb562aad:55d45f7eeeebc2bd9726599edaff4f23",
+  "status": "ready",
+  "version": 0
+ },
+ "bench": "wurtz",
+ "target": "4,5-diethyloctane",
+ "base_url": "https://rei-neuroadapt-api.reilabs.org/api/v1"
+}
