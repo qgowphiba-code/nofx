@@ -2766,3 +2766,5 @@
 {"episode": 2765, "return": 103.0, "len": 98, "steps": 293421, "elapsed_s": 11860.4}
 {"episode": 2766, "return": 103.0, "len": 98, "steps": 293519, "elapsed_s": 11870.1}
 {"episode": 2767, "return": 105.0, "len": 96, "steps": 293615, "elapsed_s": 11879.5}
+{"episode": 2768, "return": 105.0, "len": 96, "steps": 293711, "elapsed_s": 11888.4}
+{"episode": 2769, "return": 104.0, "len": 97, "steps": 293808, "elapsed_s": 11897.5}
