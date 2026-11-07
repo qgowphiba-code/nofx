@@ -259,6 +259,7 @@ else running against the service or on this machine's CPU**. Order: the three ta
 (FictReact I, FictReact F, Wurtz dodecane), then the other eight. Outputs go to `runs/chem/rep2/`. Metrics as in D,
 reported per target next to the first pass, so each target has two runs of the `profile` arm. The XLand, Industrial
 Benchmark, PenSim, MiniHack and Craftax runs stay stopped until the user asks for them.
+*Stopped at the user's request at about 19:45 UTC during the first replication run (FictReact I, 226 of 300 attempts); its Domain was deleted (404 readback) and the partial run is kept in `runs/chem/rep2/` as stopped, not counted. Nothing is running in either session and production holds no Domains.*
 
 ## Operational note 5 (2026-11-07 ~19:15 UTC): Fast-UAT credential change; all Fast-UAT work restarts in the second session
 At 19:04 UTC the Fast-UAT key saved in this session's environment started returning 401 ("Invalid bearer token") during a
