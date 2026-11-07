@@ -249,6 +249,17 @@ and G therefore run on Fast-UAT (`af6670b`, the round-2 server, about 3 s per ca
 not on production, and start with the budgets the latency allows: F = three tasks first (Potion-Inv, LavaCross,
 WoD-Medium), seed 0, 150 episodes each; Ring-Inv and WoD-Hard follow if time permits. G unchanged (20 capped episodes).*
 
+## Operational note 4 (2026-11-07 ~19:00 UTC): F and G move to a second Fast-UAT key in a second session
+All requests from this session's container carry this environment's saved key, because the proxy overwrites any
+Authorization header; an invalid key sent by hand was accepted as the saved identity. One key is one engine session and
+one server queue. The user supplied a second Fast-UAT key. Sections F and G therefore run from a second cloud session on a
+separate environment (`nofx-uat2`) that holds only that key, so they use their own queue and their own CPU, while the
+Industrial Benchmark and PenSim runs continue here on the first key. Same server (`/version` commit `af6670b`, schema 5),
+same runners and declarations as committed on this branch, same reconciled client. Plan there: the three F tasks
+(Potion-Inv, LavaCross, WoD-Medium; seed 0, 150 episodes each) run together as one experiment; then G (seed 0, 20
+episodes of 500 steps); then Ring-Inv and WoD-Hard. Outputs go to the branch `claude/zen-carson-n5bvi0-uat2` and are merged
+here. Notes from that session go to `runs/uat2/NOTES.md`. Local comparators for F and G stay in this session.
+
 ## Operational note 3 (2026-11-07 ~18:45 UTC): dropped connections and feedback reconciliation
 Production began resetting connections mid-request (`ConnectionResetError`) at about 18:05 UTC. The XLand task-local arm
 crashed on a Domain creation after 3 rulesets, and the retained arm crashed on a feedback after 2 rulesets. Two production
