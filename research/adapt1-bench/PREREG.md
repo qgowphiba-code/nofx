@@ -122,6 +122,11 @@ alone, default recipe. CPU limits may trim seeds, never below what is written he
 ## Validity rules (all parts)
 - A run counts only if it completes; an aborted or crashed run is reported, not dropped, and rerun once from scratch with
   the same seed and a new Domain; both are reported. Adapt-1 runs abort if more than 1 % of feedbacks are not applied.
+- *Amendment (15:40 UTC, Industrial Benchmark runs at episode 2 of 150, about 7 min per episode under server load): if the
+  runner process is lost (container restart), an Industrial Benchmark run is resumed on the same Domain from the episode
+  after the last complete one (`--resume`); the interrupted episode index is skipped, its partial feedback stays in the
+  Domain's learned state, and every resume is recorded in `resumes-*.jsonl` and in the summary. Total completed episodes
+  stay at 150.*
 - Every Domain is deleted at the end of its run and the deletion is confirmed by a 404 readback.
 - Raw per-episode / per-attempt files, declarations, server echoes and diagnostics are committed; derived metrics are
   computed from them by `analyze.py` and kept separate.

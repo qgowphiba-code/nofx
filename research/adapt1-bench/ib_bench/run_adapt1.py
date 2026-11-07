@@ -64,17 +64,36 @@ learning = {
                          'input_paths': [f'values.{k}' for k in FIELDS], 'maximum_lag': 10},
 }
 
-api = Client(JDIR / f'journal-{tag}.jsonl.xz')
-did = new_id(f'ib-p{SP}{"d" if DRIFT else ""}-s{SEED}')
-decl = {'domain_id': did, 'session_id': 'ignored',
-        'description': f'Industrial Benchmark setpoint {SP}{" drifting" if DRIFT else ""} seed {SEED}: online agent, one decision per step.',
-        'schema': {'entities': ['agent', 'plant'], 'relations': [REL], 'signals': FIELDS + ['step_reward'], 'event_types': ['state', 'feedback']},
-        'hypotheses': hyps, 'learning': learning}
-echo = api.post('/domains', decl)
-(OUT / f'declaration-{tag}.json').write_text(json.dumps(decl, indent=1))
-(OUT / f'echo-{tag}.json').write_text(json.dumps(echo.get('learning'), indent=1))
-ep_log = open(OUT / f'episodes-{tag}.jsonl', 'w', buffering=1)
-diag_log = open(OUT / f'diagnostics-{tag}.jsonl', 'w', buffering=1)
+RESUME = '--resume' in sys.argv
+START_EP, resumed_from = 0, None
+if RESUME:
+    # Resume on the same Domain after a process/container loss: domain_id from the saved declaration, continue from the
+    # episode after the last complete one (the interrupted episode index is skipped and reported; its feedback stays in
+    # the Domain's learned state).
+    decl_prev = json.loads((OUT / f'declaration-{tag}.json').read_text())
+    did = decl_prev['domain_id']
+    done_eps = [json.loads(l) for l in open(OUT / f'episodes-{tag}.jsonl') if l.strip()]
+    START_EP = (done_eps[-1]['episode'] + 2) if done_eps else 1
+    resumed_from = {'completed_episodes': len(done_eps), 'skipped_episode_index': START_EP - 1, 'at': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
+    api = Client(JDIR / f'journal-{tag}-resume{START_EP}.jsonl.xz')
+    assert api.call('GET', f'/domains/{did}', None, mutation=False), 'domain not found for resume'
+    ep_log = open(OUT / f'episodes-{tag}.jsonl', 'a', buffering=1)
+    diag_log = open(OUT / f'diagnostics-{tag}.jsonl', 'a', buffering=1)
+    with open(OUT / f'resumes-{tag}.jsonl', 'a') as fh:
+        fh.write(json.dumps(resumed_from) + '\n')
+    print('resuming', tag, resumed_from, flush=True)
+else:
+    api = Client(JDIR / f'journal-{tag}.jsonl.xz')
+    did = new_id(f'ib-p{SP}{"d" if DRIFT else ""}-s{SEED}')
+    decl = {'domain_id': did, 'session_id': 'ignored',
+            'description': f'Industrial Benchmark setpoint {SP}{" drifting" if DRIFT else ""} seed {SEED}: online agent, one decision per step.',
+            'schema': {'entities': ['agent', 'plant'], 'relations': [REL], 'signals': FIELDS + ['step_reward'], 'event_types': ['state', 'feedback']},
+            'hypotheses': hyps, 'learning': learning}
+    echo = api.post('/domains', decl)
+    (OUT / f'declaration-{tag}.json').write_text(json.dumps(decl, indent=1))
+    (OUT / f'echo-{tag}.json').write_text(json.dumps(echo.get('learning'), indent=1))
+    ep_log = open(OUT / f'episodes-{tag}.jsonl', 'w', buffering=1)
+    diag_log = open(OUT / f'diagnostics-{tag}.jsonl', 'w', buffering=1)
 stats = {'steps': 0, 'fallbacks': 0, 'not_applied': 0, 'query_retries': 0, 'feedback_reconciled': 0}
 t0 = time.time()
 
@@ -122,7 +141,7 @@ def compact_diag(q, ep, step):
 
 
 try:
-    for ep in range(EPISODES):
+    for ep in range(START_EP, EPISODES + (START_EP - len(resumed_from and done_eps or []) if RESUME else 0)):
         ep_id = f'{tag}-e{ep:05d}'
         obs = env.reset(); step = 0; rewards = []; fallbacks = 0; setpoints = []; chosen_idx = []
         values = ib_env.scaled(obs)
@@ -169,7 +188,7 @@ finally:
     deleted = api.delete_domain(did)
     summary = {'setpoint': SP, 'drift': DRIFT, 'seed': SEED, 'episodes_requested': EPISODES, 'ep_len': EP_LEN,
                'outcome': locals().get('outcome', 'crashed'), 'domain_id': did, 'stats': stats, 'api_calls': api.calls,
-               'api_seconds': round(api.seconds, 1), 'wall_s': round(time.time() - t0, 1), 'delete': deleted}
+               'api_seconds': round(api.seconds, 1), 'wall_s': round(time.time() - t0, 1), 'delete': deleted, 'resumed_from': resumed_from}
     (OUT / f'summary-{tag}.json').write_text(json.dumps(summary, indent=1))
     api.close()
     print(json.dumps(summary))
