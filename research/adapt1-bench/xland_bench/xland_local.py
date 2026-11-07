@@ -28,7 +28,10 @@ with open(OUT, 'a') as fh:
     for idx in range(FIRST, FIRST + N):
         rs = bench.get_ruleset(idx); seed = SEED * 100000 + idx; goal, rules = X.decode_ruleset(rs)
         res = {}
-        res['random'] = X.play_episode(env, rs, seed, lambda e: rng.choice(applicable(e)))
+        try:
+            res['random'] = X.play_episode(env, rs, seed, lambda e: rng.choice(applicable(e)))
+        except ValueError as e:        # too many initial classes for the fixed policy set: skipped, as in the Adapt-1 runs
+            fh.write(json.dumps({'ruleset': idx, 'skipped': str(e)}) + '\n'); continue
         ex = None
         def mk_ex(e):
             global ex

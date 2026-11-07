@@ -123,6 +123,35 @@ training contexts. If it passes: 20 updates x 8 candidates x 12 contexts (1,920 
 0, 5, 10, 20; comparators at the same executions: CMA-ES linear policy (1 seed), context-free robust recipe (1 seed), base
 alone, default recipe. CPU limits may trim seeds, never below what is written here without a note in the report.
 
+## D. ChemGymRL reaction benches (Beeler et al., Digital Discovery 2024), Machina, production API (`chemgym_bench/`)
+
+Added 2026-11-07 ~17:45 UTC, before any counted run. Service: production `f5e1ab8`. Benchmark code from the ChemGymRL-v1 clone.
+
+**Question.** On a chemistry benchmark where the published RL agents mostly fail to beat hand-written heuristics, how fast does
+Machina acquire a reaction recipe per target compared with same-budget black-box search, the paper's own heuristic, and the
+paper's RL algorithms trained closed-loop at their full budgets?
+
+**Plants.** GenWurtzReact-v1 (7 targets, 6 controls) and FictReact-v2 (4 targets, 7 controls; E is penalised for the other
+targets), 20 steps, terminal reward (moles of target minus moles of the avoid material). Executor CHEM-1 (`chem_plant.py`):
+open-loop 20 x ADIM recipe in [-1, 1], quality in [0, 1] as defined there. Targets pinned per batch.
+**Gate (local, before this section was written).** Wurtz: the benchmark's heuristic (heat, add the target's reagents) scores
+0.454 on dodecane / 5,6-dimethyldecane / 4,5-diethyloctane and 0.277-0.278 on the other three organic targets; a CMA-ES
+4,000-evaluation search over the recipe reaches only 0.366-0.376 and 0.253-0.255, so the heuristic is at or near the optimum
+of this bench; random recipes 0.16-0.19. NaCl is nearly saturated by random (2.04 vs heuristic 2.18 of 3). Fict: heuristic
+0.94 / 0.97 / 0.97 on E / F / G and 0.18 on I (a two-stage recipe); random -0.27 to 0.52. Reading: on these benches the
+heuristic is a near-optimal corner recipe for most targets, so the acquisition test measures speed to a known optimum; the
+open question with headroom is Fict target I. The CMA-ES 4,000-evaluation value for the Fict targets is being computed
+(`runs/chem/fict_gate.json`) and will be reported as the reference.
+**Machina acquisition** (`chem_machina_acquire.py`): one Domain per target, `episode_credit`, arms `default` and `profile`,
+300 attempts, state rows = the bench's thermodynamic and in-hand observation entries. 11 targets x 2 arms = 22 runs.
+**Comparators** (`chem_local.py`, `chem_sb3.py`): random, (1+1)-ES, CMA-ES at 300 attempts from u = 0 (mid-range), 5 seeds
+per target; the heuristic; the 4,000-evaluation CMA-ES reference; SB3 PPO, A2C, SAC and TD3 (the paper's algorithms, [32, 32]
+MLP as in the paper) on the benchmark's own closed-loop protocol with the target redrawn every episode and encoded in the
+observation, at the paper's 100,000 steps (3 seeds) and at 1,000,000 steps (PPO, 3 seeds), evaluated deterministically per
+target. Metrics: best quality after 16 / 32 / 64 / 128 / 300 attempts per target (mean over the 2 arms vs mean over the 5
+comparator seeds), attempts to reach the heuristic's value, and the deep-RL agents' per-target returns after training.
+Differences are called when seed/arm ranges do not overlap (descriptive at these counts).
+
 ## E. XLand-MiniGrid (NeurIPS 2024 Datasets & Benchmarks) through macro-actions, sequential route, production API (`xland_bench/`)
 
 Added 2026-11-07 ~17:30 UTC, before any counted run (smoke test: 2 trivial rulesets, seed 99, excluded; its Domain deletion hit
