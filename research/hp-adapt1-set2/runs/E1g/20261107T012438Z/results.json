@@ -1,0 +1,288 @@
+{
+ "GE": {
+  "best_arm": "BLG",
+  "heuristic_depth2": 0.8077083333333333,
+  "mean_depth2": {
+   "A0": 0.6854166666666667,
+   "BL": 0.7012499999999999,
+   "BLG": 0.7066666666666667
+  },
+  "run_E2": false
+ },
+ "baselines": {
+  "heuristic": {
+   "depth1": {
+    "best_move_rate": 0.7954166666666667,
+    "depth": 1,
+    "mean_regret": 0.11197916666666666,
+    "n": 800,
+    "wdl_accuracy": 0.47
+   },
+   "depth2": {
+    "best_move_rate": 0.8077083333333333,
+    "depth": 2,
+    "mean_regret": 0.10364583333333334,
+    "n": 800,
+    "wdl_accuracy": 0.47
+   }
+  },
+  "neutral": {
+   "depth1": {
+    "best_move_rate": 0.49433333333333335,
+    "depth": 1,
+    "mean_regret": 0.2911875,
+    "n": 800,
+    "wdl_accuracy": 0.4825
+   },
+   "depth2": {
+    "best_move_rate": 0.6155416666666667,
+    "depth": 2,
+    "mean_regret": 0.21864583333333332,
+    "n": 800,
+    "wdl_accuracy": 0.4825
+   }
+  }
+ },
+ "draws": {
+  "1": {
+   "arms": {
+    "A0": {
+     "fit_seconds": 104.9,
+     "grade": {
+      "depth1": {
+       "best_move_rate": 0.5575,
+       "depth": 1,
+       "mean_regret": 0.244375,
+       "n": 800,
+       "wdl_accuracy": 0.485
+      },
+      "depth2": {
+       "best_move_rate": 0.7,
+       "depth": 2,
+       "mean_regret": 0.166875,
+       "n": 800,
+       "wdl_accuracy": 0.485
+      }
+     },
+     "n_rows": 9599,
+     "selected_epoch": 2,
+     "sha256": "2703815215435b1c3783b0ce790cc1de7c5efc5e911b611952d8d0a123d0611b"
+    },
+    "BL": {
+     "fit_seconds": 110.2,
+     "grade": {
+      "depth1": {
+       "best_move_rate": 0.585,
+       "depth": 1,
+       "mean_regret": 0.228125,
+       "n": 800,
+       "wdl_accuracy": 0.5075
+      },
+      "depth2": {
+       "best_move_rate": 0.7,
+       "depth": 2,
+       "mean_regret": 0.1625,
+       "n": 800,
+       "wdl_accuracy": 0.5075
+      }
+     },
+     "n_rows": 9599,
+     "selected_epoch": 100,
+     "sha256": "a9bdb9883f0755770132b428d4cfd9d30a35201c7aa28bb6f849d7ad4a785d15"
+    },
+    "BLG": {
+     "fit_seconds": 220.2,
+     "grade": {
+      "depth1": {
+       "best_move_rate": 0.62125,
+       "depth": 1,
+       "mean_regret": 0.209375,
+       "n": 800,
+       "wdl_accuracy": 0.5425
+      },
+      "depth2": {
+       "best_move_rate": 0.72625,
+       "depth": 2,
+       "mean_regret": 0.145,
+       "n": 800,
+       "wdl_accuracy": 0.5425
+      }
+     },
+     "n_rows": 18641,
+     "selected_epoch": 106,
+     "sha256": "ccdd5a5e59c16b223df69d89d81b002e5bbf312323fd1bf77e8cec0df224a1b2"
+    }
+   },
+   "games_sha256": "82c9c3c97f44b5154e2e5feaa698a3ee1294c93c6408265ccbd820f8c3457658",
+   "n_games": 600,
+   "sibling_stride": 5
+  },
+  "2": {
+   "arms": {
+    "A0": {
+     "fit_seconds": 104.5,
+     "grade": {
+      "depth1": {
+       "best_move_rate": 0.53875,
+       "depth": 1,
+       "mean_regret": 0.265,
+       "n": 800,
+       "wdl_accuracy": 0.4825
+      },
+      "depth2": {
+       "best_move_rate": 0.64625,
+       "depth": 2,
+       "mean_regret": 0.19875,
+       "n": 800,
+       "wdl_accuracy": 0.4825
+      }
+     },
+     "n_rows": 9737,
+     "selected_epoch": 3,
+     "sha256": "ada7e3125ec47b8715e9ca00091d0914013c6218e7a2d47ea5112ce8b4c2c0e1"
+    },
+    "BL": {
+     "fit_seconds": 109.9,
+     "grade": {
+      "depth1": {
+       "best_move_rate": 0.56,
+       "depth": 1,
+       "mean_regret": 0.249375,
+       "n": 800,
+       "wdl_accuracy": 0.49
+      },
+      "depth2": {
+       "best_move_rate": 0.65625,
+       "depth": 2,
+       "mean_regret": 0.19,
+       "n": 800,
+       "wdl_accuracy": 0.49
+      }
+     },
+     "n_rows": 9737,
+     "selected_epoch": 62,
+     "sha256": "9c5b0b6a512d75e395017a693ae8933c8a4e5031920f55371150f30c99230f4f"
+    },
+    "BLG": {
+     "fit_seconds": 224.9,
+     "grade": {
+      "depth1": {
+       "best_move_rate": 0.545,
+       "depth": 1,
+       "mean_regret": 0.2575,
+       "n": 800,
+       "wdl_accuracy": 0.5225
+      },
+      "depth2": {
+       "best_move_rate": 0.66125,
+       "depth": 2,
+       "mean_regret": 0.19,
+       "n": 800,
+       "wdl_accuracy": 0.5225
+      }
+     },
+     "n_rows": 18857,
+     "selected_epoch": 96,
+     "sha256": "4a1817d6c02073971f13a36f7aa703d8cee53198f1769550fb673961000c23b7"
+    }
+   },
+   "games_sha256": "e9af54fd2290676ec1e815631353d7c97e4ab8dada1690ebb84b5d6fa8d21b29",
+   "n_games": 600,
+   "sibling_stride": 5
+  },
+  "3": {
+   "arms": {
+    "A0": {
+     "fit_seconds": 104.3,
+     "grade": {
+      "depth1": {
+       "best_move_rate": 0.5725,
+       "depth": 1,
+       "mean_regret": 0.24125,
+       "n": 800,
+       "wdl_accuracy": 0.48875
+      },
+      "depth2": {
+       "best_move_rate": 0.71,
+       "depth": 2,
+       "mean_regret": 0.158125,
+       "n": 800,
+       "wdl_accuracy": 0.48875
+      }
+     },
+     "n_rows": 9671,
+     "selected_epoch": 5,
+     "sha256": "c112b926e82f11cd0e2004198d49099962ad869cda03ab0003a5834348206c18"
+    },
+    "BL": {
+     "fit_seconds": 120.8,
+     "grade": {
+      "depth1": {
+       "best_move_rate": 0.61125,
+       "depth": 1,
+       "mean_regret": 0.215,
+       "n": 800,
+       "wdl_accuracy": 0.51
+      },
+      "depth2": {
+       "best_move_rate": 0.7475,
+       "depth": 2,
+       "mean_regret": 0.13625,
+       "n": 800,
+       "wdl_accuracy": 0.51
+      }
+     },
+     "n_rows": 9671,
+     "selected_epoch": 118,
+     "sha256": "4d3af83577258ffa6af6db145a2f716cba07232d735966f13f6b51197d095325"
+    },
+    "BLG": {
+     "fit_seconds": 240.4,
+     "grade": {
+      "depth1": {
+       "best_move_rate": 0.6125,
+       "depth": 1,
+       "mean_regret": 0.21625,
+       "n": 800,
+       "wdl_accuracy": 0.49375
+      },
+      "depth2": {
+       "best_move_rate": 0.7325,
+       "depth": 2,
+       "mean_regret": 0.143125,
+       "n": 800,
+       "wdl_accuracy": 0.49375
+      }
+     },
+     "n_rows": 18773,
+     "selected_epoch": 74,
+     "sha256": "2336eadb489b3a6ab79e4a55bab6664ea95ee550b0ef52b993f2b41c15284eda"
+    }
+   },
+   "games_sha256": "e9cb1bf22c03e1a804d39daaa80f9645acb367c741f452dc247454b0e05e1c59",
+   "n_games": 600,
+   "sibling_stride": 5
+  }
+ },
+ "requests": {
+  "by_route": {
+   "api/v1/domains": 3,
+   "domains/{id}": 6,
+   "domains/{id}/value/configure": 3,
+   "domains/{id}/value/observe": 1709,
+   "domains/{id}/value/predict": 1112,
+   "domains/{id}/value/state": 265,
+   "domains/{id}/value/train": 9,
+   "version": 2
+  },
+  "requests": 3109,
+  "retries": 0
+ },
+ "version_end": {
+  "build_time": "unknown",
+  "commit_sha": "af6670b8a9c5ce4251caa02940118110adb839ea",
+  "schema_version": "5",
+  "source_fingerprint": "sha256:9a1c816497f67beed41cf3870566c1f0f70385bbb75f7a0dbd9e8e9726a3dcc4",
+  "version": "v0.1.0"
+ }
+}

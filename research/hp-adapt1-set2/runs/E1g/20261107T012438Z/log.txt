@@ -1,0 +1,15 @@
+[     0.0s] run E1g -> /home/user/nofx/research/hp-adapt1-set2/runs/E1g/20261107T012438Z
+[     0.5s] baselines {"heuristic": {"depth1": {"depth": 1, "best_move_rate": 0.7954166666666667, "mean_regret": 0.11197916666666666, "wdl_accuracy": 0.47, "n": 800}, "depth2": {"depth": 2, "best_move_rate": 0.8077083333333333, "mean_regret": 0.10364583333333334, "wdl_accuracy": 0.47, "n": 800}}, "neutral": {"depth1": {"depth": 1, "best_move_rate": 0.49433333333333335, "mean_regret": 0.2911875, "wdl_accuracy": 0.4825, "n": 800}, "depth2": {"depth": 2, "best_move_rate": 0.6155416666666667, "mean_regret": 0.21864583333333332, "wdl_accuracy": 0.4825, "n": 800}}}
+[   183.1s] [draw 1] A0   best-move d1 0.557 d2 0.700 | W/D/L acc 0.485 | regret d2 0.1669 | 104.9s
+[   454.3s] [draw 1] BL   best-move d1 0.585 d2 0.700 | W/D/L acc 0.507 | regret d2 0.1625 | 110.2s
+[   454.4s] [draw 1] sibling rows: every 5 state(s), 9042 rows
+[   759.9s] [draw 1] BLG  best-move d1 0.621 d2 0.726 | W/D/L acc 0.542 | regret d2 0.1450 | 220.2s
+[   939.0s] [draw 2] A0   best-move d1 0.539 d2 0.646 | W/D/L acc 0.482 | regret d2 0.1988 | 104.5s
+[  1201.7s] [draw 2] BL   best-move d1 0.560 d2 0.656 | W/D/L acc 0.490 | regret d2 0.1900 | 109.9s
+[  1201.8s] [draw 2] sibling rows: every 5 state(s), 9120 rows
+[  1510.0s] [draw 2] BLG  best-move d1 0.545 d2 0.661 | W/D/L acc 0.522 | regret d2 0.1900 | 224.9s
+[  1685.6s] [draw 3] A0   best-move d1 0.573 d2 0.710 | W/D/L acc 0.489 | regret d2 0.1581 | 104.3s
+[  1985.0s] [draw 3] BL   best-move d1 0.611 d2 0.748 | W/D/L acc 0.510 | regret d2 0.1363 | 120.8s
+[  1985.2s] [draw 3] sibling rows: every 5 state(s), 9102 rows
+[  2316.0s] [draw 3] BLG  best-move d1 0.613 d2 0.733 | W/D/L acc 0.494 | regret d2 0.1431 | 240.4s
+[  2316.4s] GE {'mean_depth2': {'A0': 0.6854166666666667, 'BL': 0.7012499999999999, 'BLG': 0.7066666666666667}, 'heuristic_depth2': 0.8077083333333333, 'best_arm': 'BLG', 'run_E2': False}
