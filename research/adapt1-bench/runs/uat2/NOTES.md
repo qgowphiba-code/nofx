@@ -20,3 +20,13 @@ All times UTC, 2026-11-07.
   MiniHack potion / lavacross / wod_medium one random episode each OK; Craftax one 50-step episode OK.
 - 19:26 Launched A (six Industrial Benchmark runs, 150 episodes) and C (PenSim refinement, linear and shared, 20
   updates, radius 0.2) together: 8 Fast-UAT clients.
+- 19:26 CRASH, C attempt 1 (both arms): `POST /domains` returned HTTP 504 at creation, raised `Ambiguous` (the PenSim
+  runner does not reconcile Domain creation). Both Domains had in fact been created:
+  `bench-pensim-ref-linear-20261107192612-698c74`, `bench-pensim-ref-shared-20261107192612-5afd71`, deleted 19:28, 404
+  readbacks. Outputs kept in `runs/pensim/crashed-2/`.
+- 19:27 My sequencing script took the crashed arms' exit as "C finished" and launched F (potion, lavacross, wod_medium).
+  I stopped all three about 15 s in, before any episode completed (0 episodes), and deleted their Domains
+  (`mh-{lavacross-c5442a,potion-75e1f5,wod_medium-e41493}` with timestamp 20261107192723), 404 readbacks. Not counted;
+  their partial files are in `runs/minihack/stopped-uat2-1/`. F will start from scratch after C, as planned. The script now
+  requires both PenSim summary.json files before starting F.
+- 19:28 RESTART, C attempt 2 (rerun from scratch, new Domains): both arms relaunched.
