@@ -17,7 +17,8 @@ from client import Client, Ambiguous, ApiError, new_id
 
 TASK, SEED, EPISODES, OUT = sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), Path(sys.argv[4])
 JDIR = Path(sys.argv[5]) if len(sys.argv) > 5 else OUT
-BASE = 'https://rei-neuroadapt-api.reilabs.org/api/v1'
+import os
+BASE = os.environ.get('ADAPT1_BASE', 'https://rei-neuroadapt-api.reilabs.org/api/v1')
 OUT.mkdir(parents=True, exist_ok=True); JDIR.mkdir(parents=True, exist_ok=True)
 tag = f'mh-{TASK}-s{SEED}'
 env = mh_env.MHTask(TASK, SEED)
@@ -115,6 +116,6 @@ except SystemExit as e:
     outcome = f'aborted: {e}'
 finally:
     deleted = api.delete_domain(did)
-    summary = {'task': TASK, 'env_id': env.env_id, 'seed': SEED, 'episodes_requested': EPISODES, 'outcome': locals().get('outcome', 'crashed'), 'domain_id': did,
+    summary = {'task': TASK, 'env_id': env.env_id, 'seed': SEED, 'episodes_requested': EPISODES, 'base_url': BASE, 'outcome': locals().get('outcome', 'crashed'), 'domain_id': did,
                'stats': stats, 'api_calls': api.calls, 'wall_s': round(time.time() - t0), 'delete': deleted}
     (OUT / f'summary-{tag}.json').write_text(json.dumps(summary, indent=1)); api.close(); print(json.dumps(summary))

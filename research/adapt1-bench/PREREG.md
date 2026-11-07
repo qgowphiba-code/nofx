@@ -119,7 +119,9 @@ published GP-EI dataset shipped with smpl-experiments (1,000 batches: mean 3,806
 Bayesian-optimization-at-1,000-batches reference; SB3 PPO 500,000 steps (about 435 batches), seed 0.
 Metrics: best quality after 16, 32, 64, 128, 300 attempts; yield of the best recipe re-run on 5 fresh seeds.
 **C2 Refinement gate.** Run only if, among the top-8 acquired recipes, the best recipe differs across at least 25 % of 16
-training contexts. If it passes: 20 updates x 8 candidates x 12 contexts (1,920 executions), HELD 16 contexts at updates
+training contexts. *Result (18:00 UTC): passes. On the 16 gate batches the top acquired recipe is never the best (winners
+are recipes 3, 4 and 6 of the top-8), and its own yield ranges from 940 to 4,061 kg across batches. Refinement launched
+with the base = the profile arm's best recipe (4,271 kg on the nominal batch; the default arm never completed a batch).* If it passes: 20 updates x 8 candidates x 12 contexts (1,920 executions), HELD 16 contexts at updates
 0, 5, 10, 20; comparators at the same executions: CMA-ES linear policy (1 seed), context-free robust recipe (1 seed), base
 alone, default recipe. CPU limits may trim seeds, never below what is written here without a note in the report.
 
@@ -140,8 +142,10 @@ open-loop 20 x ADIM recipe in [-1, 1], quality in [0, 1] as defined there. Targe
 of this bench; random recipes 0.16-0.19. NaCl is nearly saturated by random (2.04 vs heuristic 2.18 of 3). Fict: heuristic
 0.94 / 0.97 / 0.97 on E / F / G and 0.18 on I (a two-stage recipe); random -0.27 to 0.52. Reading: on these benches the
 heuristic is a near-optimal corner recipe for most targets, so the acquisition test measures speed to a known optimum; the
-open question with headroom is Fict target I. The CMA-ES 4,000-evaluation value for the Fict targets is being computed
-(`runs/chem/fict_gate.json`) and will be reported as the reference.
+open question with headroom is Fict target I. *CMA-ES 4,000-evaluation values for Fict (18:00 UTC, `runs/chem/fict_gate.json`):
+E 0.853, F 0.117, G 0.387, I 0.111 (returns), against the heuristic's 0.941 / 0.973 / 0.974 / 0.176: black-box search in
+140 dimensions does not find the corner recipe within 4,000 evaluations, so the heuristic is the reference optimum for E, F,
+G and the achievable value for I remains unknown.*
 **Machina acquisition** (`chem_machina_acquire.py`): one Domain per target, `episode_credit`, arms `default` and `profile`,
 300 attempts, state rows = the bench's thermodynamic and in-hand observation entries. 11 targets x 2 arms = 22 runs.
 **Comparators** (`chem_local.py`, `chem_sb3.py`): random, (1+1)-ES, CMA-ES at 300 attempts from u = 0 (mid-range), 5 seeds
@@ -222,6 +226,28 @@ separately. In the first launch Adapt-1 spent entire episodes on inapplicable no
 steps, so trials never ended and every episode scored 0 at the macro cap, which measures a harness property, not learning.
 Production latency for query/feedback calls was about 4 s under load, so the runs are relaunched four at a time (small and
 medium, both arms); trivial follows.*
+
+## G. Craftax-Classic-Symbolic (Matthews et al. 2024), sequential route, production API (`craftax_bench/`)
+
+Added 2026-11-07 ~18:10 UTC, before any counted run. The deliberately hostile test: 22 achievements with long, sparse
+dependencies (collect wood -> table -> pickaxe -> stone -> ...), which is the documented weak spot of the sequential route.
+**Environment.** `craftax` Craftax-Classic-Symbolic-v1, untouched; episodes capped at 500 steps (the benchmark's own cap
+is 10,000; the cap is set by the API cost of one decision per step and recorded here). Reward = Craftax's own.
+**Adapt-1** (`cx_run_adapt1.py`): context = 129 features from the environment state (inventory, stats, block counts in the
+view, offsets to the nearest tree/stone/coal/iron/diamond/water/table/furnace/grass/lava, mob proximity, facing block,
+achievements unlocked so far, step fraction, last action); policies = the 17 actions; reward bounds [-1, 1]; sequential
+learning discount 0.95, `n_step` 10; TCP (lag 6) over inventory and stats; latent belief on. One run: seed 0, 20 episodes
+(up to 10,000 decisions).
+**Comparators** (`cx_local.py`, same caps): random (100 episodes); SB3 PPO (MLP) on the same features for 1,000,000 steps,
+evaluated on 20 capped episodes; the published PPO-RNN results (1e9 steps, 10,000-step episodes) as context only.
+**Metrics.** Achievements per episode (count and which), return per episode, trend over the 20 episodes; PPO's achievements
+at matched environment steps (10,000) and after its full budget.
+
+*Amendment F1/G1 (18:15 UTC, before any counted F or G run): a probe Domain on production measured 1.2-3.5 s per query and
+3.3-12 s per feedback with four XLand and three ChemGym clients active, so one decision costs about 10 s there. Sections F
+and G therefore run on Fast-UAT (`af6670b`, the round-2 server, about 3 s per call with the six Industrial Benchmark runs),
+not on production, and start with the budgets the latency allows: F = three tasks first (Potion-Inv, LavaCross,
+WoD-Medium), seed 0, 150 episodes each; Ring-Inv and WoD-Hard follow if time permits. G unchanged (20 capped episodes).*
 
 ## Operational note (2026-11-07 ~18:00 UTC)
 Launching 22 ChemGym Machina runs on top of 6 XLand runs drove the production service into 503 bursts (a Domain list

@@ -1,0 +1,40 @@
+{
+ "completed_retry_window": 1,
+ "config": {
+  "action_dimensions": 6,
+  "allow_cold_transfer": false,
+  "balanced_retention": false,
+  "capacity": 512,
+  "coherent_edits": true,
+  "context_first_recall": false,
+  "cross_context_exploration": 0,
+  "evidence_scaled_mutation": false,
+  "executed_prefix_mutation": true,
+  "global_recall": true,
+  "goal_indices": [
+   0
+  ],
+  "horizon": 20,
+  "max_pending": 1,
+  "mechanism": "episode_credit",
+  "outcome_mode": "reward",
+  "outcome_tier_exploration": true,
+  "progress_guided_mutation": false,
+  "retain_context_support": true,
+  "retain_prefix_failures": false,
+  "seed": 1,
+  "segment_exploration": false,
+  "sequence_compaction": true,
+  "state_dimensions": 7
+ },
+ "domain_id": "bench-chem-wurtz-profile-NaCl-20261107175716-fd3d85",
+ "experimental": true,
+ "fingerprint": "714b9f6347102e06e5cddc3f4b04b12b7a6428cfdec9749c232894b389498329",
+ "generation": "c1799cf9f21498e0246cd90a175e3853",
+ "mechanism": "episode_credit",
+ "pending_decisions": 0,
+ "retained_trajectories": 8,
+ "session_id": "681e100e6ce7c030fb562aad:55d45f7eeeebc2bd9726599edaff4f23",
+ "status": "ready",
+ "version": 300
+}

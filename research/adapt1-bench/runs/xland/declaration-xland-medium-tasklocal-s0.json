@@ -1,0 +1,785 @@
+{
+ "domain_id": "xl-med-tl-s0-r0-20261107175721-e1e3b7",
+ "session_id": "ignored",
+ "description": "XLand-MiniGrid medium macro-actions, tasklocal arm, seed 0",
+ "schema": {
+  "entities": [
+   "agent",
+   "world"
+  ],
+  "relations": [
+   "macro"
+  ],
+  "signals": [
+   "holding",
+   "last_reward",
+   "last_success",
+   "macros_in_trial",
+   "slot0_color",
+   "slot0_held",
+   "slot0_known",
+   "slot0_present",
+   "slot0_tile",
+   "slot1_color",
+   "slot1_held",
+   "slot1_known",
+   "slot1_present",
+   "slot1_tile",
+   "slot2_color",
+   "slot2_held",
+   "slot2_known",
+   "slot2_present",
+   "slot2_tile",
+   "slot3_color",
+   "slot3_held",
+   "slot3_known",
+   "slot3_present",
+   "slot3_tile",
+   "slot4_color",
+   "slot4_held",
+   "slot4_known",
+   "slot4_present",
+   "slot4_tile",
+   "slot5_color",
+   "slot5_held",
+   "slot5_known",
+   "slot5_present",
+   "slot5_tile",
+   "slot6_color",
+   "slot6_held",
+   "slot6_known",
+   "slot6_present",
+   "slot6_tile",
+   "slot7_color",
+   "slot7_held",
+   "slot7_known",
+   "slot7_present",
+   "slot7_tile",
+   "slot8_color",
+   "slot8_held",
+   "slot8_known",
+   "slot8_present",
+   "slot8_tile",
+   "slot9_color",
+   "slot9_held",
+   "slot9_known",
+   "slot9_present",
+   "slot9_tile",
+   "steps_frac",
+   "trial_frac",
+   "step_reward"
+  ],
+  "event_types": [
+   "state",
+   "feedback"
+  ]
+ },
+ "hypotheses": [
+  {
+   "name": "macro pick_0",
+   "relation": "macro",
+   "policy": "pick_0",
+   "policy_features": {
+    "op_pick": 1.0,
+    "op_goto": 0.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro goto_0",
+   "relation": "macro",
+   "policy": "goto_0",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 1.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro put_0",
+   "relation": "macro",
+   "policy": "put_0",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 0.0,
+    "op_put": 1.0,
+    "op_drop": 0.0,
+    "slot": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro pick_1",
+   "relation": "macro",
+   "policy": "pick_1",
+   "policy_features": {
+    "op_pick": 1.0,
+    "op_goto": 0.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro goto_1",
+   "relation": "macro",
+   "policy": "goto_1",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 1.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro put_1",
+   "relation": "macro",
+   "policy": "put_1",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 0.0,
+    "op_put": 1.0,
+    "op_drop": 0.0,
+    "slot": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro pick_2",
+   "relation": "macro",
+   "policy": "pick_2",
+   "policy_features": {
+    "op_pick": 1.0,
+    "op_goto": 0.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 2.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro goto_2",
+   "relation": "macro",
+   "policy": "goto_2",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 1.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 2.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro put_2",
+   "relation": "macro",
+   "policy": "put_2",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 0.0,
+    "op_put": 1.0,
+    "op_drop": 0.0,
+    "slot": 2.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro pick_3",
+   "relation": "macro",
+   "policy": "pick_3",
+   "policy_features": {
+    "op_pick": 1.0,
+    "op_goto": 0.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 3.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro goto_3",
+   "relation": "macro",
+   "policy": "goto_3",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 1.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 3.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro put_3",
+   "relation": "macro",
+   "policy": "put_3",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 0.0,
+    "op_put": 1.0,
+    "op_drop": 0.0,
+    "slot": 3.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro pick_4",
+   "relation": "macro",
+   "policy": "pick_4",
+   "policy_features": {
+    "op_pick": 1.0,
+    "op_goto": 0.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 4.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro goto_4",
+   "relation": "macro",
+   "policy": "goto_4",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 1.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 4.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro put_4",
+   "relation": "macro",
+   "policy": "put_4",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 0.0,
+    "op_put": 1.0,
+    "op_drop": 0.0,
+    "slot": 4.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro pick_5",
+   "relation": "macro",
+   "policy": "pick_5",
+   "policy_features": {
+    "op_pick": 1.0,
+    "op_goto": 0.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 5.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro goto_5",
+   "relation": "macro",
+   "policy": "goto_5",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 1.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 5.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro put_5",
+   "relation": "macro",
+   "policy": "put_5",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 0.0,
+    "op_put": 1.0,
+    "op_drop": 0.0,
+    "slot": 5.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro pick_6",
+   "relation": "macro",
+   "policy": "pick_6",
+   "policy_features": {
+    "op_pick": 1.0,
+    "op_goto": 0.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 6.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro goto_6",
+   "relation": "macro",
+   "policy": "goto_6",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 1.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 6.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro put_6",
+   "relation": "macro",
+   "policy": "put_6",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 0.0,
+    "op_put": 1.0,
+    "op_drop": 0.0,
+    "slot": 6.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro pick_7",
+   "relation": "macro",
+   "policy": "pick_7",
+   "policy_features": {
+    "op_pick": 1.0,
+    "op_goto": 0.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 7.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro goto_7",
+   "relation": "macro",
+   "policy": "goto_7",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 1.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 7.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro put_7",
+   "relation": "macro",
+   "policy": "put_7",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 0.0,
+    "op_put": 1.0,
+    "op_drop": 0.0,
+    "slot": 7.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro pick_8",
+   "relation": "macro",
+   "policy": "pick_8",
+   "policy_features": {
+    "op_pick": 1.0,
+    "op_goto": 0.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 8.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro goto_8",
+   "relation": "macro",
+   "policy": "goto_8",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 1.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 8.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro put_8",
+   "relation": "macro",
+   "policy": "put_8",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 0.0,
+    "op_put": 1.0,
+    "op_drop": 0.0,
+    "slot": 8.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro pick_9",
+   "relation": "macro",
+   "policy": "pick_9",
+   "policy_features": {
+    "op_pick": 1.0,
+    "op_goto": 0.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 9.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro goto_9",
+   "relation": "macro",
+   "policy": "goto_9",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 1.0,
+    "op_put": 0.0,
+    "op_drop": 0.0,
+    "slot": 9.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro put_9",
+   "relation": "macro",
+   "policy": "put_9",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 0.0,
+    "op_put": 1.0,
+    "op_drop": 0.0,
+    "slot": 9.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "macro drop",
+   "relation": "macro",
+   "policy": "drop",
+   "policy_features": {
+    "op_pick": 0.0,
+    "op_goto": 0.0,
+    "op_put": 0.0,
+    "op_drop": 1.0,
+    "slot": -1.0
+   },
+   "when": [],
+   "predicts": [
+    "trial reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  }
+ ],
+ "learning": {
+  "enabled": true,
+  "context": {
+   "feature_paths": [
+    "values.holding",
+    "values.last_reward",
+    "values.last_success",
+    "values.macros_in_trial",
+    "values.slot0_color",
+    "values.slot0_held",
+    "values.slot0_known",
+    "values.slot0_present",
+    "values.slot0_tile",
+    "values.slot1_color",
+    "values.slot1_held",
+    "values.slot1_known",
+    "values.slot1_present",
+    "values.slot1_tile",
+    "values.slot2_color",
+    "values.slot2_held",
+    "values.slot2_known",
+    "values.slot2_present",
+    "values.slot2_tile",
+    "values.slot3_color",
+    "values.slot3_held",
+    "values.slot3_known",
+    "values.slot3_present",
+    "values.slot3_tile",
+    "values.slot4_color",
+    "values.slot4_held",
+    "values.slot4_known",
+    "values.slot4_present",
+    "values.slot4_tile",
+    "values.slot5_color",
+    "values.slot5_held",
+    "values.slot5_known",
+    "values.slot5_present",
+    "values.slot5_tile",
+    "values.slot6_color",
+    "values.slot6_held",
+    "values.slot6_known",
+    "values.slot6_present",
+    "values.slot6_tile",
+    "values.slot7_color",
+    "values.slot7_held",
+    "values.slot7_known",
+    "values.slot7_present",
+    "values.slot7_tile",
+    "values.slot8_color",
+    "values.slot8_held",
+    "values.slot8_known",
+    "values.slot8_present",
+    "values.slot8_tile",
+    "values.slot9_color",
+    "values.slot9_held",
+    "values.slot9_known",
+    "values.slot9_present",
+    "values.slot9_tile",
+    "values.steps_frac",
+    "values.trial_frac"
+   ],
+   "event_types": [
+    "state"
+   ],
+   "max_samples": 4096
+  },
+  "reward": {
+   "aggregation": "weighted_mean",
+   "components": [
+    {
+     "field": "values.step_reward",
+     "goal": "maximize",
+     "min": 0.0,
+     "max": 1.0,
+     "weight": 1.0,
+     "required": true
+    }
+   ]
+  },
+  "policy": {
+   "decay_half_life_seconds": 0.0,
+   "transfer_strength": 0.0,
+   "action_transfer_strength": 0.05,
+   "min_context_observations": 4,
+   "model_max_weight": 0.45,
+   "model_ood_threshold": 0.75,
+   "ood_confidence_penalty": 0.5,
+   "exploration_mode": "auto",
+   "exploration_strength": 1.0,
+   "minimum_expected_reward": 0.0,
+   "minimum_confidence": 0.0,
+   "require_credible_dominance": false,
+   "dominance_margin": 0.0,
+   "abstain_on_ood": false
+  },
+  "credit_assignment": {
+   "mode": "eligibility_trace",
+   "discount": 0.9,
+   "neutral_reward": 0.0,
+   "minimum_weight": 0.01,
+   "delay_path": "values.delay_steps"
+  },
+  "latent_belief": {
+   "enabled": true,
+   "max_regimes": 8,
+   "novelty_threshold": 0.55,
+   "temperature": 0.25,
+   "change_point_threshold": 0.55,
+   "change_point_patience": 3,
+   "historical_regime_weight": 0.05
+  },
+  "training": {
+   "enabled": true,
+   "min_samples": 64,
+   "retrain_interval": 16,
+   "dimensions": 96,
+   "epochs": 100,
+   "learning_rate": 0.04
+  },
+  "sequential": {
+   "enabled": true,
+   "episode_path": "metadata.episode_id",
+   "step_path": "metadata.step",
+   "next_context_path": "values.next_state",
+   "reward_path": "values.step_reward",
+   "terminal_path": "values.terminal",
+   "discount": 0.9,
+   "n_step": 6,
+   "minimum_episodes": 10,
+   "minimum_validation_skill": 0.1,
+   "target_sync_interval": 10,
+   "conservative_weight": 0.05
+  },
+  "temporal_context": {
+   "enabled": true,
+   "episode_path": "metadata.episode_id",
+   "step_path": "metadata.step",
+   "input_paths": [
+    "values.holding",
+    "values.trial_frac",
+    "values.steps_frac",
+    "values.macros_in_trial",
+    "values.last_success",
+    "values.last_reward"
+   ],
+   "maximum_lag": 6
+  }
+ }
+}

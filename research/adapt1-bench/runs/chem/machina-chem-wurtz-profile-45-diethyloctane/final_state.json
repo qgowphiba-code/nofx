@@ -1,0 +1,40 @@
+{
+ "completed_retry_window": 1,
+ "config": {
+  "action_dimensions": 6,
+  "allow_cold_transfer": false,
+  "balanced_retention": false,
+  "capacity": 512,
+  "coherent_edits": true,
+  "context_first_recall": false,
+  "cross_context_exploration": 0,
+  "evidence_scaled_mutation": false,
+  "executed_prefix_mutation": true,
+  "global_recall": true,
+  "goal_indices": [
+   0
+  ],
+  "horizon": 20,
+  "max_pending": 1,
+  "mechanism": "episode_credit",
+  "outcome_mode": "reward",
+  "outcome_tier_exploration": true,
+  "progress_guided_mutation": false,
+  "retain_context_support": true,
+  "retain_prefix_failures": false,
+  "seed": 1,
+  "segment_exploration": false,
+  "sequence_compaction": true,
+  "state_dimensions": 7
+ },
+ "domain_id": "bench-chem-wurtz-profile-45-diethyl-20261107174627-df5627",
+ "experimental": true,
+ "fingerprint": "d39eca17cdb8df745064424e7109e0e13c0837fe2251f7056c29295496c8ab04",
+ "generation": "0f1cd594473c842c213a53d9537c04ce",
+ "mechanism": "episode_credit",
+ "pending_decisions": 0,
+ "retained_trajectories": 8,
+ "session_id": "681e100e6ce7c030fb562aad:55d45f7eeeebc2bd9726599edaff4f23",
+ "status": "ready",
+ "version": 300
+}
