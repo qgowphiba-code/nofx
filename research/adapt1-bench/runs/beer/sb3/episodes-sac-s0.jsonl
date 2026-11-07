@@ -156,3 +156,16 @@
 {"episode": 155, "return": -200.0, "len": 200, "steps": 28296, "elapsed_s": 708.8}
 {"episode": 156, "return": -200.0, "len": 200, "steps": 28496, "elapsed_s": 716.3}
 {"episode": 157, "return": -200.0, "len": 200, "steps": 28696, "elapsed_s": 723.5}
+{"episode": 158, "return": -200.0, "len": 200, "steps": 28896, "elapsed_s": 731.2}
+{"episode": 159, "return": -200.0, "len": 200, "steps": 29096, "elapsed_s": 738.6}
+{"episode": 160, "return": -200.0, "len": 200, "steps": 29296, "elapsed_s": 745.9}
+{"episode": 161, "return": -200.0, "len": 200, "steps": 29496, "elapsed_s": 753.3}
+{"episode": 162, "return": -200.0, "len": 200, "steps": 29696, "elapsed_s": 760.4}
+{"episode": 163, "return": -200.0, "len": 200, "steps": 29896, "elapsed_s": 768.1}
+{"episode": 164, "return": 31.0, "len": 170, "steps": 30066, "elapsed_s": 774.8}
+{"episode": 165, "return": 31.0, "len": 170, "steps": 30236, "elapsed_s": 781.2}
+{"episode": 166, "return": -200.0, "len": 200, "steps": 30436, "elapsed_s": 789.4}
+{"episode": 167, "return": 26.0, "len": 175, "steps": 30611, "elapsed_s": 795.8}
+{"episode": 168, "return": -200.0, "len": 200, "steps": 30811, "elapsed_s": 803.0}
+{"episode": 169, "return": 6.0, "len": 195, "steps": 31006, "elapsed_s": 809.3}
+{"episode": 170, "return": 27.0, "len": 174, "steps": 31180, "elapsed_s": 815.6}

@@ -16,10 +16,15 @@ def say(s=''):
 
 
 def rows(path):
+    """JSONL file -> list of dicts; a single pretty-printed JSON object (summary-*.json, heldout-*.json) -> [obj]."""
     try:
-        return [json.loads(l) for l in open(path) if l.strip()]
+        txt = open(path).read()
     except FileNotFoundError:
         return []
+    try:
+        return [json.loads(l) for l in txt.splitlines() if l.strip()]
+    except json.JSONDecodeError:
+        return [json.loads(txt)] if txt.strip() else []
 
 
 def fmt(x, nd=1):

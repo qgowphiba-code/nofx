@@ -6,24 +6,24 @@
 
 | Adapt-1 seed | episodes | first 50 eps | last 50 eps (primary) | whole run | fallback | no-op frac | sequential model | status |
 |---|---:|---:|---:|---:|---:|---:|---|---|
-| 0 | 1 | -227.3 | - | -227.3 | 0.000 | 0.00 | - / skill - | in progress |
-| 1 | 1 | -282.2 | - | -282.2 | 0.000 | 0.00 | - / skill - | in progress |
-| 2 | 1 | -249.8 | - | -249.8 | 0.000 | 0.00 | - / skill - | in progress |
+| 0 | 3 | -273.6 | - | -273.6 | 0.000 | 0.03 | - / skill - | in progress |
+| 1 | 3 | -298.0 | - | -298.0 | 0.000 | 0.07 | - / skill - | in progress |
+| 2 | 3 | -291.6 | - | -291.6 | 0.000 | 0.05 | - / skill - | in progress |
 
 Adapt-1 primary (mean of seeds): -
 
 | comparator | seed | steps run | matched window (steps 20k-30k) | asymptote (last 50 eps) | first reaches Adapt-1 primary at step | whole first 30k |
 |---|---:|---:|---:|---:|---:|---:|
-| ppo | 0 | 565200 | -201.3 | -151.3 | - | -219.5 |
-| ppo | 1 | 571000 | -181.2 | -150.8 | - | -203.3 |
+| ppo | 0 | 845800 | -201.3 | -149.8 | - | -219.5 |
+| ppo | 1 | 852200 | -181.2 | -150.6 | - | -203.3 |
 
 ### drifting setpoint
 
 | Adapt-1 seed | episodes | first 50 eps | last 50 eps (primary) | whole run | fallback | no-op frac | sequential model | status |
 |---|---:|---:|---:|---:|---:|---:|---|---|
-| 0 | 1 | -183.2 | - | -183.2 | 0.000 | 0.00 | - / skill - | in progress |
-| 1 | 1 | -275.0 | - | -275.0 | 0.000 | 0.00 | - / skill - | in progress |
-| 2 | 1 | -195.6 | - | -195.6 | 0.000 | 0.00 | - / skill - | in progress |
+| 0 | 3 | -549.4 | - | -549.4 | 0.000 | 0.03 | - / skill - | in progress |
+| 1 | 3 | -297.9 | - | -297.9 | 0.000 | 0.06 | - / skill - | in progress |
+| 2 | 3 | -235.7 | - | -235.7 | 0.000 | 0.08 | - / skill - | in progress |
 
 Adapt-1 primary (mean of seeds): -
 
@@ -50,8 +50,10 @@ Deep-RL comparators (closed loop, SMPL protocol, one episode = one batch):
 
 | algo | seed | episodes | steps | running-50 mean return at 600 episodes | final running-50 mean | first episode reaching return 116 | held-out mean return (32 batches) |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| ppo | 0 | 6615 | 681949 | -181.4 | 120.3 | 2398 | - |
-| ppo | 1 | 7229 | 693430 | 53.3 | 119.6 | 2961 | - |
+| ppo | 0 | 10290 | 1001410 | -181.4 | 119.9 | 2398 | 120.0 |
+| ppo | 1 | 11033 | 1001408 | 53.3 | 120.5 | 2961 | 120.1 |
+| ppo | 2 | 6185 | 694212 | -115.6 | 113.6 | 3505 | - |
+| sac | 0 | 166 | 30236 | - | -190.8 | - | - |
 
 ### B2 refinement: held-out (32 unseen batches), mean SMPL return; base alone and per-batch ceiling from the local side
 
@@ -59,21 +61,43 @@ base alone: -82.5 (finished 0.38); per-batch ceiling: -; best constant per batch
 
 | arm / learner | executions | after 5 | 10 | 20 | 30 updates (held-out mean return) | finished frac | gap recovered | paired vs base (better/worse, p) |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
-| Machina linear-r0.08 | 0 | - | - | - | - | 0.38 | - | 0/0, p=1.000 |
-| Machina linear-r0.2 | 0 | - | - | - | - | 0.38 | - | 0/0, p=1.000 |
-| Machina shared-r0.2 | 0 | - | - | - | - | 0.38 | - | 0/0, p=1.000 |
+| Machina linear-r0.08 | 7680 | 16.7 | 26.5 | 44.9 | 34.9 | 0.75 | - | 12/3, p=0.035 |
+| Machina linear-r0.2 | 7680 | -3.7 | 63.3 | 63.3 | 63.5 | 0.84 | - | 17/10, p=0.248 |
+| Machina shared-r0.2 | 7680 | 74.0 | 74.0 | 74.8 | 74.8 | 0.88 | - | 18/4, p=0.004 |
+| contextual_cmaes seed 0 | 7680 | - | - | - | 105.0 | 0.97 | - | 21/4, p=0.001 |
+| contextual_cmaes seed 1 | 7680 | - | - | - | 46.1 | 0.78 | - | 18/4, p=0.004 |
+| contextual_cmaes seed 2 | 7680 | - | - | - | 66.1 | 0.84 | - | 17/0, p=0.000 |
+| contextual_nes seed 0 | 7680 | - | - | - | 95.0 | 0.94 | - | 20/5, p=0.004 |
+| contextual_nes seed 1 | 7680 | - | - | - | 85.1 | 0.91 | - | 19/4, p=0.003 |
+| contextual_nes seed 2 | 7680 | - | - | - | 85.5 | 0.91 | - | 19/3, p=0.001 |
+| robust_profile seed 0 | 7680 | - | - | - | 85.1 | 0.91 | - | 19/5, p=0.007 |
+| robust_profile seed 1 | 7680 | - | - | - | 66.2 | 0.84 | - | 27/0, p=0.000 |
+| robust_profile seed 2 | 7680 | - | - | - | 85.9 | 0.91 | - | 22/0, p=0.000 |
+| ppo-s0 (closed loop, trained 1001410 steps) | 1001410 | - | - | - | 120.0 | 1.00 | - | 32/0, p=0.000 |
+| ppo-s1 (closed loop, trained 1001408 steps) | 1001408 | - | - | - | 120.1 | 1.00 | - | 32/0, p=0.000 |
 
 Paired sign tests on the 32 held-out batches, Machina linear 0.2 (final) vs each comparator (better/worse, p):
 
-- vs Machina linear-r0.08: 0/0, p=1.000
-- vs Machina shared-r0.2: 0/0, p=1.000
+- vs contextual_cmaes seed 0: 0/29, p=0.000
+- vs contextual_cmaes seed 1: 3/24, p=0.000
+- vs contextual_cmaes seed 2: 0/27, p=0.000
+- vs contextual_nes seed 0: 0/30, p=0.000
+- vs contextual_nes seed 1: 1/26, p=0.000
+- vs contextual_nes seed 2: 0/28, p=0.000
+- vs robust_profile seed 0: 0/26, p=0.000
+- vs robust_profile seed 1: 1/27, p=0.000
+- vs robust_profile seed 2: 0/29, p=0.000
+- vs ppo-s0: 0/32, p=0.000
+- vs ppo-s1: 0/32, p=0.000
+- vs Machina linear-r0.08: 5/22, p=0.002
+- vs Machina shared-r0.2: 1/28, p=0.000
 
 ## C. SMPL PenSimEnv, Machina acquisition (nominal batch seed_ref 1000); quality = (return + 100) / 4600
 
 | method | run | n=16 | n=32 | n=64 | n=128 | n=300 | best yield (kg) | failed batches |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
-| Machina | default-r1 (27 attempts) | 0.018 | 0.052 | 0.052 | 0.052 | 0.052 | 139 | 27/27 |
-| Machina | profile-r1 (26 attempts) | 0.034 | 0.037 | 0.037 | 0.037 | 0.037 | 70 | 26/26 |
-| default recipe (light control) | seeds 1-5 | - | - | - | - | - | 2163 (nominal batch 3481) | - |
+| Machina | default-r1 (122 attempts) | 0.126 | 0.173 | 0.242 | 0.380 | 0.380 | 1649 | 122/122 |
+| Machina | profile-r1 (73 attempts) | 0.500 | 0.568 | 0.606 | 0.629 | 0.629 | 2792 | 26/73 |
+| default recipe (light control) | seeds 1-5 | - | - | - | - | - | 3247 (nominal batch 3459) | - |
 | GP-EI dataset (smpl-experiments, 1000 batches, mixed seeds) | - | - | - | - | - | - | mean 3806, p90 4066, max 4080 | - |
 
