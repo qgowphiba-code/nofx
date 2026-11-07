@@ -266,7 +266,7 @@ ruleset 0 on a new Domain. The task-local arm uses a fresh Domain per ruleset, s
 completed with no resends. Ruleset 3 was interrupted twice without an episode row, and both of its Domains were deleted.
 Scheduling (18:45 UTC, no effect on any result): the container has 4 cores and ran at load 18, which starved the PenSim
 refinement rollouts. Local comparators now run at nice 15 and Adapt-1 clients at nice 0. The client waits at least the
-server's Retry-After on 429/503. All API keys share one engine session per server, so concurrent runs on one server share
+server's Retry-After on 429/503. The proxy credential maps to one engine session per server, so concurrent runs on one server share
 one queue; this is why the per-call latency grows with the number of live runs.
 
 ## Operational note 2 (2026-11-07 ~18:15 UTC): one experiment per lane

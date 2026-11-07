@@ -1953,3 +1953,8 @@
 {"episode": 1952, "mean_reward": -151.99561100006105, "len": 200, "steps": 390600, "elapsed_s": 1789.7}
 {"episode": 1953, "mean_reward": -155.13989276885985, "len": 200, "steps": 390800, "elapsed_s": 1790.4}
 {"episode": 1954, "mean_reward": -151.9946753501892, "len": 200, "steps": 391000, "elapsed_s": 1791.1}
+{"episode": 1955, "mean_reward": -149.54993801116944, "len": 200, "steps": 391200, "elapsed_s": 1795.8}
+{"episode": 1956, "mean_reward": -150.69344749450684, "len": 200, "steps": 391400, "elapsed_s": 1796.5}
+{"episode": 1957, "mean_reward": -152.2310286331177, "len": 200, "steps": 391600, "elapsed_s": 1797.2}
+{"episode": 1958, "mean_reward": -161.6137245941162, "len": 200, "steps": 391800, "elapsed_s": 1798.0}
+{"episode": 1959, "mean_reward": -150.15888074874877, "len": 200, "steps": 392000, "elapsed_s": 1798.7}
