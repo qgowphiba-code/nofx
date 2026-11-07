@@ -127,3 +127,17 @@
 {"episode": 126, "return": -200.0, "len": 200, "steps": 23060, "elapsed_s": 634.0}
 {"episode": 127, "return": 44.0, "len": 157, "steps": 23217, "elapsed_s": 639.1}
 {"episode": 128, "return": -200.0, "len": 200, "steps": 23417, "elapsed_s": 644.5}
+{"episode": 129, "return": -200.0, "len": 200, "steps": 23617, "elapsed_s": 650.4}
+{"episode": 130, "return": -200.0, "len": 200, "steps": 23817, "elapsed_s": 656.0}
+{"episode": 131, "return": -200.0, "len": 200, "steps": 24017, "elapsed_s": 662.9}
+{"episode": 132, "return": -200.0, "len": 200, "steps": 24217, "elapsed_s": 671.0}
+{"episode": 133, "return": -200.0, "len": 200, "steps": 24417, "elapsed_s": 677.6}
+{"episode": 134, "return": -200.0, "len": 200, "steps": 24617, "elapsed_s": 683.0}
+{"episode": 135, "return": -200.0, "len": 200, "steps": 24817, "elapsed_s": 687.6}
+{"episode": 136, "return": -200.0, "len": 200, "steps": 25017, "elapsed_s": 693.4}
+{"episode": 137, "return": -200.0, "len": 200, "steps": 25217, "elapsed_s": 699.0}
+{"episode": 138, "return": -200.0, "len": 200, "steps": 25417, "elapsed_s": 705.0}
+{"episode": 139, "return": -200.0, "len": 200, "steps": 25617, "elapsed_s": 709.8}
+{"episode": 140, "return": -200.0, "len": 200, "steps": 25817, "elapsed_s": 713.5}
+{"episode": 141, "return": -200.0, "len": 200, "steps": 26017, "elapsed_s": 719.2}
+{"episode": 142, "return": -200.0, "len": 200, "steps": 26217, "elapsed_s": 724.0}
