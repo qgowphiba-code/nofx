@@ -2539,3 +2539,13 @@
 {"episode": 2538, "return": 109.0, "len": 92, "steps": 282066, "elapsed_s": 11861.4}
 {"episode": 2539, "return": 107.0, "len": 94, "steps": 282160, "elapsed_s": 11868.0}
 {"episode": 2540, "return": 107.0, "len": 94, "steps": 282254, "elapsed_s": 11874.4}
+{"episode": 2541, "return": 104.0, "len": 97, "steps": 282351, "elapsed_s": 11881.2}
+{"episode": 2542, "return": 105.0, "len": 96, "steps": 282447, "elapsed_s": 11888.0}
+{"episode": 2543, "return": 106.0, "len": 95, "steps": 282542, "elapsed_s": 11894.6}
+{"episode": 2544, "return": 108.0, "len": 93, "steps": 282635, "elapsed_s": 11901.3}
+{"episode": 2545, "return": 105.0, "len": 96, "steps": 282731, "elapsed_s": 11907.0}
+{"episode": 2546, "return": 105.0, "len": 96, "steps": 282827, "elapsed_s": 11913.4}
+{"episode": 2547, "return": 106.0, "len": 95, "steps": 282922, "elapsed_s": 11919.9}
+{"episode": 2548, "return": 108.0, "len": 93, "steps": 283015, "elapsed_s": 11926.4}
+{"episode": 2549, "return": 107.0, "len": 94, "steps": 283109, "elapsed_s": 11932.7}
+{"episode": 2550, "return": 108.0, "len": 93, "steps": 283202, "elapsed_s": 11939.1}
