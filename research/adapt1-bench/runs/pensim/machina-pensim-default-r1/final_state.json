@@ -1,0 +1,40 @@
+{
+ "completed_retry_window": 1,
+ "config": {
+  "action_dimensions": 6,
+  "allow_cold_transfer": false,
+  "balanced_retention": false,
+  "capacity": 512,
+  "coherent_edits": false,
+  "context_first_recall": false,
+  "cross_context_exploration": 0,
+  "evidence_scaled_mutation": false,
+  "executed_prefix_mutation": true,
+  "global_recall": false,
+  "goal_indices": [
+   0
+  ],
+  "horizon": 23,
+  "max_pending": 1,
+  "mechanism": "episode_credit",
+  "outcome_mode": "reward",
+  "outcome_tier_exploration": false,
+  "progress_guided_mutation": false,
+  "retain_context_support": true,
+  "retain_prefix_failures": true,
+  "seed": 1,
+  "segment_exploration": false,
+  "sequence_compaction": false,
+  "state_dimensions": 9
+ },
+ "domain_id": "bench-pensim-default-20261107151014-2c1c6b",
+ "experimental": true,
+ "fingerprint": "708287bc651c89ba0876747d5eb45e477482879e1e3e1028f54ac1222dbe4b3d",
+ "generation": "f1d0e6d857e0b49ce90c7ac367c84ad4",
+ "mechanism": "episode_credit",
+ "pending_decisions": 0,
+ "retained_trajectories": 8,
+ "session_id": "68b3f2be63632b2ee95a20b0:7e649fc4026f037f36775d954fcae998",
+ "status": "ready",
+ "version": 300
+}
