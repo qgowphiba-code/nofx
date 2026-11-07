@@ -1,0 +1,120 @@
+{
+ "configs": {
+  "ext-d3-e2-all": {
+   "best_move_rate": 0.98,
+   "mean_completed_extensions": 2.0,
+   "mean_evaluations": 1013.25,
+   "mean_extensions": 138.24,
+   "n": 100
+  },
+  "ext-d3-e2-competitive": {
+   "best_move_rate": 0.98,
+   "mean_completed_extensions": 2.0,
+   "mean_evaluations": 1013.25,
+   "mean_extensions": 138.24,
+   "n": 100
+  },
+  "ext-d3-e2-equilibrium": {
+   "best_move_rate": 0.98,
+   "mean_completed_extensions": 2.0,
+   "mean_evaluations": 1013.25,
+   "mean_extensions": 138.24,
+   "n": 100
+  },
+  "ext-d3-e4-all": {
+   "best_move_rate": 0.98,
+   "mean_completed_extensions": 4.0,
+   "mean_evaluations": 1892.23,
+   "mean_extensions": 276.48,
+   "n": 100
+  },
+  "ext-d3-e4-competitive": {
+   "best_move_rate": 0.98,
+   "mean_completed_extensions": 4.0,
+   "mean_evaluations": 1892.23,
+   "mean_extensions": 276.48,
+   "n": 100
+  },
+  "ext-d3-e4-equilibrium": {
+   "best_move_rate": 0.98,
+   "mean_completed_extensions": 4.0,
+   "mean_evaluations": 1892.23,
+   "mean_extensions": 276.48,
+   "n": 100
+  },
+  "ext-d3-e8-all": {
+   "best_move_rate": 0.98,
+   "mean_completed_extensions": 8.0,
+   "mean_evaluations": 3650.19,
+   "mean_extensions": 552.96,
+   "n": 100
+  },
+  "ext-d3-e8-competitive": {
+   "best_move_rate": 0.98,
+   "mean_completed_extensions": 8.0,
+   "mean_evaluations": 3650.19,
+   "mean_extensions": 552.96,
+   "n": 100
+  },
+  "ext-d3-e8-equilibrium": {
+   "best_move_rate": 0.98,
+   "mean_completed_extensions": 8.0,
+   "mean_evaluations": 3650.19,
+   "mean_extensions": 552.96,
+   "n": 100
+  },
+  "plain-d3-e0-all": {
+   "best_move_rate": 0.97,
+   "mean_completed_extensions": 0.0,
+   "mean_evaluations": 134.27,
+   "mean_extensions": 0.0,
+   "n": 100,
+   "parity_with_client": 1.0
+  },
+  "plain-d4-e0-all": {
+   "best_move_rate": 0.98,
+   "mean_completed_extensions": 0.0,
+   "mean_evaluations": 573.76,
+   "mean_extensions": 0.0,
+   "n": 100,
+   "parity_with_client": 1.0
+  }
+ },
+ "reference": {
+  "client_model_depth3": {
+   "best_move_rate": 0.97
+  },
+  "client_model_depth4": {
+   "best_move_rate": 0.98
+  },
+  "heuristic_depth3": {
+   "best_move_rate": 0.9578333333333333
+  },
+  "heuristic_depth4": {
+   "best_move_rate": 0.9916666666666667
+  }
+ },
+ "requests": {
+  "by_route": {
+   "api/v1/domains": 1,
+   "domains/{id}": 2,
+   "domains/{id}/planning/adversarial": 1100,
+   "domains/{id}/value/configure": 1,
+   "domains/{id}/value/observe": 17,
+   "domains/{id}/value/predict": 97,
+   "domains/{id}/value/state": 2,
+   "domains/{id}/value/train": 1,
+   "version": 2
+  },
+  "requests": 1223,
+  "retries": 0
+ },
+ "skipped_for_size": 0,
+ "version_end": {
+  "build_time": "unknown",
+  "commit_sha": "af6670b8a9c5ce4251caa02940118110adb839ea",
+  "schema_version": "5",
+  "source_fingerprint": "sha256:9a1c816497f67beed41cf3870566c1f0f70385bbb75f7a0dbd9e8e9726a3dcc4",
+  "version": "v0.1.0"
+ }
+}

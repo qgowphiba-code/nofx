@@ -1,0 +1,17 @@
+[     0.0s] run X1 -> /home/user/nofx/research/hp-adapt1-set2/runs/X1/20261107T020319Z
+[    15.0s] 100 decisions (skipped 0 over the size guard); model 025639c46a6a
+[    21.8s] client_model depth 3: best-move 0.970
+[    39.0s] client_model depth 4: best-move 0.980
+[    39.1s] heuristic depth 3: best-move 0.958
+[    39.3s] heuristic depth 4: best-move 0.992
+[    74.3s] plain-d3-e0-all          best-move 0.970 | evals 134 | extensions 0.00 (completed 0.00) | parity 1.00
+[   118.0s] plain-d4-e0-all          best-move 0.980 | evals 574 | extensions 0.00 (completed 0.00) | parity 1.00
+[   171.9s] ext-d3-e2-all            best-move 0.980 | evals 1013 | extensions 138.24 (completed 2.00)
+[   241.3s] ext-d3-e4-all            best-move 0.980 | evals 1892 | extensions 276.48 (completed 4.00)
+[   340.7s] ext-d3-e8-all            best-move 0.980 | evals 3650 | extensions 552.96 (completed 8.00)
+[   392.0s] ext-d3-e2-competitive    best-move 0.980 | evals 1013 | extensions 138.24 (completed 2.00)
+[   459.2s] ext-d3-e4-competitive    best-move 0.980 | evals 1892 | extensions 276.48 (completed 4.00)
+[   558.1s] ext-d3-e8-competitive    best-move 0.980 | evals 3650 | extensions 552.96 (completed 8.00)
+[   610.9s] ext-d3-e2-equilibrium    best-move 0.980 | evals 1013 | extensions 138.24 (completed 2.00)
+[   684.7s] ext-d3-e4-equilibrium    best-move 0.980 | evals 1892 | extensions 276.48 (completed 4.00)
+[   787.5s] ext-d3-e8-equilibrium    best-move 0.980 | evals 3650 | extensions 552.96 (completed 8.00)

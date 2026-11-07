@@ -24,8 +24,16 @@ from hpx.planner import Heuristic, decide  # noqa: E402
 from hpx.runlog import MOCK, Run, connect  # noqa: E402
 
 ACT = lambda a: ','.join(map(str, a))  # noqa: E731
-CONFIGS = [('plain', 3, 0, 'all'), ('plain', 4, 0, 'all')] + [
-    ('ext', 3, e, m) for m in ('all', 'competitive', 'equilibrium') for e in (2, 4, 8)]
+# HPX2_DIM=2: the harder variant on Eval-S-2D (14-16 residues; depth-3 rate ~0.85, branching <= 3 so a
+# depth-5 graph fits under the body limit). In 3D the three modes behaved identically, so 2D runs 'all' at
+# 1/2/4 extensions and checks the other two modes at 2.
+DIM = int(__import__('os').environ.get('HPX2_DIM', '3'))
+GRAPH_DEPTH = 4 if DIM == 3 else 5
+CONFIGS = ([('plain', 3, 0, 'all'), ('plain', 4, 0, 'all')] + [
+    ('ext', 3, e, m) for m in ('all', 'competitive', 'equilibrium') for e in (2, 4, 8)]) if DIM == 3 else (
+    [('plain', 3, 0, 'all'), ('plain', 4, 0, 'all'), ('plain', 5, 0, 'all')]
+    + [('ext', 3, e, 'all') for e in (1, 2, 4)] + [('ext', 3, 2, m) for m in ('competitive', 'equilibrium')])
+N_DECISIONS = 100 if DIM == 3 else 120
 
 
 def lean_graph(fold, depth):
@@ -52,18 +60,22 @@ def lean_graph(fold, depth):
 
 
 def main():
-    run = Run('X1')
+    run = Run('X1' if DIM == 3 else 'X1-2D')
     c = connect(run)
     v = c.check_build('start')
-    suite = SU.load('eval_s')
+    suite = SU.load('eval_s' if DIM == 3 else 'eval_s_2d')
     seqs = {ch['ci']: ch['sequence'] for ch in suite['chains']}
     informative = [d for d in suite['decisions'] if len(d['opt']) < len(d['children'])]
     rng = random.Random(80950)
     pool = rng.sample(informative, len(informative))
-    train, _ = SU.set1_chains()
-    eps = T.random_episodes(train, 8, random.Random(61107), 'a3d1')
+    if DIM == 3:
+        train, _ = SU.set1_chains()
+        eps = T.random_episodes(train, 8, random.Random(61107), 'a3d1')
+    else:
+        train, _ = SU.twod_short_chains()
+        eps = T.random_episodes(train, 8, random.Random(81003), 'd1d1', dim=2)
     rows = T.terminal_rows(eps)
-    d = c.create_domain('x1', 'ext', 0)
+    d = c.create_domain('x1', 'ext', DIM)
     run.note(host=S.HOST, build=v, domain=d, configs=CONFIGS, decision_seed=80950)
     results = {'configs': {}, 'skipped_for_size': 0}
     try:
@@ -75,8 +87,8 @@ def main():
         ev = model_evaluator(c, d, 'installed', sha)
         chosen, graphs = [], []
         for dec in pool:
-            f = Fold(seqs[dec['ci']], 3, dec['chain'])
-            root, nodes = lean_graph(f, 4)
+            f = Fold(seqs[dec['ci']], DIM, dec['chain'])
+            root, nodes = lean_graph(f, GRAPH_DEPTH)
             body = {'session_id': 'ignored', 'relation': S.RELATION, 'policy': S.POLICY, 'root': root, 'nodes': nodes,
                     'evaluator_source': 'value_model', 'expected_model_sha256': sha, 'options': {}}
             if len(compact(body).encode()) > MAX_BODY - 4096:
@@ -84,14 +96,14 @@ def main():
                 continue
             chosen.append((dec, f))
             graphs.append((root, nodes))
-            if len(chosen) == 100:
+            if len(chosen) == N_DECISIONS:
                 break
         run.log(f'{len(chosen)} decisions (skipped {results["skipped_for_size"]} over the size guard); model {sha[:12]}')
         opt = [{tuple(a) for a in dec['opt']} for dec, _ in chosen]
         folds = [f for _, f in chosen]
         ref = {}
         for name, evaluator in (('client_model', ev), ('heuristic', Heuristic())):
-            for depth in (3, 4):
+            for depth in (3, 4) if DIM == 3 else (3, 4, 5):
                 res = decide(folds, depth, evaluator)
                 hits = []
                 for (legal, vals, _), o in zip(res, opt):

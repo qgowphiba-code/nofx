@@ -54,6 +54,26 @@ Substrate rules found on af6670b during Track A:
   - The second rejection is genuine: `validation_skill −0.036`. On this board, random-game outcomes are close to noise. The exact Bayes predictor V_rand reaches only **0.111** skill on the same validation games (0.005 in the first 6 moves, 0.315 after 12 pieces); the line heuristic reaches 0.045, and the solver value −0.43.
   - **Remedy (deviation 11):** ε-greedy (ε 0.3) depth-1 line-heuristic games, with γ 0.99 kept. Their Bayes ceiling is **0.209**. They run as `E1g` after B1 lineage 1.
 
+### X1: native search extensions (exploratory, not in the plan)
+Setup: 100 informative Eval-S decisions, exact grading. The evaluator is one learned model (A0 on A3 draw-1 data). Native planning runs on supplied depth-4 graphs.
+
+| Native search | Best-move rate | Evaluations per decision | Extension work |
+|---|---|---|---|
+| Plain depth 3 (parity with client-side search: 100%) | 0.970 | 134 | 0 |
+| Plain depth 4 (parity 100%) | 0.980 | 574 | 0 |
+| Depth 3 + `max_extensions` 2, any mode | 0.980 | 1013 | 138 |
+| Depth 3 + `max_extensions` 4, any mode | 0.980 | 1892 | 276 |
+| Depth 3 + `max_extensions` 8, any mode | 0.980 | 3650 | 553 |
+
+Client-side references on the same decisions: learned model at depth 3 / 4, 0.970 / 0.980; heuristic, 0.958 / 0.992.
+
+- **The three modes (`all`, `competitive`, `equilibrium`) are identical**: same rates, evaluations and extension work. Single-player HP graphs have only maximizing nodes, so the opponent-oriented modes evidently have nothing to tell apart.
+- **Extensions reach plain depth 4's accuracy at 1.8–6.4× its evaluations.** On these graphs they are less efficient than one more full search level.
+- **Limits of the test:**
+  - It is near the ceiling: depth 4 already gets 98 of 100.
+  - Extensions can only expand into supplied nodes, and graphs deeper than 4 exceed 1 MiB in 3D.
+- **A harder variant, X1-2D, is queued after D2.** It runs on Eval-S-2D, where the depth-3 rate is about 0.85 and branching ≤ 3 lets a depth-5 graph fit under the body limit.
+
 ## Deviations from the plan, and why
 
 1. **Host.** The plan's default is production. This environment's key is rejected there (`401 Invalid bearer token`) and accepted on Fast-UAT, which the plan names as the alternative. Fast-UAT runs `af6670b`, the build set 1 and the docs' behavior checks used. Production runs `f5e1ab8`.
