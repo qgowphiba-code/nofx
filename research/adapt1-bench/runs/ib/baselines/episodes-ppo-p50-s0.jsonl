@@ -4178,3 +4178,9 @@
 {"episode": 4177, "mean_reward": -150.13008403778076, "len": 200, "steps": 835600, "elapsed_s": 2158.8}
 {"episode": 4178, "mean_reward": -149.03074939727784, "len": 200, "steps": 835800, "elapsed_s": 2162.1}
 {"episode": 4179, "mean_reward": -147.38539680480957, "len": 200, "steps": 836000, "elapsed_s": 2166.2}
+{"episode": 4180, "mean_reward": -148.93956798553467, "len": 200, "steps": 836200, "elapsed_s": 2173.3}
+{"episode": 4181, "mean_reward": -148.8969618988037, "len": 200, "steps": 836400, "elapsed_s": 2181.4}
+{"episode": 4182, "mean_reward": -149.44689319610595, "len": 200, "steps": 836600, "elapsed_s": 2188.7}
+{"episode": 4183, "mean_reward": -147.253215675354, "len": 200, "steps": 836800, "elapsed_s": 2197.9}
+{"episode": 4184, "mean_reward": -147.65338275909423, "len": 200, "steps": 837000, "elapsed_s": 2202.8}
+{"episode": 4185, "mean_reward": -147.5868282699585, "len": 200, "steps": 837200, "elapsed_s": 2213.6}

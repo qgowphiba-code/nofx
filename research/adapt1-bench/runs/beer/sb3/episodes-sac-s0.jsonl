@@ -78,3 +78,9 @@
 {"episode": 77, "return": -200.0, "len": 200, "steps": 12696, "elapsed_s": 154.3}
 {"episode": 78, "return": -200.0, "len": 200, "steps": 12896, "elapsed_s": 158.1}
 {"episode": 79, "return": -200.0, "len": 200, "steps": 13096, "elapsed_s": 161.9}
+{"episode": 80, "return": -200.0, "len": 200, "steps": 13296, "elapsed_s": 167.5}
+{"episode": 81, "return": -200.0, "len": 200, "steps": 13496, "elapsed_s": 173.6}
+{"episode": 82, "return": -200.0, "len": 200, "steps": 13696, "elapsed_s": 180.2}
+{"episode": 83, "return": -200.0, "len": 200, "steps": 13896, "elapsed_s": 187.7}
+{"episode": 84, "return": -200.0, "len": 200, "steps": 14096, "elapsed_s": 195.5}
+{"episode": 85, "return": -200.0, "len": 200, "steps": 14296, "elapsed_s": 203.2}
