@@ -63,7 +63,12 @@ class Client:
                 dt = time.time() - t0
                 self._log({'t': t0, 'm': method, 'p': path, 'b': body, 's': e.code, 'dt': round(dt, 3), 'r': txt[:4000]})
                 if e.code in (429, 503) or (e.code in (502, 504) and not mutation):
-                    time.sleep(min(60, 2 ** attempt)); last = e; continue
+                    # 503 engine_queue_timeout carries Retry-After (5 s on Fast-UAT, 2026-11-07): never retry sooner than asked
+                    try:
+                        ra = float(e.headers.get('Retry-After') or 0)
+                    except (TypeError, ValueError):
+                        ra = 0.0
+                    time.sleep(max(min(ra, 120), min(60, 2 ** attempt))); last = e; continue
                 if e.code in (502, 504) and mutation:
                     raise Ambiguous(f'{method} {path}: HTTP {e.code} (outcome unknown)')
                 raise ApiError(e.code, txt, path)

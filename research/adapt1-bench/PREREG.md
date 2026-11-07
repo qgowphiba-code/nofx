@@ -264,6 +264,10 @@ XLand restarts: the retained arm's two partial attempts (crash at ruleset 2; a s
 to switch to the reconciled client) are kept in `runs/xland/crashed-retained-{1,2}/` and reported; the arm restarts from
 ruleset 0 on a new Domain. The task-local arm uses a fresh Domain per ruleset, so it continues from ruleset 3; rulesets 0-2
 completed with no resends. Ruleset 3 was interrupted twice without an episode row, and both of its Domains were deleted.
+Scheduling (18:45 UTC, no effect on any result): the container has 4 cores and ran at load 18, which starved the PenSim
+refinement rollouts. Local comparators now run at nice 15 and Adapt-1 clients at nice 0. The client waits at least the
+server's Retry-After on 429/503. All API keys share one engine session per server, so concurrent runs on one server share
+one queue; this is why the per-call latency grows with the number of live runs.
 
 ## Operational note 2 (2026-11-07 ~18:15 UTC): one experiment per lane
 At the user's request the parallelism is cut. Live on production: the two *small*-tier XLand runs and the ChemGym Machina
