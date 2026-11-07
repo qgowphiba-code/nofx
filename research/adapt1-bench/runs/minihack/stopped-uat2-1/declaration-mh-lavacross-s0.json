@@ -1,0 +1,463 @@
+{
+ "domain_id": "mh-lavacross-s0-20261107192723-c5442a",
+ "session_id": "ignored",
+ "description": "MiniHack MiniHack-LavaCross-Restricted-v0 seed 0: online agent, one decision per step.",
+ "schema": {
+  "entities": [
+   "agent",
+   "dungeon"
+  ],
+  "relations": [
+   "act"
+  ],
+  "signals": [
+   "ax",
+   "ay",
+   "exit_dx",
+   "exit_dy",
+   "exit_vis",
+   "hp_frac",
+   "inv_armor",
+   "inv_grew",
+   "inv_potion",
+   "inv_ring",
+   "inv_scroll",
+   "inv_tool",
+   "inv_wand",
+   "item_dx",
+   "item_dy",
+   "item_vis",
+   "last_a0",
+   "last_a1",
+   "last_a10",
+   "last_a11",
+   "last_a12",
+   "last_a13",
+   "last_a14",
+   "last_a15",
+   "last_a2",
+   "last_a3",
+   "last_a4",
+   "last_a5",
+   "last_a6",
+   "last_a7",
+   "last_a8",
+   "last_a9",
+   "lava0",
+   "lava1",
+   "lava2",
+   "lava3",
+   "lava4",
+   "lava5",
+   "lava6",
+   "lava7",
+   "levitating",
+   "monster_dx",
+   "monster_dy",
+   "monster_vis",
+   "msg_burn",
+   "msg_float",
+   "msg_kill",
+   "msg_none",
+   "msg_nothing",
+   "msg_other",
+   "msg_prompt",
+   "msg_see_here",
+   "step_frac",
+   "step_reward"
+  ],
+  "event_types": [
+   "state",
+   "feedback"
+  ]
+ },
+ "hypotheses": [
+  {
+   "name": "action N",
+   "relation": "act",
+   "policy": "a0",
+   "policy_features": {
+    "action_index": 0.0,
+    "is_move": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action E",
+   "relation": "act",
+   "policy": "a1",
+   "policy_features": {
+    "action_index": 1.0,
+    "is_move": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action S",
+   "relation": "act",
+   "policy": "a2",
+   "policy_features": {
+    "action_index": 2.0,
+    "is_move": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action W",
+   "relation": "act",
+   "policy": "a3",
+   "policy_features": {
+    "action_index": 3.0,
+    "is_move": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action NE",
+   "relation": "act",
+   "policy": "a4",
+   "policy_features": {
+    "action_index": 4.0,
+    "is_move": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action SE",
+   "relation": "act",
+   "policy": "a5",
+   "policy_features": {
+    "action_index": 5.0,
+    "is_move": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action SW",
+   "relation": "act",
+   "policy": "a6",
+   "policy_features": {
+    "action_index": 6.0,
+    "is_move": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action NW",
+   "relation": "act",
+   "policy": "a7",
+   "policy_features": {
+    "action_index": 7.0,
+    "is_move": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action PICKUP",
+   "relation": "act",
+   "policy": "a8",
+   "policy_features": {
+    "action_index": 8.0,
+    "is_move": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action ZAP",
+   "relation": "act",
+   "policy": "a9",
+   "policy_features": {
+    "action_index": 9.0,
+    "is_move": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action WEAR",
+   "relation": "act",
+   "policy": "a10",
+   "policy_features": {
+    "action_index": 10.0,
+    "is_move": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action APPLY",
+   "relation": "act",
+   "policy": "a11",
+   "policy_features": {
+    "action_index": 11.0,
+    "is_move": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action QUAFF",
+   "relation": "act",
+   "policy": "a12",
+   "policy_features": {
+    "action_index": 12.0,
+    "is_move": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action PUTON",
+   "relation": "act",
+   "policy": "a13",
+   "policy_features": {
+    "action_index": 13.0,
+    "is_move": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action FIRE",
+   "relation": "act",
+   "policy": "a14",
+   "policy_features": {
+    "action_index": 14.0,
+    "is_move": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action READ",
+   "relation": "act",
+   "policy": "a15",
+   "policy_features": {
+    "action_index": 15.0,
+    "is_move": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  }
+ ],
+ "learning": {
+  "enabled": true,
+  "context": {
+   "feature_paths": [
+    "values.ax",
+    "values.ay",
+    "values.exit_dx",
+    "values.exit_dy",
+    "values.exit_vis",
+    "values.hp_frac",
+    "values.inv_armor",
+    "values.inv_grew",
+    "values.inv_potion",
+    "values.inv_ring",
+    "values.inv_scroll",
+    "values.inv_tool",
+    "values.inv_wand",
+    "values.item_dx",
+    "values.item_dy",
+    "values.item_vis",
+    "values.last_a0",
+    "values.last_a1",
+    "values.last_a10",
+    "values.last_a11",
+    "values.last_a12",
+    "values.last_a13",
+    "values.last_a14",
+    "values.last_a15",
+    "values.last_a2",
+    "values.last_a3",
+    "values.last_a4",
+    "values.last_a5",
+    "values.last_a6",
+    "values.last_a7",
+    "values.last_a8",
+    "values.last_a9",
+    "values.lava0",
+    "values.lava1",
+    "values.lava2",
+    "values.lava3",
+    "values.lava4",
+    "values.lava5",
+    "values.lava6",
+    "values.lava7",
+    "values.levitating",
+    "values.monster_dx",
+    "values.monster_dy",
+    "values.monster_vis",
+    "values.msg_burn",
+    "values.msg_float",
+    "values.msg_kill",
+    "values.msg_none",
+    "values.msg_nothing",
+    "values.msg_other",
+    "values.msg_prompt",
+    "values.msg_see_here",
+    "values.step_frac"
+   ],
+   "event_types": [
+    "state"
+   ],
+   "max_samples": 4096
+  },
+  "reward": {
+   "aggregation": "weighted_mean",
+   "components": [
+    {
+     "field": "values.step_reward",
+     "goal": "maximize",
+     "min": -0.1,
+     "max": 1.0,
+     "weight": 1.0,
+     "required": true
+    }
+   ]
+  },
+  "policy": {
+   "decay_half_life_seconds": 0.0,
+   "transfer_strength": 0.0,
+   "action_transfer_strength": 0.05,
+   "min_context_observations": 4,
+   "model_max_weight": 0.45,
+   "model_ood_threshold": 0.75,
+   "ood_confidence_penalty": 0.5,
+   "exploration_mode": "auto",
+   "exploration_strength": 1.0,
+   "minimum_expected_reward": 0.0,
+   "minimum_confidence": 0.0,
+   "require_credible_dominance": false,
+   "dominance_margin": 0.0,
+   "abstain_on_ood": false
+  },
+  "credit_assignment": {
+   "mode": "eligibility_trace",
+   "discount": 0.95,
+   "neutral_reward": 0.0,
+   "minimum_weight": 0.01,
+   "delay_path": "values.delay_steps"
+  },
+  "latent_belief": {
+   "enabled": true,
+   "max_regimes": 8,
+   "novelty_threshold": 0.55,
+   "temperature": 0.25,
+   "change_point_threshold": 0.55,
+   "change_point_patience": 3,
+   "historical_regime_weight": 0.05
+  },
+  "training": {
+   "enabled": true,
+   "min_samples": 64,
+   "retrain_interval": 16,
+   "dimensions": 96,
+   "epochs": 100,
+   "learning_rate": 0.04
+  },
+  "sequential": {
+   "enabled": true,
+   "episode_path": "metadata.episode_id",
+   "step_path": "metadata.step",
+   "next_context_path": "values.next_state",
+   "reward_path": "values.step_reward",
+   "terminal_path": "values.terminal",
+   "discount": 0.95,
+   "n_step": 8,
+   "minimum_episodes": 10,
+   "minimum_validation_skill": 0.1,
+   "target_sync_interval": 10,
+   "conservative_weight": 0.05
+  },
+  "temporal_context": {
+   "enabled": true,
+   "episode_path": "metadata.episode_id",
+   "step_path": "metadata.step",
+   "input_paths": [
+    "values.ax",
+    "values.ay",
+    "values.levitating",
+    "values.inv_grew",
+    "values.hp_frac",
+    "values.msg_prompt",
+    "values.msg_float",
+    "values.msg_nothing"
+   ],
+   "maximum_lag": 6
+  }
+ }
+}
