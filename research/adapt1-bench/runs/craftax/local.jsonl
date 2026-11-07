@@ -1,0 +1,51 @@
+{"method": "random", "seed": 0, "episode": 0, "return": 4.099999986588955, "n_achievements": 5, "achievements": ["COLLECT_WOOD", "PLACE_TABLE", "COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 129}
+{"method": "random", "seed": 0, "episode": 1, "return": 1.099999986588955, "n_achievements": 2, "achievements": ["COLLECT_WOOD", "WAKE_UP"], "len": 144}
+{"method": "random", "seed": 0, "episode": 2, "return": 0.09999998658895493, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 281}
+{"method": "random", "seed": 0, "episode": 3, "return": 0.09999997913837433, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 72}
+{"method": "random", "seed": 0, "episode": 4, "return": 0.09999998658895493, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 77}
+{"method": "random", "seed": 0, "episode": 5, "return": 2.099999986588955, "n_achievements": 3, "achievements": ["COLLECT_SAPLING", "COLLECT_DRINK", "WAKE_UP"], "len": 117}
+{"method": "random", "seed": 0, "episode": 6, "return": 2.0999999791383743, "n_achievements": 3, "achievements": ["COLLECT_WOOD", "PLACE_TABLE", "WAKE_UP"], "len": 95}
+{"method": "random", "seed": 0, "episode": 7, "return": 1.1000000089406967, "n_achievements": 2, "achievements": ["COLLECT_WOOD", "WAKE_UP"], "len": 194}
+{"method": "random", "seed": 0, "episode": 8, "return": 0.09999997168779373, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 44}
+{"method": "random", "seed": 0, "episode": 9, "return": 2.099999986588955, "n_achievements": 3, "achievements": ["COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 252}
+{"method": "random", "seed": 0, "episode": 10, "return": 1.1000000089406967, "n_achievements": 2, "achievements": ["COLLECT_DRINK", "WAKE_UP"], "len": 191}
+{"method": "random", "seed": 0, "episode": 11, "return": 1.0999999716877937, "n_achievements": 2, "achievements": ["COLLECT_WOOD", "WAKE_UP"], "len": 127}
+{"method": "random", "seed": 0, "episode": 12, "return": 3.1000000089406967, "n_achievements": 4, "achievements": ["COLLECT_WOOD", "COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 178}
+{"method": "random", "seed": 0, "episode": 13, "return": 2.099999986588955, "n_achievements": 3, "achievements": ["COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 225}
+{"method": "random", "seed": 0, "episode": 14, "return": 3.099999986588955, "n_achievements": 4, "achievements": ["COLLECT_WOOD", "COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 180}
+{"method": "random", "seed": 0, "episode": 15, "return": 2.099999986588955, "n_achievements": 3, "achievements": ["COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 144}
+{"method": "random", "seed": 0, "episode": 16, "return": 4.100000008940697, "n_achievements": 5, "achievements": ["COLLECT_WOOD", "PLACE_TABLE", "COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 205}
+{"method": "random", "seed": 0, "episode": 17, "return": 1.0999999716877937, "n_achievements": 2, "achievements": ["COLLECT_WOOD", "WAKE_UP"], "len": 185}
+{"method": "random", "seed": 0, "episode": 18, "return": 1.1000000014901161, "n_achievements": 2, "achievements": ["COLLECT_SAPLING", "WAKE_UP"], "len": 57}
+{"method": "random", "seed": 0, "episode": 19, "return": 0.10000000894069672, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 108}
+{"method": "random", "seed": 0, "episode": 20, "return": 3.1000000089406967, "n_achievements": 4, "achievements": ["COLLECT_WOOD", "COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 104}
+{"method": "random", "seed": 0, "episode": 21, "return": 0.10000000894069672, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 96}
+{"method": "random", "seed": 0, "episode": 22, "return": 3.1000000089406967, "n_achievements": 4, "achievements": ["COLLECT_WOOD", "COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 222}
+{"method": "random", "seed": 0, "episode": 23, "return": 0.10000000894069672, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 109}
+{"method": "random", "seed": 0, "episode": 24, "return": 0.10000000149011612, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 197}
+{"method": "random", "seed": 0, "episode": 25, "return": 0.09999997913837433, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 58}
+{"method": "random", "seed": 0, "episode": 26, "return": 0.09999998658895493, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 127}
+{"method": "random", "seed": 0, "episode": 27, "return": 2.1000000089406967, "n_achievements": 3, "achievements": ["COLLECT_WOOD", "COLLECT_DRINK", "WAKE_UP"], "len": 96}
+{"method": "random", "seed": 0, "episode": 28, "return": 5.099999979138374, "n_achievements": 6, "achievements": ["COLLECT_WOOD", "PLACE_TABLE", "COLLECT_SAPLING", "MAKE_WOOD_PICKAXE", "PLACE_PLANT", "WAKE_UP"], "len": 235}
+{"method": "random", "seed": 0, "episode": 29, "return": 0.10000001639127731, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 54}
+{"method": "random", "seed": 0, "episode": 30, "return": 1.1000000089406967, "n_achievements": 2, "achievements": ["COLLECT_WOOD", "WAKE_UP"], "len": 102}
+{"method": "random", "seed": 0, "episode": 31, "return": 0.09999997168779373, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 103}
+{"method": "random", "seed": 0, "episode": 32, "return": 3.0999999716877937, "n_achievements": 4, "achievements": ["COLLECT_WOOD", "COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 180}
+{"method": "random", "seed": 0, "episode": 33, "return": 5.099999986588955, "n_achievements": 6, "achievements": ["COLLECT_WOOD", "PLACE_TABLE", "COLLECT_SAPLING", "COLLECT_DRINK", "PLACE_PLANT", "WAKE_UP"], "len": 149}
+{"method": "random", "seed": 0, "episode": 34, "return": 0.09999998658895493, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 200}
+{"method": "random", "seed": 0, "episode": 35, "return": 2.099999986588955, "n_achievements": 3, "achievements": ["COLLECT_WOOD", "PLACE_TABLE", "WAKE_UP"], "len": 245}
+{"method": "random", "seed": 0, "episode": 36, "return": 1.099999986588955, "n_achievements": 2, "achievements": ["COLLECT_WOOD", "WAKE_UP"], "len": 115}
+{"method": "random", "seed": 0, "episode": 37, "return": 1.1000000089406967, "n_achievements": 2, "achievements": ["COLLECT_WOOD", "WAKE_UP"], "len": 142}
+{"method": "random", "seed": 0, "episode": 38, "return": 2.1000000089406967, "n_achievements": 3, "achievements": ["COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 88}
+{"method": "random", "seed": 0, "episode": 39, "return": 1.1000000014901161, "n_achievements": 2, "achievements": ["COLLECT_WOOD", "WAKE_UP"], "len": 217}
+{"method": "random", "seed": 0, "episode": 40, "return": -0.9000000134110451, "n_achievements": 0, "achievements": [], "len": 44}
+{"method": "random", "seed": 0, "episode": 41, "return": 3.099999986588955, "n_achievements": 4, "achievements": ["COLLECT_WOOD", "COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 240}
+{"method": "random", "seed": 0, "episode": 42, "return": 1.099999986588955, "n_achievements": 2, "achievements": ["COLLECT_WOOD", "WAKE_UP"], "len": 83}
+{"method": "random", "seed": 0, "episode": 43, "return": 0.10000000149011612, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 37}
+{"method": "random", "seed": 0, "episode": 44, "return": 0.09999997913837433, "n_achievements": 1, "achievements": ["WAKE_UP"], "len": 40}
+{"method": "random", "seed": 0, "episode": 45, "return": 2.0999999791383743, "n_achievements": 3, "achievements": ["COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 114}
+{"method": "random", "seed": 0, "episode": 46, "return": -0.9000000134110451, "n_achievements": 0, "achievements": [], "len": 73}
+{"method": "random", "seed": 0, "episode": 47, "return": 1.099999986588955, "n_achievements": 2, "achievements": ["COLLECT_DRINK", "WAKE_UP"], "len": 427}
+{"method": "random", "seed": 0, "episode": 48, "return": 2.099999986588955, "n_achievements": 3, "achievements": ["COLLECT_WOOD", "COLLECT_DRINK", "WAKE_UP"], "len": 204}
+{"method": "random", "seed": 0, "episode": 49, "return": 2.099999986588955, "n_achievements": 3, "achievements": ["COLLECT_SAPLING", "PLACE_PLANT", "WAKE_UP"], "len": 154}
+{"method": "random", "seed": 0, "episode": 50, "return": 1.0999999791383743, "n_achievements": 2, "achievements": ["COLLECT_SAPLING", "WAKE_UP"], "len": 132}
