@@ -1,0 +1,26 @@
+[     0.0s] run B1 -> /home/user/nofx/research/hp-adapt1-set2/runs/B1/l1-20261106T234447Z
+[   910.1s] [l1 A0] g0 fitted 47ec347570f6 on 5952 rows (generations [0]) x 90 epochs in 325.6s, selected_epoch 84
+[  1044.2s] [l1 A0] g0 Eval-Liu depth 3: 130 [9, 10, 6, 14, 26, 23, 42]
+[  1998.3s] [l1 BL] g0 fitted f5b525f936a6 on 5952 rows (generations [0]) x 90 epochs in 175.9s, selected_epoch 16
+[  2150.2s] [l1 BL] g0 Eval-Liu depth 3: 122 [9, 10, 6, 13, 23, 21, 40]
+[  2218.4s] [l1 A0] g1 collected 144 folds: mean contacts 15.15; predict {'leaves': 108478, 'unique_sent': 96478, 'cache_hits': 12000, 'predict_batches': 56}
+[  2544.1s] [l1 A0] g1 fitted 90eba189b5bb on 11904 rows (generations [0, 1]) x 45 epochs in 176.6s, selected_epoch 34
+[  2691.9s] [l1 A0] g1 Eval-Liu depth 3: 126 [10, 11, 5, 13, 23, 23, 41]
+[  2701.1s] [l1 BL] g1 collected 144 folds: mean contacts 14.85; predict {'leaves': 108676, 'unique_sent': 96506, 'cache_hits': 12170, 'predict_batches': 56}
+[  2959.8s] [l1 BL] g1 fitted 378acff28275 on 11904 rows (generations [0, 1]) x 45 epochs in 184.2s, selected_epoch 39
+[  3052.4s] [l1 BL] g1 Eval-Liu depth 3: 132 [10, 11, 7, 15, 24, 22, 43]
+[  3052.4s] G2 futility gate: {'a0_liu_g1': 126, 'bl_liu_g1': 132, 'drop_bl_from_lineages_2_3': False}
+[  3692.3s] [l1 A0] g2 collected 144 folds: mean contacts 15.41; predict {'leaves': 107062, 'unique_sent': 92973, 'cache_hits': 14089, 'predict_batches': 56}
+[  3727.9s] [l1 BL] g2 collected 144 folds: mean contacts 15.06; predict {'leaves': 109207, 'unique_sent': 95343, 'cache_hits': 13864, 'predict_batches': 56}
+[  4001.6s] [l1 A0] g2 fitted 2e4bb7e7327d on 11904 rows (generations [1, 2]) x 45 epochs in 188.5s, selected_epoch 41
+[  4209.3s] [l1 BL] g2 fitted ff2b698aaf82 on 11904 rows (generations [1, 2]) x 45 epochs in 203.8s, selected_epoch 33
+[  5198.8s] [l1 A0] g2 Eval-L depth 3 total 1042, Eval-Liu 145
+[  5206.6s] [l1 A0] B2 leaf blend 0.25 on Eval-Liu: 145
+[  5213.4s] [l1 A0] B2 leaf blend 0.5 on Eval-Liu: 145
+[  5219.9s] [l1 A0] B2 leaf blend 0.75 on Eval-Liu: 145
+[  5331.7s] [l1 A0] B2 chosen lam_leaf 0.25: Eval-L 1039
+[  5445.6s] [l1 BL] g2 Eval-L depth 3 total 980, Eval-Liu 139
+[  5511.8s] [l1 BL] B2 leaf blend 0.25 on Eval-Liu: 138
+[  5517.7s] [l1 BL] B2 leaf blend 0.5 on Eval-Liu: 138
+[  5547.8s] [l1 BL] B2 leaf blend 0.75 on Eval-Liu: 138
+[  5793.8s] [l1 BL] B2 chosen lam_leaf 0.25: Eval-L 997
