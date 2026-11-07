@@ -1,2 +1,6 @@
 {"episode": 0, "return": 0.0, "success": false, "len": 10, "fallbacks": 0, "elapsed_s": 47.7, "api_calls": 21}
 {"episode": 1, "return": -2.0, "success": true, "len": 10, "fallbacks": 0, "elapsed_s": 99.1, "api_calls": 41}
+{"episode": 2, "return": 0.0, "success": true, "len": 10, "fallbacks": 0, "elapsed_s": 153.2, "api_calls": 61}
+{"episode": 3, "return": 4.0, "success": true, "len": 10, "fallbacks": 0, "elapsed_s": 205.0, "api_calls": 81}
+{"episode": 4, "return": 0.0, "success": true, "len": 10, "fallbacks": 0, "elapsed_s": 249.0, "api_calls": 101}
+{"episode": 5, "return": 2.0, "success": false, "len": 10, "fallbacks": 0, "elapsed_s": 286.3, "api_calls": 121}

@@ -3,3 +3,16 @@
 {"episode": 2, "return": 1.0, "success": true, "len": 6, "fallbacks": 0, "elapsed_s": 57.1, "api_calls": 37}
 {"episode": 3, "return": 1.0, "success": true, "len": 6, "fallbacks": 0, "elapsed_s": 77.4, "api_calls": 49}
 {"episode": 4, "return": 1.0, "success": true, "len": 6, "fallbacks": 0, "elapsed_s": 97.4, "api_calls": 61}
+{"episode": 5, "return": 1.0, "success": true, "len": 6, "fallbacks": 0, "elapsed_s": 119.6, "api_calls": 73}
+{"episode": 6, "return": 1.0, "success": true, "len": 6, "fallbacks": 0, "elapsed_s": 149.9, "api_calls": 85}
+{"episode": 7, "return": -1.0, "success": false, "len": 6, "fallbacks": 0, "elapsed_s": 160.0, "api_calls": 97}
+{"episode": 8, "return": 1.0, "success": true, "len": 6, "fallbacks": 0, "elapsed_s": 182.4, "api_calls": 109}
+{"episode": 9, "return": -1.0, "success": false, "len": 6, "fallbacks": 0, "elapsed_s": 199.1, "api_calls": 121}
+{"episode": 10, "return": 1.0, "success": true, "len": 6, "fallbacks": 0, "elapsed_s": 217.1, "api_calls": 133}
+{"episode": 11, "return": -1.0, "success": false, "len": 6, "fallbacks": 0, "elapsed_s": 233.8, "api_calls": 145}
+{"episode": 12, "return": 1.0, "success": true, "len": 6, "fallbacks": 0, "elapsed_s": 248.9, "api_calls": 157}
+{"episode": 13, "return": -1.0, "success": false, "len": 6, "fallbacks": 0, "elapsed_s": 266.6, "api_calls": 169}
+{"episode": 14, "return": 1.0, "success": true, "len": 6, "fallbacks": 0, "elapsed_s": 274.9, "api_calls": 181}
+{"episode": 15, "return": -1.0, "success": false, "len": 6, "fallbacks": 0, "elapsed_s": 283.1, "api_calls": 193}
+{"episode": 16, "return": 1.0, "success": true, "len": 6, "fallbacks": 0, "elapsed_s": 293.5, "api_calls": 205}
+{"episode": 17, "return": 1.0, "success": true, "len": 6, "fallbacks": 0, "elapsed_s": 308.9, "api_calls": 217}
