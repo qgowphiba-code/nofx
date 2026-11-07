@@ -2552,3 +2552,6 @@
 {"episode": 2551, "return": 108.0, "len": 93, "steps": 283295, "elapsed_s": 11945.7}
 {"episode": 2552, "return": 108.0, "len": 93, "steps": 283388, "elapsed_s": 11952.2}
 {"episode": 2553, "return": 107.0, "len": 94, "steps": 283482, "elapsed_s": 11958.6}
+{"episode": 2554, "return": 106.0, "len": 95, "steps": 283577, "elapsed_s": 11965.2}
+{"episode": 2555, "return": 104.0, "len": 97, "steps": 283674, "elapsed_s": 11972.0}
+{"episode": 2556, "return": 105.0, "len": 96, "steps": 283770, "elapsed_s": 11977.3}

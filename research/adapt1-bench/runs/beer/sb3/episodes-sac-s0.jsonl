@@ -2992,3 +2992,6 @@
 {"episode": 2991, "return": 105.0, "len": 96, "steps": 315345, "elapsed_s": 13381.8}
 {"episode": 2992, "return": 104.0, "len": 97, "steps": 315442, "elapsed_s": 13388.4}
 {"episode": 2993, "return": 104.0, "len": 97, "steps": 315539, "elapsed_s": 13395.2}
+{"episode": 2994, "return": 105.0, "len": 96, "steps": 315635, "elapsed_s": 13401.0}
+{"episode": 2995, "return": 104.0, "len": 97, "steps": 315732, "elapsed_s": 13407.5}
+{"episode": 2996, "return": 103.0, "len": 98, "steps": 315830, "elapsed_s": 13414.4}
