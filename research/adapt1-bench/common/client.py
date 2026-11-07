@@ -82,6 +82,39 @@ class Client:
         return self.post(f'/domains/{domain}/trajectory/{op}', body,
                          mutation=op not in ('state', 'records', 'evaluate'))
 
+    def feedback(self, domain, body, stats, attempts=6):
+        """POST one feedback record; if the outcome is ambiguous (connection reset, timeout, 502/504), reconcile before
+        resending. Production probes on 2026-11-07 (scratchpad probes/): a resend with the same decision_id is accepted and
+        applied a second time (feedback_policy.sample_count 4 -> 5), and GET /domains/{id} event_count rises by exactly one
+        per feedback and not per query. So the client keeps the Domain's expected event count, re-reads it after an
+        ambiguous POST, and resends only if the record did not land. Returns the service response, or
+        {'reconciled': 'applied'} when the record is known to have landed but its response was lost."""
+        if not hasattr(self, '_ev'):
+            self._ev = {}
+        if domain not in self._ev:
+            self._ev[domain] = self.call('GET', f'/domains/{domain}', None, mutation=False).get('event_count')
+        for attempt in range(attempts):
+            try:
+                r = self.post(f'/domains/{domain}/feedback', body)
+                if self._ev[domain] is not None:
+                    self._ev[domain] += 1
+                return r
+            except (Ambiguous, ApiError) as e:
+                if isinstance(e, ApiError) and e.code < 500:
+                    raise
+                stats['feedback_ambiguous'] = stats.get('feedback_ambiguous', 0) + 1
+            time.sleep(min(60, 5 * (attempt + 1)))
+            n = self.call('GET', f'/domains/{domain}', None, mutation=False).get('event_count')   # reads retry on their own
+            exp = self._ev[domain]
+            if exp is not None and n == exp + 1:
+                self._ev[domain] = n; stats['feedback_landed_unacked'] = stats.get('feedback_landed_unacked', 0) + 1
+                return {'reconciled': 'applied'}
+            if exp is not None and n != exp:
+                stats['feedback_count_mismatch'] = stats.get('feedback_count_mismatch', 0) + 1
+                raise SystemExit(f'feedback reconciliation: event_count {n}, expected {exp} or {exp + 1}; writer paused')
+            stats['feedback_resent'] = stats.get('feedback_resent', 0) + 1
+        raise SystemExit(f'feedback to {domain} failed {attempts} times')
+
     def delete_domain(self, domain, attempts=5):
         """Delete and confirm by readback. A 5xx on the DELETE is ambiguous: re-read, and if the Domain is still there retry
         (production returned a 502 on a delete during the XLand smoke test)."""

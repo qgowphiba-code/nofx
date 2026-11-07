@@ -86,13 +86,8 @@ try:
                   'values': {'step_reward': float(np.clip(r, -1, 1)), 'next_state': {'values': nxt}, 'terminal': bool(done), 'delay_steps': 0}, 'metadata': {'episode_id': ep_id, 'step': step}}
             if q.get('decision_id'):
                 fb['decision_id'] = q['decision_id']
-            try:
-                res = api.post(f'/domains/{did}/feedback', fb)
-            except (Ambiguous, ApiError) as e:
-                if isinstance(e, ApiError) and e.code < 500:
-                    raise
-                time.sleep(2); res = api.post(f'/domains/{did}/feedback', fb)
-            if (res.get('credit_assignment') or {}).get('contextual_learning_applied') is not True:
+            res = api.feedback(did, fb, stats)          # reconciles an ambiguous POST by event count before any resend
+            if res.get('reconciled') != 'applied' and (res.get('credit_assignment') or {}).get('contextual_learning_applied') is not True:
                 stats['not_applied'] += 1
             if diag:
                 ls = (q.get('learning_state') or {}).get('subsystems') or {}

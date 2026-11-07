@@ -72,6 +72,28 @@ def declaration(did):
 
 
 api = Client(JDIR / f'journal-{tag}.jsonl.xz', base=BASE)
+
+
+def create_domain(decl):
+    """POST /domains with reconciliation: an ambiguous failure (connection reset, 5xx) is resolved by reading the Domain
+    back; if it exists the creation counted, otherwise the request is retried."""
+    for attempt in range(8):
+        try:
+            return api.post('/domains', decl)
+        except (Ambiguous, ApiError) as e:
+            if isinstance(e, ApiError) and e.code < 500:
+                raise
+            time.sleep(min(60, 5 * (attempt + 1)))
+            try:
+                got = api.call('GET', f"/domains/{decl['domain_id']}", None, mutation=False)
+                if got:
+                    return got
+            except ApiError as g:
+                if g.code != 404:
+                    continue
+    raise SystemExit('could not create Domain after 8 attempts')
+
+
 ep_log = open(OUT / f'episodes-{tag}.jsonl', 'a', buffering=1)
 diag_log = open(OUT / f'diagnostics-{tag}.jsonl', 'a', buffering=1)
 stats = {'macros': 0, 'fallbacks': 0, 'not_applied': 0, 'query_retries': 0, 'domains': 0}
@@ -91,6 +113,7 @@ def query(did, values, ep_id, step, diag):
                 raise
             stats['query_retries'] += 1; time.sleep(2 * (attempt + 1))
     raise SystemExit(f'query failed 3 times at {ep_id} step {step}')
+
 
 
 def applicable(e):
@@ -128,11 +151,11 @@ def run_ruleset(did, idx, decl_written):
         r, ok, nprim = env.macro(executed)
         done = env.episode_done()
         nxt = features(env)
-        res = api.post(f'/domains/{did}/feedback', {'session_id': 'ignored', 'outcome': 'success' if r > 0 else 'neutral', 'feedback_kind': 'execution', 'relation': REL,
-                                                    'policy': executed, 'decision_id': q.get('decision_id'),
-                                                    'values': {'step_reward': float(r), 'next_state': {'values': nxt}, 'terminal': bool(done), 'delay_steps': 0},
-                                                    'metadata': {'episode_id': ep_id, 'step': step}})
-        if (res.get('credit_assignment') or {}).get('contextual_learning_applied') is not True:
+        res = api.feedback(did, {'session_id': 'ignored', 'outcome': 'success' if r > 0 else 'neutral', 'feedback_kind': 'execution', 'relation': REL,
+                             'policy': executed, 'decision_id': q.get('decision_id'),
+                             'values': {'step_reward': float(r), 'next_state': {'values': nxt}, 'terminal': bool(done), 'delay_steps': 0},
+                             'metadata': {'episode_id': ep_id, 'step': step}}, stats)
+        if res.get('reconciled') != 'applied' and (res.get('credit_assignment') or {}).get('contextual_learning_applied') is not True:
             stats['not_applied'] += 1
         if diag:
             ls = (q.get('learning_state') or {}).get('subsystems') or {}
@@ -157,12 +180,13 @@ summary = {'tier': TIER, 'arm': ARM, 'seed': SEED, 'first_ruleset': FIRST, 'n_ru
 try:
     did = None
     if ARM == 'retained':
-        did = new_id(f'xl-{TIER[:3]}-ret-s{SEED}'); decl = declaration(did); echo = api.post('/domains', decl); stats['domains'] += 1
+        did = new_id(f'xl-{TIER[:3]}-ret-s{SEED}'); decl = declaration(did); echo = create_domain(decl); stats['domains'] += 1
         (OUT / f'declaration-{tag}.json').write_text(json.dumps(decl, indent=1)); (OUT / f'echo-{tag}.json').write_text(json.dumps(echo.get('learning'), indent=1))
     for idx in range(FIRST, FIRST + NRS):
         if ARM == 'tasklocal':
-            did = new_id(f'xl-{TIER[:3]}-tl-s{SEED}-r{idx}'); decl = declaration(did); echo = api.post('/domains', decl); stats['domains'] += 1
+            did = new_id(f'xl-{TIER[:3]}-tl-s{SEED}-r{idx}'); decl = declaration(did)
             (OUT / f'live-{tag}.json').write_text(json.dumps({'domain_id': did, 'ruleset': idx}))   # for cleanup if the process is lost
+            echo = create_domain(decl); stats['domains'] += 1
             if idx == FIRST:
                 (OUT / f'declaration-{tag}.json').write_text(json.dumps(decl, indent=1)); (OUT / f'echo-{tag}.json').write_text(json.dumps(echo.get('learning'), indent=1))
         row = run_ruleset(did, idx, True)

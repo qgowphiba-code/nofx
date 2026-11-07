@@ -1,0 +1,24 @@
+{
+ "tier": "small",
+ "arm": "retained",
+ "seed": 0,
+ "first_ruleset": 0,
+ "n_rulesets": 150,
+ "domains": [
+  {
+   "domain_id": "xl-sma-ret-s0-20261107175706-f80516",
+   "readback": 404
+  }
+ ],
+ "outcome": "crashed",
+ "stats": {
+  "macros": 174,
+  "fallbacks": 164,
+  "not_applied": 0,
+  "query_retries": 0,
+  "domains": 1,
+  "inapplicable": 164
+ },
+ "api_calls": 386,
+ "wall_s": 1694
+}

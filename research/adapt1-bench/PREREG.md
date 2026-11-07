@@ -249,6 +249,22 @@ and G therefore run on Fast-UAT (`af6670b`, the round-2 server, about 3 s per ca
 not on production, and start with the budgets the latency allows: F = three tasks first (Potion-Inv, LavaCross,
 WoD-Medium), seed 0, 150 episodes each; Ring-Inv and WoD-Hard follow if time permits. G unchanged (20 capped episodes).*
 
+## Operational note 3 (2026-11-07 ~18:45 UTC): dropped connections and feedback reconciliation
+Production began resetting connections mid-request (`ConnectionResetError`) at about 18:05 UTC. The XLand task-local arm
+crashed on a Domain creation after 3 rulesets, and the retained arm crashed on a feedback after 2 rulesets. Two production
+probes (`probes/` in the scratchpad, Domains deleted, 404 readbacks) showed that (1) a feedback resent with the same
+`decision_id` is accepted and applied a second time (`feedback_policy.sample_count` 4 -> 5), so a blind resend
+double-counts, and (2) `GET /domains/{id}` `event_count` rises by exactly one per feedback and not per query. The client
+now reconciles an ambiguous feedback POST by re-reading `event_count` and resends only if the record did not land; a count
+it cannot explain stops the run (`Client.feedback`, unit-tested against a fake server). Domain creation is reconciled by
+reading the Domain back. XLand, MiniHack and Craftax use this path from now on. The Industrial Benchmark runs on Fast-UAT
+were started earlier with one blind resend per ambiguous feedback; each such resend is counted in their summaries
+(`feedback_reconciled`) and reported as a possible duplicate.
+XLand restarts: the retained arm's two partial attempts (crash at ruleset 2; a second attempt stopped by me after 32 macros
+to switch to the reconciled client) are kept in `runs/xland/crashed-retained-{1,2}/` and reported; the arm restarts from
+ruleset 0 on a new Domain. The task-local arm uses a fresh Domain per ruleset, so it continues from ruleset 3; rulesets 0-2
+completed with no resends. Ruleset 3 was interrupted twice without an episode row, and both of its Domains were deleted.
+
 ## Operational note 2 (2026-11-07 ~18:15 UTC): one experiment per lane
 At the user's request the parallelism is cut. Live on production: the two *small*-tier XLand runs and the ChemGym Machina
 queue (3 at a time). Live on Fast-UAT: the six Industrial Benchmark runs and the two PenSim refinement arms. Stopped and
