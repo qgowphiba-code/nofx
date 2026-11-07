@@ -1,0 +1,3 @@
+{"episode": 0, "return": 1.0, "success": true, "len": 9, "fallbacks": 0, "elapsed_s": 26.2, "api_calls": 19}
+{"episode": 1, "return": -1.0, "success": false, "len": 9, "fallbacks": 0, "elapsed_s": 66.0, "api_calls": 37}
+{"episode": 2, "return": -1.0, "success": false, "len": 9, "fallbacks": 0, "elapsed_s": 97.7, "api_calls": 55}

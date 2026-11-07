@@ -1,0 +1,240 @@
+{
+ "domain_id": "rl-bandit-s0-20261107132405-671e0d",
+ "session_id": "ignored",
+ "description": "bsuite bandit seed 0: online agent, one decision per environment step.",
+ "schema": {
+  "entities": [
+   "agent",
+   "environment"
+  ],
+  "relations": [
+   "acts"
+  ],
+  "signals": [
+   "o0",
+   "step_reward"
+  ],
+  "event_types": [
+   "state",
+   "feedback"
+  ]
+ },
+ "hypotheses": [
+  {
+   "name": "action 0",
+   "relation": "acts",
+   "policy": "a0",
+   "policy_features": {
+    "action_index": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action 1",
+   "relation": "acts",
+   "policy": "a1",
+   "policy_features": {
+    "action_index": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action 2",
+   "relation": "acts",
+   "policy": "a2",
+   "policy_features": {
+    "action_index": 2.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action 3",
+   "relation": "acts",
+   "policy": "a3",
+   "policy_features": {
+    "action_index": 3.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action 4",
+   "relation": "acts",
+   "policy": "a4",
+   "policy_features": {
+    "action_index": 4.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action 5",
+   "relation": "acts",
+   "policy": "a5",
+   "policy_features": {
+    "action_index": 5.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action 6",
+   "relation": "acts",
+   "policy": "a6",
+   "policy_features": {
+    "action_index": 6.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action 7",
+   "relation": "acts",
+   "policy": "a7",
+   "policy_features": {
+    "action_index": 7.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action 8",
+   "relation": "acts",
+   "policy": "a8",
+   "policy_features": {
+    "action_index": 8.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action 9",
+   "relation": "acts",
+   "policy": "a9",
+   "policy_features": {
+    "action_index": 9.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "action 10",
+   "relation": "acts",
+   "policy": "a10",
+   "policy_features": {
+    "action_index": 10.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  }
+ ],
+ "learning": {
+  "enabled": true,
+  "context": {
+   "feature_paths": [
+    "values.o0"
+   ],
+   "event_types": [
+    "state"
+   ],
+   "max_samples": 4096
+  },
+  "reward": {
+   "aggregation": "weighted_mean",
+   "components": [
+    {
+     "field": "values.step_reward",
+     "goal": "maximize",
+     "min": 0.0,
+     "max": 1.0,
+     "weight": 1.0,
+     "required": true
+    }
+   ]
+  },
+  "policy": {
+   "decay_half_life_seconds": 0.0,
+   "transfer_strength": 0.0,
+   "action_transfer_strength": 0.0,
+   "min_context_observations": 4,
+   "model_max_weight": 0.45,
+   "model_ood_threshold": 0.75,
+   "ood_confidence_penalty": 0.5,
+   "exploration_mode": "auto",
+   "exploration_strength": 1.0,
+   "minimum_expected_reward": 0.0,
+   "minimum_confidence": 0.0,
+   "require_credible_dominance": false,
+   "dominance_margin": 0.0,
+   "abstain_on_ood": false
+  },
+  "credit_assignment": {
+   "mode": "none",
+   "neutral_reward": 0.5
+  },
+  "latent_belief": {
+   "enabled": true,
+   "max_regimes": 8,
+   "novelty_threshold": 0.55,
+   "temperature": 0.25,
+   "change_point_threshold": 0.55,
+   "change_point_patience": 3,
+   "historical_regime_weight": 0.05
+  },
+  "training": {
+   "enabled": true,
+   "min_samples": 64,
+   "retrain_interval": 16,
+   "dimensions": 96,
+   "epochs": 100,
+   "learning_rate": 0.04
+  }
+ }
+}
