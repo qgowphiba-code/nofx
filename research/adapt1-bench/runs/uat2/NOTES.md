@@ -30,3 +30,4 @@ All times UTC, 2026-11-07.
   their partial files are in `runs/minihack/stopped-uat2-1/`. F will start from scratch after C, as planned. The script now
   requires both PenSim summary.json files before starting F.
 - 19:28 RESTART, C attempt 2 (rerun from scratch, new Domains): both arms relaunched.
+- 19:31 Merged `origin/claude/zen-carson-n5bvi0` 0170978 (`Client.create_domain` reconciles an ambiguous Domain creation). The running A and C processes keep the code they started with; F, G and any rerun launch with the merged code.
