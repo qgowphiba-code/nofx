@@ -226,6 +226,10 @@ def final_eval(arm, sha):
     arm.log(f'B2 chosen lam_leaf {best}: Eval-L {fin["blend_test_eval_l"]["total"]}')
     for d in (1, 2):
         fin[f'eval_l_depth{d}'] = long_eval(ev, evl, d, dim=DIM)
+    # exploratory (not in the plan; added for lineages 2-3): deeper learned search on the panel, against the
+    # heuristic's depth-4 card
+    fin['liu_depth4'] = long_eval(ev, liu, 4, dim=DIM)
+    arm.log(f'exploratory: Eval-Liu depth 4 total {fin["liu_depth4"]["total"]}')
     fin['predict_stats'] = dict(ev.stats)
     arm.out['final'] = fin
 
