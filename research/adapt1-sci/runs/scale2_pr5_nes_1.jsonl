@@ -1,0 +1,3 @@
+{"task": "pr5", "method": "nes", "seed": 1, "phase": "plain", "executions": 7680, "heldout_mean_J": 25.46952198609741}
+{"task": "pr5", "method": "nes", "seed": 1, "phase": "plain", "executions": 15360, "heldout_mean_J": 26.369482218603167}
+{"task": "pr5", "method": "nes", "seed": 1, "phase": "plain", "executions": 30720, "heldout_mean_J": 26.369482218603167}

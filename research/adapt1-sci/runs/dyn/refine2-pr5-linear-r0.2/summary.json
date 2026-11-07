@@ -1,0 +1,10 @@
+{
+ "domain_id": "sci-r2-pr5-linear-20261107042305-76f64a",
+ "task": "pr5",
+ "arm": "linear",
+ "radius": 0.2,
+ "updates": 30,
+ "drift_at": null,
+ "executions": 7680,
+ "api_calls": 7903
+}

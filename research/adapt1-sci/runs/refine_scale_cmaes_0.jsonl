@@ -1,0 +1,4 @@
+{"method": "cmaes", "seed": 0, "executions": 7680, "heldout_mean_J": 29.57188288900802}
+{"method": "cmaes", "seed": 0, "executions": 15360, "heldout_mean_J": 31.352693445391797}
+{"method": "cmaes", "seed": 0, "executions": 30720, "heldout_mean_J": 31.479269538048438}
+{"method": "cmaes", "seed": 0, "executions": 61440, "heldout_mean_J": 31.719368666501385}

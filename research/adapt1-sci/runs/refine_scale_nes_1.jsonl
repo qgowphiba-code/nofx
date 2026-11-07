@@ -1,0 +1,4 @@
+{"method": "nes", "seed": 1, "executions": 7680, "heldout_mean_J": 29.815482716806937}
+{"method": "nes", "seed": 1, "executions": 15360, "heldout_mean_J": 30.619142776518114}
+{"method": "nes", "seed": 1, "executions": 30720, "heldout_mean_J": 30.965369450836864}
+{"method": "nes", "seed": 1, "executions": 61440, "heldout_mean_J": 31.997673606798607}

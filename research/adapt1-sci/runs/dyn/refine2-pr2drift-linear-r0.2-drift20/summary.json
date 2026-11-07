@@ -1,0 +1,10 @@
+{
+ "domain_id": "sci-r2-pr2drift-linear-20261107042305-17c4c7",
+ "task": "pr2drift",
+ "arm": "linear",
+ "radius": 0.2,
+ "updates": 40,
+ "drift_at": 20,
+ "executions": 10240,
+ "api_calls": 10579
+}

@@ -1,0 +1,6 @@
+[pr5-quadratic-r0.2] held-out after 0 updates: mean J 25.28 (base alone 25.28)
+[pr5-quadratic-r0.2] held-out after 5 updates: mean J 26.01 (base alone 25.28)
+[pr5-quadratic-r0.2] held-out after 10 updates: mean J 26.34 (base alone 25.28)
+[pr5-quadratic-r0.2] held-out after 20 updates: mean J 26.48 (base alone 25.28)
+[pr5-quadratic-r0.2] held-out after 30 updates: mean J 26.61 (base alone 25.28)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-r2-pr5-quadratic-20261107042305-c7cd24", "status": "success"}, "readback": 404}

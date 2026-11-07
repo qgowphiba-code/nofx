@@ -1,0 +1,5 @@
+{"task": "pr2drift", "method": "nes", "seed": 0, "phase": "right_after_change", "executions": 0, "heldout_mean_J": 26.8780349465043}
+{"task": "pr2drift", "method": "nes", "seed": 0, "phase": "continued_after_change", "executions": 1280, "heldout_mean_J": 27.48709685074057}
+{"task": "pr2drift", "method": "nes", "seed": 0, "phase": "continued_after_change", "executions": 2560, "heldout_mean_J": 28.342627568441095}
+{"task": "pr2drift", "method": "nes", "seed": 0, "phase": "restart_after_change", "executions": 1280, "heldout_mean_J": 27.14941683252747}
+{"task": "pr2drift", "method": "nes", "seed": 0, "phase": "restart_after_change", "executions": 2560, "heldout_mean_J": 27.11815144940709}

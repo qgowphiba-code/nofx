@@ -1,0 +1,4 @@
+{"task": "pr5", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 7680, "heldout_mean_J": 25.209511258699237}
+{"task": "pr5", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 15360, "heldout_mean_J": 24.469516595631568}
+{"task": "pr5", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 30720, "heldout_mean_J": 26.76344258867956}
+{"task": "pr5", "method": "cmaes", "seed": 0, "phase": "plain", "executions": 61440, "heldout_mean_J": 26.384133974388398}

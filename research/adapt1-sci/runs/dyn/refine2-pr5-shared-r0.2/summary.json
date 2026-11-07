@@ -1,0 +1,10 @@
+{
+ "domain_id": "sci-r2-pr5-shared-20261107042305-2f7bd5",
+ "task": "pr5",
+ "arm": "shared",
+ "radius": 0.2,
+ "updates": 30,
+ "drift_at": null,
+ "executions": 7680,
+ "api_calls": 7905
+}

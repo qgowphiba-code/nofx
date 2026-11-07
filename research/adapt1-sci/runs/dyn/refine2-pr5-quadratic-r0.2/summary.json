@@ -1,0 +1,10 @@
+{
+ "domain_id": "sci-r2-pr5-quadratic-20261107042305-c7cd24",
+ "task": "pr5",
+ "arm": "quadratic",
+ "radius": 0.2,
+ "updates": 30,
+ "drift_at": null,
+ "executions": 7680,
+ "api_calls": 7903
+}

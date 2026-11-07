@@ -1,0 +1,9 @@
+[pr2drift-linear-r0.2-drift20] held-out after 0 updates: mean J 27.69 (base alone 27.69)
+[pr2drift-linear-r0.2-drift20] held-out after 5 updates: mean J 29.44 (base alone 27.69)
+[pr2drift-linear-r0.2-drift20] held-out after 10 updates: mean J 30.77 (base alone 27.69)
+[pr2drift-linear-r0.2-drift20] held-out after 20 updates: mean J 31.19 (base alone 27.69)
+[pr2drift-linear-r0.2-drift20] held-out after 20 updates (drift) right after the change: mean J 24.16 (base alone 25.9)
+[pr2drift-linear-r0.2-drift20] held-out after 25 updates (drift): mean J 25.44 (base alone 25.9)
+[pr2drift-linear-r0.2-drift20] held-out after 30 updates (drift): mean J 29.04 (base alone 25.9)
+[pr2drift-linear-r0.2-drift20] held-out after 40 updates (drift): mean J 30.55 (base alone 25.9)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "sci-r2-pr2drift-linear-20261107042305-17c4c7", "status": "success"}, "readback": 404}

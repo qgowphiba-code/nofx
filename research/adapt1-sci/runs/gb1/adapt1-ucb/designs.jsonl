@@ -1,0 +1,16 @@
+{"n": 1, "variant": "HHVG", "fitness": 0.315637904928, "best": 0.315637904928, "measured": true}
+{"n": 2, "variant": "RRRR", "fitness": 0.0033489282067, "best": 0.315637904928, "measured": true}
+{"n": 3, "variant": "GGGG", "fitness": 0.000895697172585, "best": 0.315637904928, "measured": true}
+{"n": 4, "variant": "HHVV", "fitness": 0.00428255210642, "best": 0.315637904928, "measured": true}
+{"n": 5, "variant": "DDDD", "fitness": 0.0, "best": 0.315637904928, "measured": false}
+{"n": 6, "variant": "IIII", "fitness": 0.0, "best": 0.315637904928, "measured": true}
+{"n": 7, "variant": "HHHH", "fitness": 0.0, "best": 0.315637904928, "measured": true}
+{"n": 8, "variant": "VVVV", "fitness": 0.0131943837327, "best": 0.315637904928, "measured": true}
+{"n": 9, "variant": "WWWW", "fitness": 0.00672597140641, "best": 0.315637904928, "measured": true}
+{"n": 10, "variant": "KEEE", "fitness": 0.00180317983428, "best": 0.315637904928, "measured": true}
+{"n": 11, "variant": "HAAG", "fitness": 0.0449192132052, "best": 0.315637904928, "measured": true}
+{"n": 12, "variant": "NLCC", "fitness": 0.113269133264, "best": 0.315637904928, "measured": true}
+{"n": 13, "variant": "CCCC", "fitness": 0.545121299235, "best": 0.545121299235, "measured": true}
+{"n": 14, "variant": "CCCF", "fitness": 0.0265241936914, "best": 0.545121299235, "measured": true}
+{"n": 15, "variant": "CCCL", "fitness": 0.264921774873, "best": 0.545121299235, "measured": true}
+{"n": 16, "variant": "CCCS", "fitness": 0.0290088201077, "best": 0.545121299235, "measured": true}

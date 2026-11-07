@@ -1,0 +1,8 @@
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "before_change", "executions": 5120, "heldout_mean_J": 29.571882889008027}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "right_after_change", "executions": 0, "heldout_mean_J": 24.900553621413454}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "continued_after_change", "executions": 1280, "heldout_mean_J": 27.22669146408304}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "continued_after_change", "executions": 2560, "heldout_mean_J": 27.622003446115425}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "continued_after_change", "executions": 5120, "heldout_mean_J": 29.875878545114315}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "restart_after_change", "executions": 1280, "heldout_mean_J": 26.85625886531929}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "restart_after_change", "executions": 2560, "heldout_mean_J": 26.905656257503704}
+{"task": "pr2drift", "method": "cmaes", "seed": 0, "phase": "restart_after_change", "executions": 5120, "heldout_mean_J": 27.728526643157824}
