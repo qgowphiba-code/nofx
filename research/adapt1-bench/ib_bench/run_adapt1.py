@@ -89,7 +89,7 @@ else:
             'description': f'Industrial Benchmark setpoint {SP}{" drifting" if DRIFT else ""} seed {SEED}: online agent, one decision per step.',
             'schema': {'entities': ['agent', 'plant'], 'relations': [REL], 'signals': FIELDS + ['step_reward'], 'event_types': ['state', 'feedback']},
             'hypotheses': hyps, 'learning': learning}
-    echo = api.post('/domains', decl)
+    echo = api.create_domain(decl)
     (OUT / f'declaration-{tag}.json').write_text(json.dumps(decl, indent=1))
     (OUT / f'echo-{tag}.json').write_text(json.dumps(echo.get('learning'), indent=1))
     ep_log = open(OUT / f'episodes-{tag}.jsonl', 'w', buffering=1)

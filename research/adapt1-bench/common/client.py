@@ -87,6 +87,27 @@ class Client:
         return self.post(f'/domains/{domain}/trajectory/{op}', body,
                          mutation=op not in ('state', 'records', 'evaluate'))
 
+    def create_domain(self, decl, attempts=8):
+        """POST /domains, reconciling an ambiguous outcome (504, connection reset) by reading the Domain back: if it exists,
+        the earlier attempt created it and its stored record is returned (it carries the same `learning` block). Fast-UAT
+        returned 504 on two Domain creations on 2026-11-07 19:26 UTC while the Domains were in fact created."""
+        did = decl['domain_id']
+        for attempt in range(attempts):
+            try:
+                return self.post('/domains', decl)
+            except (Ambiguous, ApiError) as e:
+                if isinstance(e, ApiError) and e.code < 500 and not (e.code == 409 and attempt > 0):
+                    raise
+            time.sleep(min(60, 5 * (attempt + 1)))
+            try:
+                got = self.call('GET', f'/domains/{did}', None, mutation=False)
+                if got:
+                    return got
+            except ApiError as g:
+                if g.code != 404:
+                    continue
+        raise SystemExit(f'could not create Domain {did} after {attempts} attempts')
+
     def feedback(self, domain, body, stats, attempts=6):
         """POST one feedback record; if the outcome is ambiguous (connection reset, timeout, 502/504), reconcile before
         resending. Production probes on 2026-11-07 (scratchpad probes/): a resend with the same decision_id is accepted and

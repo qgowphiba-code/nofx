@@ -24,7 +24,7 @@ if ARM == 'profile':
     cfg.update({'coherent_edits': True, 'global_recall': True, 'executed_prefix_mutation': True, 'sequence_compaction': True,
                 'outcome_tier_exploration': True, 'retain_prefix_failures': False})
 did = new_id(f'bench-pensim-{ARM}')
-api.post('/domains', {'domain_id': did, 'description': f'SMPL PenSimEnv 6-control batch recipe, Machina {ARM} (PEN-1)'})
+api.create_domain({'domain_id': did, 'description': f'SMPL PenSimEnv 6-control batch recipe, Machina {ARM} (PEN-1)'})
 assert api.traj(did, 'state').get('status') == 'not_configured'
 conf = api.traj(did, 'configure', {'config': cfg})
 (run / 'ledger.json').write_text(json.dumps({'domain_id': did, 'config_sent': cfg, 'configure_response': conf, 'seed_ref': SEED_REF}, indent=1))
