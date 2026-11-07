@@ -1,0 +1,29 @@
+{
+ "u": [
+  0.7486644880088743,
+  1.0,
+  -1.0,
+  -0.8705407702715361,
+  -0.7618790657825801,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0
+ ],
+ "source": "machina-beer-default-r2",
+ "best_q": 0.86,
+ "best_return": 116.0,
+ "first_reached_at_attempt": 554,
+ "tie_rule": "highest quality, then arm order default < profile, then lower stream"
+}

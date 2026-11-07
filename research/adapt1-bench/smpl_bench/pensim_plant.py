@@ -62,8 +62,25 @@ def context_of(e):
     return raw, [float(v) for v in (raw - CTX_MEAN) / (6 * CTX_SD) + 0.5]
 
 
-def actions_from_u(u_row, e):
+_ANCHORS = None
+
+
+def anchors(e):
+    """PEN-2 anchors: the default recipe's stage means in absolute u-space (see default_recipe_u)."""
+    global _ANCHORS
+    if _ANCHORS is None:
+        _ANCHORS = np.array(default_recipe_u(e), dtype=float)
+    return _ANCHORS
+
+
+def actions_from_u(u_row, e, k=None):
+    """PEN-2 (used for every method): u = 0 is the default recipe at stage k; u > 0 moves linearly towards SMPL's upper
+    action bound, u < 0 towards the lower bound. k=None gives the PEN-1 absolute mapping (u = 0 is mid-range), kept for
+    reference only."""
     u = np.clip(np.asarray(u_row, dtype=float), -1, 1)
+    if k is not None:
+        a0 = np.clip(anchors(e)[k], -1, 1)
+        u = np.where(u >= 0, a0 + u * (1 - a0), a0 + u * (a0 + 1))
     return (e.min_actions + (u + 1) / 2 * (e.max_actions - e.min_actions)).astype(np.float32)
 
 
@@ -90,7 +107,7 @@ def run(u_matrix, random_seed_ref, record_states=False, e=None):
     tot = 0.0; n = 0; states = []; err = None
     try:
         for k in range(H):
-            a = actions_from_u(u_matrix[k], e)
+            a = actions_from_u(u_matrix[k], e, k)
             for s in range(STAGE_STEPS):
                 obs, r, done, info = e.step(a); tot += r; n += 1
                 if done:
@@ -101,9 +118,11 @@ def run(u_matrix, random_seed_ref, record_states=False, e=None):
                 break
     except Exception as ex:               # SMPL returns error_reward -100 for solver failures; record and treat as failed batch
         err = repr(ex)[:200]
-    y = max(0.0, float(tot))
-    return {'yield': float(tot), 'quality': float(np.clip(y / Y_SCALE, 0, 1)), 'steps': n, 'states': states, 'context': ctx,
-            'raw_context': [float(v) for v in raw_ctx], 'error': err}
+    # quality = SMPL's own batch return shifted into [0, 1]: a batch that fails at its first step scores 0, a completed batch
+    # with yield Y scores (Y + 100) / 4600 (= Y / 4500 within 0.3 %), and a batch that fails after producing some penicillin
+    # keeps the credit for what it produced (SMPL's -100 failure penalty is included in `tot`).
+    return {'yield': float(tot), 'quality': float(np.clip((float(tot) + 100.0) / (Y_SCALE + 100.0), 0, 1)), 'steps': n, 'states': states,
+            'context': ctx, 'raw_context': [float(v) for v in raw_ctx], 'error': err}
 
 
 if __name__ == '__main__':

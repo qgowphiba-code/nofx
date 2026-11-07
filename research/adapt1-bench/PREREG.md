@@ -94,6 +94,20 @@ Quality = yield / 4,500. Batch context measured at reset = PenSimPy's initial-st
 hidden variation (growth parameters, kLa, PAA concentration, disturbance profiles) stays hidden. About 14 s per batch.
 **Gate C0.** The default recipe must complete the 1,150 steps without a solver error on seeds 1-3 (`gates/pensim_check.log`,
 recorded); otherwise C is dropped and reported as such.
+*Result (2026-11-07 14:50 UTC, before any counted C run): passed once a fresh SMPL environment object is built per batch
+(the recipe's setpoint pointer is not reset by SMPL's reset(); on a reused object batches alternate ok/failed). Default
+recipe yields on seeds 1-3: 1,348 / 2,992 / 2,112 kg.*
+*Amendment (15:05 UTC, both Machina C1 runs restarted from attempt 0 after 1 and 3 attempts): quality is SMPL's own batch
+return shifted into [0, 1], (return + 100) / 4,600, instead of yield / 4,500. A batch that fails at its first step still scores
+0 and a completed batch scores within 0.3 % of yield / 4,500, but a batch that fails late keeps credit for the penicillin it
+made (SMPL's -100 failure penalty is inside the return). Arbitrary recipes fail early (observed), so a flat 0 for every
+failure would leave every acquisition method with no signal; the same formula applies to Machina and to all comparators.*
+*Amendment 2 (15:25 UTC, both C1 runs restarted again after 27 and 26 attempts, every one a failed batch): executor PEN-2
+replaces PEN-1. u = 0 is now the default recipe's stage mean (the recipe every method is handed, and the light control);
+u > 0 moves linearly towards SMPL's upper action bound and u < 0 towards the lower bound. Under PEN-1 (u = 0 = mid-range of
+the absolute bounds) essentially every proposal from any method crashed the plant within ~100 steps, so the task was "find
+the feasible region", which is not what the published GP-EI search did either (its batches keep the default recipe's
+structure and vary the setpoints within SMPL's bounds). All comparators start from u = 0 as before.*
 **C1 Acquisition.** Executor PEN-1: 23 stages of 10 h, u in [-1, 1]^(23 x 6) mapped onto SMPL's action bounds.
 Machina `default` and `profile`, one stream each, 300 attempts, nominal batch (seed_ref 1000).
 Comparators: random, (1+1)-ES, CMA-ES at 300 attempts, 2 seeds each; the default recipe (light control; seeds 1-5); the

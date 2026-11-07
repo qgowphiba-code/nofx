@@ -1,0 +1,40 @@
+{
+ "completed_retry_window": 1,
+ "config": {
+  "action_dimensions": 1,
+  "allow_cold_transfer": false,
+  "balanced_retention": false,
+  "capacity": 512,
+  "coherent_edits": false,
+  "context_first_recall": false,
+  "cross_context_exploration": 0,
+  "evidence_scaled_mutation": false,
+  "executed_prefix_mutation": true,
+  "global_recall": false,
+  "goal_indices": [
+   0
+  ],
+  "horizon": 20,
+  "max_pending": 1,
+  "mechanism": "episode_credit",
+  "outcome_mode": "reward",
+  "outcome_tier_exploration": false,
+  "progress_guided_mutation": false,
+  "retain_context_support": true,
+  "retain_prefix_failures": true,
+  "seed": 1,
+  "segment_exploration": false,
+  "sequence_compaction": false,
+  "state_dimensions": 8
+ },
+ "domain_id": "bench-beer-default-r2-20261107145801-ec32f6",
+ "experimental": true,
+ "fingerprint": "de329c9d4b579e9ab87ac22a2ff64d0f49aa21a4efc1c26b89a3af6d0df58e96",
+ "generation": "cfd5b295901f6bb113d05bab51e11d3d",
+ "mechanism": "episode_credit",
+ "pending_decisions": 0,
+ "retained_trajectories": 8,
+ "session_id": "68b3f2be63632b2ee95a20b0:7e649fc4026f037f36775d954fcae998",
+ "status": "ready",
+ "version": 600
+}

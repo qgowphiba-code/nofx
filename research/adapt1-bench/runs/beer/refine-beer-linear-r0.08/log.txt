@@ -1,0 +1,7 @@
+held-out after 0 updates: mean return -82.5 quality 0.529 finished 0.38 (base alone -82.5)
+update 1: selected 0 gain [-0.0005208333333334147] calls 294 71s
+update 2: selected 0 gain [-0.00010416666666657193] calls 552 139s
+update 3: selected 4 gain [0.19604166666666645] calls 810 205s
+update 4: selected 0 gain [0] calls 1068 266s
+update 5: selected 0 gain [0] calls 1326 328s
+held-out after 5 updates: mean return 16.7 quality 0.694 finished 0.69 (base alone -82.5)
