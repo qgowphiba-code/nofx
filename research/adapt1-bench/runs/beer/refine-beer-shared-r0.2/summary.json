@@ -1,0 +1,9 @@
+{
+ "domain_id": "bench-beer-ref-shared-20261107150435-b1e473",
+ "arm": "shared",
+ "radius": 0.2,
+ "updates": 30,
+ "executions": 7680,
+ "api_calls": 7909,
+ "wall_s": 1883
+}

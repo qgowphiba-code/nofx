@@ -1,0 +1,9 @@
+{
+ "domain_id": "bench-beer-ref-linear-20261107150429-d572d2",
+ "arm": "linear",
+ "radius": 0.2,
+ "updates": 30,
+ "executions": 7680,
+ "api_calls": 7908,
+ "wall_s": 1884
+}

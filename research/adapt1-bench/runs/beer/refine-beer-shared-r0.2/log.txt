@@ -25,3 +25,12 @@ held-out after 20 updates: mean return 74.8 quality 0.791 finished 0.88 (base al
 update 21: selected 0 gain [0] calls 5553 1331s
 update 22: selected 0 gain [0] calls 5811 1392s
 update 23: selected 0 gain [0] calls 6070 1453s
+update 24: selected 0 gain [0] calls 6328 1516s
+update 25: selected 0 gain [0] calls 6586 1577s
+update 26: selected 0 gain [0] calls 6844 1638s
+update 27: selected 0 gain [0] calls 7102 1701s
+update 28: selected 0 gain [0] calls 7360 1759s
+update 29: selected 0 gain [0] calls 7618 1817s
+update 30: selected 0 gain [0] calls 7876 1875s
+held-out after 30 updates: mean return 74.8 quality 0.791 finished 0.88 (base alone -82.5)
+deleted {"deleted": {"cleared_memories": 0, "deleted": true, "domain_id": "bench-beer-ref-shared-20261107150435-b1e473", "status": "success"}, "readback": 404}
