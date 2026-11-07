@@ -34,17 +34,22 @@ if METHOD == 'default':
                              'qualities': [r['quality'] for r in rows], 'nominal_seed_ref_yield': P.run(u0, SEED_REF)['yield']}) + '\n')
     print('default recipe yields', [round(r['yield']) for r in rows])
     raise SystemExit
+# Start point (PREREG amendment 3): seeds < 100 start from u = 0, which under PEN-2 is the default recipe (the light control
+# handed to the comparator); seeds >= 100 start from a uniform random u in [-1, 1]^D, i.e. with no recipe knowledge, like
+# Machina's first proposals. Both variants are reported.
+x0 = [0.0] * D if SEED < 100 else [float(v) for v in np.random.default_rng(SEED).uniform(-1, 1, D)]
+START = 'default_recipe' if SEED < 100 else 'random_init'
 if METHOD == 'random':
     opt.random_search(f, D, N, SEED)
 elif METHOD == 'es11':
-    opt.one_plus_one(f, D, N, SEED, sigma=0.3, x0=[0.0] * D)
+    opt.one_plus_one(f, D, N, SEED, sigma=0.3, x0=x0)
 elif METHOD == 'cmaes':
-    opt.cmaes(f, D, N, SEED, sigma0=0.5, x0=[0.0] * D)
+    opt.cmaes(f, D, N, SEED, sigma0=0.5, x0=x0)
 else:
     raise SystemExit(METHOD)
 hist = hist[:N]
 best = [max(hist[:i + 1]) for i in range(len(hist))]
 with open(OUT, 'a') as fh:
-    fh.write(json.dumps({'method': METHOD, 'seed': SEED, 'attempts': len(hist), 'best_curve': [round(b, 4) for b in best],
-                         'best_q': best[-1], 'best_yield': best[-1] * P.Y_SCALE}) + '\n')
-print(METHOD, SEED, 'best q', round(best[-1], 4), 'yield', round(best[-1] * P.Y_SCALE))
+    fh.write(json.dumps({'method': METHOD, 'seed': SEED, 'start': START, 'attempts': len(hist), 'best_curve': [round(b, 4) for b in best],
+                         'best_q': best[-1], 'best_yield': best[-1] * (P.Y_SCALE + 100) - 100}) + '\n')
+print(METHOD, SEED, START, 'best q', round(best[-1], 4), 'yield', round(best[-1] * (P.Y_SCALE + 100) - 100))

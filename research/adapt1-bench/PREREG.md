@@ -108,6 +108,10 @@ u > 0 moves linearly towards SMPL's upper action bound and u < 0 towards the low
 the absolute bounds) essentially every proposal from any method crashed the plant within ~100 steps, so the task was "find
 the feasible region", which is not what the published GP-EI search did either (its batches keep the default recipe's
 structure and vary the setpoints within SMPL's bounds). All comparators start from u = 0 as before.*
+*Amendment 3 (15:30 UTC, C1 Machina runs at attempts 80 and 40, no comparator result yet): under PEN-2, u = 0 hands the
+black-box comparators the default recipe for free while Machina's first proposals carry no recipe knowledge. The
+comparators therefore run in two start variants, both reported: from the default recipe (u = 0, seed < 100) and from a
+uniform random u (seed >= 100). Seeds are cut to one per method and variant (CPU: one PenSim batch costs about 12 s).*
 **C1 Acquisition.** Executor PEN-1: 23 stages of 10 h, u in [-1, 1]^(23 x 6) mapped onto SMPL's action bounds.
 Machina `default` and `profile`, one stream each, 300 attempts, nominal batch (seed_ref 1000).
 Comparators: random, (1+1)-ES, CMA-ES at 300 attempts, 2 seeds each; the default recipe (light control; seeds 1-5); the

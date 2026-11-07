@@ -12,3 +12,15 @@ update 9: selected 7 gain [0.029166666666667007] calls 2391 584s
 update 10: selected 4 gain [0.03208333333333335] calls 2649 644s
 held-out after 10 updates: mean return 63.3 quality 0.772 finished 0.84 (base alone -82.5)
 update 11: selected 0 gain [0] calls 2940 716s
+update 12: selected 0 gain [0] calls 3198 778s
+update 13: selected 0 gain [-0.00020833333333325488] calls 3456 839s
+update 14: selected 0 gain [0] calls 3714 897s
+update 15: selected 0 gain [0] calls 3972 958s
+update 16: selected 0 gain [0] calls 4230 1018s
+update 17: selected 0 gain [0] calls 4488 1080s
+update 18: selected 0 gain [-0.0015625000000000222] calls 4746 1142s
+update 19: selected 0 gain [0] calls 5004 1205s
+update 20: selected 0 gain [0] calls 5262 1265s
+held-out after 20 updates: mean return 63.3 quality 0.772 finished 0.84 (base alone -82.5)
+update 21: selected 0 gain [0] calls 5553 1331s
+update 22: selected 0 gain [0] calls 5811 1391s
