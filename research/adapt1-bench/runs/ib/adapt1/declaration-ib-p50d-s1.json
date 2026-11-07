@@ -1,0 +1,559 @@
+{
+ "domain_id": "ib-p50d-s1-20261107145711-2951cc",
+ "session_id": "ignored",
+ "description": "Industrial Benchmark setpoint 50 drifting seed 1: online agent, one decision per step.",
+ "schema": {
+  "entities": [
+   "agent",
+   "plant"
+  ],
+  "relations": [
+   "steer"
+  ],
+  "signals": [
+   "setpoint",
+   "velocity",
+   "gain",
+   "shift",
+   "fatigue",
+   "consumption",
+   "step_reward"
+  ],
+  "event_types": [
+   "state",
+   "feedback"
+  ]
+ },
+ "hypotheses": [
+  {
+   "name": "steering [-1, -1, -1]",
+   "relation": "steer",
+   "policy": "a0",
+   "policy_features": {
+    "d_velocity": -1.0,
+    "d_gain": -1.0,
+    "d_shift": -1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [-1, -1, 0]",
+   "relation": "steer",
+   "policy": "a1",
+   "policy_features": {
+    "d_velocity": -1.0,
+    "d_gain": -1.0,
+    "d_shift": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [-1, -1, 1]",
+   "relation": "steer",
+   "policy": "a2",
+   "policy_features": {
+    "d_velocity": -1.0,
+    "d_gain": -1.0,
+    "d_shift": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [-1, 0, -1]",
+   "relation": "steer",
+   "policy": "a3",
+   "policy_features": {
+    "d_velocity": -1.0,
+    "d_gain": 0.0,
+    "d_shift": -1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [-1, 0, 0]",
+   "relation": "steer",
+   "policy": "a4",
+   "policy_features": {
+    "d_velocity": -1.0,
+    "d_gain": 0.0,
+    "d_shift": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [-1, 0, 1]",
+   "relation": "steer",
+   "policy": "a5",
+   "policy_features": {
+    "d_velocity": -1.0,
+    "d_gain": 0.0,
+    "d_shift": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [-1, 1, -1]",
+   "relation": "steer",
+   "policy": "a6",
+   "policy_features": {
+    "d_velocity": -1.0,
+    "d_gain": 1.0,
+    "d_shift": -1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [-1, 1, 0]",
+   "relation": "steer",
+   "policy": "a7",
+   "policy_features": {
+    "d_velocity": -1.0,
+    "d_gain": 1.0,
+    "d_shift": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [-1, 1, 1]",
+   "relation": "steer",
+   "policy": "a8",
+   "policy_features": {
+    "d_velocity": -1.0,
+    "d_gain": 1.0,
+    "d_shift": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [0, -1, -1]",
+   "relation": "steer",
+   "policy": "a9",
+   "policy_features": {
+    "d_velocity": 0.0,
+    "d_gain": -1.0,
+    "d_shift": -1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [0, -1, 0]",
+   "relation": "steer",
+   "policy": "a10",
+   "policy_features": {
+    "d_velocity": 0.0,
+    "d_gain": -1.0,
+    "d_shift": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [0, -1, 1]",
+   "relation": "steer",
+   "policy": "a11",
+   "policy_features": {
+    "d_velocity": 0.0,
+    "d_gain": -1.0,
+    "d_shift": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [0, 0, -1]",
+   "relation": "steer",
+   "policy": "a12",
+   "policy_features": {
+    "d_velocity": 0.0,
+    "d_gain": 0.0,
+    "d_shift": -1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [0, 0, 0]",
+   "relation": "steer",
+   "policy": "a13",
+   "policy_features": {
+    "d_velocity": 0.0,
+    "d_gain": 0.0,
+    "d_shift": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [0, 0, 1]",
+   "relation": "steer",
+   "policy": "a14",
+   "policy_features": {
+    "d_velocity": 0.0,
+    "d_gain": 0.0,
+    "d_shift": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [0, 1, -1]",
+   "relation": "steer",
+   "policy": "a15",
+   "policy_features": {
+    "d_velocity": 0.0,
+    "d_gain": 1.0,
+    "d_shift": -1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [0, 1, 0]",
+   "relation": "steer",
+   "policy": "a16",
+   "policy_features": {
+    "d_velocity": 0.0,
+    "d_gain": 1.0,
+    "d_shift": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [0, 1, 1]",
+   "relation": "steer",
+   "policy": "a17",
+   "policy_features": {
+    "d_velocity": 0.0,
+    "d_gain": 1.0,
+    "d_shift": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [1, -1, -1]",
+   "relation": "steer",
+   "policy": "a18",
+   "policy_features": {
+    "d_velocity": 1.0,
+    "d_gain": -1.0,
+    "d_shift": -1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [1, -1, 0]",
+   "relation": "steer",
+   "policy": "a19",
+   "policy_features": {
+    "d_velocity": 1.0,
+    "d_gain": -1.0,
+    "d_shift": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [1, -1, 1]",
+   "relation": "steer",
+   "policy": "a20",
+   "policy_features": {
+    "d_velocity": 1.0,
+    "d_gain": -1.0,
+    "d_shift": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [1, 0, -1]",
+   "relation": "steer",
+   "policy": "a21",
+   "policy_features": {
+    "d_velocity": 1.0,
+    "d_gain": 0.0,
+    "d_shift": -1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [1, 0, 0]",
+   "relation": "steer",
+   "policy": "a22",
+   "policy_features": {
+    "d_velocity": 1.0,
+    "d_gain": 0.0,
+    "d_shift": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [1, 0, 1]",
+   "relation": "steer",
+   "policy": "a23",
+   "policy_features": {
+    "d_velocity": 1.0,
+    "d_gain": 0.0,
+    "d_shift": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [1, 1, -1]",
+   "relation": "steer",
+   "policy": "a24",
+   "policy_features": {
+    "d_velocity": 1.0,
+    "d_gain": 1.0,
+    "d_shift": -1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [1, 1, 0]",
+   "relation": "steer",
+   "policy": "a25",
+   "policy_features": {
+    "d_velocity": 1.0,
+    "d_gain": 1.0,
+    "d_shift": 0.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  },
+  {
+   "name": "steering [1, 1, 1]",
+   "relation": "steer",
+   "policy": "a26",
+   "policy_features": {
+    "d_velocity": 1.0,
+    "d_gain": 1.0,
+    "d_shift": 1.0
+   },
+   "when": [],
+   "predicts": [
+    "step reward"
+   ],
+   "falsified_by": [],
+   "weight": 1.0
+  }
+ ],
+ "learning": {
+  "enabled": true,
+  "context": {
+   "feature_paths": [
+    "values.setpoint",
+    "values.velocity",
+    "values.gain",
+    "values.shift",
+    "values.fatigue",
+    "values.consumption"
+   ],
+   "event_types": [
+    "state"
+   ],
+   "max_samples": 4096
+  },
+  "reward": {
+   "aggregation": "weighted_mean",
+   "components": [
+    {
+     "field": "values.step_reward",
+     "goal": "maximize",
+     "min": -800.0,
+     "max": -100.0,
+     "weight": 1.0,
+     "required": true
+    }
+   ]
+  },
+  "policy": {
+   "decay_half_life_seconds": 0.0,
+   "transfer_strength": 0.0,
+   "action_transfer_strength": 0.05,
+   "min_context_observations": 4,
+   "model_max_weight": 0.45,
+   "model_ood_threshold": 0.75,
+   "ood_confidence_penalty": 0.5,
+   "exploration_mode": "auto",
+   "exploration_strength": 1.0,
+   "minimum_expected_reward": 0.0,
+   "minimum_confidence": 0.0,
+   "require_credible_dominance": false,
+   "dominance_margin": 0.0,
+   "abstain_on_ood": false
+  },
+  "credit_assignment": {
+   "mode": "eligibility_trace",
+   "discount": 0.9,
+   "neutral_reward": 0.5,
+   "minimum_weight": 0.01,
+   "delay_path": "values.delay_steps"
+  },
+  "latent_belief": {
+   "enabled": true,
+   "max_regimes": 8,
+   "novelty_threshold": 0.55,
+   "temperature": 0.25,
+   "change_point_threshold": 0.55,
+   "change_point_patience": 3,
+   "historical_regime_weight": 0.05
+  },
+  "training": {
+   "enabled": true,
+   "min_samples": 64,
+   "retrain_interval": 16,
+   "dimensions": 96,
+   "epochs": 100,
+   "learning_rate": 0.04
+  },
+  "sequential": {
+   "enabled": true,
+   "episode_path": "metadata.episode_id",
+   "step_path": "metadata.step",
+   "next_context_path": "values.next_state",
+   "reward_path": "values.step_reward",
+   "terminal_path": "values.terminal",
+   "discount": 0.9,
+   "n_step": 10,
+   "minimum_episodes": 10,
+   "minimum_validation_skill": 0.1,
+   "target_sync_interval": 10,
+   "conservative_weight": 0.05
+  },
+  "temporal_context": {
+   "enabled": true,
+   "episode_path": "metadata.episode_id",
+   "step_path": "metadata.step",
+   "input_paths": [
+    "values.setpoint",
+    "values.velocity",
+    "values.gain",
+    "values.shift",
+    "values.fatigue",
+    "values.consumption"
+   ],
+   "maximum_lag": 10
+  }
+ }
+}

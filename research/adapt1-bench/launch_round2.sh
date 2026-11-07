@@ -27,13 +27,13 @@ case "$1" in
       echo "$PY -I $R/ib_bench/run_baselines.py random 50 $drift 0 30000 $R/runs/ib/baselines" >> $J
       for seed in 0 1; do echo "$PY -I $R/ib_bench/run_baselines.py sac 50 $drift $seed 500000 $R/runs/ib/baselines" >> $J; done
     done
-    nohup $PY -I $R/common/queue.py $J 2 $S/logs/ib_jobs > $S/logs/ib_queue.log 2>&1 & ;;
+    nohup $PY -I $R/common/jobqueue.py $J 2 $S/logs/ib_jobs > $S/logs/ib_queue.log 2>&1 & ;;
   beer_baselines)   # acquisition comparators + SB3 queue (2 workers)
     J=$S/logs/beer_jobs.txt; : > $J
     for m in random es11 cmaes; do for seed in 0 1 2 3 4 5 6 7 8 9; do echo "$PY -I $R/smpl_bench/beer_local_acquire.py $m $seed 600 $R/runs/beer/local_acquire.jsonl" >> $J; done; done
     for seed in 0 1 2; do echo "$PY -I $R/smpl_bench/beer_sb3.py train ppo $seed 1000000 $R/runs/beer/sb3" >> $J; done
     for seed in 0 1; do echo "$PY -I $R/smpl_bench/beer_sb3.py train sac $seed 500000 $R/runs/beer/sb3" >> $J; done
-    nohup $PY -I $R/common/queue.py $J 2 $S/logs/beer_jobs > $S/logs/beer_queue.log 2>&1 & ;;
+    nohup $PY -I $R/common/jobqueue.py $J 2 $S/logs/beer_jobs > $S/logs/beer_queue.log 2>&1 & ;;
   *) echo "unknown target $1"; exit 1 ;;
 esac
 echo "launched $1"

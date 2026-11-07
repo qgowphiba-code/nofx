@@ -57,7 +57,8 @@ def env():
 
 def context_of(e):
     x0 = e.x0
-    raw = np.array([x0.S, x0.DO2, x0.X, x0.V, x0.Wt, x0.pH, x0.T, x0.PAA], dtype=float)
+    ph = -np.log10(x0.pH) if x0.pH > 0 else 6.5          # PenSimPy stores pH as the H+ concentration
+    raw = np.array([x0.S, x0.DO2, x0.X, x0.V, x0.Wt, ph, x0.T, x0.PAA], dtype=float)
     return raw, [float(v) for v in (raw - CTX_MEAN) / (6 * CTX_SD) + 0.5]
 
 
@@ -80,8 +81,10 @@ def default_recipe_u(e):
 
 
 def run(u_matrix, random_seed_ref, record_states=False, e=None):
-    """Execute one batch. u_matrix: H x 6 commands in [-1, 1]. Returns dict(yield, quality, steps, states, context, error)."""
-    e = e or env()
+    """Execute one batch. u_matrix: H x 6 commands in [-1, 1]. Returns dict(yield, quality, steps, states, context, error).
+    A fresh SMPL environment (and recipe object) is built for every batch: the recipe's setpoint pointer is not reset by
+    SMPL's reset(), and a second batch on the same object fails at its first step (observed: batches alternate ok/failed)."""
+    e = make_env()
     e.reset(random_seed_ref=random_seed_ref)
     raw_ctx, ctx = context_of(e)
     tot = 0.0; n = 0; states = []; err = None
