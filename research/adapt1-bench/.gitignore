@@ -1,0 +1,6 @@
+# request/response journals are kept in the session scratchpad (tens of MB); per-attempt and per-episode files are committed
+**/requests.jsonl
+**/requests.jsonl.xz
+**/journal-*.jsonl.xz
+runs/**/sb3/model-*.zip
+__pycache__/
