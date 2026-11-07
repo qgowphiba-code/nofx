@@ -1,0 +1,59 @@
+{
+ "domain_id": "bench-chem-fict-default-E-20261107181434-12ff76",
+ "config_sent": {
+  "mechanism": "episode_credit",
+  "state_dimensions": 8,
+  "action_dimensions": 7,
+  "goal_indices": [
+   0
+  ],
+  "horizon": 20,
+  "capacity": 512,
+  "max_pending": 1,
+  "seed": 1,
+  "outcome_mode": "reward"
+ },
+ "configure_response": {
+  "completed_retry_window": 0,
+  "config": {
+   "action_dimensions": 7,
+   "allow_cold_transfer": false,
+   "balanced_retention": false,
+   "capacity": 512,
+   "coherent_edits": false,
+   "context_first_recall": false,
+   "cross_context_exploration": 0,
+   "evidence_scaled_mutation": false,
+   "executed_prefix_mutation": true,
+   "global_recall": false,
+   "goal_indices": [
+    0
+   ],
+   "horizon": 20,
+   "max_pending": 1,
+   "mechanism": "episode_credit",
+   "outcome_mode": "reward",
+   "outcome_tier_exploration": false,
+   "progress_guided_mutation": false,
+   "retain_context_support": true,
+   "retain_prefix_failures": true,
+   "seed": 1,
+   "segment_exploration": false,
+   "sequence_compaction": false,
+   "state_dimensions": 8
+  },
+  "domain_id": "bench-chem-fict-default-E-20261107181434-12ff76",
+  "experimental": true,
+  "fingerprint": "6954544f7b61f215d2d20c7a555f0083d4cee9e464eb306214bd9ff15adbbadb",
+  "generation": "9f5274a5a7a4fbeb92650002da1c6078",
+  "mechanism": "episode_credit",
+  "pending_decisions": 0,
+  "retained_trajectories": 0,
+  "session_id": "681e100e6ce7c030fb562aad:55d45f7eeeebc2bd9726599edaff4f23",
+  "status": "ready",
+  "version": 0
+ },
+ "bench": "fict",
+ "target": "E",
+ "base_url": "https://rei-neuroadapt-api.reilabs.org/api/v1"
+}
