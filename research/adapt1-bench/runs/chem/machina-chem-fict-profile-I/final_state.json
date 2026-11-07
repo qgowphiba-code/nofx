@@ -1,0 +1,40 @@
+{
+ "completed_retry_window": 1,
+ "config": {
+  "action_dimensions": 7,
+  "allow_cold_transfer": false,
+  "balanced_retention": false,
+  "capacity": 512,
+  "coherent_edits": true,
+  "context_first_recall": false,
+  "cross_context_exploration": 0,
+  "evidence_scaled_mutation": false,
+  "executed_prefix_mutation": true,
+  "global_recall": true,
+  "goal_indices": [
+   0
+  ],
+  "horizon": 20,
+  "max_pending": 1,
+  "mechanism": "episode_credit",
+  "outcome_mode": "reward",
+  "outcome_tier_exploration": true,
+  "progress_guided_mutation": false,
+  "retain_context_support": true,
+  "retain_prefix_failures": false,
+  "seed": 1,
+  "segment_exploration": false,
+  "sequence_compaction": true,
+  "state_dimensions": 8
+ },
+ "domain_id": "bench-chem-fict-profile-I-20261107180101-eafa8d",
+ "experimental": true,
+ "fingerprint": "fefdf034a7e431f0ff0450586acc1367c4bc857ad645452cbf7d5de63101c3b5",
+ "generation": "7f791dba0479fa30e6636656cd40e7d9",
+ "mechanism": "episode_credit",
+ "pending_decisions": 0,
+ "retained_trajectories": 8,
+ "session_id": "681e100e6ce7c030fb562aad:55d45f7eeeebc2bd9726599edaff4f23",
+ "status": "ready",
+ "version": 300
+}

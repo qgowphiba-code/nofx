@@ -249,6 +249,12 @@ and G therefore run on Fast-UAT (`af6670b`, the round-2 server, about 3 s per ca
 not on production, and start with the budgets the latency allows: F = three tasks first (Potion-Inv, LavaCross,
 WoD-Medium), seed 0, 150 episodes each; Ring-Inv and WoD-Hard follow if time permits. G unchanged (20 capped episodes).*
 
+## Operational note 2 (2026-11-07 ~18:15 UTC): one experiment per lane
+At the user's request the parallelism is cut. Live on production: the two *small*-tier XLand runs and the ChemGym Machina
+queue (3 at a time). Live on Fast-UAT: the six Industrial Benchmark runs and the two PenSim refinement arms. Stopped and
+rescheduled to run afterwards, in this order: XLand medium (both arms) and trivial; MiniHack (3 tasks); Craftax. Their first
+minutes of output were discarded and their Domains deleted (404 readbacks). Local comparators run one queue at a time.
+
 ## Operational note (2026-11-07 ~18:00 UTC)
 Launching 22 ChemGym Machina runs on top of 6 XLand runs drove the production service into 503 bursts (a Domain list
 took 9.5 s). The ChemGym runs were stopped after 0-1 attempts each, their 22 Domains deleted (404 readbacks), and the
