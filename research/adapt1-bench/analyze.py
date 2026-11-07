@@ -234,6 +234,64 @@ if GPEI and os.path.isdir(GPEI):
     M['pensim']['gpei_dataset'] = {'n': len(ys), 'mean': st.mean(ys), 'median': st.median(ys), 'p90': ys[int(0.9 * len(ys))], 'max': ys[-1]}
     say(f"| GP-EI dataset (smpl-experiments, {len(ys)} batches, mixed seeds) | - | " + ' | '.join(['-'] * len(NSP)) + f" | mean {st.mean(ys):.0f}, p90 {ys[int(0.9 * len(ys))]:.0f}, max {ys[-1]:.0f} | - |")
 say()
+# ---------------------------------------------------------------- D. ChemGymRL (quality units: wurtz = return, NaCl / 3; fict = (return + 0.5) / 1.5)
+say('## D. ChemGymRL reaction benches (Machina acquisition, production)')
+say()
+NCH = [16, 32, 64, 128, 300]
+CHQ = {'wurtz': lambda r, t: r / 3.0 if t == 'NaCl' else r, 'fict': lambda r, t: (r + 0.5) / 1.5}
+heur, cma4k = {}, {}
+for b in ('wurtz', 'fict'):
+    for r in rows(os.path.join(RUNS, 'chem', f'local-{b}.jsonl')):
+        if r['what'] == 'heuristic':
+            heur[(b, r['target'])] = r['quality']
+for r in rows(os.path.join(RUNS, 'chem', 'gate.jsonl')):
+    cma4k[('wurtz', r['target'])] = CHQ['wurtz'](r['cmaes_4000_best'], r['target'])
+fg = os.path.join(RUNS, 'chem', 'fict_gate.json')
+if os.path.exists(fg):
+    for t, v in json.load(open(fg)).items():
+        cma4k[('fict', t)] = CHQ['fict'](v, t)
+mach = {}
+for d in sorted(glob.glob(os.path.join(RUNS, 'chem', 'machina-chem-*'))):
+    sp = os.path.join(d, 'summary.json')
+    if not os.path.exists(sp):
+        continue
+    s_ = json.load(open(sp)); at = rows(os.path.join(d, 'attempts.jsonl')); best, b_ = [], -1e9
+    for a in at:
+        b_ = max(b_, a['q']); best.append(b_)
+    mach[(s_['bench'], s_['target'], s_['arm'])] = best
+comp = {}
+for b in ('wurtz', 'fict'):
+    for r in rows(os.path.join(RUNS, 'chem', f'local-{b}.jsonl')):
+        if r['what'] == 'comparator':
+            comp.setdefault((b, r['target'], r['method']), []).append(r['best_curve'])
+def first_reach(curve, h, frac=0.99):
+    return next((i + 1 for i, v in enumerate(curve) if v >= frac * h - 1e-9), None)
+M['chem'] = {}
+say('Best quality so far after N attempts (Machina: one run per arm; comparators: mean over seeds). "reach" = attempts to 99 % of')
+say('the heuristic recipe (the reference optimum where black-box search falls short), "-" = not reached within 300.')
+say()
+say('| bench / target | heuristic | CMA-ES 4,000 | method | ' + ' | '.join(f'@{n}' for n in NCH) + ' | reach |')
+say('|---|---|---|---|' + '---|' * len(NCH) + '---|')
+for (b, t) in sorted({(k[0], k[1]) for k in mach}):
+    h = heur.get((b, t)); M['chem'][f'{b}/{t}'] = {'heuristic': h, 'cmaes_4000': cma4k.get((b, t))}
+    lines = []
+    for arm in ('profile', 'default'):
+        cv = mach.get((b, t, arm))
+        if cv:
+            vals = [cv[min(n, len(cv)) - 1] for n in NCH]; fr = first_reach(cv, h) if h else None
+            M['chem'][f'{b}/{t}'][f'machina_{arm}'] = {'curve': dict(zip(NCH, vals)), 'reach99': fr, 'n': len(cv)}
+            lines.append((f'Machina {arm}', vals, fr if fr else '-'))
+    for meth in ('cmaes', 'es11', 'random'):
+        cs = comp.get((b, t, meth))
+        if cs:
+            vals = [st.mean(c[min(n, len(c)) - 1] for c in cs) for n in NCH]
+            frs = [first_reach(c, h) for c in cs] if h else []
+            M['chem'][f'{b}/{t}'][meth] = {'curve': dict(zip(NCH, vals)), 'seeds': len(cs), 'reach99_seeds': sum(1 for x in frs if x)}
+            lines.append((f'{meth} ({len(cs)} seeds)', vals, f"{sum(1 for x in frs if x)}/{len(cs)} seeds"))
+    for i, (name, vals, fr) in enumerate(lines):
+        lead = f"| {b}/{t} | {fmt(h, 3)} | {fmt(cma4k.get((b, t)), 3)} |" if i == 0 else '| | | |'
+        say(f"{lead} {name} | " + ' | '.join(fmt(v, 3) for v in vals) + f" | {fr} |")
+say()
 open(os.path.join(OUT, 'ROUND2_RESULTS.md'), 'w').write('\n'.join(L) + '\n')
 json.dump(M, open(os.path.join(OUT, 'round2_metrics.json'), 'w'), indent=1, default=str)
 print('\n'.join(L))

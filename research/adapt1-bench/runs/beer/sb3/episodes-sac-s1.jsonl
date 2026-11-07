@@ -2300,3 +2300,14 @@
 {"episode": 2299, "return": 105.0, "len": 96, "steps": 259456, "elapsed_s": 10247.3}
 {"episode": 2300, "return": 107.0, "len": 94, "steps": 259550, "elapsed_s": 10256.2}
 {"episode": 2301, "return": 107.0, "len": 94, "steps": 259644, "elapsed_s": 10265.0}
+{"episode": 2302, "return": 103.0, "len": 98, "steps": 259742, "elapsed_s": 10274.6}
+{"episode": 2303, "return": 105.0, "len": 96, "steps": 259838, "elapsed_s": 10285.9}
+{"episode": 2304, "return": 103.0, "len": 98, "steps": 259936, "elapsed_s": 10295.9}
+{"episode": 2305, "return": 108.0, "len": 93, "steps": 260029, "elapsed_s": 10304.5}
+{"episode": 2306, "return": 108.0, "len": 93, "steps": 260122, "elapsed_s": 10312.5}
+{"episode": 2307, "return": 107.0, "len": 94, "steps": 260216, "elapsed_s": 10321.2}
+{"episode": 2308, "return": 107.0, "len": 94, "steps": 260310, "elapsed_s": 10329.8}
+{"episode": 2309, "return": 95.0, "len": 106, "steps": 260416, "elapsed_s": 10339.8}
+{"episode": 2310, "return": 107.0, "len": 94, "steps": 260510, "elapsed_s": 10348.7}
+{"episode": 2311, "return": 108.0, "len": 93, "steps": 260603, "elapsed_s": 10357.9}
+{"episode": 2312, "return": 108.0, "len": 93, "steps": 260696, "elapsed_s": 10366.8}
