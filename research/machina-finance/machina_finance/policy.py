@@ -41,6 +41,21 @@ class FrozenPolicy:
     def score(self, ctx):
         return float(self.task.score(self.actions(ctx["feat"]), ctx))
 
+    def range_check(self, ctx_or_features):
+        """Is this condition inside what the policy was trained on? Beyond +-3 support SD the service clips the
+        context, so the policy stops adapting; outside the trained feature range it extrapolates (the transient-
+        impact policy fell to 6% of best there). Treat ok=False as 'fall back or re-refine'."""
+        f = np.asarray(ctx_or_features["feat"] if isinstance(ctx_or_features, dict) else ctx_or_features, float)
+        b = self.basis
+        z_own = float(np.abs(b.z_pca(f) if b.kind == "linear" else b.z_coord(f)).max())
+        if not hasattr(self, "_range"):
+            self._range = T.training_feature_range(self.task)
+        lo, hi = self._range
+        outside = [n for n, x, a, c in zip(self.task.feature_names, f, lo, hi) if x < a - 1e-9 or x > c + 1e-9]
+        clipped = z_own > b.clip_z
+        return {"ok": not outside and not clipped, "outside_training_range": outside, "clipped": clipped,
+                "max_support_z": round(z_own, 3)}
+
     def evaluate(self, contexts, best=None):
         """Mean score on contexts; with best-known scores, also the share of best (mean / mean best)."""
         s = np.array([self.score(c) for c in contexts])

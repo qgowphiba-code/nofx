@@ -226,7 +226,7 @@ def export_policy(client, task, domain, base, support, arm, pool, verify, thread
     check = {"ident_contexts": len(ident), "fit_residual": resid, "determined": bool(det), "verify_contexts": len(verify),
              "verify_max_abs_diff": vmax, "exact": bool(det and resid < TOL and vmax < TOL),
              "fingerprint_unchanged": fp0 == fp1}
-    pol.meta.setdefault("export_check", check)
+    pol.meta["export_check"] = check
     return pol, check
 
 
@@ -244,14 +244,22 @@ def cusum_alarm(realized, expected, scale, k=0.5, h=5.0):
 
 # ------------------------------------------------------------------------------------------- end to end
 def run_pipeline(client, task_name, prefix, episodes=300, updates=20, arm="linear", acq_seed=12, ref_seed=21,
-                 mie=True, threads=2, check_eval_on_api=False, log=print):
-    """acquire (nominal) -> refine -> export -> offline held-out evaluation. Deletes every Domain it creates."""
+                 mie=True, threads=2, check_eval_on_api=False, keep_refinement=False, log=print):
+    """acquire (nominal) -> refine -> export -> offline held-out evaluation. Deletes every Domain it creates,
+    except the refinement learner when keep_refinement=True (to continue it after a shift; it still counts
+    toward the 32-learner limit until you delete it)."""
     task = T.get_task(task_name)
     C = T.standard_contexts(task)
     t0 = time.time()
-    out = {"task": task_name, "arm": arm, "episodes": episodes, "updates": updates, "domains": []}
+    out = {"task": task_name, "arm": arm, "episodes": episodes, "updates": updates, "domains": [],
+           "fake_api": bool(getattr(client, "fake", False)), "calls_by_stage": {}}
     acq_dom, ref_dom = f"{prefix}-acq", f"{prefix}-r{arm[:3]}"
-    deleted = set()
+    deleted, ok = set(), False
+    mark = [client.calls]
+
+    def stage(name):
+        out["calls_by_stage"][name] = out["calls_by_stage"].get(name, 0) + client.calls - mark[0]
+        mark[0] = client.calls
 
     def delete(d):
         client.delete_domain(d)
@@ -261,31 +269,41 @@ def run_pipeline(client, task_name, prefix, episodes=300, updates=20, arm="linea
         cps = tuple(sorted({min(episodes, x) for x in (50, 100, 200, 300, episodes)}))
         acq = acquire(client, task, acq_dom, C["nominal"], episodes, seed=acq_seed, checkpoints=cps, log=log)
         delete(acq_dom)
+        stage("acquisition")
         out["acquisition"] = {k: acq[k] for k in ("frozen", "incumbent", "incumbent_score")}
         base = np.asarray(acq["incumbent"], float)
         out["domains"].append(ref_dom)
         out["refinement"] = refine(client, task, ref_dom, base, C["train"], C["support"], updates, arm=arm,
                                    seed=ref_seed, mie=mie, threads=threads, log=log)
+        stage("refinement")
         verify = sorted(C["eval"], key=lambda c: -basis_for(arm, [s["feat"] for s in C["support"]]).z_max(c["feat"])[0])[:4]
         pol, check = export_policy(client, task, ref_dom, base, C["support"], arm, C["train"], verify, threads,
                                    meta={"source": "run_pipeline", "domain": ref_dom, "updates": updates,
-                                         "episodes": episodes, "arm": arm})
+                                         "episodes": episodes, "arm": arm, "ref_seed": ref_seed,
+                                         "fake_api": out["fake_api"]})
         out["export_check"] = check
+        stage("export")
         if check_eval_on_api:
             api = [np.asarray(client.traj(ref_dom, "evaluate", {"context": c["feat"]})["offsets"], float).ravel()
                    for c in C["eval"]]
             out["eval_api_vs_policy_max_abs_diff"] = float(max(np.abs(pol.offsets(c["feat"]).ravel() - a).max()
                                                               for c, a in zip(C["eval"], api)))
-        delete(ref_dom)
+            stage("api_check")
+        ok = True
+        if keep_refinement:
+            out["kept_domain"] = ref_dom
+        else:
+            delete(ref_dom)
     finally:
         for d in out["domains"]:
-            if d in deleted:
+            if d in deleted or (ok and keep_refinement and d == ref_dom):
                 continue
             try:
                 delete(d)
             except Exception as e:  # report, never hide
                 out.setdefault("cleanup_errors", []).append(f"{d}: {e!r}")
         out["deleted"] = sorted(deleted)
+        stage("cleanup")
     out["policy"] = pol.to_dict()
     out["calls"] = client.calls
     out["secs"] = round(time.time() - t0, 1)

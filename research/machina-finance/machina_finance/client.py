@@ -13,6 +13,7 @@ being repeated. HTTP 402 raises CreditsOut. An optional call cap raises BudgetEx
 import json
 import os
 import random
+import sys
 import threading
 import time
 import urllib.error
@@ -50,9 +51,26 @@ def urllib_transport(method, url, headers, data, timeout):
         return e.code, e.read().decode(errors="replace")
 
 
+_FAKE = None
+
+
+def fake_mode():
+    """MACHINA_FINANCE_FAKE=1 routes every request to the in-memory fake API (rehearsals: no key, no credits)."""
+    return os.environ.get("MACHINA_FINANCE_FAKE") == "1"
+
+
 class Client:
     def __init__(self, journal_path=None, base=None, timeout=180, max_calls=None, cleanup_reserve=20,
                  ledger_path=None, transport=None, sleep=time.sleep):
+        global _FAKE
+        self.fake = transport is None and fake_mode()
+        if self.fake:  # one shared fake per process, so later clients see the same Domains
+            from .fake import BASE, FakeAPI
+            if _FAKE is None:
+                _FAKE = FakeAPI(seed=0, state_path=os.environ.get("MACHINA_FINANCE_FAKE_STATE"))
+                print("machina_finance: MACHINA_FINANCE_FAKE=1, using the in-memory fake API "
+                      "(no network, no credits; results are not real)", file=sys.stderr)
+            transport, base, sleep = _FAKE, BASE, (lambda s: None)
         self.base = (base or os.environ.get("ADAPT1_BASE_URL") or DEFAULT_BASE).rstrip("/")
         self.journal_path = journal_path
         self.ledger_path = ledger_path

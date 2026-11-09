@@ -743,11 +743,18 @@ def standard_contexts(task):
             "eval": task.make_contexts(32, 303, "ev"), "nominal": task.nominal()}
 
 
-def context_from_u(task, u, cid="custom"):
+def _cid_for(p):
+    """A context id derived from the parameters. Simulators cache scenario paths by context id, so two different
+    conditions must never share one."""
+    key = ",".join(f"{k}={float(v):.12g}" for k, v in sorted(p.items()) if isinstance(v, (int, float)))
+    return "c-" + hashlib.sha256(key.encode()).hexdigest()[:12]
+
+
+def context_from_u(task, u, cid=None):
     """A context from normalised parameters u in [-1, 1]^d (0 = nominal)."""
     u = np.asarray(u, float)
     p = task.params_from_u(u)
-    return {"cid": cid, "u": u.tolist(), "p": p, "feat": task.features(p)}
+    return {"cid": cid or _cid_for(p), "u": u.tolist(), "p": p, "feat": task.features(p)}
 
 
 def trace_states(task, actions, ctx):
@@ -761,3 +768,122 @@ def trace_states(task, actions, ctx):
     else:
         prog = [1.0 - k / rows for k in range(rows + 1)]
     return [[p] + list(ctx["feat"]) for p in prog]
+
+
+# ---------------------------------------------------------------------------
+# Human-readable description of every kept task: market parameters (with the training range and unit),
+# what the decoded controls are, and what the score measures. Used by `describe` and `schedule`.
+# ---------------------------------------------------------------------------
+TASK_DOC = {
+    "ac_liquidation": {
+        "title": "Sell one parent order over a day in 10 equal slots (Almgren-Chriss impact)",
+        "params": {"sigma": ("0.01-0.04", "price volatility over the whole trading horizon (0.02 = 2%)"),
+                   "eta": ("0.001-0.01", "temporary impact: a slot costs eta * n^2 / tau (n = fraction traded, tau = 0.1)"),
+                   "lam": ("about 0.4-1500", "risk aversion per unit of variance (trained via urgency sqrt(lam) * sigma / sqrt(eta) in 0.5-6)")},
+        "controls": "fraction of the order to execute in each of the 10 slots (sums to 1)",
+        "score": "share of risk-adjusted cost (bps of notional) saved against TWAP"},
+    "ow_transient": {
+        "title": "Sell one parent order in 10 slots when impact decays over time (Obizhaeva-Wang)",
+        "params": {"halflife": ("0.05-3", "half-life of the transient impact, in units of the trading horizon"),
+                   "temp_ratio": ("0.01-0.3", "instantaneous impact relative to the transient impact (kappa = 0.005)"),
+                   "lam": ("0.005-1", "risk aversion per unit of variance (volatility fixed at 0.02)")},
+        "controls": "fraction of the order to execute in each of the 10 slots (sums to 1)",
+        "score": "share of risk-adjusted cost (bps of notional) saved against TWAP"},
+    "vwap_profile": {
+        "title": "Work an order through 13 intraday bins against VWAP, given the day's volume-profile type",
+        "params": {"open": ("0.03-0.15", "share of the day's volume in the opening bin"),
+                   "close": ("0.04-0.45", "share of the day's volume in the closing bin"),
+                   "curv": ("0.3-3", "U-shape curvature of the intraday volume profile"),
+                   "size": ("0.01-0.2", "order size as a fraction of the day's volume")},
+        "controls": "fraction of the order to execute in each of the 13 bins (sums to 1)",
+        "score": "share of cost (tracking risk against VWAP + impact) saved against following the average profile"},
+    "two_asset_transition": {
+        "title": "Switch a position: sell asset A and buy asset B over 8 slots",
+        "params": {"rho": ("-0.3-0.9", "correlation between A and B"),
+                   "eta_ratio": ("0.25-4", "impact of B relative to A (A: 0.003)"),
+                   "lam": ("2-200", "risk aversion per unit of variance"),
+                   "sig_ratio": ("0.5-2", "volatility of B relative to A (A: 0.02)")},
+        "controls": "per slot: amount of A sold and amount of B bought, in units of the position (each leg sums to 1)",
+        "score": "share of risk-adjusted cost (bps) saved against trading both legs evenly"},
+    "three_asset_transition": {
+        "title": "Switch a position: sell asset A, buy B and C over 8 slots",
+        "params": {"rho_ab": ("-0.2-0.9", "correlation between A and B"),
+                   "rho_bc": ("-0.2-0.9", "correlation between B and C (A-C correlation = rho_ab * rho_bc)"),
+                   "eta_ratio": ("0.25-4", "impact of B relative to A (C: its square root; A: 0.003)"),
+                   "lam": ("2-200", "risk aversion per unit of variance (all volatilities 0.02)")},
+        "controls": "per slot: amount of A sold (total 1), of B bought (total 0.5) and of C bought (total 0.5)",
+        "score": "share of risk-adjusted cost (bps) saved against trading every leg evenly"},
+    "market_making": {
+        "title": "Quote a bid and an ask through a session in 8 periods (Avellaneda-Stoikov market)",
+        "params": {"sigma": ("1-3", "mid-price volatility over the session, in price units (mid starts at 100)"),
+                   "A": ("70-280", "order-arrival intensity over the session"),
+                   "k": ("0.75-3", "decay of the fill probability per price unit away from the mid"),
+                   "gamma": ("0.02-0.3", "risk aversion (mean-variance utility of P&L)")},
+        "controls": "per period: half-spread (price units, 0.15-6) and inventory skew (0-3); "
+                    "bid = mid - (half_spread + skew * q), ask = mid + (half_spread - skew * q), q = inventory",
+        "score": "share of utility gained against a constant 1/k half-spread without skew"},
+    "hedge_bands": {
+        "title": "Delta-hedge a short call for 40 trading days with a no-trade band (8 periods of 5 days)",
+        "params": {"vol": ("0.15-0.5", "annualised volatility"),
+                   "cost": ("0.0005-0.004", "proportional transaction cost (5-40 bps)"),
+                   "K": ("90-110", "strike of the short call, spot = 100"),
+                   "gamma": ("0.02-0.5", "risk aversion on hedged P&L variance")},
+        "controls": "per period: half-width of the no-trade band around the Black-Scholes delta (delta units, 0-0.3)",
+        "score": "share of loss (-mean P&L + gamma/2 * variance) reduced against re-hedging to delta every day"},
+    "glide_path": {
+        "title": "Equity share of a retirement saver over 40 years (10 blocks of 4 years)",
+        "params": {"gamma": ("2-10", "relative risk aversion (CRRA)"),
+                   "ep": ("0.02-0.07", "equity premium per year (risk-free 2%, income growth 1%)"),
+                   "vol": ("0.12-0.24", "equity volatility per year"),
+                   "w0": ("0-10", "starting wealth in units of the first year's savings")},
+        "controls": "equity weight for each 4-year block (0-1)",
+        "score": "share of certainty-equivalent wealth gained against a constant 60% equity mix"},
+    "alpha_liquidation": {
+        "title": "Sell one parent order in 10 slots given a pre-trade alpha signal",
+        "params": {"sigma": ("0.01-0.04", "price volatility over the trading horizon"),
+                   "eta": ("0.001-0.01", "temporary impact coefficient (as ac_liquidation)"),
+                   "lam": ("about 0.4-1500", "risk aversion per unit of variance (as ac_liquidation)"),
+                   "a": ("-0.75-1.5", "alpha signal as a drift-justified holding level: below 0 sell faster, "
+                                      "above about 0.6 hold back (drift mu = 2 * a * lam * sigma^2)")},
+        "controls": "fraction of the order to execute in each of the 10 slots (sums to 1)",
+        "score": "cost saved against TWAP, divided by the TWAP cost without a signal"},
+}
+LEGS = {"two_asset_transition": ["A_sell", "B_buy"], "three_asset_transition": ["A_sell", "B_buy", "C_buy"]}
+
+
+def finalize_params(task, p):
+    """Recompute derived parameters after a user edit (only the alpha drift is derived)."""
+    p = dict(p)
+    if task.name == "alpha_liquidation":
+        p["mu"] = p["a"] * 2 * p["lam"] * p["sigma"] ** 2
+    return p
+
+
+def context_from_params(task, overrides=None, cid=None):
+    """A context from market parameters in natural units; anything not given stays at the nominal value."""
+    p = dict(task.nominal()["p"])
+    unknown = set(overrides or {}) - set(TASK_DOC[task.name]["params"]) if task.name in TASK_DOC else set()
+    if unknown:
+        raise KeyError(f"unknown parameter(s) {sorted(unknown)} for {task.name}; "
+                       f"valid: {sorted(TASK_DOC[task.name]['params'])}")
+    p.update({k: float(v) for k, v in (overrides or {}).items()})
+    p = finalize_params(task, p)
+    return {"cid": cid or _cid_for(p), "u": [], "p": p, "feat": task.features(p)}
+
+
+def training_feature_range(task):
+    """Per-feature min and max over the standard train, support and held-out contexts (about the trained box)."""
+    C = standard_contexts(task)
+    F = np.array([c["feat"] for k in ("train", "support", "eval") for c in C[k]])
+    return F.min(0), F.max(0)
+
+
+def controls_table(task, controls):
+    """Decoded controls as a labelled dict (positive amounts; the label says sell or buy)."""
+    c = np.asarray(controls, float)
+    if task.name in LEGS:
+        return {leg: np.abs(c[i * task.H:(i + 1) * task.H]).round(5).tolist() for i, leg in enumerate(LEGS[task.name])}
+    if task.name == "market_making":
+        return {"half_spread": c[:, 0].round(4).tolist(), "skew": c[:, 1].round(4).tolist()}
+    key = {"hedge_bands": "band_half_width", "glide_path": "equity_weight"}.get(task.name, "fraction_per_slot")
+    return {key: c.round(5).tolist()}

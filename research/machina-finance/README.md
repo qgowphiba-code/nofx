@@ -124,6 +124,10 @@ evaluation, using about 3× fewer calls. On prod, 0 of 96 candidates needed the 
 
 ## Quickstart
 
+**Step-by-step guide: [HOWTO.md](HOWTO.md)** covers install, using a saved policy, re-checking the results,
+training your own on the API (with call budgets), bringing your own simulator, deployment, drift monitoring
+and troubleshooting. Every command in it is checked by `scripts/check_howto.py`.
+
 Offline, no key needed:
 
 ```bash
@@ -194,7 +198,9 @@ The full budget (300 episodes, 20 updates) reached 83% in the main run.
   - `client.py`: API client with retries, 402 handling, call cap and Domain ledger.
   - `pipeline.py`: acquisition, refinement with MIE, export, CRN and drift helpers.
   - `baselines.py`: same-budget CEM, Powell and oracle fit.
-  - `cli.py`: the command line.
+  - `cli.py`: the command line (`list`, `describe`, `schedule`, `evaluate`, `verify`, `probe`, `run`,
+    `domains`).
+  - `fake.py`: the in-memory fake API behind `--dry-run` and the tests.
 - `policies/`: 13 frozen policies exported from the prod runs, as `<task>--<arm>.json`. Each reproduces its run's
   held-out scores to below 1e-9; the tests check this.
 - `results/`
@@ -205,4 +211,5 @@ The full budget (300 episodes, 20 updates) reached 83% in the main run.
   - `export_from_runs.py`, `build_results.py`: provenance; they rebuild `policies/` and `results/` from the
     original run folder.
   - `smoke_test.py`: the live smoke test.
+  - `check_howto.py`: runs every command in HOWTO.md in a fresh copy, with live steps on the fake API.
 - `tests/`: offline tests, including a fake API for pipeline plumbing.

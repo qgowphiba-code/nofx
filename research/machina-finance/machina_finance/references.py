@@ -65,8 +65,14 @@ def best_known(task, ctx):
         ref["qp_score"] = (task.naive_obj(ctx) - task.objective(n, ctx)) / task.scale(ctx)
         blind = T.weights_to_actions(T.ACLiquidation.oracle(task, ctx))[:, None]
         ref["blind_ac_score"] = float(task.score(blind, ctx))
-    else:
-        raise KeyError(name)
+    elif hasattr(task, "best_actions"):  # your own task with its own optimiser
+        a = np.asarray(task.best_actions(ctx), float)
+    else:  # your own task without one: generic CEM search from the naive schedule (slower, approximate)
+        naive = task.naive_actions(ctx)
+        x0 = np.zeros(H * A) if naive is None else np.asarray(naive, float).ravel()
+        x, _ = cem_maximize(lambda x: task.score(x.reshape(H, A), ctx), [x0], H * A, seed=T.cid_seed(ctx["cid"]) % 1000)
+        a = x.reshape(H, A)
+        ref["approximate"] = True
     return np.asarray(a, float).reshape(H, A), float(task.score(a, ctx)), ref
 
 
