@@ -1,0 +1,10 @@
+task,application,recommended_arm,base_share,linear_share,guided_share,cem_ctx_lin_share,textbook,textbook_share,oraclefit_lin_share,recommended_share_512_fresh,base_share_512_fresh,recommended_share_out_of_range,base_share_out_of_range
+ac_liquidation,"Liquidation, temporary + permanent impact (Almgren-Chriss)",linear,0.5151,0.8331,0.8396,0.6464,,,0.9363,0.8321,0.5136,0.7775,0.3742
+ow_transient,"Liquidation, transient impact (Obizhaeva-Wang)",guided,-0.3266,0.7696,0.8663,0.6287,,,0.9169,0.8742,-0.2204,0.0571,-2.5242
+vwap_profile,VWAP execution with day-type volume profile,linear,-0.1167,0.7766,,-0.305,,,0.9876,0.7636,-0.1156,0.8017,-0.0572
+two_asset_transition,Two-leg portfolio switch,guided,0.3962,0.5218,0.9496,0.1803,,,0.8406,0.912,0.376,0.8959,0.2794
+three_asset_transition,Three-leg portfolio switch,guided,0.3071,0.5061,0.8908,0.334,,,0.8181,0.8885,0.3019,0.9776,0.2396
+market_making,"Market-making quotes (spread, skew)",linear,0.6538,0.9832,,0.949,Avellaneda-Stoikov,0.741,,,,,
+hedge_bands,Option delta-hedging bands,linear,0.6351,0.7733,,0.7333,Whalley-Wilmott,0.5822,,,,,
+glide_path,Lifecycle glide path,linear,0.3737,0.6129,,0.5106,,,0.9315,,,,
+alpha_liquidation,Liquidation with a pre-trade alpha signal,guided,0.0,,0.7112,0.3151,signal-blind AC,-0.2437,,0.7235,0.0,0.7698,0.0

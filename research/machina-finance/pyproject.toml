@@ -1,0 +1,22 @@
+[project]
+name = "machina-finance"
+version = "0.1.0"
+description = "Context-aware finance schedules learned with Adapt-1 Machina: the shortlist worth more work"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.10"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+machina-finance = "machina_finance.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["machina_finance"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,153 @@
+{
+ "prefix": "finm-pkg-ac-11092020",
+ "started_utc": "2026-11-09T20:20:37Z",
+ "cap": 1000,
+ "acquisition": {
+  "frozen": [
+   {
+    "ep": 50,
+    "score": -0.2777629676406435
+   },
+   {
+    "ep": 100,
+    "score": 0.05897269862156645
+   }
+  ],
+  "incumbent_score": 0.05897269862156645,
+  "nominal_best": 0.08280948141560489
+ },
+ "export_check": {
+  "ident_contexts": 4,
+  "fit_residual": 6.938893903907228e-17,
+  "determined": true,
+  "verify_contexts": 4,
+  "verify_max_abs_diff": 7.632783294297951e-17,
+  "exact": true,
+  "fingerprint_unchanged": true
+ },
+ "eval_api_vs_policy_max_abs_diff": 1.1102230246251565e-16,
+ "deleted": [
+  "finm-pkg-ac-11092020-acq",
+  "finm-pkg-ac-11092020-rlin"
+ ],
+ "refinement_updates": [
+  {
+   "u": 0,
+   "selected": 6,
+   "gain": [
+    0.001977121438015504
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  },
+  {
+   "u": 1,
+   "selected": 4,
+   "gain": [
+    0.024866137893475304
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  },
+  {
+   "u": 2,
+   "selected": 0,
+   "gain": [
+    -0.0018716124882949547
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  },
+  {
+   "u": 3,
+   "selected": 7,
+   "gain": [
+    0.006839726781747796
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  },
+  {
+   "u": 4,
+   "selected": 5,
+   "gain": [
+    0.0011828435100049925
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  },
+  {
+   "u": 5,
+   "selected": 0,
+   "gain": [
+    -0.0006207040280983914
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  },
+  {
+   "u": 6,
+   "selected": 5,
+   "gain": [
+    0.002684905053806849
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  },
+  {
+   "u": 7,
+   "selected": 5,
+   "gain": [
+    0.004304434243054225
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  },
+  {
+   "u": 8,
+   "selected": 7,
+   "gain": [
+    0.0004875391450855776
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  },
+  {
+   "u": 9,
+   "selected": 0,
+   "gain": [
+    -0.0022495115359729007
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  },
+  {
+   "u": 10,
+   "selected": 4,
+   "gain": [
+    0.006916586755943727
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  },
+  {
+   "u": 11,
+   "selected": 0,
+   "gain": [
+    -0.0012707971369173149
+   ],
+   "calls": 42,
+   "fallbacks": 0
+  }
+ ],
+ "heldout_32": {
+  "refined_share_of_best": 0.580611605462556,
+  "base_share_of_best": 0.3651462137378105,
+  "refined_beats_base": 0.84375
+ },
+ "secs": 90.5,
+ "domains_left_with_prefix": [],
+ "domains_left_total": 0,
+ "api_calls": 761,
+ "http_429": 0
+}

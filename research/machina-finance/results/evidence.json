@@ -1,0 +1,655 @@
+{
+ "source": "third-round prod experiments, each re-checked by an independent reviewer",
+ "experiments": [
+  {
+   "id": "ep-closed-loop-alpha",
+   "title": "Closed-loop liquidation with a mid-day alpha signal (short windows with one learner vs boundary refinement), with a recall-keying probe and keyed multi-context acquisition",
+   "sound": true,
+   "headline": "On 32 held-out signals, boundary refinement (CL-R) raised Machina's seed-12 open-loop plan from 0.110 to 0.145 (+0.035, CI 0.022 to 0.048 over signals; seeds 0.138 to 0.149, tied with or slightly above same-budget CEM-linear at 0.144 on 3 seeds and 0.138 on 13). The 3-level closed-loop reference is 0.191; per-signal-optimal afternoons after the same morning reach 0.186, so CL-R used about half the headroom. On the weaker seed-13 OL base, CL-R gained +0.029 (-0.031 to -0.002). The single short-window learner (CL-1L) collapsed to -3.62 because frozen recall returned one global record (an s=-1 afternoon window) for every window (all four probe variants UNKEYED, so Stage 2 was skipped).",
+   "key_numbers": [
+    {
+     "measure": "OL acquisition (300 episodes, seed 12), held-out",
+     "value": 0.11,
+     "unit": "day score = (C_TWAP(mu2) - C) / 58.66 bps",
+     "ci95": [
+      0.049,
+      0.169
+     ],
+     "note": "extrapolation set 0.054; local OL optimum 0.126"
+    },
+    {
+     "measure": "OL acquisition replicate (seed 13), held-out",
+     "value": -0.031,
+     "unit": "day score = (C_TWAP(mu2) - C) / 58.66 bps",
+     "note": "extrapolation -0.073"
+    },
+    {
+     "measure": "CL-R boundary refinement (12 updates, seed 21), held-out",
+     "value": 0.145,
+     "unit": "day score = (C_TWAP(mu2) - C) / 58.66 bps",
+     "ci95": [
+      0.076,
+      0.216
+     ],
+     "note": "extrapolation 0.194"
+    },
+    {
+     "measure": "CL-R minus OL, paired, held-out",
+     "value": 0.035,
+     "unit": "day score = (C_TWAP(mu2) - C) / 58.66 bps",
+     "ci95": [
+      0.022,
+      0.048
+     ],
+     "note": "25/32 wins; extrapolation +0.140, 16/16"
+    },
+    {
+     "measure": "CL-R held-out, seeds 21/22/23",
+     "value": [
+      0.145,
+      0.149,
+      0.138
+     ],
+     "unit": "day score = (C_TWAP(mu2) - C) / 58.66 bps"
+    },
+    {
+     "measure": "Same-budget CEM linear afternoon correction, held-out",
+     "value": 0.144,
+     "unit": "day score = (C_TWAP(mu2) - C) / 58.66 bps",
+     "note": "3 seeds; 13-seed mean 0.138"
+    },
+    {
+     "measure": "CL-1L single short-window learner, held-out",
+     "value": -3.62,
+     "unit": "day score = (C_TWAP(mu2) - C) / 58.66 bps",
+     "ci95": [
+      -3.835,
+      -3.414
+     ],
+     "note": "every recall = record 116 (s=-1 afternoon); morning sold 98%"
+    },
+    {
+     "measure": "3-level closed-loop reference (not an upper bound)",
+     "value": 0.191,
+     "unit": "day score = (C_TWAP(mu2) - C) / 58.66 bps",
+     "note": "OL-optimal morning + per-signal best afternoon 0.198; best linear correction 0.192; clairvoyant 0.311"
+    },
+    {
+     "measure": "Recall-keying probe: variants UNKEYED",
+     "value": "4/4"
+    }
+   ],
+   "corrections": [
+    "'Closed-loop optimum 0.191' is not an upper bound (0.198 with the OL-optimal morning and the best afternoon per signal).",
+    "The +0.035 CI covers signal variation for one OL base only; the absolute 0.145 depends on the OL seed (seed-13 base: -0.031 -> -0.002).",
+    "The CEM tie rests on 3 seeds; 13 seeds give 0.138, so CL-R is at least as good."
+   ]
+  },
+  {
+   "id": "rs-shift",
+   "title": "Restoration after unobserved dynamics shifts in refinement: global actuator tilt (warm vs cold lineage, shift-back) and partial impact shift (new-only vs mixed practice)",
+   "sound": true,
+   "headline": "An unobserved actuator tilt dropped the refined AC policy from 75-83% to between -23% and 5% of the new best on 512 fresh contexts. After 20 updates under the tilt, continued practice in the same lineage recovered to 67-69%, versus 45-61% for a fresh learner (W-C +5.5 to +23.9 pts, 3/3 seeds; the bootstrap CIs are over contexts only, and in 2 of 3 seeds the gap is smaller than W's head start at the shift). Within the planned 20 updates, 1 of 3 seeds reached 90% of its pre-shift share (s53 at 19); beyond-spec extensions reached it at 24-25 updates (s21 back to 82.9% vs 83.2% after 40). Under a single-seed partial impact shift, new-only practice lifted affected contexts from 69% to 77% with 1 pt forgetting (2 pts on evalc), and mixed practice from 69% to 75% with unaffected contexts +2.4 pts. The run exceeded its 7,600-call hard cap by 43 calls.",
+   "key_numbers": [
+    {
+     "measure": "Pre-shift share, 512 fresh (s21/s52/s53)",
+     "value": [
+      0.832,
+      0.787,
+      0.747
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    },
+    {
+     "measure": "Share at the tilt",
+     "value": [
+      0.045,
+      -0.043,
+      -0.228
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)",
+     "note": "tilt base -0.296; linear ceiling 0.944"
+    },
+    {
+     "measure": "Warm lineage W after 20 tilted updates",
+     "value": [
+      0.687,
+      0.667,
+      0.692
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    },
+    {
+     "measure": "Fresh learner C after 20 tilted updates",
+     "value": [
+      0.548,
+      0.612,
+      0.454
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    },
+    {
+     "measure": "W minus C at 20 tilted updates",
+     "value": [
+      13.9,
+      5.5,
+      23.9
+     ],
+     "unit": "pts",
+     "note": "context-bootstrap CIs exclude 0; 3/3 seeds (one-sided p=0.125); W head start at the shift 34.1/25.3/6.8 pts"
+    },
+    {
+     "measure": "Seeds back to 90% of pre-shift within 20 updates",
+     "value": "1/3 (s53 at 19)",
+     "note": "extension: s21 at 24, s52 at 25; s21 0.829 after 40 (pre 0.832)"
+    },
+    {
+     "measure": "Shift-back drop",
+     "value": [
+      15.4,
+      42.1,
+      44.1
+     ],
+     "unit": "pts",
+     "note": "share 10 updates later 0.660/0.548/0.619 (not recovered)"
+    },
+    {
+     "measure": "Partial shift, affected contexts (s21): at shift / NEW / MIX after 10 updates",
+     "value": [
+      0.692,
+      0.773,
+      0.754
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)",
+     "note": "unaffected: NEW -1.0 pt, MIX +2.4 pts; evalc overall NEW 0.767, MIX 0.789"
+    },
+    {
+     "measure": "MIE validation vs fx2 R1",
+     "value": "PASS",
+     "note": "maps 4.1e-16; fingerprints, selections, gains equal 20/20"
+    }
+   ],
+   "corrections": [
+    "Hard call cap exceeded by 43 calls (beyond-spec extension; full-evaluation fallbacks under-reserved).",
+    "Restoration '19-25 updates' mixes the planned 20-update horizon (1/3 seeds) with the post-hoc extension.",
+    "W-C CIs are over contexts of one run per seed; in s21 and s52 the fresh learner improved more than W after the shift.",
+    "Partial shift is one seed; on evalc NEW lost 2.0 pts on unaffected contexts and MIX was better overall (78.9 vs 76.7%)."
+   ]
+  },
+  {
+   "id": "rs-crnnoise",
+   "title": "Learning from realized (noisy) costs: refinement under common random numbers (SNR ladder, independent-noise and pure-noise controls) and acquisition with fixed scenario sets",
+   "sound": true,
+   "headline": "Measured on 512 fresh contexts with 2 learner seeds per arm, refinement from realized costs on common simulated days kept 91% (CRN100), 73% (CRN10) and 37% (CRN1) of the noise-free gain. Per-seed spreads are wide: 0.80-1.01, 0.45-1.02 and 0.23-0.52. Under independent days per candidate (-2%) or pure noise (-2%) it kept about 0%, and retention rose with sign agreement (logistic midpoint 0.64). Single-learner acquisition on fixed scenario sets reached 81% of the best schedule with a favourable 25-day set (median over random 25-day sets: 66%) and 95% with 100 days. That is on par with Powell at the same budget (81% and 93%). With 100 fresh days per episode it reached 0%: the winner's curse kept a lucky TWAP schedule.",
+   "key_numbers": [
+    {
+     "measure": "Share on 512 fresh: base / EXACT",
+     "value": [
+      0.514,
+      0.82
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    },
+    {
+     "measure": "Share: CRN100 / CRN10 / CRN1 / IND100 / NULL",
+     "value": [
+      0.792,
+      0.737,
+      0.629,
+      0.506,
+      0.508
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    },
+    {
+     "measure": "Gain retention R pooled: CRN100 / CRN10 / CRN1 / IND100 / NULL",
+     "value": [
+      0.91,
+      0.73,
+      0.37,
+      -0.02,
+      -0.02
+     ],
+     "unit": "fraction of EXACT gain",
+     "note": "per seed CRN100 0.80/1.01, CRN10 1.02/0.45, CRN1 0.52/0.23"
+    },
+    {
+     "measure": "Logistic midpoint of R vs sign agreement",
+     "value": 0.636,
+     "unit": "sign agreement",
+     "note": "R^2 0.92, 10 learners"
+    },
+    {
+     "measure": "NULL acceptance",
+     "value": 0.575,
+     "unit": "fraction",
+     "ci95": [
+      0.409,
+      0.73
+     ],
+     "note": "23/40; 120-update extension 132/280 = 0.471"
+    },
+    {
+     "measure": "NULL-long net change after 120 updates (s43/s44)",
+     "value": [
+      -5.6,
+      1.9
+     ],
+     "unit": "pts",
+     "note": "both significant on 512 contexts"
+    },
+    {
+     "measure": "Acquisition exact share: SAA25 / SAA100 / FRESH100",
+     "value": [
+      0.81,
+      0.949,
+      0.0
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)",
+     "note": "SAA-optimum median over random sets: 25 days 0.66, 100 days 0.93"
+    },
+    {
+     "measure": "Same-budget Powell on SAA25 / SAA100",
+     "value": [
+      0.813,
+      0.931
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    },
+    {
+     "measure": "Contextual CEM on identical streams: EXACT / NULL",
+     "value": [
+      0.519,
+      -0.052
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)",
+     "note": "no confirmation gate; CEM barely learns even with exact outcomes"
+    }
+   ],
+   "corrections": [
+    "SAA25 81% comes from a favourable day set (median random 25-day set 66%); acquisition is on par with Powell, not better.",
+    "CRN arms need shared simulated or replayed days; the live-trading analogue (IND100) kept about 0%.",
+    "Only 2 learner seeds per refinement arm; the CRN10 vs CRN100 ordering is not established.",
+    "The 120-update pure-noise extension caused a significant -5.6 pt loss on one seed."
+   ]
+  },
+  {
+   "id": "voltgt",
+   "title": "New finance tasks where context matters: real S&P 500 volatility targeting (real-data edge) and alpha-signal liquidation (schedule shape flip, low linear ceiling)",
+   "sound": true,
+   "headline": "On 1,000 S&P dates from 2013-2018 (consecutive days with overlapping 20-day windows, so only about 75 independent windows), the Machina linear vol-target map reached 0.43 of perfect tracking (block-bootstrap CI [0.28,0.55]). That beats GARCH at 0.35 (+0.07 [0.03,0.13]) but cannot be told apart from the textbook rule at 0.32 (+0.11 [-0.05,0.31]). Same-budget local CEM reached 0.51 (mean 0.49 over 10 seeds), guided-quadratic 0.21, and the post-hoc linear-plus-guidance extension 0.48 (+0.06 [0.02,0.09] over plain linear). On alpha-aware liquidation the guided-quadratic learner reached 0.72 of best-known on 512 fresh contexts after 40 updates (0.47 at 20). The linear learner reached 0.25 at 20 updates, and same-budget CEM at 40 updates reached 0.23-0.28 for the reported seeds (0.08-0.39 over 8 seeds). All numbers reproduce exactly; the run used 6,046 of 6,300 calls, and all 5 Domains were deleted.",
+   "key_numbers": [
+    {
+     "measure": "Vol target, share of perfect, 1,000 dates: textbook / GARCH",
+     "value": [
+      0.319,
+      0.352
+     ],
+     "unit": "share of perfect tracking"
+    },
+    {
+     "measure": "Vol target: Machina linear (L)",
+     "value": 0.426,
+     "unit": "share of perfect tracking",
+     "ci95": [
+      0.28,
+      0.55
+     ],
+     "note": "block bootstrap"
+    },
+    {
+     "measure": "Vol target: guided quadratic (G) / linear+guidance (GL, post hoc)",
+     "value": [
+      0.212,
+      0.484
+     ],
+     "unit": "share of perfect tracking"
+    },
+    {
+     "measure": "Vol target: same-budget CEM linear",
+     "value": 0.511,
+     "unit": "share of perfect tracking",
+     "note": "10-seed mean 0.490"
+    },
+    {
+     "measure": "Vol target: L minus textbook",
+     "value": 0.107,
+     "unit": "share of perfect tracking",
+     "ci95": [
+      -0.05,
+      0.31
+     ],
+     "note": "not significant under block bootstrap"
+    },
+    {
+     "measure": "Vol target: L minus GARCH / GL minus L",
+     "value": [
+      0.074,
+      0.058
+     ],
+     "unit": "share of perfect tracking",
+     "note": "block CIs [0.03,0.13] and [0.02,0.09]"
+    },
+    {
+     "measure": "Alpha liquidation, 512 fresh: linear @20 / guided quadratic @20 / @40",
+     "value": [
+      0.248,
+      0.47,
+      0.723
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    },
+    {
+     "measure": "Alpha liquidation: same-budget CEM @40 linear / quadratic",
+     "value": [
+      0.276,
+      0.229
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)",
+     "note": "8-seed ranges 0.18-0.39 / 0.08-0.30"
+    },
+    {
+     "measure": "Alpha liquidation: oracle-fit linear / quadratic",
+     "value": [
+      0.396,
+      0.677
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    }
+   ],
+   "corrections": [
+    "Guided-quadratic G@40 vs linear L@20 is not equal budget; at 20 updates G 0.47 vs L 0.25.",
+    "CEM figures are single seeds; the headline 'CEM 0.23-0.28' is one seed per basis.",
+    "The linear basis (retained_variance 0.99) drops support PC4, so the attainable LS slope is -0.71, not -0.89.",
+    "Linear+guidance was chosen after seeing held-out L and G results (no tuning on held-out data)."
+   ]
+  },
+  {
+   "id": "rs-vardecomp",
+   "title": "Refinement reliability: seed variance x acquisition-base quality on two_asset_transition",
+   "sound": true,
+   "headline": "On two_asset_transition, 20 updates of linear refinement raised the held-out share of best-known (512 fresh contexts) from 0/25/38% to 41.8/47.0/54.2% for bases B0/B1/B2. The pooled replicate SD was 3.5 points (95% CI 2.2-7.7, df 6). Base quality still mattered: F(2,6)=9.7, p=0.013, or F(2,4)=20.8, p=0.008 with seed as a blocking factor. Refinement absorbed about 69% of the base differences (slope 0.31, OLS CI 0.13-0.49), unevenly: 79% of the B0-B1 gap but only 41% of the B1-B2 gap. Machina beat same-budget contextual CEM in 9 of 9 cells by 19.6 points (CI 10.7-28.4).",
+   "key_numbers": [
+    {
+     "measure": "Base share B0 / B1 / B2, 512 fresh",
+     "value": [
+      0.0,
+      0.254,
+      0.376
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    },
+    {
+     "measure": "Final share after 20 updates, mean of 3 seeds",
+     "value": [
+      0.418,
+      0.47,
+      0.542
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)",
+     "note": "per run 0.397-0.582"
+    },
+    {
+     "measure": "Pooled within-base replicate SD",
+     "value": 3.48,
+     "unit": "pts",
+     "ci95": [
+      2.24,
+      7.66
+     ],
+     "note": "df 6"
+    },
+    {
+     "measure": "Base effect",
+     "value": "F(2,6)=9.66, p=0.013",
+     "note": "seed-blocked F(2,4)=20.8, p=0.008"
+    },
+    {
+     "measure": "Absorption slope d(final)/d(base)",
+     "value": 0.312,
+     "unit": "ratio",
+     "ci95": [
+      0.13,
+      0.49
+     ],
+     "note": "OLS CI; 79% of B0-B1 gap closed, 41% of B1-B2"
+    },
+    {
+     "measure": "Machina minus contextual CEM, paired cells",
+     "value": 19.6,
+     "unit": "pts",
+     "ci95": [
+      10.7,
+      28.4
+     ],
+     "note": "9/9 wins"
+    },
+    {
+     "measure": "Replicates for +-3 pt precision",
+     "value": 8,
+     "unit": "runs",
+     "note": "12 per arm for a difference"
+    },
+    {
+     "measure": "Gain over last 5 of 20 updates",
+     "value": [
+      6.6,
+      7.4,
+      6.1
+     ],
+     "unit": "pts",
+     "note": "still improving"
+    }
+   ],
+   "corrections": [
+    "Headline quotes the narrowest (stratified) slope CI; OLS CI is 0.13-0.49.",
+    "Absorption is uneven: 79% of the B0-B1 gap, 41% of the B1-B2 gap.",
+    "Radius halves only after two consecutive rejections, then grows x1.25 back to 0.1.",
+    "CEM pairing is by label only (different context draws); CMA-ES recipe is worse than naive, so +77 pts over it says little."
+   ]
+  },
+  {
+   "id": "api-sweep",
+   "title": "API semantics sweep: context clipping and out-of-range saturation, multi-objective structural stages, episode_credit option screen, observation_validity/cancel guards, native planning probe",
+   "sound": true,
+   "headline": "On prod, every headline number reproduces from the saved files. (1) contextual_execution clips contexts at \u00b13 SD in its own whitened coordinates: PCA of the raw support (linear), PCA of the z-scored support (linear + normalize), or per-feature z-scores (normalize + quadratic). Residual is \u22646.7e-16. Along raw feature axes the clip point is generally not 3 SD; with linear + normalize, offsets still change beyond 10 SD on one axis. (2) Every multi-objective structural decision matched a lexicographic rule in objective order. Only 8 decisions separate it from summed or Pareto rules, and a sum weighting the first objective at least 114x fits equally well. A risk-first ordering left AC with a one-command dump at -2492% of best on held-out contexts. (3) Prints were inflated by +0.5, about 6x the best achievable score. A terminal observation_validity flag left behaviour identical to unflagged reporting; only the receipt's cost and the learner's state fingerprint changed. The run stayed at -330% of best at 150 episodes, against 96% clean (inferred); cancelling those decisions kept it at 85%. Native planning was refused (422, no value model), as the docs describe.",
+   "key_numbers": [
+    {
+     "measure": "Context clip rule residual (all modes)",
+     "value": 6.7e-16,
+     "unit": "max abs offset error",
+     "note": "\u00b13 SD in whitened coordinates; offsets <= radius at the clip"
+    },
+    {
+     "measure": "Out-of-range band (2.5,3.5], 256 contexts, saturating correction vs base: ac / ow / 2a / vwap",
+     "value": [
+      [
+       0.582,
+       0.32
+      ],
+      [
+       0.094,
+       -0.881
+      ],
+      [
+       0.433,
+       0.242
+      ],
+      [
+       0.511,
+       0.01
+      ]
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)",
+     "note": "saturating beats base in 20/20 task-bands"
+    },
+    {
+     "measure": "Structural decisions matched: lexicographic / summed",
+     "value": [
+      "30/30",
+      "22/30"
+     ],
+     "note": "only 8 discriminate; >=114x first-weighted sum also fits"
+    },
+    {
+     "measure": "Risk-first structural selection, AC held-out",
+     "value": -24.92,
+     "unit": "share of best-known (1 = best-known, 0 = naive)",
+     "note": "1-command dump; MM -0.216"
+    },
+    {
+     "measure": "episode_credit options that changed proposals in 60 mm episodes",
+     "value": "4/8",
+     "note": "coherent_edits false, outcome_tier_exploration false, capacity 4, segment_exploration true"
+    },
+    {
+     "measure": "Inflated prints at 150 episodes: unflagged = validity-flagged / cancel / clean",
+     "value": [
+      -3.3,
+      0.845,
+      0.959
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    },
+    {
+     "measure": "Planning probe / command_budget ceil(H/2)",
+     "value": [
+      "HTTP 422",
+      "HTTP 422"
+     ]
+    }
+   ],
+   "corrections": [
+    "'\u00b13 SD' holds in the learner's whitened coordinates only, not along raw feature axes.",
+    "'Strictly lexicographic' overclaims: a sum weighting the first objective >=114x fits all 30 decisions equally.",
+    "Extrapolation band values from 32 contexts are noisy (256-context reruns move single values by up to 83 pts); the conclusion holds.",
+    "The +0.5 inflation is about 6x the best achievable AC score, so the takeover size is fixed by the corruption size.",
+    "The 'API-saturating' extrapolation arm assumes retained maps clip like pending candidates (verified on the API elsewhere for linear and normalize+quadratic, not for linear+normalize)."
+   ]
+  },
+  {
+   "id": "gsg",
+   "title": "Refinement search geometry and budget allocation: guided candidate_count, contexts per update, radius and trust region (2a), and linear updates x contexts x candidates at equal executions (ac)",
+   "sound": true,
+   "headline": "With response guidance, 3 candidates per update stalled two-asset refinement near 47% of best (A 47.5% after 1,920 executions, B 47.0%, C 47.2%, base 39.6%). The 8-candidate control reached 74.4% at the same 1,920 executions and 80.6% at 2,560, and a 5-candidate extension reached 63.6% at 1,200 (control 62.4% there). The trust region was not inert. On linear AC at 2,560 executions, 40x8 scored 83.0-86.6%, 20x16 79.0-83.3%, 10x32 77.8% and 4 candidates 68.0%, and 60 updates reached 93.0% against a 93.6% linear ceiling. All results are single runs per configuration, and seed effects are as large as the allocation effects.",
+   "key_numbers": [
+    {
+     "measure": "Guided 2a, K=3: A @1,920 exec / B / C",
+     "value": [
+      0.475,
+      0.47,
+      0.472
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)",
+     "note": "base 0.396"
+    },
+    {
+     "measure": "Guided 2a, K=8 control @1,920 / @2,560 / @5,120 executions",
+     "value": [
+      0.744,
+      0.806,
+      0.95
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    },
+    {
+     "measure": "Guided 2a, K=5 @1,200 executions",
+     "value": 0.636,
+     "unit": "share of best-known (1 = best-known, 0 = naive)",
+     "note": "control 0.624 at the same executions"
+    },
+    {
+     "measure": "Trust region off (5 updates)",
+     "value": "updates 1-4 rejected",
+     "note": "guided steps 0.73-0.94, offsets at the clip"
+    },
+    {
+     "measure": "Linear AC @2,560 executions: 40x8 (s21/s82) / 20x16 (s21/s82) / 10x32 / K=4",
+     "value": [
+      [
+       0.83,
+       0.866
+      ],
+      [
+       0.833,
+       0.79
+      ],
+      0.778,
+      0.68
+     ],
+     "unit": "share of best-known (1 = best-known, 0 = naive)",
+     "note": "linear ceiling 0.936"
+    },
+    {
+     "measure": "Linear AC, 60 updates (7,680 executions)",
+     "value": 0.93,
+     "unit": "share of best-known (1 = best-known, 0 = naive)"
+    },
+    {
+     "measure": "Regression of final share: log K / log U / log C",
+     "value": [
+      0.242,
+      0.111,
+      0.064
+     ],
+     "unit": "share per log unit",
+     "note": "4 residual df; log K rests on one K=4 arm"
+    }
+   ],
+   "corrections": [
+    "At matched 1,920 executions the K=3 vs K=8 gap is about 27 pts (headline compared against 2,560).",
+    "Regression rows are not independent (U60 checkpoints from one learner), so its SEs overstate precision.",
+    "Single runs per configuration; the 40x8 vs 20x16 ordering flips between seeds."
+   ]
+  }
+ ],
+ "large_sample_512_main_run": {
+  "ac_liquidation": {
+   "base": 0.5136076550209412,
+   "R1_linear": 0.8320919969870149,
+   "R2_precision": 0.6013458272703548,
+   "CEM_ctx_lin": 0.6435994470023036,
+   "oracle": 1.0
+  },
+  "ow_transient": {
+   "base": -0.2204461323836122,
+   "R1_linear": 0.7612883000143488,
+   "R2_precision": 0.3241306228214283,
+   "CEM_ctx_lin": 0.6304158022136671,
+   "oracle": 1.0
+  },
+  "two_asset_transition": {
+   "base": 0.37604036837831,
+   "R1_linear": 0.5161498234516323,
+   "R2_precision": 0.4377516777016169,
+   "CEM_ctx_lin": 0.21477609929618924,
+   "oracle": 1.0
+  }
+ },
+ "out_of_range_u_le_1_6": {
+  "ac_liquidation": {
+   "base": 0.33118830008605454,
+   "R1_linear": 0.7498525009064541,
+   "R2_precision": 0.4599699325542345,
+   "CEM_ctx_lin": 0.5166868149401695,
+   "oracle": 1.0,
+   "R1_beats_base_share": 0.87890625
+  },
+  "ow_transient": {
+   "base": -3.649895274928826,
+   "R1_linear": 0.027739255559247503,
+   "R2_precision": -1.0328501634852214,
+   "CEM_ctx_lin": -0.5580825928152351,
+   "oracle": 1.0,
+   "R1_beats_base_share": 0.6875
+  },
+  "two_asset_transition": {
+   "base": 0.2669425605495958,
+   "R1_linear": 0.4387073094717191,
+   "R2_precision": 0.34721669359871293,
+   "CEM_ctx_lin": 0.06482176308282318,
+   "oracle": 1.0,
+   "R1_beats_base_share": 0.828125
+  }
+ }
+}
